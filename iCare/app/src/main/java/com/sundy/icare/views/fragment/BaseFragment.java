@@ -19,7 +19,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
     private final String TAG = "BaseFragment";
     protected OnBaseListener mCallback;
     protected FragmentActivity context;
-    protected LayoutInflater inflater;
+    protected LayoutInflater mInflater;
     protected AQuery aq;
 
     public BaseFragment() {

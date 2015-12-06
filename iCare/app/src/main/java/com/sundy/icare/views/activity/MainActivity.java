@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
                 } else {
                     getFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.frameLayout, fragment)
+                            .replace(R.id.frameContent, fragment)
                             .commit();
                 }
             }
@@ -93,7 +93,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
                 getFragmentManager()
                         .beginTransaction()
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .add(R.id.frameLayout, fragment)
+                        .add(R.id.frameContent, fragment)
                         .addToBackStack(null)
                         .commit();
             }
@@ -114,7 +114,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        mContent = getFragmentManager().findFragmentById(R.id.frameLayout);
+                        mContent = getFragmentManager().findFragmentById(R.id.frameContent);
                     }
                 }, 350);
             } else {

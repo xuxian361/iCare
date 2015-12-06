@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimens_tab_menu_height"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/btn_msg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null"
+        android:drawableTop="@mipmap/icon_msg_on"
+        android:text="@string/message"
+        android:textColor="@color/black"
+        android:paddingTop="10dp"
+        android:paddingBottom="6dp"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_service"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null"
+        android:drawableTop="@mipmap/icon_profile_off"
+        android:paddingBottom="6dp"
+        android:paddingTop="10dp"
+        android:text="@string/service"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_remind"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null"
+        android:drawableTop="@mipmap/icon_heart_off"
+        android:paddingBottom="6dp"
+        android:paddingTop="10dp"
+        android:text="@string/remind"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null"
+        android:drawableTop="@mipmap/icon_more_off"
+        android:paddingBottom="6dp"
+        android:paddingTop="10dp"
+        android:text="@string/more"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+</LinearLayout>

@@ -34,6 +34,9 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void init() {
+        aq.id(R.id.txt_register).clicked(onClickListener);
+        aq.id(R.id.btn_login).clicked(onClickListener);
+        aq.id(R.id.txt_first_visit).clicked(onClickListener);
 
     }
 
@@ -41,10 +44,23 @@ public class LoginActivity extends BaseActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-
+                case R.id.txt_register:
+                    goRegister();
+                    break;
+                case R.id.btn_login:
+                    goMain();
+                    break;
+                case R.id.txt_first_visit:
+                    goMain();
+                    break;
             }
         }
     };
+
+    private void goRegister() {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
 
     private CompoundButton.OnCheckedChangeListener onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -101,5 +117,6 @@ public class LoginActivity extends BaseActivity {
         super.onDestroy();
         ActivityController.removeActivity(this);
     }
+
 }
 
