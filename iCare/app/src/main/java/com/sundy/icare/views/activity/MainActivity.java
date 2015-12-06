@@ -13,6 +13,7 @@ import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.fragment.BaseFragment;
+import com.sundy.icare.views.fragment.TabMenuFragment;
 
 /**
  * Created by sundy on 15/12/6.
@@ -23,7 +24,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
     private final String TAG = "MainActivity";
     private Fragment mContent;
     private LayoutInflater inflater;
-
+    private TabMenuFragment frameMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +35,13 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
         inflater = getLayoutInflater();
         aq = new AQuery(this);
 
+        initFragment();
 
     }
 
     private void initFragment() {
+        frameMenu = (TabMenuFragment) getFragmentManager().findFragmentById(R.id.frameMenu);
+        frameMenu.setPosition(6);
 
     }
 

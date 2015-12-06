@@ -7,17 +7,16 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.MyUtils;
 
 /**
  * Created by sundy on 15/12/6.
  */
-public class TabMenuFragment extends BaseFragment {
+public class ServiceFragment extends BaseFragment {
 
-    private final String TAG = "TabMenuFragment";
+    private final String TAG = "ServiceFragment";
     private View mView;
 
-    public TabMenuFragment() {
+    public ServiceFragment() {
     }
 
     @Override
@@ -28,15 +27,10 @@ public class TabMenuFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mInflater = inflater;
-        mView = mInflater.inflate(R.layout.tab_menu, container, false);
+        mView = mInflater.inflate(R.layout.fragment_service, container, false);
         aq = new AQuery(mView);
         return mView;
     }
-
-    public void setPosition(int position) {
-        MyUtils.rtLog(TAG, "--------->position =" + position);
-    }
-
 
     @Override
     public void onStart() {
@@ -67,4 +61,5 @@ public class TabMenuFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
     }
+
 }

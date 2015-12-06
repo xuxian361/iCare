@@ -8,11 +8,11 @@
         android:id="@+id/frameContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/frameBottom" />
+        android:layout_above="@+id/frameMenu" />
 
     <fragment
+        android:id="@+id/frameMenu"
         android:name="com.sundy.icare.views.fragment.TabMenuFragment"
-        android:id="@+id/frameBottom"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_tab_menu_height"
         android:layout_alignParentBottom="true" />
