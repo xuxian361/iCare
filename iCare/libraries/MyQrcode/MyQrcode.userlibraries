@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="libs">
+    <archive path="/Users/sundy/Desktop/123/QRDemo/IBeaconDemo/DragonPassDemo/libraries/MyQrcode/libs/android-query-full.0.25.6-beta.jar" />
+    <archive path="/Users/sundy/Desktop/123/QRDemo/IBeaconDemo/DragonPassDemo/libraries/MyQrcode/libs/core.jar" />
+  </library>
+</eclipse-userlibraries>
+
