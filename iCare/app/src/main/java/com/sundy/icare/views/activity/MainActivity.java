@@ -1,7 +1,6 @@
 package com.sundy.icare.views.activity;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
@@ -42,6 +41,8 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
     private void initFragment() {
         frameMenu = (TabMenuFragment) getFragmentManager().findFragmentById(R.id.frameMenu);
         frameMenu.setPosition(6);
+
+
 
     }
 
@@ -183,15 +184,6 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
         switch (view.getId()) {
 
         }
-    }
-
-    /**
-     * 去登陆页
-     */
-    private void goLogin() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        ActivityController.finishAll();
     }
 
 }

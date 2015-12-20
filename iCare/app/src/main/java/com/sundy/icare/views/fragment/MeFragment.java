@@ -9,14 +9,14 @@ import com.androidquery.AQuery;
 import com.sundy.icare.R;
 
 /**
- * Created by sundy on 15/12/6.
+ * Created by sundy on 15/12/20.
  */
-public class MoreFragment extends BaseFragment {
+public class MeFragment extends BaseFragment {
 
-    private final String TAG = "MoreFragment";
+    private final String TAG = "MeFragment";
     private View mView;
 
-    public MoreFragment() {
+    public MeFragment() {
     }
 
     @Override
@@ -27,9 +27,17 @@ public class MoreFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mInflater = inflater;
-        mView = mInflater.inflate(R.layout.fragment_more, container, false);
+        mView = mInflater.inflate(R.layout.layout_me, container, false);
         aq = new AQuery(mView);
+
+        init();
+
         return mView;
+    }
+
+    private void init() {
+        aq.id(R.id.txtTitle).text(R.string.me);
+        aq.id(R.id.btnRight).image(R.mipmap.icon_settings);
     }
 
     @Override
@@ -61,5 +69,4 @@ public class MoreFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
     }
-
 }
