@@ -12,4 +12,14 @@
     <string name="service">服务</string>
     <string name="remind">提醒</string>
     <string name="more">更多</string>
+    <string name="your_username">您的用户名</string>
+    <string name="register">注册</string>
+    <string name="next_step">下一步</string>
+    <string name="finish">完成</string>
+    <string name="your_mobile">您的手机号码</string>
+    <string name="mobile_validation_code">手机验证码</string>
+    <string name="your_email">您的邮箱</string>
+    <string name="bind_email">绑定邮箱</string>
+    <string name="email_validation_code">邮箱验证码</string>
+    <string name="email_code_have_been_sent">验证码已发送至以下邮箱地址\n请获取验证码以完成绑定</string>
 </resources>

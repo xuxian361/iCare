@@ -58,7 +58,7 @@ public class LoginActivity extends BaseActivity {
     };
 
     private void goRegister() {
-        Intent intent = new Intent(this, RegisterActivity.class);
+        Intent intent = new Intent(this, RegisterUserNameActivity.class);
         startActivity(intent);
     }
 
