@@ -23,4 +23,10 @@
     <string name="email_validation_code">邮箱验证码</string>
     <string name="email_code_have_been_sent">验证码已发送至以下邮箱地址\n请获取验证码以完成绑定</string>
     <string name="me">我</string>
+    <string name="not_yet_bind_email">未绑定邮箱</string>
+    <string name="my_family">我的家人</string>
+    <string name="service_history">服务记录</string>
+    <string name="my_pay">我的支付</string>
+    <string name="my_bookmark">我的收藏</string>
+    <string name="remind_family">提醒家人</string>
 </resources>
