@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/layout_topbar_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/btnQR"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@null"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/icon_qrcode" />
+
+                <RelativeLayout
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="40dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.sundy.icare.utils.customs.CircleImageView
+                        android:id="@+id/imgMe"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/profile_img"
+                        app:border_color="#00000000" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="26dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:scaleType="center"
+                        android:src="@mipmap/icon_camera"
+                        android:text="Sundy Xu"
+                        android:textColor="@color/material_grey_850"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/material_grey_100" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_height"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:id="@+id/txtKey_UserName"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/username"
+                    android:textColor="@color/material_grey_800" />
+
+                <TextView
+                    android:id="@+id/txtUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="false"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/txtKey_UserName"
+                    android:text="Sundy Xu"
+                    android:textColor="@color/material_grey_850"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/material_grey_100" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_height"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:id="@+id/txtKey_Gender"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/gender"
+                    android:textColor="@color/material_grey_800" />
+
+                <TextView
+                    android:id="@+id/txtGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="false"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/txtKey_Gender"
+                    android:text="男"
+                    android:textColor="@color/material_grey_850"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/material_grey_100" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_height"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:id="@+id/txtKey_Mobile"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/mobile"
+                    android:textColor="@color/material_grey_800" />
+
+                <TextView
+                    android:id="@+id/txtMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="false"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/txtKey_Mobile"
+                    android:text="15088086697"
+                    android:textColor="@color/material_grey_850"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/material_grey_100" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_height"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:id="@+id/txtKey_Email"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/email"
+                    android:textColor="@color/material_grey_800" />
+
+                <TextView
+                    android:id="@+id/txtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="false"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/txtKey_Email"
+                    android:text="308379285@qq.com"
+                    android:textColor="@color/material_grey_850"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/material_grey_100" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/txtKey_Address"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/address"
+                    android:textColor="@color/material_grey_800" />
+
+                <TextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="false"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/txtKey_Address"
+                    android:maxLines="2"
+                    android:paddingRight="20dp"
+                    android:text="广东省广州市天河区民族学院荷光路152号"
+                    android:textColor="@color/material_grey_850"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/material_grey_100" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:id="@+id/txtKey_Tag"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tag"
+                    android:textColor="@color/material_grey_800" />
+
+                <EditText
+                    android:id="@+id/edtTag"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_below="@+id/txtKey_Tag"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/path_regular"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="司机、家政、护工"
+                    android:textColor="@color/material_grey_850"
+                    android:textSize="14sp"
+                    android:padding="6dp"
+                    android:gravity="left|top" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

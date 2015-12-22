@@ -1,6 +1,5 @@
 package com.sundy.icare.views.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,17 +7,16 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.views.activity.UserDetailActivity;
 
 /**
- * Created by sundy on 15/12/20.
+ * Created by sundy on 15/12/22.
  */
-public class MeFragment extends BaseFragment {
+public class SettingsFragment extends BaseFragment {
 
-    private final String TAG = "MeFragment";
+    private final String TAG = "SettingsFragment";
     private View mView;
 
-    public MeFragment() {
+    public SettingsFragment() {
     }
 
     @Override
@@ -29,7 +27,7 @@ public class MeFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mInflater = inflater;
-        mView = mInflater.inflate(R.layout.layout_me, container, false);
+        mView = mInflater.inflate(R.layout.layout_settings, container, false);
         aq = new AQuery(mView);
 
         init();
@@ -38,22 +36,14 @@ public class MeFragment extends BaseFragment {
     }
 
     private void init() {
-        aq.id(R.id.txtTitle).text(R.string.me);
-        aq.id(R.id.btnRight).image(R.mipmap.icon_settings).clicked(onClick);
-        aq.id(R.id.imgMe).clicked(onClick);
+        aq.id(R.id.txtTitle).text(R.string.settings);
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btnRight:
-                    mCallback.addContent(new SettingsFragment());
-                    break;
-                case R.id.imgMe:
-                    Intent intent = new Intent(getActivity(), UserDetailActivity.class);
-                    startActivity(intent);
-                    break;
+
             }
         }
     };

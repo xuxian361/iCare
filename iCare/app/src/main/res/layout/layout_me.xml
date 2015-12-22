@@ -29,7 +29,7 @@
                 <ImageButton
                     android:id="@+id/btnQR"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     android:background="@null"
                     android:padding="10dp"
@@ -46,8 +46,8 @@
 
                     <com.sundy.icare.utils.customs.CircleImageView
                         android:id="@+id/imgMe"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_centerInParent="true"
                         android:src="@mipmap/profile_img"
                         app:border_color="#00000000" />
@@ -253,7 +253,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="13dp"
                     android:layout_marginRight="13dp"
-                    android:layout_marginTop="5dp" >
+                    android:layout_marginTop="5dp">
 
                     <ImageView
                         android:id="@+id/imgPay"
@@ -289,7 +289,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="13dp"
                     android:layout_marginRight="13dp"
-                    android:layout_marginTop="5dp" >
+                    android:layout_marginTop="5dp">
 
                     <ImageView
                         android:id="@+id/imgBookmark"
@@ -325,7 +325,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="13dp"
                     android:layout_marginRight="13dp"
-                    android:layout_marginTop="5dp" >
+                    android:layout_marginTop="5dp">
 
                     <ImageView
                         android:id="@+id/imgRemind"
@@ -334,7 +334,7 @@
                         android:layout_centerVertical="true"
                         android:background="@null"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/icon_info_img" />
+                        android:src="@mipmap/icon_alarm" />
 
                     <TextView
                         android:id="@+id/txtRemind"

@@ -5,4 +5,5 @@
     <dimen name="dimens_tab_menu_height">52dp</dimen>
     <dimen name="topbar_height">50dp</dimen>
     <dimen name="edt_height">36dp</dimen>
+    <dimen name="settings_item_height">40dp</dimen>
 </resources>

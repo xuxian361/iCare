@@ -29,4 +29,19 @@
     <string name="my_pay">我的支付</string>
     <string name="my_bookmark">我的收藏</string>
     <string name="remind_family">提醒家人</string>
+    <string name="settings">设置</string>
+    <string name="msg_notify">消息通知</string>
+    <string name="chat_record">聊天记录</string>
+    <string name="account_security">账户安全</string>
+    <string name="assessibility">辅助功能</string>
+    <string name="feedback">意见反馈</string>
+    <string name="help">帮助</string>
+    <string name="check_update">检查更新</string>
+    <string name="username">用户名</string>
+    <string name="gender">性别</string>
+    <string name="mobile">手机号码</string>
+    <string name="email">邮箱</string>
+    <string name="address">地址</string>
+    <string name="tag">标签</string>
+    <string name="save_logout">安全登出</string>
 </resources>
