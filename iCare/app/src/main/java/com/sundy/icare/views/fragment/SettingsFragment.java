@@ -36,6 +36,7 @@ public class SettingsFragment extends BaseFragment {
     }
 
     private void init() {
+        aq.id(R.id.btnBack).clicked(onClick);
         aq.id(R.id.txtTitle).text(R.string.settings);
     }
 
@@ -43,7 +44,9 @@ public class SettingsFragment extends BaseFragment {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-
+                case R.id.btnBack:
+                    mCallback.onBack();
+                    break;
             }
         }
     };

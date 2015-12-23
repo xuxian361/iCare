@@ -12,6 +12,9 @@ import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.fragment.BaseFragment;
+import com.sundy.icare.views.fragment.MeFragment;
+import com.sundy.icare.views.fragment.MsgFragment;
+import com.sundy.icare.views.fragment.ServiceFragment;
 import com.sundy.icare.views.fragment.TabMenuFragment;
 
 /**
@@ -41,9 +44,29 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
     private void initFragment() {
         frameMenu = (TabMenuFragment) getFragmentManager().findFragmentById(R.id.frameMenu);
         frameMenu.setPosition(6);
+        switchContent(new MeFragment());
+    }
 
-
-
+    /**
+     * 切换Fragment
+     *
+     * @param id
+     */
+    public void switchFragment(int id) {
+        switch (id) {
+            case R.id.btnMsg:
+                switchContent(new MsgFragment());
+                break;
+            case R.id.btnService:
+                switchContent(new ServiceFragment());
+                break;
+            case R.id.btnMarket:
+                switchContent(new MsgFragment());
+                break;
+            case R.id.btnMe:
+                switchContent(new MeFragment());
+                break;
+        }
     }
 
     @Override

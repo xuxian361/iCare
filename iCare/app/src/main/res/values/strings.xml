@@ -44,4 +44,17 @@
     <string name="address">地址</string>
     <string name="tag">标签</string>
     <string name="save_logout">安全登出</string>
+    <string name="market">商城</string>
+    <string name="my_order">我的订单</string>
+    <string name="go_order">去下单</string>
+    <string name="total">共</string>
+    <string name="add_service_local">添加服务地址</string>
+    <string name="pay_online">在线支付</string>
+    <string name="pay_offline">完成后付款</string>
+    <string name="service_describtion">服务描述</string>
+    <string name="service_price">服务价格</string>
+    <string name="finish_time">完成时间</string>
+    <string name="coupon">优惠券</string>
+    <string name="add_remark">添加备注</string>
+    <string name="add_order">添加订单</string>
 </resources>
