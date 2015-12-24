@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.views.activity.AddOrderActivity;
+import com.sundy.icare.views.activity.MyOrderActivity;
 
 /**
  * Created by sundy on 15/12/6.
@@ -48,11 +49,12 @@ public class ServiceFragment extends BaseFragment {
             switch (view.getId()) {
                 case R.id.relLeft:
                     //跳转到我的订单
-
+                    Intent intent1 = new Intent(getActivity(), MyOrderActivity.class);
+                    startActivity(intent1);
                     break;
                 case R.id.btnRight:
-                    Intent intent = new Intent(getActivity(), AddOrderActivity.class);
-                    startActivity(intent);
+                    Intent intent2 = new Intent(getActivity(), AddOrderActivity.class);
+                    startActivity(intent2);
                     break;
             }
         }

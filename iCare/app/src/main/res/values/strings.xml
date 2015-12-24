@@ -57,4 +57,16 @@
     <string name="coupon">优惠券</string>
     <string name="add_remark">添加备注</string>
     <string name="add_order">添加订单</string>
+    <string name="male">先生</string>
+    <string name="female">女士</string>
+    <string name="input_service_object_mobile">请填写服务对象手机号，以便服务者联系</string>
+    <string name="input_service_object_location">请填写服务地址</string>
+    <string name="input_service_object_name">请填写服务对象姓名</string>
+    <string name="status">状态</string>
+    <string name="all">所有</string>
+    <string name="process">进行中</string>
+    <string name="expire">已结束</string>
+    <string name="sort">排序</string>
+    <string name="sort_by_time">按时间</string>
+    <string name="sort_by_price">按金额</string>
 </resources>

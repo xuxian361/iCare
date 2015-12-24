@@ -57,6 +57,16 @@
         <activity
             android:name=".views.activity.AddOrderActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".views.activity.AddOrderLocationActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".views.activity.MyOrderActivity"
+            android:screenOrientation="portrait" />
+
+
     </application>
 
 </manifest>
