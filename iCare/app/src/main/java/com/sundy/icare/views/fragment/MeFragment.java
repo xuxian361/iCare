@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
+import com.sundy.icare.utils.ActivityController;
+import com.sundy.icare.views.activity.ServerActivity;
 import com.sundy.icare.views.activity.UserDetailActivity;
 
 /**
@@ -41,6 +43,7 @@ public class MeFragment extends BaseFragment {
         aq.id(R.id.txtTitle).text(R.string.me);
         aq.id(R.id.btnRight).image(R.mipmap.icon_settings).clicked(onClick);
         aq.id(R.id.imgMe).clicked(onClick);
+        aq.id(R.id.btnSwitch).clicked(onClick);
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
@@ -53,6 +56,12 @@ public class MeFragment extends BaseFragment {
                 case R.id.imgMe:
                     Intent intent = new Intent(getActivity(), UserDetailActivity.class);
                     startActivity(intent);
+                    break;
+                case R.id.btnSwitch:
+                    //切花至服务者
+                    Intent intent3 = new Intent(getActivity(), ServerActivity.class);
+                    startActivity(intent3);
+                    ActivityController.finishAll();
                     break;
             }
         }

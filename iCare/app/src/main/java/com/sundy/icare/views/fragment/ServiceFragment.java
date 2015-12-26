@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
+import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.views.activity.AddOrderActivity;
 import com.sundy.icare.views.activity.MyOrderActivity;
+import com.sundy.icare.views.activity.ServerActivity;
 
 /**
  * Created by sundy on 15/12/6.
@@ -41,6 +43,7 @@ public class ServiceFragment extends BaseFragment {
     private void init() {
         aq.id(R.id.relLeft).clicked(onClick);
         aq.id(R.id.btnRight).clicked(onClick);
+        aq.id(R.id.btnSwitch).clicked(onClick);
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
@@ -55,6 +58,12 @@ public class ServiceFragment extends BaseFragment {
                 case R.id.btnRight:
                     Intent intent2 = new Intent(getActivity(), AddOrderActivity.class);
                     startActivity(intent2);
+                    break;
+                case R.id.btnSwitch:
+                    //切换到服务者
+                    Intent intent3 = new Intent(getActivity(), ServerActivity.class);
+                    startActivity(intent3);
+                    ActivityController.finishAll();
                     break;
             }
         }

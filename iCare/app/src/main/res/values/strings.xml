@@ -69,4 +69,11 @@
     <string name="sort">排序</string>
     <string name="sort_by_time">按时间</string>
     <string name="sort_by_price">按金额</string>
+    <string name="order_tea">饮茶订位</string>
+    <string name="health_check">健康体检</string>
+    <string name="community_activity">社区活动</string>
+    <string name="order_opera_ticket">戏票预定</string>
+    <string name="vip_trip">VIP出行</string>
+    <string name="vip_insurance">VIP保险</string>
+    <string name="latest_server">最新服务</string>
 </resources>

@@ -12,29 +12,29 @@ import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.fragment.BaseFragment;
-import com.sundy.icare.views.fragment.MarketFragment;
 import com.sundy.icare.views.fragment.MeFragment;
 import com.sundy.icare.views.fragment.MsgFragment;
 import com.sundy.icare.views.fragment.ServiceFragment;
-import com.sundy.icare.views.fragment.TabMenuFragment;
+import com.sundy.icare.views.fragment.server.ServerMsgFragment;
+import com.sundy.icare.views.fragment.server.ServerTabMenuFragment;
 
 /**
- * Created by sundy on 15/12/6.
+ * Created by sundy on 15/12/26.
  */
-public class MainActivity extends BaseActivity implements BaseFragment.OnBaseListener,
+public class ServerActivity extends BaseActivity implements BaseFragment.OnBaseListener,
         View.OnClickListener {
 
-    private final String TAG = "MainActivity";
+    private final String TAG = "ServerActivity";
     private Fragment mContent;
     private LayoutInflater inflater;
-    private TabMenuFragment frameMenu;
+    private ServerTabMenuFragment frameMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         MyUtils.rtLog(TAG, "------------->onCreate");
         super.onCreate(savedInstanceState);
         ActivityController.addActivity(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.layout_server);
         inflater = getLayoutInflater();
         aq = new AQuery(this);
 
@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
     }
 
     private void initFragment() {
-        frameMenu = (TabMenuFragment) getFragmentManager().findFragmentById(R.id.frameMenu);
+        frameMenu = (ServerTabMenuFragment) getFragmentManager().findFragmentById(R.id.frameMenu);
         frameMenu.setPosition(6);
         switchContent(new MsgFragment());
     }
@@ -56,13 +56,10 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
     public void switchFragment(int id) {
         switch (id) {
             case R.id.btnMsg:
-                switchContent(new MsgFragment());
+                switchContent(new ServerMsgFragment());
                 break;
             case R.id.btnService:
                 switchContent(new ServiceFragment());
-                break;
-            case R.id.btnMarket:
-                switchContent(new MarketFragment());
                 break;
             case R.id.btnMe:
                 switchContent(new MeFragment());
@@ -211,4 +208,3 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
     }
 
 }
-
