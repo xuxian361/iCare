@@ -10,13 +10,13 @@ import com.sundy.icare.R;
 import com.sundy.icare.views.fragment.BaseFragment;
 
 /**
- * Created by sundy on 15/12/26.
+ * Created by sundy on 15/12/27.
  */
-public class ServerMsgFragment extends BaseFragment {
-    private final String TAG = "ServerMsgFragment";
+public class ServerLatestFragment extends BaseFragment {
+    private final String TAG = "ServerLatestFragment";
     private View mView;
 
-    public ServerMsgFragment() {
+    public ServerLatestFragment() {
     }
 
     @Override
@@ -27,7 +27,7 @@ public class ServerMsgFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mInflater = inflater;
-        mView = mInflater.inflate(R.layout.server_msg, container, false);
+        mView = mInflater.inflate(R.layout.server_latest, container, false);
         aq = new AQuery(mView);
 
         init();
@@ -36,7 +36,7 @@ public class ServerMsgFragment extends BaseFragment {
     }
 
     private void init() {
-        aq.id(R.id.btnRight).image(R.mipmap.icon_add).clicked(onClick);
+        aq.id(R.id.btnRight).image(R.mipmap.icon_location_white).clicked(onClick);
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
@@ -81,3 +81,4 @@ public class ServerMsgFragment extends BaseFragment {
     }
 
 }
+

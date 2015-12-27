@@ -76,4 +76,7 @@
     <string name="vip_trip">VIP出行</string>
     <string name="vip_insurance">VIP保险</string>
     <string name="latest_server">最新服务</string>
+    <string name="provide_service">提供服务</string>
+    <string name="my_provided_server">我提供的服务</string>
+    <string name="my_bill">我的账单</string>
 </resources>

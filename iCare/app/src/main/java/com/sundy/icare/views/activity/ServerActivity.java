@@ -12,9 +12,8 @@ import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.fragment.BaseFragment;
-import com.sundy.icare.views.fragment.MeFragment;
-import com.sundy.icare.views.fragment.MsgFragment;
-import com.sundy.icare.views.fragment.ServiceFragment;
+import com.sundy.icare.views.fragment.server.ServerLatestFragment;
+import com.sundy.icare.views.fragment.server.ServerMeFragment;
 import com.sundy.icare.views.fragment.server.ServerMsgFragment;
 import com.sundy.icare.views.fragment.server.ServerTabMenuFragment;
 
@@ -45,7 +44,7 @@ public class ServerActivity extends BaseActivity implements BaseFragment.OnBaseL
     private void initFragment() {
         frameMenu = (ServerTabMenuFragment) getFragmentManager().findFragmentById(R.id.frameMenu);
         frameMenu.setPosition(6);
-        switchContent(new MsgFragment());
+        switchContent(new ServerMsgFragment());
     }
 
     /**
@@ -59,10 +58,10 @@ public class ServerActivity extends BaseActivity implements BaseFragment.OnBaseL
                 switchContent(new ServerMsgFragment());
                 break;
             case R.id.btnService:
-                switchContent(new ServiceFragment());
+                switchContent(new ServerLatestFragment());
                 break;
             case R.id.btnMe:
-                switchContent(new MeFragment());
+                switchContent(new ServerMeFragment());
                 break;
         }
     }

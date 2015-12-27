@@ -5,10 +5,38 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <include
-        layout="@layout/layout_topbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/topbar_height">
+
+        <include
+            layout="@layout/layout_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/btnAddSerer">
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:gravity="right"
+                android:src="@mipmap/icon_packet_orange" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/provide_service"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -30,10 +58,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="付款消息"
+                android:text="@string/my_provided_server"
                 android:id="@+id/txtMsgTitle"
                 android:layout_toRightOf="@+id/imgMsg"
-                android:layout_toLeftOf="@+id/txtMsgTime"
                 android:layout_marginLeft="7dp"
                 android:layout_alignTop="@+id/imgMsg"
                 android:textColor="@color/material_grey_850"
@@ -43,7 +70,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="许先生对你的服务已经付款，查看详情"
+                android:text="搬运、家政、司机"
                 android:id="@+id/txtMsg"
                 android:layout_toRightOf="@+id/imgMsg"
                 android:layout_alignBottom="@+id/imgMsg"
@@ -51,20 +78,8 @@
                 android:textIsSelectable="false"
                 android:textSize="12sp"
                 android:textColor="@color/material_grey_600"
-                android:layout_toLeftOf="@+id/txtMsgTime"
                 android:singleLine="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12.15 22:36"
-                android:id="@+id/txtMsgTime"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:textColor="@color/material_grey_600"
-                android:textSize="10sp"
-                android:singleLine="true" />
         </RelativeLayout>
 
         <ImageView
@@ -72,6 +87,5 @@
             android:layout_height="10dp"
             android:background="@color/material_grey_100" />
     </LinearLayout>
-
 
 </LinearLayout>
