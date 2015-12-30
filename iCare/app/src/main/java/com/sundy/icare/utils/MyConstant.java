@@ -9,6 +9,8 @@ public class MyConstant {
 
 
     public static final String APP_NAME = "iCare";
+    public static final String BUG_TAGS_KEY = "ad82c226c15d58a9ad09375114bc70ab";
+
     public static int SCREEN_WIDTH = 720;
     public static int SCREEN_HEIGHT = 1080;
     public static float SCREEN_DENSITY = DisplayMetrics.DENSITY_HIGH;

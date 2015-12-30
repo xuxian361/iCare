@@ -3,11 +3,10 @@ package com.sundy.icare.views.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
 
 import com.androidquery.AQuery;
-import com.sundy.icare.MyApp;
-import com.sundy.icare.net.MyURL;
-import com.sundy.icare.utils.MyUtils;
+import com.bugtags.library.Bugtags;
 
 /**
  * Created by sundy on 15/12/6.
@@ -27,6 +26,20 @@ public class BaseActivity extends FragmentActivity {
         context = this;
         aq = new AQuery(this);
 
+        Bugtags.onCreate(this);
+
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Bugtags.onResume(this);
+
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Bugtags.onDispatchTouchEvent(this, ev);
+        return super.dispatchTouchEvent(ev);
+    }
 }

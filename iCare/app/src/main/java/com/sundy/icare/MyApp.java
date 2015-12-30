@@ -7,7 +7,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.bugtags.library.Bugtags;
 import com.sundy.icare.utils.LruBitmapCache;
+import com.sundy.icare.utils.MyConstant;
 
 /**
  * Created by sundy on 15/12/6.
@@ -25,6 +27,8 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         myApp = this;
+        //初始化BugTags: 跟踪Bugs
+        Bugtags.start(MyConstant.BUG_TAGS_KEY, this, Bugtags.BTGInvocationEventBubble);
     }
 
     @Override
