@@ -27,8 +27,10 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         myApp = this;
-        //初始化BugTags: 跟踪Bugs
-        Bugtags.start(MyConstant.BUG_TAGS_KEY, this, Bugtags.BTGInvocationEventBubble);
+        if (MyConstant.IsDebug) {
+            //初始化BugTags: 跟踪Bugs
+            Bugtags.start(MyConstant.BUG_TAGS_KEY, this, Bugtags.BTGInvocationEventBubble);
+        }
     }
 
     @Override

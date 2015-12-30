@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 
 import com.androidquery.AQuery;
 import com.bugtags.library.Bugtags;
+import com.sundy.icare.utils.MyConstant;
 
 /**
  * Created by sundy on 15/12/6.
@@ -26,20 +27,24 @@ public class BaseActivity extends FragmentActivity {
         context = this;
         aq = new AQuery(this);
 
-        Bugtags.onCreate(this);
-
+        if (MyConstant.IsDebug) {
+            Bugtags.onCreate(this);
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Bugtags.onResume(this);
-
+        if (MyConstant.IsDebug) {
+            Bugtags.onResume(this);
+        }
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Bugtags.onDispatchTouchEvent(this, ev);
+        if (MyConstant.IsDebug) {
+            Bugtags.onDispatchTouchEvent(this, ev);
+        }
         return super.dispatchTouchEvent(ev);
     }
 }

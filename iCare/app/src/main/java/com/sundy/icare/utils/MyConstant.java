@@ -22,6 +22,6 @@ public class MyConstant {
     public static final String APP_VER = "1.0";
     public static final String APP_LANGUAGE = "EN";
 
-    public static final boolean IsDebug = true;
+    public static final boolean IsDebug = false;
 
 }
