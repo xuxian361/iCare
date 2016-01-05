@@ -1,33 +1,34 @@
 package com.sundy.icare.views.fragment.server;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.MyUtils;
-import com.sundy.icare.views.fragment.BaseFragment;
+import com.sundy.icare.views.fragment.LazyLoadFragment;
 
 /**
  * Created by sundy on 15/12/27.
  */
-public class ServerLatestFragment extends BaseFragment {
+public class ServerLatestFragment extends LazyLoadFragment {
     private final String TAG = "ServerLatestFragment";
     private View mView;
+
+    Handler handler = new Handler();
+    ProgressBar progressBar;
+    private static final int DELAY_TIME = 2000;
 
     public ServerLatestFragment() {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        MyUtils.rtLog(TAG, "---------->onCreateView");
+    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        MyUtils.rtLog(TAG, "---------->initViews");
         mInflater = inflater;
         mView = mInflater.inflate(R.layout.server_latest, container, false);
         aq = new AQuery(mView);
@@ -37,7 +38,20 @@ public class ServerLatestFragment extends BaseFragment {
         return mView;
     }
 
+    @Override
+    protected void initData() {
+        MyUtils.rtLog(TAG, "---------->initData");
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressBar.setVisibility(View.GONE);
+            }
+        }, DELAY_TIME);
+    }
+
     private void init() {
+        progressBar = aq.id(R.id.progress_bar).getProgressBar();
+        progressBar.setVisibility(View.VISIBLE);
         aq.id(R.id.btnRight).image(R.mipmap.icon_location_white).clicked(onClick);
     }
 

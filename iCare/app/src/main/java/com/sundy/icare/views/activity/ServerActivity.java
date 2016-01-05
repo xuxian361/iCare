@@ -3,6 +3,8 @@ package com.sundy.icare.views.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -26,6 +28,8 @@ public class ServerActivity extends BaseActivity implements BaseFragment.OnBaseL
     private Fragment mContent;
     private LayoutInflater inflater;
     private ServerTabMenuFragment frameMenu;
+    private ViewPager pager;
+    private FragmentPagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +40,59 @@ public class ServerActivity extends BaseActivity implements BaseFragment.OnBaseL
         inflater = getLayoutInflater();
         aq = new AQuery(this);
 
-        initFragment();
+        initViewPager();
 
     }
 
-    private void initFragment() {
-        frameMenu = (ServerTabMenuFragment) getSupportFragmentManager().findFragmentById(R.id.frameMenu);
-        frameMenu.setPosition(6);
-        switchContent(new ServerMsgFragment());
+    private void initViewPager() {
+        pager = (ViewPager) aq.id(R.id.pager).getView();
+        pagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public android.support.v4.app.Fragment getItem(int position) {
+                android.support.v4.app.Fragment fragment = null;
+                switch (position) {
+                    case 0:
+                        fragment = new ServerMsgFragment();
+                        break;
+                    case 1:
+                        fragment = new ServerLatestFragment();
+                        break;
+                    case 2:
+                        fragment = new ServerMeFragment();
+                        break;
+                }
+                return fragment;
+            }
+
+            @Override
+            public int getCount() {
+                return 3;
+            }
+        };
+
+        pager.setAdapter(pagerAdapter);
+
+        pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        break;
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                }
+//                MyUtils.rtLog(TAG, "---------->" + position);
+                super.onPageSelected(position);
+            }
+        });
+
     }
 
     /**
@@ -63,12 +112,6 @@ public class ServerActivity extends BaseActivity implements BaseFragment.OnBaseL
                 switchContent(new ServerMeFragment());
                 break;
         }
-    }
-
-    @Override
-    protected void onResume() {
-        MyUtils.rtLog(TAG, "------------->onResume");
-        super.onResume();
     }
 
     /**

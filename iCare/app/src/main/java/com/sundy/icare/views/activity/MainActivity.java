@@ -99,12 +99,6 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
 
     }
 
-    private void initFragment() {
-        frameMenu = (TabMenuFragment) getSupportFragmentManager().findFragmentById(R.id.frameMenu);
-        frameMenu.setPosition(6);
-        switchContent(new MsgFragment());
-    }
-
     /**
      * 切换Fragment
      *
