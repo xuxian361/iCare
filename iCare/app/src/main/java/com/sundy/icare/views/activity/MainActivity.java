@@ -1,9 +1,10 @@
 package com.sundy.icare.views.activity;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -28,6 +29,8 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
     private Fragment mContent;
     private LayoutInflater inflater;
     private TabMenuFragment frameMenu;
+    private ViewPager pager;
+    private FragmentPagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +41,66 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
         inflater = getLayoutInflater();
         aq = new AQuery(this);
 
-        initFragment();
+        initViewPager();
+
+    }
+
+    private void initViewPager() {
+        pager = (ViewPager) aq.id(R.id.pager).getView();
+        pagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public android.support.v4.app.Fragment getItem(int position) {
+                android.support.v4.app.Fragment fragment = null;
+                switch (position) {
+                    case 0:
+                        fragment = new MsgFragment();
+                        break;
+                    case 1:
+                        fragment = new ServiceFragment();
+                        break;
+                    case 2:
+                        fragment = new MarketFragment();
+                        break;
+                    case 3:
+                        fragment = new MeFragment();
+                        break;
+                }
+                return fragment;
+            }
+
+            @Override
+            public int getCount() {
+                return 4;
+            }
+        };
+
+        pager.setAdapter(pagerAdapter);
+
+        pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        break;
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                }
+//                MyUtils.rtLog(TAG, "---------->" + position);
+                super.onPageSelected(position);
+            }
+        });
 
     }
 
     private void initFragment() {
-        frameMenu = (TabMenuFragment) getFragmentManager().findFragmentById(R.id.frameMenu);
+        frameMenu = (TabMenuFragment) getSupportFragmentManager().findFragmentById(R.id.frameMenu);
         frameMenu.setPosition(6);
         switchContent(new MsgFragment());
     }
@@ -70,29 +127,23 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
         }
     }
 
-    @Override
-    protected void onResume() {
-        MyUtils.rtLog(TAG, "------------->onResume");
-        super.onResume();
-    }
-
     /**
      * 替换当前Fragment
      */
     @Override
-    public void switchContent(Fragment fragment) {
+    public void switchContent(android.support.v4.app.Fragment fragment) {
         try {
             if (fragment == null && mContent == fragment) {
                 return;
             } else {
                 mContent = fragment;
                 if (fragment.isAdded()) {
-                    getFragmentManager()
+                    getSupportFragmentManager()
                             .beginTransaction()
                             .show(fragment)
                             .commit();
                 } else {
-                    getFragmentManager()
+                    getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.frameContent, fragment)
                             .commit();
@@ -107,21 +158,19 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
      * 添加一个Fragment到视图顶层
      */
     @Override
-    public void addContent(Fragment fragment) {
+    public void addContent(android.support.v4.app.Fragment fragment) {
         if (fragment == null && mContent == fragment) {
             return;
         } else {
             mContent = fragment;
             if (fragment.isAdded()) {
-                getFragmentManager()
+                getSupportFragmentManager()
                         .beginTransaction()
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                         .show(fragment)
                         .commit();
             } else {
-                getFragmentManager()
+                getSupportFragmentManager()
                         .beginTransaction()
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                         .add(R.id.frameContent, fragment)
                         .addToBackStack(null)
                         .commit();
@@ -143,7 +192,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        mContent = getFragmentManager().findFragmentById(R.id.frameContent);
+                        mContent = getSupportFragmentManager().findFragmentById(R.id.frameContent);
                     }
                 }, 350);
             } else {

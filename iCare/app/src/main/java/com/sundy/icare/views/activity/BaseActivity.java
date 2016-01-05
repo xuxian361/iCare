@@ -27,7 +27,7 @@ public class BaseActivity extends FragmentActivity {
         context = this;
         aq = new AQuery(this);
 
-        if (MyConstant.IsDebug) {
+        if (MyConstant.Is_BugTags_Enable) {
             Bugtags.onCreate(this);
         }
     }
@@ -35,14 +35,14 @@ public class BaseActivity extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (MyConstant.IsDebug) {
+        if (MyConstant.Is_BugTags_Enable) {
             Bugtags.onResume(this);
         }
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (MyConstant.IsDebug) {
+        if (MyConstant.Is_BugTags_Enable) {
             Bugtags.onDispatchTouchEvent(this, ev);
         }
         return super.dispatchTouchEvent(ev);

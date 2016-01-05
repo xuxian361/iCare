@@ -29,6 +29,7 @@ public class ServerTabMenuFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        MyUtils.rtLog(TAG, "---------->onCreateView");
         mInflater = inflater;
         mView = mInflater.inflate(R.layout.tab_menu_server, container, false);
         aq = new AQuery(mView);
@@ -83,6 +84,7 @@ public class ServerTabMenuFragment extends BaseFragment {
 
     @Override
     public void onDestroy() {
+        MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
     }
 }

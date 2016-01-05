@@ -1,9 +1,8 @@
 package com.sundy.icare.views.activity;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -42,7 +41,7 @@ public class ServerActivity extends BaseActivity implements BaseFragment.OnBaseL
     }
 
     private void initFragment() {
-        frameMenu = (ServerTabMenuFragment) getFragmentManager().findFragmentById(R.id.frameMenu);
+        frameMenu = (ServerTabMenuFragment) getSupportFragmentManager().findFragmentById(R.id.frameMenu);
         frameMenu.setPosition(6);
         switchContent(new ServerMsgFragment());
     }
@@ -83,12 +82,12 @@ public class ServerActivity extends BaseActivity implements BaseFragment.OnBaseL
             } else {
                 mContent = fragment;
                 if (fragment.isAdded()) {
-                    getFragmentManager()
+                    getSupportFragmentManager()
                             .beginTransaction()
                             .show(fragment)
                             .commit();
                 } else {
-                    getFragmentManager()
+                    getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.frameContent, fragment)
                             .commit();
@@ -109,15 +108,13 @@ public class ServerActivity extends BaseActivity implements BaseFragment.OnBaseL
         } else {
             mContent = fragment;
             if (fragment.isAdded()) {
-                getFragmentManager()
+                getSupportFragmentManager()
                         .beginTransaction()
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                         .show(fragment)
                         .commit();
             } else {
-                getFragmentManager()
+                getSupportFragmentManager()
                         .beginTransaction()
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                         .add(R.id.frameContent, fragment)
                         .addToBackStack(null)
                         .commit();
@@ -139,7 +136,7 @@ public class ServerActivity extends BaseActivity implements BaseFragment.OnBaseL
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        mContent = getFragmentManager().findFragmentById(R.id.frameContent);
+                        mContent = getSupportFragmentManager().findFragmentById(R.id.frameContent);
                     }
                 }, 350);
             } else {

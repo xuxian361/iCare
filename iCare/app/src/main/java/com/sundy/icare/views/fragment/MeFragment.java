@@ -2,34 +2,37 @@ package com.sundy.icare.views.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
+import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.activity.ServerActivity;
 import com.sundy.icare.views.activity.UserDetailActivity;
 
 /**
  * Created by sundy on 15/12/20.
  */
-public class MeFragment extends BaseFragment {
+public class MeFragment extends LazyLoadFragment {
 
     private final String TAG = "MeFragment";
     private View mView;
+
+    Handler handler = new Handler();
+    ProgressBar progressBar;
+    private static final int DELAY_TIME = 2000;
 
     public MeFragment() {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        MyUtils.rtLog(TAG, "---------->initViews");
         mInflater = inflater;
         mView = mInflater.inflate(R.layout.layout_me, container, false);
         aq = new AQuery(mView);
@@ -39,11 +42,25 @@ public class MeFragment extends BaseFragment {
         return mView;
     }
 
+    @Override
+    protected void initData() {
+        MyUtils.rtLog(TAG, "---------->initData");
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressBar.setVisibility(View.GONE);
+            }
+        }, DELAY_TIME);
+    }
+
     private void init() {
         aq.id(R.id.txtTitle).text(R.string.me);
         aq.id(R.id.btnRight).image(R.mipmap.icon_settings).clicked(onClick);
         aq.id(R.id.imgMe).clicked(onClick);
         aq.id(R.id.btnSwitch).clicked(onClick);
+
+        progressBar = aq.id(R.id.progress_bar).getProgressBar();
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
@@ -94,6 +111,7 @@ public class MeFragment extends BaseFragment {
 
     @Override
     public void onDestroy() {
+        MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
     }
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
+import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.activity.MainActivity;
 import com.sundy.icare.views.activity.UserDetailActivity;
 import com.sundy.icare.views.fragment.BaseFragment;
@@ -32,6 +33,7 @@ public class ServerMeFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        MyUtils.rtLog(TAG, "---------->onCreateView");
         mInflater = inflater;
         mView = mInflater.inflate(R.layout.server_me, container, false);
         aq = new AQuery(mView);
@@ -96,6 +98,7 @@ public class ServerMeFragment extends BaseFragment {
 
     @Override
     public void onDestroy() {
+        MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
     }
 }
