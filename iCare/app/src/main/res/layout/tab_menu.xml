@@ -14,75 +14,98 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnMsg"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@null"
-            android:drawableTop="@mipmap/menu_msg_on"
-            android:paddingBottom="6dp"
-            android:paddingTop="10dp"
-            android:text="@string/message"
-            android:textColor="@color/material_grey_800"
-            android:textSize="12sp" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnMsg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawableTop="@mipmap/menu_msg_on"
+                android:paddingBottom="6dp"
+                android:paddingTop="10dp"
+                android:text="@string/message"
+                android:textColor="@color/material_grey_800"
+                android:textSize="12sp" />
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="1dp"
             android:layout_height="20dp"
-            android:background="@color/material_grey_300"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_vertical"
+            android:background="@color/material_grey_300" />
 
-        <Button
-            android:id="@+id/btnService"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@null"
-            android:drawableTop="@mipmap/menu_service_off"
-            android:paddingBottom="6dp"
-            android:paddingTop="10dp"
-            android:text="@string/service"
-            android:textColor="@color/material_grey_800"
-            android:textSize="12sp" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnService"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawableTop="@mipmap/menu_service_off"
+                android:paddingBottom="6dp"
+                android:paddingTop="10dp"
+                android:text="@string/service"
+                android:textColor="@color/material_grey_800"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="1dp"
             android:layout_height="20dp"
-            android:background="@color/material_grey_300"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_vertical"
+            android:background="@color/material_grey_300" />
 
-        <Button
-            android:id="@+id/btnMarket"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@null"
-            android:drawableTop="@mipmap/menu_market_off"
-            android:paddingBottom="6dp"
-            android:paddingTop="10dp"
-            android:text="@string/market"
-            android:textColor="@color/material_grey_800"
-            android:textSize="12sp" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnMarket"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawableTop="@mipmap/menu_market_off"
+                android:paddingBottom="6dp"
+                android:paddingTop="10dp"
+                android:text="@string/market"
+                android:textColor="@color/material_grey_800"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="1dp"
             android:layout_height="20dp"
-            android:background="@color/material_grey_300"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_vertical"
+            android:background="@color/material_grey_300" />
 
-        <Button
-            android:id="@+id/btnMe"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@null"
-            android:drawableTop="@mipmap/menu_profile_off"
-            android:paddingBottom="6dp"
-            android:paddingTop="10dp"
-            android:text="@string/me"
-            android:textColor="@color/material_grey_800"
-            android:textSize="12sp" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnMe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawableTop="@mipmap/menu_profile_off"
+                android:paddingBottom="6dp"
+                android:paddingTop="10dp"
+                android:text="@string/me"
+                android:textColor="@color/material_grey_800"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

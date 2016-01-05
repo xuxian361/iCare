@@ -1,9 +1,11 @@
 package com.sundy.icare.views.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
@@ -17,6 +19,11 @@ public class TabMenuFragment extends BaseFragment {
 
     private final String TAG = "TabMenuFragment";
     private View mView;
+
+    private Button btnMsg;
+    private Button btnService;
+    private Button btnMarket;
+    private Button btnMe;
 
     public TabMenuFragment() {
     }
@@ -39,6 +46,10 @@ public class TabMenuFragment extends BaseFragment {
     }
 
     private void init() {
+        btnMsg = aq.id(R.id.btnMsg).getButton();
+        btnService = aq.id(R.id.btnService).getButton();
+        btnMarket = aq.id(R.id.btnMarket).getButton();
+        btnMe = aq.id(R.id.btnMe).getButton();
         aq.id(R.id.btnMsg).clicked(onClick);
         aq.id(R.id.btnService).clicked(onClick);
         aq.id(R.id.btnMarket).clicked(onClick);
@@ -47,15 +58,75 @@ public class TabMenuFragment extends BaseFragment {
 
     public void setPosition(int position) {
         MyUtils.rtLog(TAG, "--------->position =" + position);
-
+        switch (position) {
+            case 0:
+                clickMsg();
+                break;
+            case 1:
+                clickService();
+                break;
+            case 2:
+                clickMarket();
+                break;
+            case 3:
+                clickMe();
+                break;
+        }
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.btnMsg:
+                    clickMsg();
+                    break;
+                case R.id.btnService:
+                    clickService();
+                    break;
+                case R.id.btnMarket:
+                    clickMarket();
+                    break;
+                case R.id.btnMe:
+                    clickMe();
+                    break;
+            }
             ((MainActivity) getActivity()).switchFragment(view.getId());
         }
     };
+
+    //点击: 消息
+    private void clickMsg() {
+        btnMsg.setTextColor(Color.parseColor("#a90003"));
+        btnService.setTextColor(Color.parseColor("#ff424242"));
+        btnMarket.setTextColor(Color.parseColor("#ff424242"));
+        btnMe.setTextColor(Color.parseColor("#ff424242"));
+    }
+
+    //点击: 服务
+    private void clickService() {
+        btnMsg.setTextColor(Color.parseColor("#ff424242"));
+        btnService.setTextColor(Color.parseColor("#a90003"));
+        btnMarket.setTextColor(Color.parseColor("#ff424242"));
+        btnMe.setTextColor(Color.parseColor("#ff424242"));
+    }
+
+    //点击: 商城
+    private void clickMarket() {
+        btnMsg.setTextColor(Color.parseColor("#ff424242"));
+        btnService.setTextColor(Color.parseColor("#ff424242"));
+        btnMarket.setTextColor(Color.parseColor("#a90003"));
+        btnMe.setTextColor(Color.parseColor("#ff424242"));
+    }
+
+    //点击: 我
+    private void clickMe() {
+        btnMsg.setTextColor(Color.parseColor("#ff424242"));
+        btnService.setTextColor(Color.parseColor("#ff424242"));
+        btnMarket.setTextColor(Color.parseColor("#ff424242"));
+        btnMe.setTextColor(Color.parseColor("#a90003"));
+    }
+
 
     @Override
     public void onStart() {

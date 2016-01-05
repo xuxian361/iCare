@@ -41,8 +41,13 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
         inflater = getLayoutInflater();
         aq = new AQuery(this);
 
+        initBottomMenu();
         initViewPager();
+    }
 
+    private void initBottomMenu() {
+        frameMenu = (TabMenuFragment) getSupportFragmentManager().findFragmentById(R.id.frameMenu);
+        frameMenu.setPosition(0);
     }
 
     private void initViewPager() {
@@ -79,20 +84,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
         pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                switch (position) {
-                    case 0:
-                        break;
-                    case 1:
-
-                        break;
-                    case 2:
-
-                        break;
-                    case 3:
-
-                        break;
-                }
-//                MyUtils.rtLog(TAG, "---------->" + position);
+                frameMenu.setPosition(position);
                 super.onPageSelected(position);
             }
         });
@@ -107,16 +99,16 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
     public void switchFragment(int id) {
         switch (id) {
             case R.id.btnMsg:
-                switchContent(new MsgFragment());
+                pager.setCurrentItem(0);
                 break;
             case R.id.btnService:
-                switchContent(new ServiceFragment());
+                pager.setCurrentItem(1);
                 break;
             case R.id.btnMarket:
-                switchContent(new MarketFragment());
+                pager.setCurrentItem(2);
                 break;
             case R.id.btnMe:
-                switchContent(new MeFragment());
+                pager.setCurrentItem(3);
                 break;
         }
     }
