@@ -1,6 +1,7 @@
 package com.sundy.icare.views.fragment;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ import com.androidquery.AQuery;
  * <p/>
  * Created by sundy on 16/1/5.
  */
-public abstract class LazyLoadFragment extends BaseFragment {
+public abstract class LazyLoadFragment extends Fragment {
 
     private final String TAG = "LazyLoadFragment";
     protected LayoutInflater mInflater;

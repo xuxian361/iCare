@@ -13,9 +13,9 @@ import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.activity.MainActivity;
+import com.sundy.icare.views.activity.SettingActivity;
 import com.sundy.icare.views.activity.UserDetailActivity;
 import com.sundy.icare.views.fragment.LazyLoadFragment;
-import com.sundy.icare.views.fragment.SettingsFragment;
 
 /**
  * Created by sundy on 15/12/27.
@@ -71,7 +71,8 @@ public class ServerMeFragment extends LazyLoadFragment {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.btnRight:
-                    mCallback.addContent(new SettingsFragment());
+                    Intent intent1 = new Intent(getActivity(), SettingActivity.class);
+                    startActivity(intent1);
                     break;
                 case R.id.imgMe:
                     Intent intent = new Intent(getActivity(), UserDetailActivity.class);

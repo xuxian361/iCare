@@ -2,6 +2,7 @@ package com.sundy.icare.views.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +16,11 @@ import com.sundy.icare.views.activity.MainActivity;
 /**
  * Created by sundy on 15/12/6.
  */
-public class TabMenuFragment extends BaseFragment {
+public class TabMenuFragment extends Fragment {
 
     private final String TAG = "TabMenuFragment";
     private View mView;
+    private AQuery aq;
 
     private Button btnMsg;
     private Button btnService;
@@ -36,8 +38,7 @@ public class TabMenuFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         MyUtils.rtLog(TAG, "---------->onCreateView");
-        mInflater = inflater;
-        mView = mInflater.inflate(R.layout.tab_menu, container, false);
+        mView = inflater.inflate(R.layout.tab_menu, container, false);
         aq = new AQuery(mView);
 
         init();
@@ -57,7 +58,6 @@ public class TabMenuFragment extends BaseFragment {
     }
 
     public void setPosition(int position) {
-        MyUtils.rtLog(TAG, "--------->position =" + position);
         switch (position) {
             case 0:
                 clickMsg();

@@ -13,6 +13,7 @@ import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.activity.ServerActivity;
+import com.sundy.icare.views.activity.SettingActivity;
 import com.sundy.icare.views.activity.UserDetailActivity;
 
 /**
@@ -68,11 +69,12 @@ public class MeFragment extends LazyLoadFragment {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.btnRight:
-                    mCallback.addContent(new SettingsFragment());
+                    Intent intent1 = new Intent(getActivity(), SettingActivity.class);
+                    startActivity(intent1);
                     break;
                 case R.id.imgMe:
-                    Intent intent = new Intent(getActivity(), UserDetailActivity.class);
-                    startActivity(intent);
+                    Intent intent2 = new Intent(getActivity(), UserDetailActivity.class);
+                    startActivity(intent2);
                     break;
                 case R.id.btnSwitch:
                     //切花至服务者

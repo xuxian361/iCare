@@ -70,6 +70,10 @@
             android:name=".views.activity.ServerActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".views.activity.SettingActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

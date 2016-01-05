@@ -12,6 +12,7 @@ import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.utils.ActivityController;
+import com.sundy.icare.utils.MyUtils;
 
 import org.json.JSONObject;
 
@@ -26,6 +27,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MyUtils.rtLog(TAG, "---------->onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         ActivityController.addActivity(this);
@@ -114,6 +116,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
+        MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
         ActivityController.removeActivity(this);
     }

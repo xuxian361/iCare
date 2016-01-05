@@ -1,18 +1,15 @@
 package com.sundy.icare.views.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
-import com.sundy.icare.views.fragment.BaseFragment;
 import com.sundy.icare.views.fragment.MarketFragment;
 import com.sundy.icare.views.fragment.MeFragment;
 import com.sundy.icare.views.fragment.MsgFragment;
@@ -22,15 +19,14 @@ import com.sundy.icare.views.fragment.TabMenuFragment;
 /**
  * Created by sundy on 15/12/6.
  */
-public class MainActivity extends BaseActivity implements BaseFragment.OnBaseListener,
-        View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private final String TAG = "MainActivity";
     private Fragment mContent;
-    private LayoutInflater inflater;
     private TabMenuFragment frameMenu;
     private ViewPager pager;
     private FragmentPagerAdapter pagerAdapter;
+    private int current_Position = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +34,6 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
         super.onCreate(savedInstanceState);
         ActivityController.addActivity(this);
         setContentView(R.layout.activity_main);
-        inflater = getLayoutInflater();
         aq = new AQuery(this);
 
         initBottomMenu();
@@ -47,7 +42,8 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
 
     private void initBottomMenu() {
         frameMenu = (TabMenuFragment) getSupportFragmentManager().findFragmentById(R.id.frameMenu);
-        frameMenu.setPosition(0);
+        current_Position = 0;
+        frameMenu.setPosition(current_Position);
     }
 
     private void initViewPager() {
@@ -85,10 +81,10 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
             @Override
             public void onPageSelected(int position) {
                 frameMenu.setPosition(position);
+                current_Position = position;
                 super.onPageSelected(position);
             }
         });
-
     }
 
     /**
@@ -99,121 +95,19 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
     public void switchFragment(int id) {
         switch (id) {
             case R.id.btnMsg:
-                pager.setCurrentItem(0);
+                current_Position = 0;
                 break;
             case R.id.btnService:
-                pager.setCurrentItem(1);
+                current_Position = 1;
                 break;
             case R.id.btnMarket:
-                pager.setCurrentItem(2);
+                current_Position = 2;
                 break;
             case R.id.btnMe:
-                pager.setCurrentItem(3);
+                current_Position = 3;
                 break;
         }
-    }
-
-    /**
-     * 替换当前Fragment
-     */
-    @Override
-    public void switchContent(android.support.v4.app.Fragment fragment) {
-        try {
-            if (fragment == null && mContent == fragment) {
-                return;
-            } else {
-                mContent = fragment;
-                if (fragment.isAdded()) {
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .show(fragment)
-                            .commit();
-                } else {
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.frameContent, fragment)
-                            .commit();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 添加一个Fragment到视图顶层
-     */
-    @Override
-    public void addContent(android.support.v4.app.Fragment fragment) {
-        if (fragment == null && mContent == fragment) {
-            return;
-        } else {
-            mContent = fragment;
-            if (fragment.isAdded()) {
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .show(fragment)
-                        .commit();
-            } else {
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.frameContent, fragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        }
-    }
-
-    /**
-     * 返回上一层
-     */
-    @Override
-    public void onBack() {
-        MyUtils.rtLog(TAG, "------------>onBack");
-        try {
-            android.app.FragmentManager manager = getFragmentManager();
-            int count = manager.getBackStackEntryCount();
-            if (count > 0) {
-                manager.popBackStack();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mContent = getSupportFragmentManager().findFragmentById(R.id.frameContent);
-                    }
-                }, 350);
-            } else {
-                ActivityController.finishAll();
-                System.exit(1);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 重新加载Activity,可用于切换语言等
-     */
-    @Override
-    public void reloadActivity() {
-        try {
-            getFragmentManager().popBackStack();
-            MyUtils.rtLog(TAG, "------------>reloadActivity");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 通过ID切换当前Fragment
-     */
-    @Override
-    public void switchContent(int rid) {
-        try {
-            getFragmentManager().popBackStack();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        pager.setCurrentItem(current_Position);
     }
 
     /**
@@ -221,7 +115,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnBaseLis
      */
     @Override
     public void onBackPressed() {
-        MyUtils.rtLog(TAG, "------------------------onBackPressed");
+        MyUtils.rtLog(TAG, "------------------->onBackPressed");
         super.onBackPressed();
     }
 
