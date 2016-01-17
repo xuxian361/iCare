@@ -4,14 +4,13 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.sundy.icare.MyApp;
-import com.sundy.icare.utils.MyConstant;
+import com.sundy.icare.utils.MyUtils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -56,12 +55,12 @@ public class HttpCallback<T> {
         this.type = stype;
         try {
             final String reqUrl = getHttpReqUrl(url, shtParameters);
-            rtLog(TAG, "--------->reqUrl = " + reqUrl);
+            MyUtils.rtLog(TAG, "--------->reqUrl = " + reqUrl);
             StringRequest strReq = new StringRequest(Request.Method.GET,
                     reqUrl, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    rtLog(TAG, "------->result = " + response);
+                    MyUtils.rtLog(TAG, "------->result = " + response);
                     try {
                         if (response != null) {
                             if (type.equals(JSONObject.class)) {
@@ -97,12 +96,12 @@ public class HttpCallback<T> {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     if (error == null) {
-                        rtLog(TAG, "----------->Error 404: 网络异常");
+                        MyUtils.rtLog(TAG, "----------->Error 404: 网络异常");
                         url = reqUrl;
                         result = null;
                         status = "error404";
                     } else {
-                        rtLog(TAG, "----------->Error 500: 服务器异常");
+                        MyUtils.rtLog(TAG, "----------->Error 500: 服务器异常");
                         url = reqUrl;
                         result = null;
                         status = "error500";
@@ -136,12 +135,6 @@ public class HttpCallback<T> {
             e.printStackTrace();
         }
         return sURL;
-    }
-
-    private void rtLog(String tag, String msg) {
-        if (MyConstant.IsDebug) {
-            Log.e(tag, msg);
-        }
     }
 
 }

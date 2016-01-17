@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Activity 控制类
+ * <p/>
  * Created by sundy on 15/12/6.
  */
 public class ActivityController {

@@ -3,6 +3,8 @@ package com.sundy.icare.utils;
 import android.util.DisplayMetrics;
 
 /**
+ * 常量类
+ * <p/>
  * Created by sundy on 15/12/6.
  */
 public class MyConstant {
@@ -15,9 +17,6 @@ public class MyConstant {
     public static int SCREEN_HEIGHT = 1080;
     public static float SCREEN_DENSITY = DisplayMetrics.DENSITY_HIGH;
 
-    //Login Info
-    public static final String SESSION_ID = "SESSION_ID";
-
 
     public static final String APP_VER = "1.0";
     public static final String APP_LANGUAGE = "EN";
@@ -26,5 +25,6 @@ public class MyConstant {
     public static final boolean IsDebug = true;
     //Bugtags 打印标识
     public static final boolean Is_BugTags_Enable = false;
+
 
 }

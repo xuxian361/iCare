@@ -8,9 +8,11 @@ public class MyURL {
     /**
      * URL Utils
      */
-    public static final String HTTP_DEV = "http://192.168.1.202:18099/dpServerDev";
-    public static final String HTTP_UAT = "http://192.168.1.202:18099/dpServerUat";
+    public static final String HTTP_DEV = "http://120.27.146.122:8023";
+    public static final String HTTP_UAT = "http://120.27.146.122:8023";
 
-    public static final String MyURL_login = "/login";
+    public static final String MYURL_login = "/user/login";
+    public static final String MYURL_register = "/user/login";
+
 
 }

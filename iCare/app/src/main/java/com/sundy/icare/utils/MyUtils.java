@@ -2,8 +2,6 @@ package com.sundy.icare.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.util.TypedValue;
@@ -24,31 +22,10 @@ public class MyUtils {
                 context.getResources().getDisplayMetrics());
     }
 
-    public static Boolean isNetAvailable(Context context) {
-        try {
-            ConnectivityManager connectivityManager = (ConnectivityManager)
-                    context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo wifiInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-            NetworkInfo mobileInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-            NetworkInfo etherInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_ETHERNET);
-
-            if ((wifiInfo != null && wifiInfo.isConnected()) ||
-                    (mobileInfo != null && mobileInfo.isConnected()) ||
-                    (etherInfo != null && etherInfo.isConnected())) {
-                rtLog(TAG, "------->网络已连接");
-                return true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        rtLog(TAG, "------->网络已断开");
-        return false;
-    }
-
     //判断是否登陆
     public static boolean isLogin(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        String sessionid = preferences.getString(MyConstant.SESSION_ID, "");
+        String sessionid = preferences.getString(MyPreference.SESSION_ID, "");
         if (!"".equals(sessionid))
             return true;
         return false;

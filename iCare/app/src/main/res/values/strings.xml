@@ -79,4 +79,10 @@
     <string name="provide_service">提供服务</string>
     <string name="my_provided_server">我提供的服务</string>
     <string name="my_bill">我的账单</string>
+    <string name="username_cannot_empty">用户名不能空哦!</string>
+    <string name="mobile_cannot_empty">手机号码不能空哦!</string>
+    <string name="verify_code_cannot_empty">验证码不能空哦！</string>
+    <string name="set_your_password">设置您的登陆密码</string>
+    <string name="login_password_cannot_empty">登陆密码不能空哦!</string>
+    <string name="app_name_pro">孝为先</string>
 </resources>

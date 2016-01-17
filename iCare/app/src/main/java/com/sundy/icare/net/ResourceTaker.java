@@ -17,12 +17,25 @@ public class ResourceTaker {
     public static final String HTTP_BASE = MyURL.HTTP_DEV;
 
 
+    //用户登陆API
     public static void login(String terminalscode, String password,
                              HttpCallback callback) {
         Hashtable htParameters = new Hashtable();
         htParameters.put("terminalscode", terminalscode);
         htParameters.put("password", password);
-        getHttpRequestGet(MyURL.MyURL_login, htParameters, JSONObject.class, callback);
+        getHttpRequestGet(MyURL.MYURL_login, htParameters, JSONObject.class, callback);
+    }
+
+    //用户注册API
+    public static void register(String user_name, String mobile, String login_passwd,
+                                HttpCallback callback) {
+        Hashtable htParameters = new Hashtable();
+        htParameters.put("user_name", user_name);
+        htParameters.put("login_passwd", login_passwd);
+        htParameters.put("mobile", mobile);
+//        htParameters.put("user_type", user_type);
+
+        getHttpRequestGet(MyURL.MYURL_register, htParameters, JSONObject.class, callback);
     }
 
     public static void getHttpRequestGet(String strFunName, Hashtable htParameters, Class stype, HttpCallback callback) {

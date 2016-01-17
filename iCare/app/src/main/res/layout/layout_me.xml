@@ -62,7 +62,7 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <com.sundy.icare.utils.customs.CircleImageView
+                        <com.sundy.icare.customs.CircleImageView
                             android:id="@+id/imgMe"
                             android:layout_width="60dp"
                             android:layout_height="60dp"

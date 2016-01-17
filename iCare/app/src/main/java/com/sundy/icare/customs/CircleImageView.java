@@ -1,4 +1,4 @@
-package com.sundy.icare.utils.customs;
+package com.sundy.icare.customs;
 
 import android.content.Context;
 import android.content.res.TypedArray;
