@@ -11,12 +11,12 @@
         android:background="@android:color/holo_red_light">
 
         <ImageButton
-            android:id="@+id/btnCancel"
+            android:id="@+id/btnBack"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:background="@null"
-            android:src="@mipmap/btn_cancel" />
+            android:src="@mipmap/btn_back" />
 
         <TextView
             android:id="@+id/txtTitle"
@@ -33,7 +33,7 @@
             android:layout_alignParentBottom="false"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/btnRight"
-            android:layout_toRightOf="@+id/btnCancel"
+            android:layout_toRightOf="@+id/btnBack"
             android:gravity="center_vertical|right"
             android:paddingRight="5dp"
             android:textColor="@color/white"
@@ -113,16 +113,16 @@
             android:layout_marginRight="10dp"
             android:orientation="horizontal"
             android:paddingBottom="6dp"
-            android:paddingTop="6dp" >
+            android:paddingTop="6dp">
 
             <TextView
+                android:id="@+id/txtSort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/sort"
                 android:textColor="@color/material_grey_600"
-                android:textSize="14sp"
-                android:id="@+id/txtSort" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/txtTime"

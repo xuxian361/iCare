@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <include
-        layout="@layout/layout_topbar_cancel"
+        layout="@layout/layout_topbar_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal" />
@@ -250,13 +250,13 @@
                     android:layout_below="@+id/txtKey_Tag"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/path_regular"
+                    android:gravity="left|top"
                     android:lines="2"
                     android:maxLines="2"
+                    android:padding="6dp"
                     android:text="司机、家政、护工"
                     android:textColor="@color/material_grey_850"
-                    android:textSize="14sp"
-                    android:padding="6dp"
-                    android:gravity="left|top" />
+                    android:textSize="14sp" />
 
             </RelativeLayout>
 

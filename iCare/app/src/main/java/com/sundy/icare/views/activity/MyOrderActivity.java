@@ -27,14 +27,14 @@ public class MyOrderActivity extends BaseActivity {
 
     private void init() {
         aq.id(R.id.txtTitle).text(R.string.my_order);
-        aq.id(R.id.btnCancel).clicked(onClick);
+        aq.id(R.id.btnBack).clicked(onClick);
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btnCancel:
+                case R.id.btnBack:
                     finish();
                     break;
             }

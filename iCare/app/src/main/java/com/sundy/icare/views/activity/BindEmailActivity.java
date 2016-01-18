@@ -31,7 +31,7 @@ public class BindEmailActivity extends BaseActivity {
         aq.id(R.id.txtTitle).text(R.string.bind_email);
         aq.id(R.id.txtRight).text(R.string.next_step).clicked(onClick);
 
-        aq.id(R.id.btnCancel).clicked(onClick);
+        aq.id(R.id.btnBack).clicked(onClick);
 
     }
 
@@ -39,7 +39,7 @@ public class BindEmailActivity extends BaseActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btnCancel:
+                case R.id.btnBack:
                     finish();
                     break;
                 case R.id.txtRight:

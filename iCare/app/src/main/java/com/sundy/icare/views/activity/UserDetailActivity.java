@@ -28,7 +28,7 @@ public class UserDetailActivity extends BaseActivity {
 
     private void init() {
         aq.id(R.id.txtTitle).text(R.string.me);
-        aq.id(R.id.btnCancel).clicked(onClick);
+        aq.id(R.id.btnBack).clicked(onClick);
 
     }
 
@@ -36,7 +36,7 @@ public class UserDetailActivity extends BaseActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btnCancel:
+                case R.id.btnBack:
                     finish();
                     break;
             }

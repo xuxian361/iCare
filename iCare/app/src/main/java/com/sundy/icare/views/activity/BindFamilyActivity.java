@@ -10,14 +10,14 @@ import com.sundy.icare.utils.ActivityController;
 /**
  * Created by sundy on 16/1/18.
  */
-public class ContactsActivity extends BaseActivity {
+public class BindFamilyActivity extends BaseActivity {
 
-    private final String TAG = "ContactsActivity";
+    private final String TAG = "BindFamilyActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contacts);
+        setContentView(R.layout.activity_bind_family);
         ActivityController.addActivity(this);
 
         aq = new AQuery(this);

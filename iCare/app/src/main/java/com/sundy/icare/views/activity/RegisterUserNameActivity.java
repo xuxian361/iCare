@@ -37,7 +37,7 @@ public class RegisterUserNameActivity extends BaseActivity {
     private void init() {
         aq.id(R.id.txtTitle).text(R.string.register);
         aq.id(R.id.txtRight).text(R.string.next_step).clicked(onClick);
-        aq.id(R.id.btnCancel).clicked(onClick);
+        aq.id(R.id.btnBack).clicked(onClick);
 
         edtUserName = aq.id(R.id.edtUserName).getEditText();
 
@@ -48,7 +48,7 @@ public class RegisterUserNameActivity extends BaseActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btnCancel:
+                case R.id.btnBack:
                     finish();
                     break;
                 case R.id.txtRight:
