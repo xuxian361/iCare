@@ -15,17 +15,18 @@ import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
 
 /**
- * Created by sundy on 15/12/6.
+ * Created by sundy on 16/1/18.
  */
-public class RegisterUserNameActivity extends BaseActivity {
+public class ForgetPwd_MobileActivity extends BaseActivity {
 
-    private final String TAG = "RegisterUserNameActivity";
-    private EditText edtUserName;
+    private final String TAG = "ForgetPwd_MobileActivity";
+    private EditText edtMobile;
+    private EditText edtCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_username);
+        setContentView(R.layout.forget_password_mobile);
         ActivityController.addActivity(this);
 
         aq = new AQuery(this);
@@ -35,12 +36,12 @@ public class RegisterUserNameActivity extends BaseActivity {
     }
 
     private void init() {
-        aq.id(R.id.txtTitle).text(R.string.register);
+        aq.id(R.id.txtTitle).text(R.string.forget_pass);
         aq.id(R.id.txtRight).text(R.string.next_step).clicked(onClick);
         aq.id(R.id.btnCancel).clicked(onClick);
 
-        edtUserName = aq.id(R.id.edtUserName).getEditText();
-
+        edtMobile = aq.id(R.id.edtMobile).getEditText();
+        edtCode = aq.id(R.id.edtCode).getEditText();
 
     }
 
@@ -52,24 +53,32 @@ public class RegisterUserNameActivity extends BaseActivity {
                     finish();
                     break;
                 case R.id.txtRight:
-                    go2RegisterMobile();
+                    verifyMobile();
                     break;
             }
         }
     };
 
-    private void go2RegisterMobile() {
-        String username = edtUserName.getText().toString().trim();
-        if (TextUtils.isEmpty(username)) {
-            MyToast.rtToast(this, getString(R.string.username_cannot_empty));
+    private void verifyMobile() {
+        String mobile = edtMobile.getText().toString().trim();
+        String code = edtCode.getText().toString().trim();
+
+        if (TextUtils.isEmpty(mobile)) {
+            MyToast.rtToast(this, getString(R.string.mobile_cannot_empty));
             return;
         }
+
+        if (TextUtils.isEmpty(code)) {
+            MyToast.rtToast(this, getString(R.string.verify_code_cannot_empty));
+            return;
+        }
+
         SharedPreferences preferences = getSharedPreferences(MyConstant.APP_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(MyPreference.PREFERENCE_USERNAME, username);
+        editor.putString(MyPreference.PREFERENCE_MOBILE, mobile);
         editor.commit();
 
-        Intent intent = new Intent(this, RegisterMobileActivity.class);
+        Intent intent = new Intent(this, ForgetPwd_PasswordActivity.class);
         startActivity(intent);
     }
 

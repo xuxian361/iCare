@@ -12,7 +12,7 @@ import com.sundy.icare.utils.MyUtils;
  */
 public class NetWorkUtils {
 
-    private final String TAG = "NetWorkUtils";
+    private final static String TAG = "NetWorkUtils";
 
     public static Boolean isNetAvailable(Context context) {
         try {

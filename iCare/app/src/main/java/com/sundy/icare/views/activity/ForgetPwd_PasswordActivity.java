@@ -15,11 +15,11 @@ import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
 
 /**
- * Created by sundy on 16/1/17.
+ * Created by sundy on 16/1/18.
  */
-public class RegisterPasswordActivity extends BaseActivity {
+public class ForgetPwd_PasswordActivity extends BaseActivity {
 
-    private final String TAG = "RegisterPasswordActivity";
+    private final String TAG = "ForgetPwd_PasswordActivity";
     private EditText edtPassword;
 
     @Override
@@ -35,7 +35,7 @@ public class RegisterPasswordActivity extends BaseActivity {
     }
 
     private void init() {
-        aq.id(R.id.txtTitle).text(R.string.register);
+        aq.id(R.id.txtTitle).text(R.string.reset_password);
         aq.id(R.id.txtRight).text(R.string.finish).clicked(onClick);
 
         aq.id(R.id.btnBack).clicked(onClick);
@@ -52,13 +52,13 @@ public class RegisterPasswordActivity extends BaseActivity {
                     finish();
                     break;
                 case R.id.txtRight:
-                    goRegister();
+                    resetPwd();
                     break;
             }
         }
     };
 
-    private void goRegister() {
+    private void resetPwd() {
         String password = edtPassword.getText().toString().trim();
         if (TextUtils.isEmpty(password)) {
             MyToast.rtToast(this, getString(R.string.login_password_cannot_empty));

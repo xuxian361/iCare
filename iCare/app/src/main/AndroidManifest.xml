@@ -43,6 +43,14 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".views.activity.ForgetPwd_MobileActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".views.activity.ForgetPwd_PasswordActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".views.activity.BindEmailActivity"
             android:screenOrientation="portrait" />
 

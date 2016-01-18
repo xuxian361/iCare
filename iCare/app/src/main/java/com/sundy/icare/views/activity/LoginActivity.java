@@ -39,6 +39,7 @@ public class LoginActivity extends BaseActivity {
         aq.id(R.id.txt_register).clicked(onClickListener);
         aq.id(R.id.btn_login).clicked(onClickListener);
         aq.id(R.id.txt_first_visit).clicked(onClickListener);
+        aq.id(R.id.txt_forgetpwd).clicked(onClickListener);
 
     }
 
@@ -55,9 +56,17 @@ public class LoginActivity extends BaseActivity {
                 case R.id.txt_first_visit:
                     goMain();
                     break;
+                case R.id.txt_forgetpwd:
+                    goForgetPwd();
+                    break;
             }
         }
     };
+
+    private void goForgetPwd() {
+        Intent intent = new Intent(this, ForgetPwd_MobileActivity.class);
+        startActivity(intent);
+    }
 
     private void goRegister() {
         Intent intent = new Intent(this, RegisterUserNameActivity.class);
