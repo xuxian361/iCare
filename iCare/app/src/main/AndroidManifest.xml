@@ -86,6 +86,10 @@
             android:name=".views.activity.SettingActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".views.activity.ContactsActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

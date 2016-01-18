@@ -1,5 +1,6 @@
 package com.sundy.icare.views.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ProgressBar;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.MyUtils;
+import com.sundy.icare.views.activity.ContactsActivity;
 
 /**
  * Created by sundy on 15/12/6.
@@ -40,6 +42,24 @@ public class MsgFragment extends LazyLoadFragment {
     private void init() {
         progressBar = aq.id(R.id.progress_bar).getProgressBar();
         progressBar.setVisibility(View.VISIBLE);
+
+        aq.id(R.id.btnAdd).clicked(onClick);
+    }
+
+    private View.OnClickListener onClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.btnAdd:
+                    goContacts();
+                    break;
+            }
+        }
+    };
+
+    private void goContacts() {
+        Intent intent = new Intent(getActivity(), ContactsActivity.class);
+        startActivity(intent);
     }
 
     @Override
