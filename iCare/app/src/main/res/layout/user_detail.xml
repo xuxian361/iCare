@@ -21,7 +21,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -249,12 +248,12 @@
                     android:layout_height="54dp"
                     android:layout_below="@+id/txtKey_Tag"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/path_regular"
+                    android:background="@null"
                     android:gravity="left|top"
                     android:lines="2"
                     android:maxLines="2"
                     android:padding="6dp"
-                    android:text="司机、家政、护工"
+                    android:text="司机、家政、护工等"
                     android:textColor="@color/material_grey_850"
                     android:textSize="14sp" />
 

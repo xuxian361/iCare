@@ -29,14 +29,14 @@ public class QRScannerActivity extends BaseActivity {
     }
 
     private void init() {
-        aq.id(R.id.btn_close).clicked(onClickListener);
+        aq.id(R.id.btnBack).clicked(onClickListener);
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btn_close:
+                case R.id.btnBack:
                     finish();
                     break;
             }

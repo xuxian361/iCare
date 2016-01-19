@@ -12,6 +12,7 @@ import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
+import com.sundy.icare.views.activity.QRScannerActivity;
 import com.sundy.icare.views.activity.ServerActivity;
 import com.sundy.icare.views.activity.SettingActivity;
 import com.sundy.icare.views.activity.UserDetailActivity;
@@ -59,6 +60,7 @@ public class MeFragment extends LazyLoadFragment {
         aq.id(R.id.btnRight).image(R.mipmap.icon_settings).clicked(onClick);
         aq.id(R.id.imgMe).clicked(onClick);
         aq.id(R.id.btnSwitch).clicked(onClick);
+        aq.id(R.id.btnQR).clicked(onClick);
 
         progressBar = aq.id(R.id.progress_bar).getProgressBar();
         progressBar.setVisibility(View.VISIBLE);
@@ -82,9 +84,17 @@ public class MeFragment extends LazyLoadFragment {
                     startActivity(intent3);
                     ActivityController.finishAll();
                     break;
+                case R.id.btnQR:
+                    scanQRCode();
+                    break;
             }
         }
     };
+
+    private void scanQRCode() {
+        Intent intent = new Intent(getActivity(), QRScannerActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onStart() {
