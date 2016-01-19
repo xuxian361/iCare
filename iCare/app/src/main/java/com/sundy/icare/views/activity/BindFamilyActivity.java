@@ -27,11 +27,9 @@ public class BindFamilyActivity extends BaseActivity {
     }
 
     private void init() {
-        aq.id(R.id.txtTitle).text(R.string.contacts);
-        aq.id(R.id.txtRight).gone();
+        aq.id(R.id.txtTitle).text(R.string.bing_family);
+        aq.id(R.id.txtRight).text(getString(R.string.finish)).clicked(onClick);
         aq.id(R.id.btnBack).clicked(onClick);
-        aq.id(R.id.btnBindFamily).clicked(onClick);
-
 
     }
 
@@ -42,7 +40,7 @@ public class BindFamilyActivity extends BaseActivity {
                 case R.id.btnBack:
                     finish();
                     break;
-                case R.id.btnBindFamily:
+                case R.id.txtRight:
 
                     break;
             }

@@ -88,4 +88,12 @@
     <string name="reset_password">重置密码</string>
     <string name="contacts">联系人</string>
     <string name="bind_family">绑定家人</string>
+    <string name="ta_is_relation">TA是你的</string>
+    <string name="bing_family">绑定家人</string>
+    <string name="input_family_username">请输入您家人的用户名</string>
+    <string name="input_family_mobile">请输入您家人的手机号码</string>
+    <string name="input_family_service_address">请输入您家人常在的地址</string>
+    <string name="father">爸爸</string>
+    <string name="male_or_female">先生/女士</string>
+    <string name="relation_call">爸爸/妈妈/其他</string>
 </resources>

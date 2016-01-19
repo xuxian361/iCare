@@ -90,6 +90,10 @@
             android:name=".views.activity.ContactsActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".views.activity.BindFamilyActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
