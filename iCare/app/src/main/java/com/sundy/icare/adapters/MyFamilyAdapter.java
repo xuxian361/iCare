@@ -45,9 +45,9 @@ public class MyFamilyAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        if (listData != null)
-            return listData.size();
-        return 0;
+//        if (listData != null)
+//            return listData.size();
+        return 5;
     }
 
     @Override

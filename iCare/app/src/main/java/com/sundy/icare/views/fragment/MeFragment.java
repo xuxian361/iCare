@@ -12,6 +12,7 @@ import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
+import com.sundy.icare.views.activity.MyFamilyActivity;
 import com.sundy.icare.views.activity.QRScannerActivity;
 import com.sundy.icare.views.activity.ServerActivity;
 import com.sundy.icare.views.activity.SettingActivity;
@@ -89,11 +90,16 @@ public class MeFragment extends LazyLoadFragment {
                     scanQRCode();
                     break;
                 case R.id.rel_MyFamily:
-
+                    goMyFamily();
                     break;
             }
         }
     };
+
+    private void goMyFamily() {
+        Intent intent = new Intent(getActivity(), MyFamilyActivity.class);
+        startActivity(intent);
+    }
 
     private void scanQRCode() {
         Intent intent = new Intent(getActivity(), QRScannerActivity.class);

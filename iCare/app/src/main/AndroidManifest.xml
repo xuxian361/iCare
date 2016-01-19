@@ -112,6 +112,10 @@
             android:name=".views.activity.BindFamilyActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".views.activity.MyFamilyActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
     <supports-screens
