@@ -66,13 +66,13 @@ public class MyFamilyActivity extends BaseActivity {
                         lv_MyFamily.setVisibility(View.GONE);
                         gv_MyFamily.setVisibility(View.VISIBLE);
                         adapter.setShowType(TYPE_GRID);
-                        aq.id(R.id.txtRight).image(R.mipmap.icon_grid);
+                        aq.id(R.id.btnRight).image(R.mipmap.icon_grid);
                         showType = TYPE_GRID;
                     } else {
                         lv_MyFamily.setVisibility(View.VISIBLE);
                         gv_MyFamily.setVisibility(View.GONE);
                         adapter.setShowType(TYPE_LIST);
-                        aq.id(R.id.txtRight).image(R.mipmap.icon_list);
+                        aq.id(R.id.btnRight).image(R.mipmap.icon_list);
                         showType = TYPE_LIST;
                     }
                     adapter.notifyDataSetChanged();

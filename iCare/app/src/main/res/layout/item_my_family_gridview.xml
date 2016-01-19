@@ -9,18 +9,19 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="5dp">
 
         <RelativeLayout
-            android:layout_width="80dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:orientation="vertical">
 
             <com.sundy.icare.customs.CircleImageView
                 android:id="@+id/img"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@null"
                 android:src="@mipmap/profile_img"
                 app:border_color="#00000000"
@@ -31,8 +32,8 @@
                 android:layout_height="26dp"
                 android:layout_alignParentBottom="false"
                 android:layout_alignParentRight="true"
-                android:scaleType="center"
-                android:src="@mipmap/icon_camera"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/icon_green_right"
                 android:text="Sundy Xu"
                 android:textColor="@color/material_grey_850"
                 android:textSize="14sp"
@@ -46,8 +47,9 @@
             android:text="爸爸（陈大文）"
             android:id="@+id/txtName"
             android:textColor="@color/material_blue_grey_900"
-            android:textSize="15sp"
-            android:gravity="center" />
+            android:textSize="12sp"
+            android:gravity="center"
+            android:singleLine="true" />
     </LinearLayout>
 
 </LinearLayout>
