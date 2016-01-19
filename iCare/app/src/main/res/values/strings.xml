@@ -96,4 +96,5 @@
     <string name="father">爸爸</string>
     <string name="male_or_female">先生/女士</string>
     <string name="relation_call">爸爸/妈妈/其他</string>
+    <string name="binded">已绑定</string>
 </resources>

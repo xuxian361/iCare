@@ -61,6 +61,7 @@ public class MeFragment extends LazyLoadFragment {
         aq.id(R.id.imgMe).clicked(onClick);
         aq.id(R.id.btnSwitch).clicked(onClick);
         aq.id(R.id.btnQR).clicked(onClick);
+        aq.id(R.id.rel_MyFamily).clicked(onClick);
 
         progressBar = aq.id(R.id.progress_bar).getProgressBar();
         progressBar.setVisibility(View.VISIBLE);
@@ -86,6 +87,9 @@ public class MeFragment extends LazyLoadFragment {
                     break;
                 case R.id.btnQR:
                     scanQRCode();
+                    break;
+                case R.id.rel_MyFamily:
+
                     break;
             }
         }

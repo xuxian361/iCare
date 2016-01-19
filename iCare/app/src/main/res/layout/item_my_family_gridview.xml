@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <com.sundy.icare.customs.CircleImageView
+                android:id="@+id/img"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:src="@mipmap/profile_img"
+                app:border_color="#00000000"
+                android:layout_margin="10dp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="26dp"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentRight="true"
+                android:scaleType="center"
+                android:src="@mipmap/icon_camera"
+                android:text="Sundy Xu"
+                android:textColor="@color/material_grey_850"
+                android:textSize="14sp"
+                android:layout_alignParentTop="true"
+                android:id="@+id/imgStatus" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="爸爸（陈大文）"
+            android:id="@+id/txtName"
+            android:textColor="@color/material_blue_grey_900"
+            android:textSize="15sp"
+            android:gravity="center" />
+    </LinearLayout>
+
+</LinearLayout>
