@@ -2,9 +2,11 @@ package com.sundy.icare.views.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
+import com.sundy.icare.adapters.MyOrderListAdapter;
 import com.sundy.icare.utils.ActivityController;
 
 /**
@@ -13,6 +15,8 @@ import com.sundy.icare.utils.ActivityController;
 public class MyOrderActivity extends BaseActivity {
 
     private final String TAG = "MyOrderActivity";
+    private ListView lv_Data;
+    private MyOrderListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,11 @@ public class MyOrderActivity extends BaseActivity {
     private void init() {
         aq.id(R.id.txtTitle).text(R.string.my_order);
         aq.id(R.id.btnBack).clicked(onClick);
+
+        lv_Data = aq.id(R.id.lv_Data).getListView();
+        adapter = new MyOrderListAdapter(this);
+        lv_Data.setAdapter(adapter);
+
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {

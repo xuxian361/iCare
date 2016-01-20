@@ -76,7 +76,7 @@ public class ServiceFragment extends LazyLoadFragment {
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//            goServiceDetail();
+//            goServiceDetail();  ---查看服务者相关信息
         }
     };
 
