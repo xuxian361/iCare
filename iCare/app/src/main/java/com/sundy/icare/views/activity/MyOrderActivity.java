@@ -2,6 +2,7 @@ package com.sundy.icare.views.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.androidquery.AQuery;
@@ -37,6 +38,18 @@ public class MyOrderActivity extends BaseActivity {
         adapter = new MyOrderListAdapter(this);
         lv_Data.setAdapter(adapter);
 
+        lv_Data.setOnItemClickListener(onItemClickListener);
+
+    }
+
+    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            goOrderDetail(); //跳转至订单详情页
+        }
+    };
+
+    private void goOrderDetail() {
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
