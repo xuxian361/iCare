@@ -6,10 +6,13 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
+import com.sundy.icare.adapters.ServiceListAdapter;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.activity.AddOrderActivity;
@@ -27,6 +30,9 @@ public class ServiceFragment extends LazyLoadFragment {
     Handler handler = new Handler();
     ProgressBar progressBar;
     private static final int DELAY_TIME = 2000;
+
+    private ListView lv_Data;
+    private ServiceListAdapter adapter;
 
     public ServiceFragment() {
     }
@@ -59,7 +65,20 @@ public class ServiceFragment extends LazyLoadFragment {
         aq.id(R.id.btnSwitch).clicked(onClick);
         progressBar = aq.id(R.id.progress_bar).getProgressBar();
         progressBar.setVisibility(View.VISIBLE);
+
+        lv_Data = aq.id(R.id.lv_Data).getListView();
+        adapter = new ServiceListAdapter(getActivity());
+        lv_Data.setAdapter(adapter);
+        lv_Data.setOnItemClickListener(onItemClickListener);
+
     }
+
+    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//            goServiceDetail();
+        }
+    };
 
     private View.OnClickListener onClick = new View.OnClickListener() {
         @Override

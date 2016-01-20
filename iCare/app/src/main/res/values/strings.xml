@@ -107,4 +107,7 @@
     <string name="verify_password">密码验证</string>
     <string name="delete">删除</string>
     <string name="add_to_destop">添加到桌面</string>
+    <string name="str_all">全部</string>
+    <string name="service_type">服务类型</string>
+    <string name="can_service_time">可服务时间段</string>
 </resources>

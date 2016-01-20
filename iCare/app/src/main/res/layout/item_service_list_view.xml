@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <com.sundy.icare.customs.CircleImageView
+            android:id="@+id/img"
+            app:border_color="#00000000"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@null"
+            android:src="@mipmap/profile_img"
+            android:layout_centerVertical="true" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/img"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/txtDistance">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="钟先生"
+                android:id="@+id/txtName"
+                android:textColor="@color/material_blue_grey_950"
+                android:textSize="16sp"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTitleServiceType"
+                android:textSize="14sp"
+                android:text="@string/service_type"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="司机、载货"
+                android:id="@+id/txtServiceType"
+                android:textSize="15sp"
+                android:textColor="@color/material_grey_850" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/can_service_time"
+                android:id="@+id/txtTitleServiceTime"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12:00 ~ 1:30/14:30~16:00"
+                android:id="@+id/txtServiceTime"
+                android:textSize="15sp"
+                android:textColor="@color/material_grey_850"
+                android:layout_marginBottom="5dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="距离：300米"
+            android:id="@+id/txtDistance"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/material_grey_800"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评分：4.7分"
+            android:id="@+id/txtStar"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="true"
+            android:textSize="12sp"
+            android:textColor="@color/material_grey_800"
+            android:layout_below="@+id/txtDistance"
+            android:layout_marginTop="10dp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/material_grey_300"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+
+</LinearLayout>
