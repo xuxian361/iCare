@@ -41,7 +41,12 @@ public class MyFamilyDetailActivity extends BaseActivity {
                     finish();
                     break;
                 case R.id.btnRight:
-
+                    int visibility = aq.id(R.id.linear_More).getView().getVisibility();
+                    if (visibility == View.GONE) {
+                        aq.id(R.id.linear_More).visible();
+                    } else {
+                        aq.id(R.id.linear_More).gone();
+                    }
                     break;
             }
         }
