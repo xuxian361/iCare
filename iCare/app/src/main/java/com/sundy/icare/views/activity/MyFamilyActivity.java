@@ -1,7 +1,9 @@
 package com.sundy.icare.views.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 
@@ -40,9 +42,10 @@ public class MyFamilyActivity extends BaseActivity {
     }
 
     private void init() {
-        aq.id(R.id.txtTitle).text(R.string.reset_password);
+        aq.id(R.id.txtTitle).text(R.string.my_family);
         aq.id(R.id.btnRight).image(R.mipmap.icon_list).clicked(onClick);
         aq.id(R.id.btnBack).clicked(onClick);
+        aq.id(R.id.btn_AddFamily).clicked(onClick);
 
         lv_MyFamily = aq.id(R.id.lv_MyFamily).getListView();
         gv_MyFamily = aq.id(R.id.gv_MyFamily).getGridView();
@@ -52,6 +55,20 @@ public class MyFamilyActivity extends BaseActivity {
         lv_MyFamily.setAdapter(adapter);
         gv_MyFamily.setAdapter(adapter);
 
+        lv_MyFamily.setOnItemClickListener(onItemClickListener);
+
+    }
+
+    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            goMyFamilyDetail();
+        }
+    };
+
+    private void goMyFamilyDetail() {
+        Intent intent = new Intent(this, MyFamilyDetailActivity.class);
+        startActivity(intent);
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
@@ -77,9 +94,17 @@ public class MyFamilyActivity extends BaseActivity {
                     }
                     adapter.notifyDataSetChanged();
                     break;
+                case R.id.btn_AddFamily:
+                    addFamily();
+                    break;
             }
         }
     };
+
+    private void addFamily() {
+        Intent intent = new Intent(this, BindFamilyActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onDestroy() {

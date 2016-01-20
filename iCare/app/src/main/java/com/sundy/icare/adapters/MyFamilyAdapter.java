@@ -61,7 +61,7 @@ public class MyFamilyAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
+    public View getView(int position, View convertView, ViewGroup viewGroup) {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             switch (showType) {

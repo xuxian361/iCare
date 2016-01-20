@@ -44,6 +44,7 @@
             android:id="@+id/lv_MyFamily"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/btn_AddFamily"
             android:background="#99FFFFFF"
             android:divider="@null"
             android:scrollingCache="false" />
@@ -52,17 +53,32 @@
             android:id="@+id/gv_MyFamily"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/btn_AddFamily"
             android:background="#99FFFFFF"
             android:gravity="center"
             android:horizontalSpacing="5dp"
             android:numColumns="4"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="5dp"
-            android:visibility="gone"
+            android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="5dp"
-            android:paddingBottom="5dp"/>
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="5dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_AddFamily"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/corner_btn_green"
+            android:text="@string/bind_family"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
     </RelativeLayout>
 

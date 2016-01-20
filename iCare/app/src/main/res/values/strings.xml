@@ -97,4 +97,10 @@
     <string name="male_or_female">先生/女士</string>
     <string name="relation_call">爸爸/妈妈/其他</string>
     <string name="binded">已绑定</string>
+    <string name="add_family">添加家人</string>
+    <string name="set_comment">设置备注</string>
+    <string name="add_remind">添加提醒</string>
+    <string name="add_event">添加事件</string>
+    <string name="get_chat">聊一聊</string>
+    <string name="detail_info">详细资料</string>
 </resources>
