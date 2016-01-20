@@ -69,10 +69,6 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.BindEmailActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".views.activity.EmailValidationActivity"
             android:screenOrientation="portrait" />
 
@@ -119,6 +115,15 @@
         <activity
             android:name=".views.activity.MyFamilyDetailActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".views.activity.VerifyPasswordActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".views.activity.BindEmailActivity"
+            android:screenOrientation="portrait" />
+
 
     </application>
 

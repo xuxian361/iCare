@@ -26,12 +26,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/your_email"
+                android:text="@string/your_password"
                 android:textColor="@color/material_grey_850"
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/edtEmail"
+                android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edt_height"
                 android:layout_marginLeft="30dp"
@@ -39,6 +39,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/corner_edt"
                 android:gravity="center"
+                android:inputType="textPassword"
                 android:textSize="14sp" />
         </LinearLayout>
     </RelativeLayout>

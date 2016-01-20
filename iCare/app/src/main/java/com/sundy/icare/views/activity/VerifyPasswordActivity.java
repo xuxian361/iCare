@@ -9,16 +9,16 @@ import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 
 /**
- * Created by sundy on 15/12/20.
+ * Created by sundy on 16/1/20.
  */
-public class BindEmailActivity extends BaseActivity {
+public class VerifyPasswordActivity extends BaseActivity {
 
-    private final String TAG = "BindEmailActivity";
+    private final String TAG = "VerifyPasswordActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bind_email);
+        setContentView(R.layout.verify_email);
         ActivityController.addActivity(this);
 
         aq = new AQuery(this);
@@ -28,7 +28,7 @@ public class BindEmailActivity extends BaseActivity {
     }
 
     private void init() {
-        aq.id(R.id.txtTitle).text(R.string.bind_email);
+        aq.id(R.id.txtTitle).text(R.string.verify_password);
         aq.id(R.id.txtRight).text(R.string.next_step).clicked(onClick);
 
         aq.id(R.id.btnBack).clicked(onClick);
@@ -50,7 +50,7 @@ public class BindEmailActivity extends BaseActivity {
     };
 
     private void go2ValidateEmail() {
-        Intent intent = new Intent(this, EmailValidationActivity.class);
+        Intent intent = new Intent(this, BindEmailActivity.class);
         startActivity(intent);
         finish();
     }

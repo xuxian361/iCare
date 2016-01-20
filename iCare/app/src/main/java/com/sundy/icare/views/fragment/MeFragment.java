@@ -17,6 +17,7 @@ import com.sundy.icare.views.activity.QRScannerActivity;
 import com.sundy.icare.views.activity.ServerActivity;
 import com.sundy.icare.views.activity.SettingActivity;
 import com.sundy.icare.views.activity.UserDetailActivity;
+import com.sundy.icare.views.activity.VerifyPasswordActivity;
 
 /**
  * Created by sundy on 15/12/20.
@@ -63,6 +64,7 @@ public class MeFragment extends LazyLoadFragment {
         aq.id(R.id.btnSwitch).clicked(onClick);
         aq.id(R.id.btnQR).clicked(onClick);
         aq.id(R.id.rel_MyFamily).clicked(onClick);
+        aq.id(R.id.btn_Email).clicked(onClick);
 
         progressBar = aq.id(R.id.progress_bar).getProgressBar();
         progressBar.setVisibility(View.VISIBLE);
@@ -92,9 +94,17 @@ public class MeFragment extends LazyLoadFragment {
                 case R.id.rel_MyFamily:
                     goMyFamily();
                     break;
+                case R.id.btn_Email:
+                    bindEmail();
+                    break;
             }
         }
     };
+
+    private void bindEmail() {
+        Intent intent = new Intent(getActivity(), VerifyPasswordActivity.class);
+        startActivity(intent);
+    }
 
     private void goMyFamily() {
         Intent intent = new Intent(getActivity(), MyFamilyActivity.class);

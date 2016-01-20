@@ -139,6 +139,7 @@
                         android:background="@color/material_grey_100" />
 
                     <RelativeLayout
+                        android:id="@+id/btn_Email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13dp"

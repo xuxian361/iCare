@@ -36,11 +36,12 @@
                 android:id="@+id/txtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="22dp"
                 android:gravity="center"
                 android:text="308379285@qq.com"
                 android:textColor="@color/material_grey_850"
-                android:textSize="20sp" />
+                android:textSize="22sp"
+                android:layout_marginBottom="12dp"/>
 
             <EditText
                 android:id="@+id/edtCode"

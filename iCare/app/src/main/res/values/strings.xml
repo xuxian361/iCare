@@ -103,4 +103,6 @@
     <string name="add_event">添加事件</string>
     <string name="get_chat">聊一聊</string>
     <string name="detail_info">详细资料</string>
+    <string name="your_password">您的登陆密码</string>
+    <string name="verify_password">密码验证</string>
 </resources>
