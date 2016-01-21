@@ -10,11 +10,11 @@ import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
-import com.sundy.icare.views.fragment.MarketFragment;
-import com.sundy.icare.views.fragment.MeFragment;
-import com.sundy.icare.views.fragment.MsgFragment;
-import com.sundy.icare.views.fragment.ServiceFragment;
-import com.sundy.icare.views.fragment.TabMenuFragment;
+import com.sundy.icare.views.fragment.family.MarketFragment;
+import com.sundy.icare.views.fragment.family.MeFragment;
+import com.sundy.icare.views.fragment.family.MsgFragment;
+import com.sundy.icare.views.fragment.family.ServiceFragment;
+import com.sundy.icare.views.fragment.family.TabMenuFragment;
 
 /**
  * Created by sundy on 15/12/6.

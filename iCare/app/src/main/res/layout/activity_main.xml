@@ -12,7 +12,7 @@
 
     <fragment
         android:id="@+id/frameMenu"
-        android:name="com.sundy.icare.views.fragment.TabMenuFragment"
+        android:name="com.sundy.icare.views.fragment.family.TabMenuFragment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_tab_menu_height"
         android:layout_alignParentBottom="true" />

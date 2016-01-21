@@ -1,4 +1,4 @@
-package com.sundy.icare.views.fragment;
+package com.sundy.icare.views.fragment.family;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,43 +6,46 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
+import com.sundy.icare.adapters.ServiceListAdapter;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
-import com.sundy.icare.views.activity.MyFamilyActivity;
-import com.sundy.icare.views.activity.QRScannerActivity;
+import com.sundy.icare.views.activity.AddOrderActivity;
+import com.sundy.icare.views.activity.MyOrderActivity;
 import com.sundy.icare.views.activity.ServerActivity;
-import com.sundy.icare.views.activity.SettingActivity;
-import com.sundy.icare.views.activity.UserDetailActivity;
-import com.sundy.icare.views.activity.VerifyPasswordActivity;
+import com.sundy.icare.views.fragment.LazyLoadFragment;
 
 /**
- * Created by sundy on 15/12/20.
+ * Created by sundy on 15/12/6.
  */
-public class MeFragment extends LazyLoadFragment {
+public class ServiceFragment extends LazyLoadFragment {
 
-    private final String TAG = "MeFragment";
+    private final String TAG = "ServiceFragment";
     private View mView;
 
     Handler handler = new Handler();
     ProgressBar progressBar;
     private static final int DELAY_TIME = 2000;
 
-    public MeFragment() {
+    private ListView lv_Data;
+    private ServiceListAdapter adapter;
+
+    public ServiceFragment() {
     }
 
     @Override
     protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         MyUtils.rtLog(TAG, "---------->initViews");
         mInflater = inflater;
-        mView = mInflater.inflate(R.layout.layout_me, container, false);
+        mView = mInflater.inflate(R.layout.fragment_service, container, false);
         aq = new AQuery(mView);
 
         init();
-
         return mView;
     }
 
@@ -58,63 +61,48 @@ public class MeFragment extends LazyLoadFragment {
     }
 
     private void init() {
-        aq.id(R.id.txtTitle).text(R.string.me);
-        aq.id(R.id.btnRight).image(R.mipmap.icon_settings).clicked(onClick);
-        aq.id(R.id.imgMe).clicked(onClick);
+        aq.id(R.id.relLeft).clicked(onClick);
+        aq.id(R.id.btnRight).clicked(onClick);
         aq.id(R.id.btnSwitch).clicked(onClick);
-        aq.id(R.id.btnQR).clicked(onClick);
-        aq.id(R.id.rel_MyFamily).clicked(onClick);
-        aq.id(R.id.btn_Email).clicked(onClick);
-
         progressBar = aq.id(R.id.progress_bar).getProgressBar();
         progressBar.setVisibility(View.VISIBLE);
+
+        lv_Data = aq.id(R.id.lv_Data).getListView();
+        adapter = new ServiceListAdapter(getActivity());
+        lv_Data.setAdapter(adapter);
+        lv_Data.setOnItemClickListener(onItemClickListener);
+
     }
+
+    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//            goServiceDetail();  ---查看服务者相关信息
+        }
+    };
 
     private View.OnClickListener onClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btnRight:
-                    Intent intent1 = new Intent(getActivity(), SettingActivity.class);
+                case R.id.relLeft:
+                    //跳转到我的订单
+                    Intent intent1 = new Intent(getActivity(), MyOrderActivity.class);
                     startActivity(intent1);
                     break;
-                case R.id.imgMe:
-                    Intent intent2 = new Intent(getActivity(), UserDetailActivity.class);
+                case R.id.btnRight:
+                    Intent intent2 = new Intent(getActivity(), AddOrderActivity.class);
                     startActivity(intent2);
                     break;
                 case R.id.btnSwitch:
-                    //切花至服务者
+                    //切换到服务者
                     Intent intent3 = new Intent(getActivity(), ServerActivity.class);
                     startActivity(intent3);
                     ActivityController.finishAll();
                     break;
-                case R.id.btnQR:
-                    scanQRCode();
-                    break;
-                case R.id.rel_MyFamily:
-                    goMyFamily();
-                    break;
-                case R.id.btn_Email:
-                    bindEmail();
-                    break;
             }
         }
     };
-
-    private void bindEmail() {
-        Intent intent = new Intent(getActivity(), VerifyPasswordActivity.class);
-        startActivity(intent);
-    }
-
-    private void goMyFamily() {
-        Intent intent = new Intent(getActivity(), MyFamilyActivity.class);
-        startActivity(intent);
-    }
-
-    private void scanQRCode() {
-        Intent intent = new Intent(getActivity(), QRScannerActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     public void onStart() {
@@ -146,4 +134,5 @@ public class MeFragment extends LazyLoadFragment {
         MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
     }
+
 }
