@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
+import com.baidu.mapapi.map.MapView;
 import com.sundy.icare.R;
 import com.sundy.icare.adapters.ServiceListAdapter;
 import com.sundy.icare.utils.ActivityController;
@@ -34,6 +35,8 @@ public class ServiceFragment extends LazyLoadFragment {
 
     private ListView lv_Data;
     private ServiceListAdapter adapter;
+
+    private MapView bmapView;
 
     public ServiceFragment() {
     }
@@ -71,6 +74,8 @@ public class ServiceFragment extends LazyLoadFragment {
         adapter = new ServiceListAdapter(getActivity());
         lv_Data.setAdapter(adapter);
         lv_Data.setOnItemClickListener(onItemClickListener);
+
+        bmapView = (MapView) aq.id(R.id.bmapView).getView();
 
     }
 
@@ -112,11 +117,13 @@ public class ServiceFragment extends LazyLoadFragment {
     @Override
     public void onResume() {
         super.onResume();
+        bmapView.onResume();
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        bmapView.onPause();
     }
 
     @Override
@@ -133,6 +140,7 @@ public class ServiceFragment extends LazyLoadFragment {
     public void onDestroy() {
         MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
+        bmapView.onDestroy();
     }
 
 }

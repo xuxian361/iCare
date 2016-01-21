@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 
 import com.androidquery.AQuery;
+import com.baidu.mapapi.SDKInitializer;
 import com.bugtags.library.Bugtags;
 import com.sundy.icare.utils.MyConstant;
 
@@ -26,6 +27,8 @@ public class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         context = this;
         aq = new AQuery(this);
+
+        SDKInitializer.initialize(getApplicationContext());
 
         if (MyConstant.Is_BugTags_Enable) {
             Bugtags.onCreate(this);

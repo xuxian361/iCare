@@ -22,3 +22,7 @@
 -dontwarn android.net.http.AndroidHttpClient
 -dontwarn com.bugtags.library.vender.**
 -dontwarn com.bugtags.library.**
+
+-keep class com.baidu.** {*;}
+-keep class vi.com.** {*;}
+-dontwarn com.baidu.**

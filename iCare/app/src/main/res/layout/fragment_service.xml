@@ -138,7 +138,16 @@
             android:layout_below="@+id/img_line"
             android:background="#99FFFFFF"
             android:divider="@null"
-            android:scrollingCache="false" />
+            android:scrollingCache="false"
+            android:visibility="visible" />
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/img_line"
+            android:clickable="true"
+            android:visibility="gone" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
