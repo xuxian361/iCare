@@ -1,7 +1,9 @@
 package com.sundy.icare.views.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -51,7 +53,7 @@ public class LoginActivity extends BaseActivity {
                     goRegister();
                     break;
                 case R.id.btn_login:
-                    goMain();
+                    showLoginChoiceDialog();
                     break;
                 case R.id.txt_first_visit:
                     goMain();
@@ -117,8 +119,40 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
+    private void showLoginChoiceDialog() {
+        LayoutInflater inflater = this.getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_login_choice, null);
+        final Dialog dialog = new Dialog(context, R.style.dialog);
+        dialog.setContentView(view);
+        AQuery aq = new AQuery(view);
+        aq.id(R.id.btn_Family).clicked(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                dialog.cancel();
+                goMain();
+            }
+        });
+        aq.id(R.id.btn_Server).clicked(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                dialog.cancel();
+                goServer();
+            }
+        });
+        dialog.show();
+    }
+
+
     private void goMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void goServer() {
+        Intent intent = new Intent(this, ServerActivity.class);
         startActivity(intent);
         finish();
     }
