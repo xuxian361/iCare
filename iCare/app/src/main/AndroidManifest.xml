@@ -93,6 +93,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".views.activity.MyOrderDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".views.activity.ServerActivity"
             android:screenOrientation="portrait" />
 

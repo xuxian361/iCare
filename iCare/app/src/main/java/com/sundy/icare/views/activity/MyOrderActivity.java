@@ -1,5 +1,6 @@
 package com.sundy.icare.views.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -50,6 +51,8 @@ public class MyOrderActivity extends BaseActivity {
     };
 
     private void goOrderDetail() {
+        Intent intent = new Intent(this, MyOrderDetailActivity.class);
+        startActivity(intent);
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {

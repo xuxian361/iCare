@@ -110,4 +110,22 @@
     <string name="str_all">全部</string>
     <string name="service_type">服务类型</string>
     <string name="can_service_time">可服务时间段</string>
+    <string name="confirm_order_finish">确认订单完成</string>
+    <string name="complain">投诉</string>
+    <string name="report">举报</string>
+    <string name="order_detail">订单详情</string>
+    <string name="order_number">订单号</string>
+    <string name="order_content">订单内容</string>
+    <string name="order_finish_time">订单完成时间</string>
+    <string name="service_object">服务对象</string>
+    <string name="contact_method">联系方式</string>
+    <string name="service_address">服务地址</string>
+    <string name="pay_status">支付状态</string>
+    <string name="service_payment">服务费用</string>
+    <string name="total_cost">总费用</string>
+    <string name="server_name">服务者名字</string>
+    <string name="evaluate">评价</string>
+    <string name="view_more"><![CDATA[查看更多>>]]></string>
+    <string name="write_down_your_evaluate">请写下您对这位服务者的评价</string>
+    <string name="submit">提交</string>
 </resources>

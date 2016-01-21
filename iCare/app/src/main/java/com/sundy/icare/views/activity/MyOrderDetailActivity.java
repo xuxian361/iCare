@@ -8,16 +8,15 @@ import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 
 /**
- * Created by sundy on 16/1/20.
+ * Created by sundy on 16/1/21.
  */
-public class MyFamilyDetailActivity extends BaseActivity {
-
-    private final String TAG = "MyFamilyDetailActivity";
+public class MyOrderDetailActivity extends BaseActivity {
+    private final String TAG = "MyOrderDetailActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_family_detail);
+        setContentView(R.layout.my_order_detail);
         ActivityController.addActivity(this);
 
         aq = new AQuery(this);
@@ -28,9 +27,10 @@ public class MyFamilyDetailActivity extends BaseActivity {
 
     private void init() {
         aq.id(R.id.btnBack).clicked(onClick);
-        aq.id(R.id.txtTitle).text(R.string.detail_info);
+        aq.id(R.id.txtTitle).text(R.string.order_detail);
         aq.id(R.id.btnRight).clicked(onClick);
         aq.id(R.id.relative_More).clicked(onClick);
+
 
     }
 
