@@ -72,7 +72,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/order_number"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_OrderNum"
@@ -96,7 +96,7 @@
                             android:layout_centerVertical="true"
                             android:text="已完成"
                             android:textColor="@color/green"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -113,7 +113,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/order_content"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_OrderContent"
@@ -141,7 +141,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/order_finish_time"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_OrderFinishTime"
@@ -151,7 +151,7 @@
                             android:layout_toRightOf="@+id/txtKey_OrderFinishTime"
                             android:text="2015-12-20 12:10"
                             android:textColor="@color/material_grey_850"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <ImageView
@@ -176,7 +176,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/service_object"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_ServiceObject"
@@ -186,7 +186,7 @@
                             android:layout_toRightOf="@+id/txtKey_ServiceObject"
                             android:text="爸爸(陈大文)"
                             android:textColor="@color/material_grey_850"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -204,7 +204,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/contact_method"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_ObjectMobile"
@@ -214,7 +214,7 @@
                             android:layout_toRightOf="@+id/txtKey_ObjectMobile"
                             android:text="13452346789"
                             android:textColor="@color/material_grey_850"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -232,7 +232,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/service_address"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_ServiceAddress"
@@ -242,7 +242,7 @@
                             android:layout_toRightOf="@+id/txtKey_ServiceAddress"
                             android:text="天河小区花城A栋5楼A座"
                             android:textColor="@color/material_grey_850"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <ImageView
@@ -267,7 +267,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/pay_status"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_PayStatus"
@@ -277,7 +277,7 @@
                             android:layout_toRightOf="@+id/txtKey_PayStatus"
                             android:text="已支付"
                             android:textColor="@color/green"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -294,7 +294,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/service_payment"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_ServicePayment"
@@ -304,7 +304,7 @@
                             android:layout_toRightOf="@+id/txtKey_ServicePayment"
                             android:text="48.0元"
                             android:textColor="@color/gorden"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -321,7 +321,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/coupon"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_Coupon"
@@ -331,7 +331,7 @@
                             android:layout_toRightOf="@+id/txtKey_Coupon"
                             android:text="5.0元"
                             android:textColor="@color/gorden"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -348,7 +348,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/total_cost"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_TotalCost"
@@ -358,7 +358,7 @@
                             android:layout_marginLeft="34dp"
                             android:text="48.0 - 5.0 = 43.0 元"
                             android:textColor="@color/gorden"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <ImageView
@@ -382,7 +382,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/server_name"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_ServerName"
@@ -392,7 +392,7 @@
                             android:layout_toRightOf="@+id/txtKey_ServerName"
                             android:text="文先生"
                             android:textColor="@color/material_grey_850"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -409,7 +409,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/contact_method"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txt_ServerMobile"
@@ -419,7 +419,7 @@
                             android:layout_toRightOf="@+id/txtKey_ServerMobile"
                             android:text="13465887309"
                             android:textColor="@color/material_grey_850"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <RatingBar
@@ -444,7 +444,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/evaluate"
                             android:textColor="@color/material_grey_600"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/textView3"
@@ -454,7 +454,7 @@
                             android:layout_marginLeft="18dp"
                             android:text="@string/view_more"
                             android:textColor="@color/material_grey_850"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
                     </RelativeLayout>
 
                     <EditText
@@ -471,7 +471,8 @@
                         android:padding="10dp"
                         android:hint="@string/write_down_your_evaluate"
                         android:gravity="left|top"
-                        android:background="@drawable/corner_edt" />
+                        android:background="@drawable/corner_edt"
+                        android:textSize="15sp" />
 
                     <Button
                         android:layout_width="100dp"
@@ -480,7 +481,8 @@
                         android:id="@+id/btn_Evaluate"
                         android:background="@drawable/corner_btn_red"
                         android:textColor="@color/white"
-                        android:layout_marginLeft="15dp" />
+                        android:layout_marginLeft="15dp"
+                        android:textSize="14sp" />
                 </LinearLayout>
             </ScrollView>
 
@@ -489,13 +491,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:background="@drawable/corner_btn_green"
                 android:text="@string/confirm_order_finish"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_margin="10dp" />
         </RelativeLayout>
 
         <RelativeLayout
