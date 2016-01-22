@@ -96,6 +96,7 @@ public class ServiceFragment extends LazyLoadFragment {
                     startActivity(intent1);
                     break;
                 case R.id.btnRight:
+                    //跳转到添加订单页面
                     Intent intent2 = new Intent(getActivity(), AddOrderActivity.class);
                     startActivity(intent2);
                     break;

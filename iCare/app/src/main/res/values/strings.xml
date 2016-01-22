@@ -132,4 +132,5 @@
     <string name="children">子女</string>
     <string name="server">服务者</string>
     <string name="remember_login_user_type">记住用户登陆类型，下次不再提醒.\n(可以在APP 内切换哦!)</string>
+    <string name="choose_user">选择服务对象</string>
 </resources>

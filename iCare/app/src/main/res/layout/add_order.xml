@@ -67,37 +67,72 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/rel_User"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:id="@+id/relLocal">
+                    android:layout_marginRight="10dp">
+
+                    <ImageView
+                        android:id="@+id/imgUser"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_centerVertical="true"
+                        android:scaleType="center"
+                        android:src="@mipmap/menu_profile_on" />
+
+                    <TextView
+                        android:id="@+id/txtUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="6dp"
+                        android:layout_toLeftOf="@+id/imgUserArrow"
+                        android:layout_toRightOf="@+id/imgUser"
+                        android:background="@null"
+                        android:text="@string/choose_user"
+                        android:textColor="@color/material_grey_600"
+                        android:textSize="14sp"
+                        android:gravity="center_vertical" />
+
+                    <ImageView
+                        android:id="@+id/imgUserArrow"
+                        android:layout_width="20dp"
+                        android:layout_height="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/icon_arrow_right"
+                        android:scaleType="center" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/material_grey_100" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
 
                     <ImageView
                         android:id="@+id/imgLocal"
                         android:layout_width="26dp"
                         android:layout_height="26dp"
                         android:layout_centerVertical="true"
-                        android:src="@mipmap/icon_local_black"
-                        android:scaleType="center" />
+                        android:scaleType="center"
+                        android:src="@mipmap/icon_local_black" />
 
-                    <ImageView
-                        android:id="@+id/imgArrowLocal"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:src="@mipmap/icon_arrow_right" />
-
-                    <TextView
-                        android:id="@+id/txtLocal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <EditText
+                        android:id="@+id/edtLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="6dp"
                         android:layout_toRightOf="@+id/imgLocal"
+                        android:background="@null"
                         android:text="@string/add_service_local"
                         android:textColor="@color/material_grey_600"
                         android:textSize="14sp" />
@@ -124,9 +159,9 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@null"
+                        android:padding="5dp"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/icon_green_right"
-                        android:padding="5dp" />
+                        android:src="@mipmap/icon_green_right" />
 
                     <TextView
                         android:id="@+id/txtPayOnline"
@@ -196,13 +231,13 @@
                     android:layout_height="77dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
                     android:background="@null"
                     android:gravity="left|top"
+                    android:hint="例如:帮我买10斤米"
                     android:maxLines="3"
                     android:padding="5dp"
-                    android:textSize="14sp"
-                    android:layout_marginTop="4dp"
-                    android:hint="例如:帮我买10斤米"/>
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -239,12 +274,12 @@
                         android:layout_marginRight="6dp"
                         android:layout_toLeftOf="@+id/txtRMB"
                         android:layout_toRightOf="@+id/txtKeyPrice"
+                        android:background="@null"
                         android:gravity="center|right"
                         android:hint="100"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:textSize="18sp"
-                        android:background="@null" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/txtKeyPrice"
@@ -273,8 +308,8 @@
 
                     <ImageButton
                         android:id="@+id/imgArrowTime"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@null"
@@ -320,8 +355,8 @@
 
                     <ImageButton
                         android:id="@+id/imgArrowCoupon"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@null"

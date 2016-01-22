@@ -1,6 +1,5 @@
 package com.sundy.icare.views.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,7 +12,7 @@ import com.sundy.icare.utils.ActivityController;
  */
 public class AddOrderActivity extends BaseActivity {
 
-    private final String TAG = "UserDetailActivity";
+    private final String TAG = "AddOrderActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class AddOrderActivity extends BaseActivity {
     private void init() {
         aq.id(R.id.txtTitle).text(R.string.add_order);
         aq.id(R.id.btnCancel).clicked(onClick);
-        aq.id(R.id.relLocal).clicked(onClick);
+        aq.id(R.id.rel_User).clicked(onClick);
 
     }
 
@@ -41,9 +40,8 @@ public class AddOrderActivity extends BaseActivity {
                 case R.id.btnCancel:
                     finish();
                     break;
-                case R.id.relLocal:
-                    Intent intent = new Intent(AddOrderActivity.this, AddOrderLocationActivity.class);
-                    startActivity(intent);
+                case R.id.rel_User:
+                    //选择服务对象
                     break;
             }
         }
