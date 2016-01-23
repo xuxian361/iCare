@@ -34,6 +34,7 @@ public class MyOrderActivity extends BaseActivity {
     private void init() {
         aq.id(R.id.txtTitle).text(R.string.my_order);
         aq.id(R.id.btnBack).clicked(onClick);
+        aq.id(R.id.btnRight).clicked(onClick);
 
         lv_Data = aq.id(R.id.lv_Data).getListView();
         adapter = new MyOrderListAdapter(this);
@@ -62,9 +63,17 @@ public class MyOrderActivity extends BaseActivity {
                 case R.id.btnBack:
                     finish();
                     break;
+                case R.id.btnRight:
+                    goAddOrder();
+                    break;
             }
         }
     };
+
+    private void goAddOrder() {
+        Intent intent = new Intent(this,AddOrderActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onDestroy() {

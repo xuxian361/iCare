@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
-import com.baidu.mapapi.map.MapView;
 import com.sundy.icare.R;
 import com.sundy.icare.adapters.ServiceListAdapter;
 import com.sundy.icare.utils.ActivityController;
@@ -35,8 +34,6 @@ public class ServiceFragment extends LazyLoadFragment {
 
     private ListView lv_Data;
     private ServiceListAdapter adapter;
-
-    private MapView bmapView;
 
     public ServiceFragment() {
     }
@@ -67,6 +64,8 @@ public class ServiceFragment extends LazyLoadFragment {
         aq.id(R.id.relLeft).clicked(onClick);
         aq.id(R.id.btnRight).clicked(onClick);
         aq.id(R.id.btnSwitch).clicked(onClick);
+        aq.id(R.id.btnAddOrder).clicked(onClick);
+        aq.id(R.id.relative_More).clicked(onClick);
         progressBar = aq.id(R.id.progress_bar).getProgressBar();
         progressBar.setVisibility(View.VISIBLE);
 
@@ -75,7 +74,6 @@ public class ServiceFragment extends LazyLoadFragment {
         lv_Data.setAdapter(adapter);
         lv_Data.setOnItemClickListener(onItemClickListener);
 
-        bmapView = (MapView) aq.id(R.id.bmapView).getView();
 
     }
 
@@ -95,7 +93,7 @@ public class ServiceFragment extends LazyLoadFragment {
                     Intent intent1 = new Intent(getActivity(), MyOrderActivity.class);
                     startActivity(intent1);
                     break;
-                case R.id.btnRight:
+                case R.id.btnAddOrder:
                     //跳转到添加订单页面
                     Intent intent2 = new Intent(getActivity(), AddOrderActivity.class);
                     startActivity(intent2);
@@ -105,6 +103,17 @@ public class ServiceFragment extends LazyLoadFragment {
                     Intent intent3 = new Intent(getActivity(), ServerActivity.class);
                     startActivity(intent3);
                     ActivityController.finishAll();
+                    break;
+                case R.id.btnRight:
+                    int visibility = aq.id(R.id.relative_More).getView().getVisibility();
+                    if (visibility == View.GONE) {
+                        aq.id(R.id.relative_More).visible();
+                    } else {
+                        aq.id(R.id.relative_More).gone();
+                    }
+                    break;
+                case R.id.relative_More:
+                    aq.id(R.id.relative_More).gone();
                     break;
             }
         }
@@ -118,13 +127,11 @@ public class ServiceFragment extends LazyLoadFragment {
     @Override
     public void onResume() {
         super.onResume();
-        bmapView.onResume();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        bmapView.onPause();
     }
 
     @Override
@@ -141,7 +148,6 @@ public class ServiceFragment extends LazyLoadFragment {
     public void onDestroy() {
         MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
-        bmapView.onDestroy();
     }
 
 }

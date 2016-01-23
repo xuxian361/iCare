@@ -26,20 +26,6 @@
             android:textColor="@color/white"
             android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/edtSearch"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/edt_height"
-            android:layout_alignParentBottom="false"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/btnRight"
-            android:layout_toRightOf="@+id/btnBack"
-            android:gravity="center_vertical|right"
-            android:paddingRight="5dp"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:visibility="gone" />
-
         <ImageButton
             android:id="@+id/btnRight"
             android:layout_width="40dp"
@@ -48,7 +34,7 @@
             android:layout_centerVertical="true"
             android:background="@null"
             android:gravity="right"
-            android:src="@mipmap/icon_search_white" />
+            android:src="@mipmap/icon_add" />
     </RelativeLayout>
 
     <RelativeLayout
