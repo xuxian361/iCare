@@ -3,7 +3,6 @@ package com.sundy.icare.views.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -12,7 +11,6 @@ import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
-import com.sundy.icare.utils.MyToast;
 
 /**
  * Created by sundy on 15/12/6.
@@ -60,10 +58,10 @@ public class RegisterUserNameActivity extends BaseActivity {
 
     private void go2RegisterMobile() {
         String username = edtUserName.getText().toString().trim();
-        if (TextUtils.isEmpty(username)) {
-            MyToast.rtToast(this, getString(R.string.username_cannot_empty));
-            return;
-        }
+//        if (TextUtils.isEmpty(username)) {
+//            MyToast.rtToast(this, getString(R.string.username_cannot_empty));
+//            return;
+//        }
         SharedPreferences preferences = getSharedPreferences(MyConstant.APP_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(MyPreference.PREFERENCE_USERNAME, username);

@@ -1,12 +1,9 @@
 package com.sundy.icare.net;
 
-import com.sundy.icare.utils.MyConstant;
+import com.sundy.icare.utils.MyUtils;
 
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Hashtable;
 
 /**
@@ -23,30 +20,57 @@ public class ResourceTaker {
         Hashtable htParameters = new Hashtable();
         htParameters.put("terminalscode", terminalscode);
         htParameters.put("password", password);
-        getHttpRequestGet(MyURL.MYURL_login, htParameters, JSONObject.class, callback);
+        getHttpRequest(MyURL.MYURL_login, "", JSONObject.class, callback);
     }
 
     //用户注册API
-    public static void register(String user_name, String mobile, String login_passwd,
+    public static void register(String username, String mobile, String password,
                                 HttpCallback callback) {
-        Hashtable htParameters = new Hashtable();
-        htParameters.put("user_name", user_name);
-        htParameters.put("login_passwd", login_passwd);
-        htParameters.put("mobile", mobile);
-//        htParameters.put("user_type", user_type);
 
-        getHttpRequestGet(MyURL.MYURL_register, htParameters, JSONObject.class, callback);
+        StringBuffer sb = new StringBuffer();
+        sb.append("<request>");
+        sb.append("<app_id>app_01</app_id>");
+        sb.append("<app_user_id>15088086697</app_user_id>");
+        sb.append("<auth_token></auth_token>");
+        sb.append("<device_info>" + MyUtils.getUUID(callback.context) + "</device_info>");
+        sb.append("<device_type>android</device_type>");
+        sb.append("<language>cn</language>");
+        sb.append("<login_passwd>123456</login_passwd>");
+        sb.append("<mobile>15088086697</mobile>");
+        sb.append("<user_name>Sundy Xu</user_name>");
+        sb.append("<user_type>01</user_type>");
+        sb.append("</request>");
+
+        getHttpRequest(MyURL.MYURL_register, sb.toString(), JSONObject.class, callback);
     }
 
-    public static void getHttpRequestGet(String strFunName, Hashtable htParameters, Class stype, HttpCallback callback) {
-        if (htParameters == null)
-            htParameters = new Hashtable();
-        DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-        String time = df.format(new Date());
-        htParameters.put("ver", MyConstant.APP_VER);
-        htParameters.put("time", time);
-        htParameters.put("language", MyConstant.APP_LANGUAGE);
-        callback.httpGet(HTTP_BASE + strFunName, htParameters, stype);
+    public static void getHttpRequest(String method, String content, Class stype, HttpCallback callback) {
+        Hashtable htParameters = new Hashtable();
+
+        AESTool aes = new AESTool();
+        SignatureUtil signatureUtil = new SignatureUtil();
+
+        String appid = "canairport001";
+        String token = signatureUtil.findTokenById(appid);
+        String key = aes.findKeyById(appid);
+        long millis = System.currentTimeMillis();
+
+        String xml = content;
+        try {
+            xml = aes.encrypt(xml, key);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String encrpt = signatureUtil.digest(xml, "MD5");
+        String sign = signatureUtil.generateSignature(appid, token, encrpt, millis);
+
+        htParameters.put("sign", sign);
+        htParameters.put("time", String.valueOf(System.currentTimeMillis()));
+        htParameters.put("device", MyUtils.getUUID(callback.context));
+        htParameters.put("method", method);
+        htParameters.put("encrpt", encrpt);
+        htParameters.put("content", xml);
+        callback.httpGet(HTTP_BASE, htParameters, stype);
     }
 
 }

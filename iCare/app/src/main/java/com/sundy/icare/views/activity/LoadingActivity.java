@@ -34,6 +34,11 @@ public class LoadingActivity extends BaseActivity {
         MyConstant.SCREEN_HEIGHT = metrics.heightPixels;
         MyConstant.SCREEN_DENSITY = metrics.density;
 
+        //Save UUID
+        MyUtils.saveUDID(this);
+
+        //Save Signature
+        MyUtils.saveSignature(this);
     }
 
     @Override

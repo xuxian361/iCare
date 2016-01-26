@@ -22,6 +22,38 @@ public class MyUtils {
                 context.getResources().getDisplayMetrics());
     }
 
+    //Save UUID
+    public static void saveUDID(Context context) {
+        String udid = android.provider.Settings.System.getString(
+                context.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(MyPreference.UUID_STR, udid);
+        editor.commit();
+    }
+
+    //Get UUID
+    public static String getUUID(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
+        String uuid = preferences.getString(MyPreference.UUID_STR, "");
+        return uuid;
+    }
+
+    //Save Signature
+    public static void saveSignature(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(MyPreference.SIGNATURE_STR, "");
+        editor.commit();
+    }
+
+    //Get Signature
+    public static String getSignature(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
+        String signature = preferences.getString(MyPreference.SIGNATURE_STR, "");
+        return signature;
+    }
+
     //判断是否登陆
     public static boolean isLogin(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);

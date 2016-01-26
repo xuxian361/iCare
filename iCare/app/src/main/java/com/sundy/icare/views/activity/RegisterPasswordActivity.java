@@ -3,16 +3,18 @@ package com.sundy.icare.views.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
 import com.androidquery.AQuery;
+import com.google.gson.JsonObject;
 import com.sundy.icare.R;
+import com.sundy.icare.net.HttpCallback;
+import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
-import com.sundy.icare.utils.MyToast;
+import com.sundy.icare.utils.MyUtils;
 
 /**
  * Created by sundy on 16/1/17.
@@ -60,25 +62,24 @@ public class RegisterPasswordActivity extends BaseActivity {
 
     private void goRegister() {
         String password = edtPassword.getText().toString().trim();
-        if (TextUtils.isEmpty(password)) {
-            MyToast.rtToast(this, getString(R.string.login_password_cannot_empty));
-            return;
-        }
+//        if (TextUtils.isEmpty(password)) {
+//            MyToast.rtToast(this, getString(R.string.login_password_cannot_empty));
+//            return;
+//        }
 
         SharedPreferences preferences = getSharedPreferences(MyConstant.APP_NAME, MODE_PRIVATE);
         String username = preferences.getString(MyPreference.PREFERENCE_USERNAME, "");
         String mobile = preferences.getString(MyPreference.PREFERENCE_MOBILE, "");
 
 
-//        ResourceTaker.register(username, mobile, password, new HttpCallback<JsonObject>() {
-//            @Override
-//            public void callback(String url, JsonObject result, String status) {
-//                super.callback(url, result, status);
-//                MyUtils.rtLog(TAG, "--------->result =" + result.toString());
-//
-////                go2Main();
-//            }
-//        });
+        ResourceTaker.register(username, mobile, password, new HttpCallback<JsonObject>(this) {
+            @Override
+            public void callback(String url, JsonObject result, String status) {
+                super.callback(url, result, status);
+                MyUtils.rtLog(TAG, "--------->result =" + result);
+
+            }
+        });
 
         go2Main();
     }
