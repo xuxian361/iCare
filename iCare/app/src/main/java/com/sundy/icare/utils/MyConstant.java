@@ -29,5 +29,9 @@ public class MyConstant {
     //百度Push API Key
     public static final String Baidu_Push_Key = "jGRDnB35yxlaaLGoGY2PB3Eg";
 
+    //Mob 短信验证码 API Key && App Secret
+    public static final String Mob_API_Key = "f29f69ba81b8";
+    public static final String Mob_APP_Secret = "eabbce1d8944c851098367e134ffb339";
+
 
 }

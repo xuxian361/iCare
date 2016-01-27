@@ -134,4 +134,10 @@
     <string name="remember_login_user_type">记住用户登陆类型，下次不再提醒.\n(可以在APP 内切换哦!)</string>
     <string name="choose_user">选择服务对象</string>
     <string name="change_to_server">切至服务者</string>
+    <string name="get_verify_code">获取验证码</string>
+    <string name="verify_code_already_send">验证码已经发送</string>
+    <string name="submit_verif_code_success">提交验证码成功</string>
+    <string name="verify_success">验证成功!</string>
+    <string name="verify_code_is_wrong">验证码错误</string>
+    <string name="re_send">重发</string>
 </resources>
