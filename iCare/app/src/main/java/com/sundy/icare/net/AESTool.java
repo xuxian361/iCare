@@ -16,17 +16,6 @@ public class AESTool {
     private byte[] initVector = {0x32, 0x37, 0x36, 0x35, 0x34, 0x33, 0x32, 0x31,
             0x38, 0x27, 0x36, 0x35, 0x33, 0x23, 0x32, 0x31};
 
-    /**
-     * FIXME For demo only, should rewrite this method in your product environment!
-     *
-     * @param appid
-     * @return
-     */
-    public String findKeyById(String appid) {
-        // Fake key.
-        String key = "123456789012345678901234567890~!";  //这key不是固定的，请放到配置文件，方便以后更改
-        return key;
-    }
 
     /**
      * Encrypt the content with a given key using aes algorithm.

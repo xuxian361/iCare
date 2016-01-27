@@ -12,6 +12,8 @@ import java.util.Hashtable;
 public class ResourceTaker {
 
     public static final String HTTP_BASE = MyURL.HTTP_DEV;
+    private static final String appid = "app_01";
+    private static final String key = "123456789012345678901234567890~!";
 
 
     //用户登陆API
@@ -20,7 +22,7 @@ public class ResourceTaker {
         Hashtable htParameters = new Hashtable();
         htParameters.put("terminalscode", terminalscode);
         htParameters.put("password", password);
-        getHttpRequest(MyURL.MYURL_login, "", JSONObject.class, callback);
+        getHttpRequest(MyURL.MYURL_login, MyURL.METHOD_REGISTER, "", "", JSONObject.class, callback);
     }
 
     //用户注册API
@@ -30,31 +32,27 @@ public class ResourceTaker {
         StringBuffer sb = new StringBuffer();
         sb.append("<request>");
         sb.append("<app_id>app_01</app_id>");
-        sb.append("<app_user_id>15088086697</app_user_id>");
+        sb.append("<app_user_id>" + mobile + "</app_user_id>");
         sb.append("<auth_token></auth_token>");
         sb.append("<device_info>" + MyUtils.getUUID(callback.context) + "</device_info>");
         sb.append("<device_type>android</device_type>");
         sb.append("<language>cn</language>");
-        sb.append("<login_passwd>123456</login_passwd>");
-        sb.append("<mobile>15088086697</mobile>");
-        sb.append("<user_name>Sundy Xu</user_name>");
+        sb.append("<login_passwd>" + password + "</login_passwd>");
+        sb.append("<mobile>" + mobile + "</mobile>");
+        sb.append("<user_name>" + username + "</user_name>");
         sb.append("<user_type>01</user_type>");
         sb.append("</request>");
 
-        getHttpRequest(MyURL.MYURL_register, sb.toString(), JSONObject.class, callback);
+        getHttpRequest(MyURL.MYURL_register, MyURL.METHOD_REGISTER, sb.toString(), "", JSONObject.class, callback);
     }
 
-    public static void getHttpRequest(String method, String content, Class stype, HttpCallback callback) {
+    public static void getHttpRequest(String url, String method, String content, String token, Class stype, HttpCallback callback) {
         Hashtable htParameters = new Hashtable();
 
         AESTool aes = new AESTool();
         SignatureUtil signatureUtil = new SignatureUtil();
 
-        String appid = "canairport001";
-        String token = signatureUtil.findTokenById(appid);
-        String key = aes.findKeyById(appid);
         long millis = System.currentTimeMillis();
-
         String xml = content;
         try {
             xml = aes.encrypt(xml, key);
@@ -70,7 +68,7 @@ public class ResourceTaker {
         htParameters.put("method", method);
         htParameters.put("encrpt", encrpt);
         htParameters.put("content", xml);
-        callback.httpGet(HTTP_BASE, htParameters, stype);
+        callback.httpGet(HTTP_BASE + url, htParameters, stype);
     }
 
 }

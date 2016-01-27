@@ -8,11 +8,15 @@ public class MyURL {
     /**
      * URL Utils
      */
-    public static final String HTTP_DEV = "http://120.27.146.122:8023/icare/user/register";
-    public static final String HTTP_UAT = "http://120.27.146.122:8023";
+    public static final String HTTP_DEV = "http://120.27.146.122:8023/";
+//    public static final String HTTP_UAT = "http://120.27.146.122:8023/icare/user/register";
 
-    public static final String MYURL_login = "/user/login";
-    public static final String MYURL_register = "icare.user.register";
+    //URL
+    public static final String MYURL_login = "icare/user/login";
+    public static final String MYURL_register = "icare/user/register";
 
+
+    //Method
+    public static final String METHOD_REGISTER = "icare.user.register";
 
 }

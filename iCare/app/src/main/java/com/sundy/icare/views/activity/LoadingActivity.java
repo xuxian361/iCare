@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
 
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyUtils;
@@ -39,6 +41,9 @@ public class LoadingActivity extends BaseActivity {
 
         //Save Signature
         MyUtils.saveSignature(this);
+
+        //百度Push Init
+        PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, MyConstant.Baidu_Push_Key);
     }
 
     @Override

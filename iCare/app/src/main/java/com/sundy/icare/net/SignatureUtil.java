@@ -93,39 +93,6 @@ public class SignatureUtil {
         return signature;
     }
 
-    /**
-     * 验证签名: <br/>
-     * 1.根据appid获取该渠道的token;<br/>
-     * 2.根据appid、token、lol以及时间戳计算一次签名;<br/>
-     * 3.比较传过来的签名以及计算出的签名是否一致;
-     *
-     * @param signature
-     * @param appid
-     * @param lol
-     * @param millis
-     * @return
-     */
-    public boolean isValid(String signature, String appid, String lol,
-                           long millis) {
-        String token = findTokenById(appid);
-        String calculatedSignature = generateSignature(appid, token, lol,
-                millis);
-        if (signature.equals(calculatedSignature)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
-    /**
-     * FIXME For demo only, should be a different string in production.
-     *
-     * @param appid
-     * @return
-     */
-    public String findTokenById(String appid) {
-        String token = "#@!1234567890!@#";
-        return token;
-    }
 
 }
