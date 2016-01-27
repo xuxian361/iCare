@@ -26,6 +26,8 @@ public class MyConstant {
     //Bugtags 打印标识
     public static final boolean Is_BugTags_Enable = false;
 
+    //百度Push API Key
+    public static final String Baidu_Push_Key = "jGRDnB35yxlaaLGoGY2PB3Eg";
 
 
 }
