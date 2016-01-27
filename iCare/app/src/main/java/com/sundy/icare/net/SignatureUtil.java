@@ -12,6 +12,7 @@ import java.util.List;
 public class SignatureUtil {
 
     private static final char[] hexArray = "0123456789ABCDEF".toCharArray();
+
     private static String encryptionAlgorithm = "SHA-1";
 
     public static String bytesToHexString(byte[] bytes) {
@@ -59,27 +60,38 @@ public class SignatureUtil {
     }
 
     /**
-     * 根据appid、token、lol以及时间戳来生成签名
+     * 根据device_info、token、lol以及时间戳来生成签名
      *
-     * @param appid
+     * @param device_info
      * @param token
      * @param lol
      * @param millis
      * @return
      */
-    public static String generateSignature(String appid, String token, String lol,
+    public static String generateSignature(String device_info, String token, String lol,
                                            long millis) {
         String timestamp = String.valueOf(millis);
         String signature = null;
-        if ((token != null && !"".equals(token))
-                && (timestamp != null && !"".equals(timestamp))
-                && (appid != null && !"".equals(appid))) {
+        if (!"".equals(token)) {
             List<String> srcList = new ArrayList<String>();
             srcList.add(timestamp);
-            srcList.add(appid);
+            srcList.add(device_info);
             srcList.add(token);
             srcList.add(lol);
-            // 按照字典序逆序拼接参数
+            Collections.sort(srcList);
+            Collections.reverse(srcList);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < srcList.size(); i++) {
+                sb.append(srcList.get(i));
+            }
+            signature = digest(sb.toString(), encryptionAlgorithm);
+            srcList.clear();
+            srcList = null;
+        } else {
+            List<String> srcList = new ArrayList<String>();
+            srcList.add(timestamp);
+            srcList.add(device_info);
+            srcList.add(lol);
             Collections.sort(srcList);
             Collections.reverse(srcList);
             StringBuilder sb = new StringBuilder();
@@ -92,7 +104,6 @@ public class SignatureUtil {
         }
         return signature;
     }
-
 
 
 }

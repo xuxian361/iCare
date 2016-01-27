@@ -178,17 +178,19 @@ public class RegisterMobileActivity extends BaseActivity {
         String mobile = edtMobile.getText().toString().trim();
         String code = edtCode.getText().toString().trim();
 
-        if (TextUtils.isEmpty(mobile)) {
-            MyToast.rtToast(this, getString(R.string.mobile_cannot_empty));
-            return;
-        }
+//        if (TextUtils.isEmpty(mobile)) {
+//            MyToast.rtToast(this, getString(R.string.mobile_cannot_empty));
+//            return;
+//        }
+//
+//        if (TextUtils.isEmpty(code)) {
+//            MyToast.rtToast(this, getString(R.string.verify_code_cannot_empty));
+//            return;
+//        }
+//
+//        SMSSDK.submitVerificationCode(AREA_CODE, mobile, code);
 
-        if (TextUtils.isEmpty(code)) {
-            MyToast.rtToast(this, getString(R.string.verify_code_cannot_empty));
-            return;
-        }
-
-        SMSSDK.submitVerificationCode(AREA_CODE, mobile, code);
+        goRegister();
     }
 
     private void goRegister() {

@@ -8,6 +8,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.bugtags.library.Bugtags;
+import com.easemob.chat.EMChat;
 import com.sundy.icare.utils.LruBitmapCache;
 import com.sundy.icare.utils.MyConstant;
 
@@ -28,6 +29,16 @@ public class MyApp extends Application {
         super.onCreate();
         myApp = this;
 
+        //环信SDK init
+        EMChat.getInstance().init(this);
+        /**
+         * debugMode == true 时为打开，sdk 会在log里输入调试信息
+         * @param debugMode
+         * 在做代码混淆的时候需要设置成false
+         */
+        EMChat.getInstance().setDebugMode(true);//在做打包混淆时，要关闭debug模式，避免消耗不必要的资源
+
+        //Bugtags init
         if (MyConstant.Is_BugTags_Enable) {
             //初始化BugTags: 跟踪Bugs
             Bugtags.start(MyConstant.BUG_TAGS_KEY, this, Bugtags.BTGInvocationEventBubble);
