@@ -4,7 +4,9 @@ import com.sundy.icare.utils.MyUtils;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 
 /**
  * Created by sundy on 15/12/6.
@@ -47,8 +49,6 @@ public class ResourceTaker {
     }
 
     public static void getHttpRequest(String url, String method, String content, String token, Class stype, HttpCallback callback) {
-        Hashtable htParameters = new Hashtable();
-
         AESTool aes = new AESTool();
         SignatureUtil signatureUtil = new SignatureUtil();
 
@@ -61,14 +61,16 @@ public class ResourceTaker {
         }
         String encrpt = signatureUtil.digest(xml, "MD5");
         String sign = signatureUtil.generateSignature(appid, token, encrpt, millis);
+        Map<String, String> paraMap = new HashMap<String, String>();
+        paraMap.put("time", String.valueOf(millis));
+        paraMap.put("sign", sign);
+        paraMap.put("device", MyUtils.getUUID(callback.context));
+        paraMap.put("encrpt", encrpt);
+        paraMap.put("method", method);
+        paraMap.put("content", xml);
 
-        htParameters.put("sign", sign);
-        htParameters.put("time", String.valueOf(System.currentTimeMillis()));
-        htParameters.put("device", MyUtils.getUUID(callback.context));
-        htParameters.put("method", method);
-        htParameters.put("encrpt", encrpt);
-        htParameters.put("content", xml);
-        callback.httpGet(HTTP_BASE + url, htParameters, stype);
+        callback.httpGet(HTTP_BASE + url, paraMap, stype);
+
     }
 
 }

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.androidquery.AQuery;
-import com.google.gson.JsonObject;
 import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
@@ -15,6 +14,8 @@ import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyUtils;
+
+import org.json.JSONObject;
 
 /**
  * Created by sundy on 16/1/17.
@@ -72,9 +73,9 @@ public class RegisterPasswordActivity extends BaseActivity {
         String mobile = preferences.getString(MyPreference.PREFERENCE_MOBILE, "");
 
 
-        ResourceTaker.register(username, mobile, password, new HttpCallback<JsonObject>(this) {
+        ResourceTaker.register(username, mobile, password, new HttpCallback<JSONObject>(this) {
             @Override
-            public void callback(String url, JsonObject result, String status) {
+            public void callback(String url, JSONObject result, String status) {
                 super.callback(url, result, status);
                 MyUtils.rtLog(TAG, "--------->result =" + result);
 

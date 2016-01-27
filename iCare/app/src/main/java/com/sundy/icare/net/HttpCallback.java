@@ -12,12 +12,15 @@ import com.android.volley.toolbox.StringRequest;
 import com.sundy.icare.MyApp;
 import com.sundy.icare.utils.MyUtils;
 
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by sundy on 15/12/6.
@@ -48,7 +51,7 @@ public class HttpCallback<T> {
     public void callback(String url, T result, String status) {
     }
 
-    //Http Get Request
+    //Http Get Request - Method 1
     public void httpGet(String surl, Hashtable shtParameters, Class<T> stype) {
         this.url = surl;
         this.htParameters = shtParameters;
@@ -135,6 +138,99 @@ public class HttpCallback<T> {
             e.printStackTrace();
         }
         return sURL;
+    }
+
+    //Http Get Request - Method 2
+    public void httpGet(String surl, Map<String, String> map, Class<T> stype) {
+        this.url = surl;
+        this.type = stype;
+        try {
+            final String reqUrl = buildUri(url, map);
+            MyUtils.rtLog(TAG, "--------->reqUrl = " + reqUrl);
+            StringRequest strReq = new StringRequest(Request.Method.GET,
+                    reqUrl, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    MyUtils.rtLog(TAG, "------->result = " + response);
+                    try {
+                        if (response != null) {
+                            if (type.equals(JSONObject.class)) {
+                                try {
+                                    JSONObject r = (JSONObject) new JSONTokener(
+                                            response).nextValue();
+                                    result = (T) r;
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            } else if (type.equals(JSONArray.class)) {
+                                try {
+                                    JSONArray r = (JSONArray) new JSONTokener(
+                                            response).nextValue();
+                                    result = (T) r;
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            } else if (type.equals(String.class)) {
+                                try {
+                                    result = (T) response;
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        handler.sendEmptyMessage(0);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    if (error == null) {
+                        MyUtils.rtLog(TAG, "----------->Error 404: 网络异常");
+                        url = reqUrl;
+                        result = null;
+                        status = "error404";
+                    } else {
+                        MyUtils.rtLog(TAG, "----------->Error 500: 服务器异常");
+                        url = reqUrl;
+                        result = null;
+                        status = "error500";
+                    }
+                    handler.sendEmptyMessage(0);
+                }
+            });
+            MyApp.getInstance().addToRequestQueue(strReq, "tag_" + url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String buildUri(String uri, Map<String, String> paraMap) {
+        StringBuilder sb = new StringBuilder();
+        uri = StringUtils.trim(uri);
+        uri = StringUtils.removeEnd(uri, "/");
+        uri = StringUtils.removeEnd(uri, "?");
+        sb.append(uri);
+        if (paraMap != null && !paraMap.isEmpty()) {
+            sb.append("?");
+            Iterator<Map.Entry<String, String>> iterator = paraMap.entrySet()
+                    .iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String, String> pair = iterator.next();
+                try {
+                    String keyString = pair.getKey();
+                    String valueString = pair.getValue();
+                    sb.append(keyString);
+                    sb.append("=");
+                    sb.append(valueString);
+                    sb.append("&");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return StringUtils.removeEnd(sb.toString(), "&");
     }
 
 }
