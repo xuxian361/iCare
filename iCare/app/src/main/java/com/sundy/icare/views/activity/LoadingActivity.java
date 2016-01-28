@@ -39,8 +39,8 @@ public class LoadingActivity extends BaseActivity {
         //Save UUID
         MyUtils.saveUDID(this);
 
-        //Save Signature
-        MyUtils.saveSignature(this);
+        //Save APP ID : Default is app_02(子女)
+        MyUtils.saveAppID(MyConstant.APP_ID_02, this);
 
         //百度Push Init
         PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, MyConstant.Baidu_Push_Key);

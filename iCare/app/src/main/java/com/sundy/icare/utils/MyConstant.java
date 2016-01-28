@@ -33,5 +33,9 @@ public class MyConstant {
     public static final String Mob_API_Key = "f29f69ba81b8";
     public static final String Mob_APP_Secret = "eabbce1d8944c851098367e134ffb339";
 
+    //app_01 : 老人 ； app_02 : 子女 ； app_03 : 服务者
+    public static final String APP_ID_01 = "app_01";
+    public static final String APP_ID_02 = "app_02";
+    public static final String APP_ID_03 = "app_03";
 
 }

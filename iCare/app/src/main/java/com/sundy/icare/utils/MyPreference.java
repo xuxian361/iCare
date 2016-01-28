@@ -11,8 +11,8 @@ public class MyPreference {
     //User Info
     public static final String PREFERENCE_USERNAME = "PREFERENCE_USERNAME";
     public static final String PREFERENCE_MOBILE = "PREFERENCE_MOBILE";
+    public static final String PREFERENCE_TOKEN = "PREFERENCE_TOKEN";
 
     public static final String UUID_STR = "UUID";
-    public static final String SIGNATURE_STR = "SIGNATURE";
-
+    public static final String PREFERENCE_APP_ID = "PREFERENCE_APP_ID";
 }

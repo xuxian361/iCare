@@ -22,6 +22,20 @@ public class MyUtils {
                 context.getResources().getDisplayMetrics());
     }
 
+    //Save APP ID
+    public static void saveAppID(String appID, Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(MyPreference.PREFERENCE_APP_ID, appID);
+        editor.commit();
+    }
+
+    //Get APP ID
+    public static String getAppID(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
+        return preferences.getString(MyPreference.PREFERENCE_APP_ID, "app_01");
+    }
+
     //Save UUID
     public static void saveUDID(Context context) {
         String udid = android.provider.Settings.System.getString(
@@ -39,19 +53,25 @@ public class MyUtils {
         return uuid;
     }
 
-    //Save Signature
-    public static void saveSignature(Context context) {
+    //Get APP_User_ID
+    public static String getAPP_User_ID(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
+        String mobile = preferences.getString(MyPreference.PREFERENCE_MOBILE, "");
+        return mobile;
+    }
+
+    //Save Token
+    public static void saveToken(String token, Context context) {
         SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(MyPreference.SIGNATURE_STR, "");
+        editor.putString(MyPreference.PREFERENCE_TOKEN, token);
         editor.commit();
     }
 
-    //Get Signature
-    public static String getSignature(Context context) {
+    //Get Token
+    public static String getToken(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        String signature = preferences.getString(MyPreference.SIGNATURE_STR, "");
-        return signature;
+        return preferences.getString(MyPreference.PREFERENCE_TOKEN, "");
     }
 
     //判断是否登陆
