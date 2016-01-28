@@ -12,7 +12,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.sundy.icare.MyApp;
 import com.sundy.icare.utils.MyUtils;
 
-import org.apache.commons.lang.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -208,9 +207,13 @@ public class HttpCallback<T> {
 
     public String buildUri(String uri, Map<String, String> paraMap) {
         StringBuilder sb = new StringBuilder();
-        uri = StringUtils.trim(uri);
-        uri = StringUtils.removeEnd(uri, "/");
-        uri = StringUtils.removeEnd(uri, "?");
+        uri = uri.trim();
+        if (uri.endsWith("/")) {
+            uri = uri.substring(0, uri.length());
+        }
+        if (uri.endsWith("?")) {
+            uri = uri.substring(0, uri.length());
+        }
         sb.append(uri);
         if (paraMap != null && !paraMap.isEmpty()) {
             sb.append("?");
@@ -230,7 +233,11 @@ public class HttpCallback<T> {
                 }
             }
         }
-        return StringUtils.removeEnd(sb.toString(), "&");
+        String str = sb.toString();
+        if (str.endsWith("&")) {
+            str = str.substring(0, str.length() - 1);
+        }
+        return str;
     }
 
 }

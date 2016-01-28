@@ -14,7 +14,6 @@ public class ResourceTaker {
 
     private static final String TAG = "ResourceTaker";
     public static final String HTTP_BASE = MyURL.HTTP_DEV;
-    private static final String appid = "app_01";
     private static final String key = "123456789012345678901234567890~!";
 
 
@@ -48,7 +47,6 @@ public class ResourceTaker {
     public static void getHttpRequest(String url, String method, String content, Class stype, HttpCallback callback) {
         AESTool aes = new AESTool();
         SignatureUtil signatureUtil = new SignatureUtil();
-
         MyUtils.rtLog(TAG, "------->request content = " + content);
 
         long millis = System.currentTimeMillis();
@@ -59,7 +57,7 @@ public class ResourceTaker {
             e.printStackTrace();
         }
         String encrpt = signatureUtil.digest(xml, "MD5");
-        String sign = signatureUtil.generateSignature(appid, MyUtils.getToken(callback.context), encrpt, millis);
+        String sign = signatureUtil.generateSignature(MyUtils.getAppID(callback.context), MyUtils.getToken(callback.context), encrpt, millis);
         Map<String, String> paraMap = new HashMap<String, String>();
         paraMap.put("time", String.valueOf(millis));
         paraMap.put("sign", sign);

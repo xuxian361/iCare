@@ -36,7 +36,7 @@ public class RegisterMobileActivity extends BaseActivity {
     private final int MSG_MOB = 1000;
     private final int MSG_Timer = 10001;
 
-    private int times = 10;
+    private int times = 60;
     private boolean isStart = false;
     private Button btnGetCode;
 
@@ -155,7 +155,7 @@ public class RegisterMobileActivity extends BaseActivity {
         } else {
             btnGetCode.setEnabled(true);
             btnGetCode.setBackgroundResource(R.drawable.corner_btn_green);
-            btnGetCode.setText(R.string.re_send);
+            btnGetCode.setText(R.string.re_send_verify_code);
         }
     }
 
@@ -167,7 +167,7 @@ public class RegisterMobileActivity extends BaseActivity {
             return;
         }
         SMSSDK.getVerificationCode(AREA_CODE, mobile);
-        times = 10;
+        times = 60;
         isStart = true;
         changeColor();
         mHandler.sendEmptyMessageDelayed(MSG_Timer, 1000);
@@ -190,6 +190,7 @@ public class RegisterMobileActivity extends BaseActivity {
 //
 //        SMSSDK.submitVerificationCode(AREA_CODE, mobile, code);
 
+        //SUNDY - 测试后请删除
         goRegister();
     }
 
