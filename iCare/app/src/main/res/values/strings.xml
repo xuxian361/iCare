@@ -141,4 +141,6 @@
     <string name="verify_code_is_wrong">验证码错误</string>
     <string name="re_send">重发</string>
     <string name="re_send_verify_code">重发验证码</string>
+    <string name="call_phone">拨打</string>
+    <string name="total_grade">总体评分</string>
 </resources>

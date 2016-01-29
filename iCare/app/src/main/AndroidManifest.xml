@@ -149,6 +149,10 @@
             android:name=".views.activity.BindEmailActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".views.activity.ServantDetailActivity"
+            android:screenOrientation="portrait" />
+
 
         <!--   ///////////////////////////////    百度地图    //////////////////////////      -->
         <meta-data
@@ -225,18 +229,18 @@
         <service android:name="com.easemob.chat.EMChatService" />
         <receiver android:name="com.easemob.chat.EMMonitorReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
-                <data android:scheme="package"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
             </intent-filter>
             <!-- 可选filter -->
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
         <!-- 开机自启动服务 -->
-        <receiver android:name="com.easemob.chat.StartServiceReceiver" >
-            <intent-filter android:priority="1000" >
+        <receiver android:name="com.easemob.chat.StartServiceReceiver">
+            <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
 

@@ -18,6 +18,7 @@ import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.activity.AddOrderActivity;
 import com.sundy.icare.views.activity.MyOrderActivity;
 import com.sundy.icare.views.activity.ServerActivity;
+import com.sundy.icare.views.activity.ServantDetailActivity;
 import com.sundy.icare.views.fragment.LazyLoadFragment;
 
 /**
@@ -80,9 +81,15 @@ public class ServiceFragment extends LazyLoadFragment {
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//            goServiceDetail();  ---查看服务者相关信息
+            //查看服务者相关信息
+            goServerDetail();
         }
     };
+
+    private void goServerDetail() {
+        Intent intent = new Intent(getActivity(), ServantDetailActivity.class);
+        startActivity(intent);
+    }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
         @Override
