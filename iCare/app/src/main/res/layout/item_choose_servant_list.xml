@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <com.sundy.icare.customs.CircleImageView
+            android:id="@+id/img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:background="@null"
+            android:src="@mipmap/profile_img"
+            app:border_color="#00000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/txtStatus"
+            android:layout_toRightOf="@+id/img"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="钟先生"
+                android:textColor="@color/material_blue_grey_950"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtTitleServiceType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/service_type"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtServiceType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="司机、载货"
+                android:textColor="@color/material_grey_850"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/txtTitleServiceTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/can_service_time"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtServiceTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="12:00 ~ 1:30/14:30~16:00"
+                android:textColor="@color/material_grey_850"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:text="距离：300米"
+            android:textColor="@color/material_grey_800"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txtStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/txtStatus"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:text="评分：4.7分"
+            android:textColor="@color/material_grey_800"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/btnAccept"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/txtStar"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/corner_btn_gray"
+            android:gravity="center"
+            android:text="@string/accept"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/material_grey_300" />
+
+
+</LinearLayout>

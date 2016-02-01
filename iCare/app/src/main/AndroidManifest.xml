@@ -153,6 +153,9 @@
             android:name=".views.activity.ServantDetailActivity"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".views.activity.ChooseServantActivity"
+            android:screenOrientation="portrait"/>
+
 
         <!--   ///////////////////////////////    百度地图    //////////////////////////      -->
         <meta-data

@@ -16,6 +16,21 @@ public class ResourceTaker {
     public static final String HTTP_BASE = MyURL.HTTP_DEV;
     private static final String key = "123456789012345678901234567890~!";
 
+    //用户登陆API
+    public static void login(String mobile, String password,
+                             HttpCallback callback) {
+
+        StringBuffer sb = new StringBuffer();
+        sb.append("<request>");
+        sb.append("<login_passwd>" + password + "</login_passwd>");
+        sb.append("<mobile>" + mobile + "</mobile>");
+        sb.append("<user_name></user_name>");
+        sb.append("<auth_token>" + MyUtils.getToken(callback.context) + "</auth_token>");
+        sb = getCommonParameter(sb, callback);
+        sb.append("</request>");
+
+        getHttpRequest(MyURL.MYURL_register, MyURL.METHOD_REGISTER, sb.toString(), JSONObject.class, callback);
+    }
 
     //用户注册API
     public static void register(String username, String mobile, String password,
@@ -33,6 +48,7 @@ public class ResourceTaker {
 
         getHttpRequest(MyURL.MYURL_register, MyURL.METHOD_REGISTER, sb.toString(), JSONObject.class, callback);
     }
+
 
     //公共参数
     public static StringBuffer getCommonParameter(StringBuffer sb, HttpCallback callback) {

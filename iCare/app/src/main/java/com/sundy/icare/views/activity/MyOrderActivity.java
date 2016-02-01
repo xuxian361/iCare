@@ -47,9 +47,18 @@ public class MyOrderActivity extends BaseActivity {
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            goOrderDetail(); //跳转至订单详情页
+            if (i == 2) {
+                goChooseServantList(); //跳转至选择服务者列表
+            } else {
+                goOrderDetail(); //跳转至订单详情页
+            }
         }
     };
+
+    private void goChooseServantList() {
+        Intent intent = new Intent(this, ChooseServantActivity.class);
+        startActivity(intent);
+    }
 
     private void goOrderDetail() {
         Intent intent = new Intent(this, MyOrderDetailActivity.class);
@@ -71,7 +80,7 @@ public class MyOrderActivity extends BaseActivity {
     };
 
     private void goAddOrder() {
-        Intent intent = new Intent(this,AddOrderActivity.class);
+        Intent intent = new Intent(this, AddOrderActivity.class);
         startActivity(intent);
     }
 
