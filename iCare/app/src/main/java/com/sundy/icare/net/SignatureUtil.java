@@ -1,5 +1,7 @@
 package com.sundy.icare.net;
 
+import android.util.Log;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -102,6 +104,7 @@ public class SignatureUtil {
             srcList.clear();
             srcList = null;
         }
+        Log.e("sundy", "--------->signature = " + signature);
         return signature;
     }
 
