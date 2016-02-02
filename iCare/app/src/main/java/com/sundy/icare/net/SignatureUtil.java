@@ -104,7 +104,6 @@ public class SignatureUtil {
             srcList.clear();
             srcList = null;
         }
-        Log.e("sundy", "--------->signature = " + signature);
         return signature;
     }
 

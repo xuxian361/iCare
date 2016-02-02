@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.androidquery.AQuery;
+import com.easemob.EMCallBack;
+import com.easemob.chat.EMChatManager;
 import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.MyJsonParser;
@@ -18,6 +20,7 @@ import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -65,7 +68,7 @@ public class RegisterPasswordActivity extends BaseActivity {
     };
 
     private void goRegister() {
-        String password = edtPassword.getText().toString().trim();
+        final String password = edtPassword.getText().toString().trim();
         if (TextUtils.isEmpty(password)) {
             MyToast.rtToast(this, getString(R.string.login_password_cannot_empty));
             return;
@@ -73,19 +76,26 @@ public class RegisterPasswordActivity extends BaseActivity {
 
         SharedPreferences preferences = getSharedPreferences(MyConstant.APP_NAME, MODE_PRIVATE);
         String username = preferences.getString(MyPreference.PREFERENCE_USERNAME, "");
-        String mobile = preferences.getString(MyPreference.PREFERENCE_MOBILE, "");
+        final String mobile = preferences.getString(MyPreference.PREFERENCE_MOBILE, "");
 
         ResourceTaker.register(username, mobile, password, new HttpCallback<JSONObject>(this) {
             @Override
             public void callback(String url, JSONObject result, String status) {
                 super.callback(url, result, status);
-                MyUtils.rtLog(TAG, "--------->result =" + result);
                 try {
                     if (result != null) {
                         String code = MyJsonParser.getResp_Code(result);
                         String msg = MyJsonParser.getResp_Msg(result);
                         if (code.equals("0000")) {
-
+                            JSONObject item = MyJsonParser.getResp_Detail(result);
+                            if (item != null) {
+                                boolean is_success = item.getBoolean("is_success");
+                                if (is_success) {   //register success
+                                    login(mobile, password);
+                                } else {    //register fail
+                                    MyToast.rtToast(RegisterPasswordActivity.this, msg);
+                                }
+                            }
                         } else {
                             MyToast.rtToast(RegisterPasswordActivity.this, msg);
                         }
@@ -95,8 +105,69 @@ public class RegisterPasswordActivity extends BaseActivity {
                 }
             }
         });
+    }
 
-        go2Main();
+    private void login(String mobile, String password) {
+        ResourceTaker.login(mobile, password, new HttpCallback<JSONObject>(this) {
+            @Override
+            public void callback(String url, JSONObject result, String status) {
+                super.callback(url, result, status);
+                try {
+                    if (result != null) {
+                        String code = MyJsonParser.getResp_Code(result);
+                        String msg = MyJsonParser.getResp_Msg(result);
+                        if (code.equals("0000")) {
+                            JSONObject detail = MyJsonParser.getResp_Detail(result);
+                            if (detail != null) {
+                                //Login to 环信
+                                login2HuanXin(detail);
+                            }
+                        } else {
+                            MyToast.rtToast(RegisterPasswordActivity.this, msg);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    //尝试登陆环信
+    private void login2HuanXin(final JSONObject detail) throws JSONException {
+        String im_user_name = detail.getString("im_user_name");
+        String im_user_pass = detail.getString("im_user_pass");
+
+        EMChatManager.getInstance().login(im_user_name, im_user_pass, new EMCallBack() {
+            @Override
+            public void onSuccess() {
+                saveUserInfo(detail);
+                go2Main();
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                MyToast.rtToast(RegisterPasswordActivity.this, getString(R.string.login_fail));
+            }
+
+            @Override
+            public void onProgress(int i, String s) {
+
+            }
+        });
+    }
+
+    private void saveUserInfo(JSONObject detail) {
+        try {
+            String im_user_name = detail.getString("im_user_name");
+            String im_user_pass = detail.getString("im_user_pass");
+            String token = detail.getString("token");
+            String user_id = detail.getString("user_id");
+            MyUtils.saveUserInfo(this, im_user_name, im_user_pass, token, user_id);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void go2Main() {

@@ -15,8 +15,8 @@ public class MyURL {
     public static final String MYURL_login = "icare/user/login";
     public static final String MYURL_register = "icare/user/register";
 
-
     //Method
     public static final String METHOD_REGISTER = "icare.user.register";
+    public static final String METHOD_LOGIN = "icare.user.login";
 
 }

@@ -29,7 +29,7 @@ public class ResourceTaker {
         sb = getCommonParameter(sb, callback);
         sb.append("</request>");
 
-        getHttpRequest(MyURL.MYURL_register, MyURL.METHOD_REGISTER, sb.toString(), JSONObject.class, callback);
+        getHttpRequest(MyURL.MYURL_login, MyURL.METHOD_LOGIN, sb.toString(), JSONObject.class, callback);
     }
 
     //用户注册API
@@ -63,8 +63,6 @@ public class ResourceTaker {
     public static void getHttpRequest(String url, String method, String content, Class stype, HttpCallback callback) {
         AESTool aes = new AESTool();
         SignatureUtil signatureUtil = new SignatureUtil();
-        MyUtils.rtLog(TAG, "------->request content = " + content);
-
         long millis = System.currentTimeMillis();
         String xml = content;
         try {
@@ -73,7 +71,7 @@ public class ResourceTaker {
             e.printStackTrace();
         }
         String encrpt = signatureUtil.digest(xml, "MD5");
-        String sign = signatureUtil.generateSignature(MyUtils.getAppID(callback.context), MyUtils.getToken(callback.context), encrpt, millis);
+        String sign = signatureUtil.generateSignature(MyUtils.getUUID(callback.context), MyUtils.getToken(callback.context), encrpt, millis);
         Map<String, String> paraMap = new HashMap<String, String>();
         paraMap.put("time", String.valueOf(millis));
         paraMap.put("sign", sign);

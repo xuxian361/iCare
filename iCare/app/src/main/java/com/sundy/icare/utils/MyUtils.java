@@ -33,7 +33,7 @@ public class MyUtils {
     //Get APP ID
     public static String getAppID(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        return preferences.getString(MyPreference.PREFERENCE_APP_ID, "app_01");
+        return preferences.getString(MyPreference.PREFERENCE_APP_ID, "app_02");
     }
 
     //Save UUID
@@ -74,10 +74,23 @@ public class MyUtils {
         return preferences.getString(MyPreference.PREFERENCE_TOKEN, "");
     }
 
+    //Save User Login Info
+    public static void saveUserInfo(Context context, String im_user_name,
+                                    String im_user_pass, String token, String user_id) {
+        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(MyPreference.PREFERENCE_USER_ID, user_id);
+        editor.putString(MyPreference.PREFERENCE_TOKEN, token);
+        editor.putString(MyPreference.PREFERENCE_IM_USER_NAME, im_user_name);
+        editor.putString(MyPreference.PREFERENCE_IM_USER_PASSWORD, im_user_pass);
+        editor.commit();
+    }
+
+
     //判断是否登陆
     public static boolean isLogin(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        String sessionid = preferences.getString(MyPreference.SESSION_ID, "");
+        String sessionid = preferences.getString(MyPreference.PREFERENCE_TOKEN, "");
         if (!"".equals(sessionid))
             return true;
         return false;
