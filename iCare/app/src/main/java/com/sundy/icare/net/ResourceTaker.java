@@ -1,6 +1,6 @@
 package com.sundy.icare.net;
 
-import com.sundy.icare.utils.MyUtils;
+import com.sundy.icare.utils.MyPreference;
 
 import org.json.JSONObject;
 
@@ -25,7 +25,7 @@ public class ResourceTaker {
         sb.append("<login_passwd>" + password + "</login_passwd>");
         sb.append("<mobile>" + mobile + "</mobile>");
         sb.append("<user_name></user_name>");
-        sb.append("<auth_token>" + MyUtils.getToken(callback.context) + "</auth_token>");
+        sb.append("<auth_token>" + MyPreference.getToken(callback.context) + "</auth_token>");
         sb = getCommonParameter(sb, callback);
         sb.append("</request>");
 
@@ -41,7 +41,7 @@ public class ResourceTaker {
         sb.append("<login_passwd>" + password + "</login_passwd>");
         sb.append("<mobile>" + mobile + "</mobile>");
         sb.append("<user_name>" + username + "</user_name>");
-        sb.append("<auth_token>" + MyUtils.getToken(callback.context) + "</auth_token>");
+        sb.append("<auth_token>" + MyPreference.getToken(callback.context) + "</auth_token>");
         sb.append("<user_type>02</user_type>");
         sb = getCommonParameter(sb, callback);
         sb.append("</request>");
@@ -52,9 +52,9 @@ public class ResourceTaker {
 
     //公共参数
     public static StringBuffer getCommonParameter(StringBuffer sb, HttpCallback callback) {
-        sb.append("<app_id>" + MyUtils.getAppID(callback.context) + "</app_id>");
-        sb.append("<app_user_id>" + MyUtils.getAPP_User_ID(callback.context) + "</app_user_id>");
-        sb.append("<device_info>" + MyUtils.getUUID(callback.context) + "</device_info>");
+        sb.append("<app_id>" + MyPreference.getAppID(callback.context) + "</app_id>");
+        sb.append("<app_user_id>" + MyPreference.getAPP_User_ID(callback.context) + "</app_user_id>");
+        sb.append("<device_info>" + MyPreference.getUUID(callback.context) + "</device_info>");
         sb.append("<device_type>android</device_type>");
         sb.append("<language>cn</language>");
         return sb;
@@ -71,11 +71,11 @@ public class ResourceTaker {
             e.printStackTrace();
         }
         String encrpt = signatureUtil.digest(xml, "MD5");
-        String sign = signatureUtil.generateSignature(MyUtils.getUUID(callback.context), MyUtils.getToken(callback.context), encrpt, millis);
+        String sign = signatureUtil.generateSignature(MyPreference.getUUID(callback.context), MyPreference.getToken(callback.context), encrpt, millis);
         Map<String, String> paraMap = new HashMap<String, String>();
         paraMap.put("time", String.valueOf(millis));
         paraMap.put("sign", sign);
-        paraMap.put("device", MyUtils.getUUID(callback.context));
+        paraMap.put("device", MyPreference.getUUID(callback.context));
         paraMap.put("encrpt", encrpt);
         paraMap.put("method", method);
         paraMap.put("content", xml);

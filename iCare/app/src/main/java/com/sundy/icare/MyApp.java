@@ -8,10 +8,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.bugtags.library.Bugtags;
+import com.easemob.EMConnectionListener;
 import com.easemob.chat.EMChat;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.sundy.icare.utils.LruBitmapCache;
 import com.sundy.icare.utils.MyConstant;
+import com.sundy.icare.utils.MyUtils;
 
 /**
  * Created by sundy on 15/12/6.
@@ -30,10 +32,24 @@ public class MyApp extends Application {
         super.onCreate();
         myApp = this;
 
+        //-----------------Bugtags init-----------------//
+        if (MyConstant.Is_BugTags_Enable) {
+            //初始化BugTags: 跟踪Bugs
+            Bugtags.start(MyConstant.BUG_TAGS_KEY, this, Bugtags.BTGInvocationEventBubble);
+        }
         //-----------------Fresco init------------------//
         Fresco.initialize(this);
-
         //-----------------环信SDK init------------------//
+        int pid = android.os.Process.myPid();
+        String processAppName = MyUtils.getAppName(this, pid);
+        // 如果app启用了远程的service，此application:onCreate会被调用2次
+        // 为了防止环信SDK被初始化2次，加此判断会保证SDK被初始化1次
+        // 默认的app会在以包名为默认的process name下运行，如果查到的process name不是app的process name就立即返回
+        if (processAppName == null || !processAppName.equalsIgnoreCase("com.sundy.icare")) {
+            MyUtils.rtLog(TAG, "enter the service process!");
+            return;
+        }
+
         EMChat.getInstance().init(this);
         /**
          * debugMode == true 时为打开，sdk 会在log里输入调试信息
@@ -42,11 +58,6 @@ public class MyApp extends Application {
          */
         EMChat.getInstance().setDebugMode(true);//在做打包混淆时，要关闭debug模式，避免消耗不必要的资源
 
-        //-----------------Bugtags init-----------------//
-        if (MyConstant.Is_BugTags_Enable) {
-            //初始化BugTags: 跟踪Bugs
-            Bugtags.start(MyConstant.BUG_TAGS_KEY, this, Bugtags.BTGInvocationEventBubble);
-        }
     }
 
     @Override

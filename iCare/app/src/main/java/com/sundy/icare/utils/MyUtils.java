@@ -1,7 +1,7 @@
 package com.sundy.icare.utils;
 
+import android.app.ActivityManager;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.util.TypedValue;
@@ -9,6 +9,8 @@ import android.util.TypedValue;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by sundy on 15/12/6.
@@ -22,80 +24,7 @@ public class MyUtils {
                 context.getResources().getDisplayMetrics());
     }
 
-    //Save APP ID
-    public static void saveAppID(String appID, Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(MyPreference.PREFERENCE_APP_ID, appID);
-        editor.commit();
-    }
-
-    //Get APP ID
-    public static String getAppID(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        return preferences.getString(MyPreference.PREFERENCE_APP_ID, "app_02");
-    }
-
-    //Save UUID
-    public static void saveUDID(Context context) {
-        String udid = android.provider.Settings.System.getString(
-                context.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(MyPreference.UUID_STR, udid);
-        editor.commit();
-    }
-
-    //Get UUID
-    public static String getUUID(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        String uuid = preferences.getString(MyPreference.UUID_STR, "");
-        return uuid;
-    }
-
-    //Get APP_User_ID
-    public static String getAPP_User_ID(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        String mobile = preferences.getString(MyPreference.PREFERENCE_MOBILE, "");
-        return mobile;
-    }
-
-    //Save Token
-    public static void saveToken(String token, Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(MyPreference.PREFERENCE_TOKEN, token);
-        editor.commit();
-    }
-
-    //Get Token
-    public static String getToken(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        return preferences.getString(MyPreference.PREFERENCE_TOKEN, "");
-    }
-
-    //Save User Login Info
-    public static void saveUserInfo(Context context, String im_user_name,
-                                    String im_user_pass, String token, String user_id) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(MyPreference.PREFERENCE_USER_ID, user_id);
-        editor.putString(MyPreference.PREFERENCE_TOKEN, token);
-        editor.putString(MyPreference.PREFERENCE_IM_USER_NAME, im_user_name);
-        editor.putString(MyPreference.PREFERENCE_IM_USER_PASSWORD, im_user_pass);
-        editor.commit();
-    }
-
-
-    //判断是否登陆
-    public static boolean isLogin(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        String sessionid = preferences.getString(MyPreference.PREFERENCE_TOKEN, "");
-        if (!"".equals(sessionid))
-            return true;
-        return false;
-    }
-
+    //打印方法
     public static void rtLog(String tag, String msg) {
         if (MyConstant.IsDebug) {
             Log.e(tag, msg);
@@ -116,6 +45,7 @@ public class MyUtils {
         return result;
     }
 
+    //获取设备ID
     public static String getDeviceID(Context ctx) {
         TelephonyManager tManager = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
         return tManager.getDeviceId();
@@ -151,6 +81,26 @@ public class MyUtils {
             e.printStackTrace();
         }
         return result;
+    }
+
+    //获取APP NAME
+    public static String getAppName(Context context, int pID) {
+        String processName = null;
+        try {
+            ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+            List l = am.getRunningAppProcesses();
+            Iterator i = l.iterator();
+            while (i.hasNext()) {
+                ActivityManager.RunningAppProcessInfo info = (ActivityManager.RunningAppProcessInfo) (i.next());
+                if (info.pid == pID) {
+                    processName = info.processName;
+                    return processName;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return processName;
     }
 
 

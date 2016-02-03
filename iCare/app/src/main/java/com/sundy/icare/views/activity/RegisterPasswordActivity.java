@@ -10,6 +10,7 @@ import android.widget.EditText;
 import com.androidquery.AQuery;
 import com.easemob.EMCallBack;
 import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMGroupManager;
 import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.MyJsonParser;
@@ -67,6 +68,7 @@ public class RegisterPasswordActivity extends BaseActivity {
         }
     };
 
+    //注册
     private void goRegister() {
         final String password = edtPassword.getText().toString().trim();
         if (TextUtils.isEmpty(password)) {
@@ -107,6 +109,7 @@ public class RegisterPasswordActivity extends BaseActivity {
         });
     }
 
+    //登陆服务器
     private void login(String mobile, String password) {
         ResourceTaker.login(mobile, password, new HttpCallback<JSONObject>(this) {
             @Override
@@ -121,6 +124,8 @@ public class RegisterPasswordActivity extends BaseActivity {
                             if (detail != null) {
                                 //Login to 环信
                                 login2HuanXin(detail);
+                            } else {
+                                MyToast.rtToast(RegisterPasswordActivity.this, msg);
                             }
                         } else {
                             MyToast.rtToast(RegisterPasswordActivity.this, msg);
@@ -133,21 +138,35 @@ public class RegisterPasswordActivity extends BaseActivity {
         });
     }
 
-    //尝试登陆环信
+    //登陆环信
     private void login2HuanXin(final JSONObject detail) throws JSONException {
         String im_user_name = detail.getString("im_user_name");
-        String im_user_pass = detail.getString("im_user_pass");
+        String im_encrypted_password = detail.getString("im_encrypted_password");
 
-        EMChatManager.getInstance().login(im_user_name, im_user_pass, new EMCallBack() {
+        EMChatManager.getInstance().login(im_user_name, im_encrypted_password, new EMCallBack() {
             @Override
             public void onSuccess() {
-                saveUserInfo(detail);
-                go2Main();
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        EMGroupManager.getInstance().loadAllGroups();
+                        EMChatManager.getInstance().loadAllConversations();
+                        MyUtils.rtLog(TAG, "----------->登陆聊天服务器成功!");
+                        //保存登陆用户信息
+                        saveUserInfo(detail);
+                        go2Main();
+                    }
+                });
             }
 
             @Override
             public void onError(int i, String s) {
-                MyToast.rtToast(RegisterPasswordActivity.this, getString(R.string.login_fail));
+                MyUtils.rtLog(TAG, "----------->登陆聊天服务器失败!");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        MyToast.rtToast(RegisterPasswordActivity.this, getString(R.string.login_fail));
+                    }
+                });
             }
 
             @Override
@@ -157,19 +176,21 @@ public class RegisterPasswordActivity extends BaseActivity {
         });
     }
 
+    //保存登陆用户信息
     private void saveUserInfo(JSONObject detail) {
         try {
             String im_user_name = detail.getString("im_user_name");
-            String im_user_pass = detail.getString("im_user_pass");
+            String im_encrypted_password = detail.getString("im_encrypted_password");
             String token = detail.getString("token");
             String user_id = detail.getString("user_id");
-            MyUtils.saveUserInfo(this, im_user_name, im_user_pass, token, user_id);
+            MyPreference.saveUserInfo(this, im_user_name, im_encrypted_password, token, user_id);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    //跳转主页
     private void go2Main() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

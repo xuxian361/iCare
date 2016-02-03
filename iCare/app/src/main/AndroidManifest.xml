@@ -67,7 +67,8 @@
 
         <activity
             android:name=".views.activity.LoginActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
 
         <activity
             android:name=".views.activity.RegisterUserNameActivity"
@@ -151,10 +152,12 @@
 
         <activity
             android:name=".views.activity.ServantDetailActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
 
-        <activity android:name=".views.activity.ChooseServantActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".views.activity.ChooseServantActivity"
+            android:screenOrientation="portrait" />
 
 
         <!--   ///////////////////////////////    百度地图    //////////////////////////      -->

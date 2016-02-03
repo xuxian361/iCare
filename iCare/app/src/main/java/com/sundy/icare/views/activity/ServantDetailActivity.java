@@ -29,7 +29,9 @@ public class ServantDetailActivity extends BaseActivity {
 
     private void init() {
         aq.id(R.id.btnBack).clicked(onClick);
-        aq.id(R.id.txtTitle).text(R.string.settings);
+        aq.id(R.id.txtTitle).text(R.string.servant_detail);
+        aq.id(R.id.btnRight).clicked(onClick);
+        aq.id(R.id.relative_More).clicked(onClick);
 
     }
 
@@ -39,6 +41,17 @@ public class ServantDetailActivity extends BaseActivity {
             switch (view.getId()) {
                 case R.id.btnBack:
                     finish();
+                    break;
+                case R.id.btnRight:
+                    int visibility = aq.id(R.id.relative_More).getView().getVisibility();
+                    if (visibility == View.GONE) {
+                        aq.id(R.id.relative_More).visible();
+                    } else {
+                        aq.id(R.id.relative_More).gone();
+                    }
+                    break;
+                case R.id.relative_More:
+                    aq.id(R.id.relative_More).gone();
                     break;
             }
         }

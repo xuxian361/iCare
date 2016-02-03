@@ -144,4 +144,9 @@
     <string name="call_phone">拨打</string>
     <string name="total_grade">总体评分</string>
     <string name="accept">接受</string>
+    <string name="login_at_another_device">该账户在其他设备登陆, 请重新登入!</string>
+    <string name="login_username_cannot_empty">用户名不能为空</string>
+    <string name="choose_servant">选择服务者</string>
+    <string name="servant_detail">服务者详情</string>
+    <string name="bookmark">收藏</string>
 </resources>

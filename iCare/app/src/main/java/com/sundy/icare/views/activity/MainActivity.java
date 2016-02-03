@@ -1,5 +1,6 @@
 package com.sundy.icare.views.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -7,8 +8,14 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.androidquery.AQuery;
+import com.easemob.EMCallBack;
+import com.easemob.EMConnectionListener;
+import com.easemob.EMError;
+import com.easemob.chat.EMChatManager;
+import com.easemob.util.NetUtils;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.ActivityController;
+import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.fragment.family.MarketFragment;
 import com.sundy.icare.views.fragment.family.MeFragment;
@@ -36,8 +43,67 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         aq = new AQuery(this);
 
+        EMChatManager.getInstance().addConnectionListener(new MyConnectionListener());
+
         initBottomMenu();
         initViewPager();
+    }
+
+
+    private class MyConnectionListener implements EMConnectionListener {
+
+        @Override
+        public void onConnected() {
+            //已连接到服务器
+        }
+
+        @Override
+        public void onDisconnected(final int error) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (error == EMError.USER_REMOVED) {
+                        MyUtils.rtLog(TAG, "---->显示帐号已经被移除");
+                    } else if (error == EMError.CONNECTION_CONFLICT) {
+                        MyUtils.rtLog(TAG, "---->显示帐号在其他设备登陆");
+                        MyToast.rtToast(MainActivity.this, getString(R.string.login_at_another_device));
+                        EMChatManager.getInstance().logout(new EMCallBack() {
+                            @Override
+                            public void onSuccess() {
+                                //登出成功
+                                //跳转到登陆页
+                                goLogin();
+                            }
+
+                            @Override
+                            public void onError(int i, String s) {
+                                //登出异常
+                                //跳转到登陆页
+                                goLogin();
+                            }
+
+                            @Override
+                            public void onProgress(int i, String s) {
+
+                            }
+                        });
+
+                    } else {
+                        if (NetUtils.hasNetwork(MainActivity.this)) {
+                            MyUtils.rtLog(TAG, "---->连接不到聊天服务器");
+                        } else {
+                            MyUtils.rtLog(TAG, "---->当前网络不可用，请检查网络设置");
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    private void goLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        ActivityController.finishAll();
     }
 
     private void initBottomMenu() {

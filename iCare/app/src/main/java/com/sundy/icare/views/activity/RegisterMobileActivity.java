@@ -192,6 +192,7 @@ public class RegisterMobileActivity extends BaseActivity {
 
     }
 
+    //注册
     private void goRegister() {
         String mobile = edtMobile.getText().toString().trim();
         SharedPreferences preferences = getSharedPreferences(MyConstant.APP_NAME, MODE_PRIVATE);

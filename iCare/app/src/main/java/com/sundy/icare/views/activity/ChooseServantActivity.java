@@ -1,9 +1,7 @@
 package com.sundy.icare.views.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.androidquery.AQuery;
@@ -38,7 +36,7 @@ public class ChooseServantActivity extends BaseActivity {
 
     private void init() {
         aq.id(R.id.btnBack).clicked(onClick);
-        aq.id(R.id.txtTitle).text(R.string.settings);
+        aq.id(R.id.txtTitle).text(R.string.choose_servant);
 
         lv_Data = aq.id(R.id.lv_Data).getListView();
         adapter = new ChooseServantListAdapter(this);

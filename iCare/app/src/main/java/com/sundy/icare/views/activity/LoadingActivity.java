@@ -10,6 +10,7 @@ import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
 import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyConstant;
+import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyUtils;
 
 public class LoadingActivity extends BaseActivity {
@@ -37,10 +38,10 @@ public class LoadingActivity extends BaseActivity {
         MyConstant.SCREEN_DENSITY = metrics.density;
 
         //Save UUID
-        MyUtils.saveUDID(this);
+        MyPreference.saveUDID(this);
 
         //Save APP ID : Default is app_02(子女)
-        MyUtils.saveAppID(MyConstant.APP_ID_02, this);
+        MyPreference.saveAppID(MyConstant.APP_ID_02, this);
 
         //百度Push Init
         PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, MyConstant.Baidu_Push_Key);
@@ -80,7 +81,7 @@ public class LoadingActivity extends BaseActivity {
                 mRunnable = new Runnable() {
                     @Override
                     public void run() {
-                        if (MyUtils.isLogin(LoadingActivity.this)) {
+                        if (MyPreference.isLogin(LoadingActivity.this)) {
                             mHandler.sendEmptyMessage(GO_MAIN);
                         } else {
                             mHandler.sendEmptyMessage(GO_LOGIN);
