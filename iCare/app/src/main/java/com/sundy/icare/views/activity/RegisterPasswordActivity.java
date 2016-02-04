@@ -15,7 +15,6 @@ import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.MyJsonParser;
 import com.sundy.icare.net.ResourceTaker;
-import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
@@ -36,7 +35,6 @@ public class RegisterPasswordActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_set_password);
-        ActivityController.addActivity(this);
 
         aq = new AQuery(this);
 
@@ -194,12 +192,10 @@ public class RegisterPasswordActivity extends BaseActivity {
     private void go2Main() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        ActivityController.finishAll();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityController.removeActivity(this);
     }
 }

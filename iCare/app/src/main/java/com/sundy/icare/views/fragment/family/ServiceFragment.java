@@ -13,7 +13,6 @@ import android.widget.ProgressBar;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.adapters.ServiceListAdapter;
-import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.activity.AddOrderActivity;
 import com.sundy.icare.views.activity.MyOrderActivity;
@@ -109,7 +108,6 @@ public class ServiceFragment extends LazyLoadFragment {
                     //切换到服务者
                     Intent intent3 = new Intent(getActivity(), ServerActivity.class);
                     startActivity(intent3);
-                    ActivityController.finishAll();
                     break;
                 case R.id.btnRight:
                     int visibility = aq.id(R.id.relative_More).getView().getVisibility();

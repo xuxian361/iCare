@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.ActivityController;
 
 /**
  * Created by sundy on 15/12/22.
@@ -19,7 +18,6 @@ public class UserDetailActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_detail);
-        ActivityController.addActivity(this);
 
         aq = new AQuery(this);
 
@@ -56,6 +54,5 @@ public class UserDetailActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityController.removeActivity(this);
     }
 }

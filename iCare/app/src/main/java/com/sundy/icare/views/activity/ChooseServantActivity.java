@@ -7,7 +7,6 @@ import android.widget.ListView;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.adapters.ChooseServantListAdapter;
-import com.sundy.icare.utils.ActivityController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,6 @@ public class ChooseServantActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_choose_servant);
-        ActivityController.addActivity(this);
 
         aq = new AQuery(this);
 
@@ -62,7 +60,6 @@ public class ChooseServantActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityController.removeActivity(this);
     }
 
 }

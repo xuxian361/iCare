@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.ActivityController;
 
 /**
  * Created by sundy on 16/1/18.
@@ -19,7 +18,6 @@ public class ContactsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
-        ActivityController.addActivity(this);
 
         aq = new AQuery(this);
 
@@ -58,6 +56,5 @@ public class ContactsActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityController.removeActivity(this);
     }
 }

@@ -8,7 +8,6 @@ import android.util.DisplayMetrics;
 
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
-import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyUtils;
@@ -29,7 +28,6 @@ public class LoadingActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.loading);
 
-        ActivityController.addActivity(this);
 
         //屏幕的信息
         DisplayMetrics metrics = getResources().getDisplayMetrics();
@@ -137,7 +135,6 @@ public class LoadingActivity extends BaseActivity {
             if (mHandler != null) {
                 mHandler = null;
             }
-            ActivityController.removeActivity(this);
         } catch (Exception e) {
             e.printStackTrace();
         }

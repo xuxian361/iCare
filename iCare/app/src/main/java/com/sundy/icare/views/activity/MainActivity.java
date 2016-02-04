@@ -1,6 +1,7 @@
 package com.sundy.icare.views.activity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -13,8 +14,9 @@ import com.easemob.EMConnectionListener;
 import com.easemob.EMError;
 import com.easemob.chat.EMChatManager;
 import com.easemob.util.NetUtils;
+import com.sundy.huanxin.receiver.AckMessageBroadcastReceiver;
+import com.sundy.huanxin.receiver.NewMessageBroadcastReceiver;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.fragment.family.MarketFragment;
@@ -34,21 +36,52 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ViewPager pager;
     private FragmentPagerAdapter pagerAdapter;
     private int current_Position = 0;
+    private boolean is_Ack_flag = true; //如果用到已读的回执需要把这个flag设置成true
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         MyUtils.rtLog(TAG, "------------->onCreate");
         super.onCreate(savedInstanceState);
-        ActivityController.addActivity(this);
         setContentView(R.layout.activity_main);
         aq = new AQuery(this);
 
-        EMChatManager.getInstance().addConnectionListener(new MyConnectionListener());
+        //初始化环信方法
+        initHuanXin();
 
+        //初始化View
         initBottomMenu();
         initViewPager();
     }
 
+    private void initHuanXin() {
+        EMChatManager.getInstance().addConnectionListener(new MyConnectionListener());
+
+        //注册接收新消息的监听广播
+        registerNewMessageBroadcastReceiver();
+        //注册接收ack回执消息的监听广播
+        registerAckMessageBroadcastReceiver();
+
+    }
+
+    //注册接收新消息的监听广播
+    private void registerNewMessageBroadcastReceiver() {
+        //只有注册了广播才能接收到新消息，目前离线消息，在线消息都是走接收消息的广播（离线消息目前无法监听，在登录以后，接收消息广播会执行一次拿到所有的离线消息）
+        NewMessageBroadcastReceiver msgReceiver = new NewMessageBroadcastReceiver();
+        IntentFilter intentFilter = new IntentFilter(EMChatManager.getInstance().getNewMessageBroadcastAction());
+        intentFilter.setPriority(3);
+        registerReceiver(msgReceiver, intentFilter);
+    }
+
+    //注册接收ack回执消息的监听广播
+    private void registerAckMessageBroadcastReceiver() {
+        //如果用到已读的回执需要把这个flag设置成true
+        EMChatManager.getInstance().getChatOptions().setRequireAck(is_Ack_flag);
+        //如果用到已读的回执需要把这个flag设置成true
+        AckMessageBroadcastReceiver ackMessageReceiver = new AckMessageBroadcastReceiver();
+        IntentFilter ackMessageIntentFilter = new IntentFilter(EMChatManager.getInstance().getAckMessageBroadcastAction());
+        ackMessageIntentFilter.setPriority(3);
+        registerReceiver(ackMessageReceiver, ackMessageIntentFilter);
+    }
 
     private class MyConnectionListener implements EMConnectionListener {
 
@@ -100,10 +133,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
+    //跳转登陆
     private void goLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
-        ActivityController.finishAll();
+        finish();
     }
 
     private void initBottomMenu() {
@@ -189,7 +223,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onDestroy() {
         MyUtils.rtLog(TAG, "------------------->onDestroy");
         super.onDestroy();
-        ActivityController.removeActivity(this);
         try {
             if (mContent != null)
                 mContent = null;

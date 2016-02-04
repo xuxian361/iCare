@@ -10,7 +10,6 @@ import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.activity.MainActivity;
 import com.sundy.icare.views.activity.SettingActivity;
@@ -82,7 +81,6 @@ public class ServerMeFragment extends LazyLoadFragment {
                     //切花至子女端
                     Intent intent3 = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent3);
-                    ActivityController.finishAll();
                     break;
             }
         }

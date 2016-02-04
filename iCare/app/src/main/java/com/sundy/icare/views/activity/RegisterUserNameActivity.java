@@ -9,7 +9,6 @@ import android.widget.EditText;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
@@ -26,7 +25,6 @@ public class RegisterUserNameActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_username);
-        ActivityController.addActivity(this);
 
         aq = new AQuery(this);
 
@@ -76,6 +74,5 @@ public class RegisterUserNameActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityController.removeActivity(this);
     }
 }

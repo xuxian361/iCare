@@ -9,7 +9,6 @@ import android.widget.ListView;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.adapters.MyOrderListAdapter;
-import com.sundy.icare.utils.ActivityController;
 
 /**
  * Created by sundy on 15/12/24.
@@ -24,7 +23,6 @@ public class MyOrderActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_order);
-        ActivityController.addActivity(this);
 
         aq = new AQuery(this);
         init();
@@ -87,6 +85,5 @@ public class MyOrderActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityController.removeActivity(this);
     }
 }

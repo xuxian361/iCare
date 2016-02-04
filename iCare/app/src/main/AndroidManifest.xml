@@ -253,6 +253,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </receiver>
+        <receiver android:name="com.sundy.huanxin.receiver.NewMessageBroadcastReceiver" />
+        <receiver android:name="com.sundy.huanxin.receiver.AckMessageBroadcastReceiver" />
+        <!--   /////////////////////////////////////////////////////////////////      -->
 
     </application>
 

@@ -8,7 +8,6 @@ import android.view.View;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.fragment.server.ServerLatestFragment;
 import com.sundy.icare.views.fragment.server.ServerMeFragment;
@@ -31,7 +30,6 @@ public class ServerActivity extends BaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         MyUtils.rtLog(TAG, "------------->onCreate");
         super.onCreate(savedInstanceState);
-        ActivityController.addActivity(this);
         setContentView(R.layout.layout_server);
         aq = new AQuery(this);
 
@@ -117,7 +115,6 @@ public class ServerActivity extends BaseActivity implements View.OnClickListener
     protected void onDestroy() {
         MyUtils.rtLog(TAG, "------------------->onDestroy");
         super.onDestroy();
-        ActivityController.removeActivity(this);
         try {
             if (mContent != null)
                 mContent = null;

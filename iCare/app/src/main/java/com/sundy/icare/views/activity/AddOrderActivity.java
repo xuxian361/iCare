@@ -5,7 +5,6 @@ import android.view.View;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.ActivityController;
 
 /**
  * Created by sundy on 15/12/23.
@@ -18,7 +17,6 @@ public class AddOrderActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_order);
-        ActivityController.addActivity(this);
 
         aq = new AQuery(this);
 
@@ -50,6 +48,5 @@ public class AddOrderActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityController.removeActivity(this);
     }
 }

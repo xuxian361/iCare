@@ -12,7 +12,6 @@ import android.widget.EditText;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
@@ -95,7 +94,6 @@ public class RegisterMobileActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_mobile);
-        ActivityController.addActivity(this);
 
         aq = new AQuery(this);
 
@@ -215,7 +213,6 @@ public class RegisterMobileActivity extends BaseActivity {
             e.printStackTrace();
         }
         SMSSDK.unregisterAllEventHandler();
-        ActivityController.removeActivity(this);
     }
 }
 

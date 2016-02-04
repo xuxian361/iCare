@@ -10,7 +10,6 @@ import android.widget.ListView;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.adapters.MyFamilyAdapter;
-import com.sundy.icare.utils.ActivityController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,6 @@ public class MyFamilyActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_family);
-        ActivityController.addActivity(this);
 
         aq = new AQuery(this);
 
@@ -109,7 +107,6 @@ public class MyFamilyActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityController.removeActivity(this);
     }
 }
 

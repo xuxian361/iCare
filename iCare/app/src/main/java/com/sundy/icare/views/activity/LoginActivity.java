@@ -20,7 +20,6 @@ import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.MyJsonParser;
 import com.sundy.icare.net.ResourceTaker;
-import com.sundy.icare.utils.ActivityController;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
@@ -42,7 +41,6 @@ public class LoginActivity extends BaseActivity {
         MyUtils.rtLog(TAG, "---------->onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        ActivityController.addActivity(this);
         aq = new AQuery(this);
         init();
     }
@@ -114,8 +112,7 @@ public class LoginActivity extends BaseActivity {
                     goRegister();
                     break;
                 case R.id.btn_login:
-//                    login();
-                    showLoginChoiceDialog();
+                    login();
                     break;
                 case R.id.txt_first_visit:
                     goMain();
@@ -288,7 +285,6 @@ public class LoginActivity extends BaseActivity {
     protected void onDestroy() {
         MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
-        ActivityController.removeActivity(this);
     }
 
 }

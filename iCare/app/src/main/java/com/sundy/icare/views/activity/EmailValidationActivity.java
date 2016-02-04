@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.ActivityController;
 
 /**
  * Created by sundy on 15/12/20.
@@ -19,7 +18,6 @@ public class EmailValidationActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.validate_email);
-        ActivityController.addActivity(this);
 
         aq = new AQuery(this);
 
@@ -52,13 +50,12 @@ public class EmailValidationActivity extends BaseActivity {
     private void go2Main() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        ActivityController.finishAll();
+        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityController.removeActivity(this);
     }
 }
 
