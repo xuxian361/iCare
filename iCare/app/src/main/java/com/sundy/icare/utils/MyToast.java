@@ -11,7 +11,7 @@ public class MyToast {
     private final String TAG = "MyToast";
 
     public static void rtToast(Context context, String msg) {
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
 }

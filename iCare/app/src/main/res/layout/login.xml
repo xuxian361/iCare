@@ -9,14 +9,13 @@
         android:id="@+id/linear_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="40dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_above="@+id/linear_login">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@mipmap/ic_launcher" />
 
     </LinearLayout>
@@ -25,16 +24,16 @@
         android:id="@+id/linear_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linear_icon"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="vertical">
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -69,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edt_height"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/corner_edt">
 
                 <ImageView
@@ -112,7 +111,7 @@
                     android:drawableLeft="@drawable/checkbox_selector"
                     android:drawablePadding="5dp"
                     android:text="@string/remember_pwd"
-                    android:textColor="@color/black"
+                    android:textColor="@color/material_blue_grey_800"
                     android:textSize="14sp" />
 
                 <TextView
@@ -121,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="@string/forget_pass"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/material_grey_600" />
             </RelativeLayout>
 
             <Button
@@ -143,14 +142,14 @@
         android:id="@+id/txt_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/txt_first_visit"
         android:layout_alignParentBottom="false"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
         android:gravity="bottom"
         android:text="@string/i_dont_have_account"
         android:textColor="@color/material_grey_850"
-        android:textSize="16sp" />
+        android:textSize="18sp"
+        android:layout_below="@+id/linear_login"
+        android:layout_marginTop="30dp" />
 
     <TextView
         android:id="@+id/txt_first_visit"

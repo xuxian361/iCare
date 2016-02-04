@@ -112,7 +112,40 @@ public class LoginActivity extends BaseActivity {
                     goRegister();
                     break;
                 case R.id.btn_login:
-                    login();
+//                    login();
+//                    showLoginChoiceDialog();
+
+                    EMChatManager.getInstance().login("15088086691_icare", "124578", new EMCallBack() {
+                        @Override
+                        public void onSuccess() {
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    EMGroupManager.getInstance().loadAllGroups();
+                                    EMChatManager.getInstance().loadAllConversations();
+                                    MyUtils.rtLog(TAG, "----------->登陆聊天服务器成功!");
+                                    //保存登陆用户信息
+                                    showLoginChoiceDialog();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError(int i, String s) {
+                            MyUtils.rtLog(TAG, "----------->登陆聊天服务器失败!");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    MyToast.rtToast(LoginActivity.this, getString(R.string.login_fail));
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onProgress(int i, String s) {
+
+                        }
+                    });
+
                     break;
                 case R.id.txt_first_visit:
                     goMain();
