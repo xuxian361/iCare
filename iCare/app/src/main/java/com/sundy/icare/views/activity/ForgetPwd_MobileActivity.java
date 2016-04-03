@@ -16,12 +16,6 @@ import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
 
-import org.json.JSONObject;
-
-import cn.smssdk.EventHandler;
-import cn.smssdk.SMSSDK;
-import cn.smssdk.utils.SMSLog;
-
 /**
  * Created by sundy on 16/1/18.
  */
@@ -49,28 +43,7 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
                     int event = msg.arg1;
                     int result = msg.arg2;
                     Object data = msg.obj;
-                    if (result == SMSSDK.RESULT_COMPLETE) {
-                        if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {//提交验证码，验证成功
-                            MyToast.rtToast(ForgetPwd_MobileActivity.this, getString(R.string.verify_success));
-                            goRegister();
-                        } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {//获取验证码
-                            MyToast.rtToast(ForgetPwd_MobileActivity.this, getString(R.string.verify_code_already_send));
-                        }
-                    } else {
-                        try {
-                            ((Throwable) data).printStackTrace();
-                            Throwable throwable = (Throwable) data;
 
-                            JSONObject object = new JSONObject(throwable.getMessage());
-                            String des = object.optString("detail");
-                            if (!TextUtils.isEmpty(des)) {
-                                MyToast.rtToast(ForgetPwd_MobileActivity.this, des);
-                                return;
-                            }
-                        } catch (Exception e) {
-                            SMSLog.getInstance().w(e);
-                        }
-                    }
                 } else if (msg.what == MSG_Timer) {
                     if (isStart) {
                         if (times == 0) {
@@ -110,22 +83,6 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
         edtMobile = aq.id(R.id.edtMobile).getEditText();
         edtCode = aq.id(R.id.edtCode).getEditText();
 
-
-        //Mob 短信验证码 Init
-        SMSSDK.initSDK(this, MyConstant.Mob_API_Key, MyConstant.Mob_APP_Secret);
-        EventHandler eh = new EventHandler() {
-            @Override
-            public void afterEvent(int event, int result, Object data) {
-                Message msg = new Message();
-                msg.arg1 = event;
-                msg.arg2 = result;
-                msg.obj = data;
-                msg.what = MSG_MOB;
-                mHandler.sendMessage(msg);
-            }
-        };
-        SMSSDK.registerEventHandler(eh);
-
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
@@ -164,7 +121,6 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
             MyToast.rtToast(this, getString(R.string.mobile_cannot_empty));
             return;
         }
-        SMSSDK.getVerificationCode(AREA_CODE, mobile);
         times = 10;
         isStart = true;
         changeColor();
@@ -185,8 +141,6 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
             MyToast.rtToast(this, getString(R.string.verify_code_cannot_empty));
             return;
         }
-
-        SMSSDK.submitVerificationCode(AREA_CODE, mobile, code);
     }
 
     private void goRegister() {
@@ -210,7 +164,6 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        SMSSDK.unregisterAllEventHandler();
     }
 }
 

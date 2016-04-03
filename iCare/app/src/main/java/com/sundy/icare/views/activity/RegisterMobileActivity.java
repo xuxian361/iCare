@@ -3,8 +3,6 @@ package com.sundy.icare.views.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -15,12 +13,6 @@ import com.sundy.icare.R;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
-
-import org.json.JSONObject;
-
-import cn.smssdk.EventHandler;
-import cn.smssdk.SMSSDK;
-import cn.smssdk.utils.SMSLog;
 
 /**
  * Created by sundy on 15/12/20.
@@ -39,56 +31,6 @@ public class RegisterMobileActivity extends BaseActivity {
     private boolean isStart = false;
     private Button btnGetCode;
 
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg != null) {
-                if (msg.what == MSG_MOB) {
-                    int event = msg.arg1;
-                    int result = msg.arg2;
-                    Object data = msg.obj;
-                    if (result == SMSSDK.RESULT_COMPLETE) {
-                        if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {//提交验证码，验证成功
-                            MyToast.rtToast(RegisterMobileActivity.this, getString(R.string.verify_success));
-                            goRegister();
-                        } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {//获取验证码
-                            MyToast.rtToast(RegisterMobileActivity.this, getString(R.string.verify_code_already_send));
-                        }
-                    } else {
-                        try {
-                            ((Throwable) data).printStackTrace();
-                            Throwable throwable = (Throwable) data;
-
-                            JSONObject object = new JSONObject(throwable.getMessage());
-                            String des = object.optString("detail");
-                            if (!TextUtils.isEmpty(des)) {
-                                MyToast.rtToast(RegisterMobileActivity.this, des);
-                                return;
-                            }
-                        } catch (Exception e) {
-                            SMSLog.getInstance().w(e);
-                        }
-                    }
-                } else if (msg.what == MSG_Timer) {
-                    if (isStart) {
-                        if (times == 0) {
-                            isStart = false;
-                            changeColor();
-                        } else {
-                            mHandler.sendEmptyMessageDelayed(MSG_Timer, 1000);
-                            times--;
-                            if (times < 10)
-                                btnGetCode.setText(getString(R.string.re_send) + " (0" + times + ")");
-                            else
-                                btnGetCode.setText(getString(R.string.re_send) + " (" + times + ")");
-                        }
-                    }
-                }
-            }
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,21 +52,6 @@ public class RegisterMobileActivity extends BaseActivity {
         edtMobile = aq.id(R.id.edtMobile).getEditText();
         edtCode = aq.id(R.id.edtCode).getEditText();
 
-
-        //Mob 短信验证码 Init
-        SMSSDK.initSDK(this, MyConstant.Mob_API_Key, MyConstant.Mob_APP_Secret);
-        EventHandler eh = new EventHandler() {
-            @Override
-            public void afterEvent(int event, int result, Object data) {
-                Message msg = new Message();
-                msg.arg1 = event;
-                msg.arg2 = result;
-                msg.obj = data;
-                msg.what = MSG_MOB;
-                mHandler.sendMessage(msg);
-            }
-        };
-        SMSSDK.registerEventHandler(eh);
 
     }
 
@@ -164,11 +91,9 @@ public class RegisterMobileActivity extends BaseActivity {
             MyToast.rtToast(this, getString(R.string.mobile_cannot_empty));
             return;
         }
-        SMSSDK.getVerificationCode(AREA_CODE, mobile);
         times = 60;
         isStart = true;
         changeColor();
-        mHandler.sendEmptyMessageDelayed(MSG_Timer, 1000);
     }
 
     //验证手机号码
@@ -185,8 +110,6 @@ public class RegisterMobileActivity extends BaseActivity {
             MyToast.rtToast(this, getString(R.string.verify_code_cannot_empty));
             return;
         }
-
-        SMSSDK.submitVerificationCode(AREA_CODE, mobile, code);
 
     }
 
@@ -205,14 +128,6 @@ public class RegisterMobileActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        try {
-            if (mHandler != null) {
-                mHandler = null;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        SMSSDK.unregisterAllEventHandler();
     }
 }
 

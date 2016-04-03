@@ -7,13 +7,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
-import com.bugtags.library.Bugtags;
-import com.easemob.EMConnectionListener;
-import com.easemob.chat.EMChat;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.sundy.icare.utils.LruBitmapCache;
-import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyUtils;
+
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * Created by sundy on 15/12/6.
@@ -32,11 +30,9 @@ public class MyApp extends Application {
         super.onCreate();
         myApp = this;
 
-        //-----------------Bugtags init-----------------//
-        if (MyConstant.Is_BugTags_Enable) {
-            //初始化BugTags: 跟踪Bugs
-            Bugtags.start(MyConstant.BUG_TAGS_KEY, this, Bugtags.BTGInvocationEventBubble);
-        }
+        JPushInterface.setDebugMode(true);    // 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);            // 初始化 JPush
+
         //-----------------Fresco init------------------//
         Fresco.initialize(this);
         //-----------------环信SDK init------------------//
@@ -49,14 +45,6 @@ public class MyApp extends Application {
             MyUtils.rtLog(TAG, "enter the service process!");
             return;
         }
-
-        EMChat.getInstance().init(this);
-        /**
-         * debugMode == true 时为打开，sdk 会在log里输入调试信息
-         * @param debugMode
-         * 在做代码混淆的时候需要设置成false
-         */
-        EMChat.getInstance().setDebugMode(true);//在做打包混淆时，要关闭debug模式，避免消耗不必要的资源
 
     }
 

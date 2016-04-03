@@ -8,9 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.androidquery.AQuery;
-import com.easemob.EMCallBack;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMGroupManager;
 import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.MyJsonParser;
@@ -18,7 +15,6 @@ import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
-import com.sundy.icare.utils.MyUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -141,37 +137,7 @@ public class RegisterPasswordActivity extends BaseActivity {
         String im_user_name = detail.getString("im_user_name");
         String im_encrypted_password = detail.getString("im_encrypted_password");
 
-        EMChatManager.getInstance().login(im_user_name, im_encrypted_password, new EMCallBack() {
-            @Override
-            public void onSuccess() {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        EMGroupManager.getInstance().loadAllGroups();
-                        EMChatManager.getInstance().loadAllConversations();
-                        MyUtils.rtLog(TAG, "----------->登陆聊天服务器成功!");
-                        //保存登陆用户信息
-                        saveUserInfo(detail);
-                        go2Main();
-                    }
-                });
-            }
 
-            @Override
-            public void onError(int i, String s) {
-                MyUtils.rtLog(TAG, "----------->登陆聊天服务器失败!");
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        MyToast.rtToast(RegisterPasswordActivity.this, getString(R.string.login_fail));
-                    }
-                });
-            }
-
-            @Override
-            public void onProgress(int i, String s) {
-
-            }
-        });
     }
 
     //保存登陆用户信息

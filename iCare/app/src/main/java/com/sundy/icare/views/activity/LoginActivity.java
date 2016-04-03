@@ -13,9 +13,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.androidquery.AQuery;
-import com.easemob.EMCallBack;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMGroupManager;
 import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.MyJsonParser;
@@ -112,39 +109,39 @@ public class LoginActivity extends BaseActivity {
                     goRegister();
                     break;
                 case R.id.btn_login:
-//                    login();
+                    login();
 //                    showLoginChoiceDialog();
 
-                    EMChatManager.getInstance().login("15088086691_icare", "124578", new EMCallBack() {
-                        @Override
-                        public void onSuccess() {
-                            runOnUiThread(new Runnable() {
-                                public void run() {
-                                    EMGroupManager.getInstance().loadAllGroups();
-                                    EMChatManager.getInstance().loadAllConversations();
-                                    MyUtils.rtLog(TAG, "----------->登陆聊天服务器成功!");
-                                    //保存登陆用户信息
-                                    showLoginChoiceDialog();
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onError(int i, String s) {
-                            MyUtils.rtLog(TAG, "----------->登陆聊天服务器失败!");
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    MyToast.rtToast(LoginActivity.this, getString(R.string.login_fail));
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onProgress(int i, String s) {
-
-                        }
-                    });
+//                    EMChatManager.getInstance().login("15088086691_icare", "124578", new EMCallBack() {
+//                        @Override
+//                        public void onSuccess() {
+//                            runOnUiThread(new Runnable() {
+//                                public void run() {
+//                                    EMGroupManager.getInstance().loadAllGroups();
+//                                    EMChatManager.getInstance().loadAllConversations();
+//                                    MyUtils.rtLog(TAG, "----------->登陆聊天服务器成功!");
+//                                    //保存登陆用户信息
+//                                    showLoginChoiceDialog();
+//                                }
+//                            });
+//                        }
+//
+//                        @Override
+//                        public void onError(int i, String s) {
+//                            MyUtils.rtLog(TAG, "----------->登陆聊天服务器失败!");
+//                            runOnUiThread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    MyToast.rtToast(LoginActivity.this, getString(R.string.login_fail));
+//                                }
+//                            });
+//                        }
+//
+//                        @Override
+//                        public void onProgress(int i, String s) {
+//
+//                        }
+//                    });
 
                     break;
                 case R.id.txt_first_visit:
@@ -214,37 +211,7 @@ public class LoginActivity extends BaseActivity {
         String im_user_name = detail.getString("im_user_name");
         String im_encrypted_password = detail.getString("im_encrypted_password");
 
-        EMChatManager.getInstance().login(im_user_name, im_encrypted_password, new EMCallBack() {
-            @Override
-            public void onSuccess() {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        EMGroupManager.getInstance().loadAllGroups();
-                        EMChatManager.getInstance().loadAllConversations();
-                        MyUtils.rtLog(TAG, "----------->登陆聊天服务器成功!");
-                        //保存登陆用户信息
-                        saveUserInfo(detail);
-                        showLoginChoiceDialog();
-                    }
-                });
-            }
 
-            @Override
-            public void onError(int i, String s) {
-                MyUtils.rtLog(TAG, "----------->登陆聊天服务器失败!");
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        MyToast.rtToast(LoginActivity.this, getString(R.string.login_fail));
-                    }
-                });
-            }
-
-            @Override
-            public void onProgress(int i, String s) {
-
-            }
-        });
     }
 
     //保存登陆用户信息

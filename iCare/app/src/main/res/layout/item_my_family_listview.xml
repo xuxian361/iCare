@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.sundy.icare.customs.CircleImageView
+        <com.sundy.icare.ui.CircleImageView
             android:id="@+id/img"
             android:layout_width="50dp"
             android:layout_height="50dp"

@@ -61,24 +61,9 @@ public class ResourceTaker {
     }
 
     public static void getHttpRequest(String url, String method, String content, Class stype, HttpCallback callback) {
-        AESTool aes = new AESTool();
-        SignatureUtil signatureUtil = new SignatureUtil();
-        long millis = System.currentTimeMillis();
-        String xml = content;
-        try {
-            xml = aes.encrypt(xml, key);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String encrpt = signatureUtil.digest(xml, "MD5");
-        String sign = signatureUtil.generateSignature(MyPreference.getUUID(callback.context), MyPreference.getToken(callback.context), encrpt, millis);
+
         Map<String, String> paraMap = new HashMap<String, String>();
-        paraMap.put("time", String.valueOf(millis));
-        paraMap.put("sign", sign);
         paraMap.put("device", MyPreference.getUUID(callback.context));
-        paraMap.put("encrpt", encrpt);
-        paraMap.put("method", method);
-        paraMap.put("content", xml);
 
         callback.httpGet(HTTP_BASE + url, paraMap, stype);
 

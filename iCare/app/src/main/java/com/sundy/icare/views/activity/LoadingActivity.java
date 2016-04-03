@@ -6,13 +6,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
 
-import com.baidu.android.pushservice.PushConstants;
-import com.baidu.android.pushservice.PushManager;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyUtils;
 
-public class LoadingActivity extends BaseActivity {
+import cn.jpush.android.api.InstrumentedActivity;
+
+public class LoadingActivity extends InstrumentedActivity {
 
     private final String TAG = "LoadingActivity";
     private final long DELAY_MILLIS = 500;
@@ -41,8 +41,6 @@ public class LoadingActivity extends BaseActivity {
         //Save APP ID : Default is app_02(子女)
         MyPreference.saveAppID(MyConstant.APP_ID_02, this);
 
-        //百度Push Init
-        PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, MyConstant.Baidu_Push_Key);
     }
 
     @Override
@@ -119,10 +117,6 @@ public class LoadingActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
 
     @Override
     protected void onDestroy() {
