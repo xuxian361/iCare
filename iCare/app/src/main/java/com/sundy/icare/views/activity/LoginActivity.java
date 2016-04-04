@@ -37,7 +37,7 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         MyUtils.rtLog(TAG, "---------->onCreate");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
         aq = new AQuery(this);
         init();
     }
