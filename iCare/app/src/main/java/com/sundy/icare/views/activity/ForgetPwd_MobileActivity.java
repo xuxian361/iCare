@@ -66,7 +66,7 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forget_password_mobile);
+        setContentView(R.layout.activity_forget_password_mobile);
 
         aq = new AQuery(this);
 
