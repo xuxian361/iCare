@@ -52,11 +52,7 @@ public class ResourceTaker {
 
     //公共参数
     public static StringBuffer getCommonParameter(StringBuffer sb, HttpCallback callback) {
-        sb.append("<app_id>" + MyPreference.getAppID(callback.context) + "</app_id>");
-        sb.append("<app_user_id>" + MyPreference.getAPP_User_ID(callback.context) + "</app_user_id>");
-        sb.append("<device_info>" + MyPreference.getUUID(callback.context) + "</device_info>");
-        sb.append("<device_type>android</device_type>");
-        sb.append("<language>cn</language>");
+
         return sb;
     }
 

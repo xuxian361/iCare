@@ -25,20 +25,6 @@ public class MyPreference {
     public static final String PREFERENCE_APP_ID = "PREFERENCE_APP_ID"; //APP_ID: 1>老人机；2>子女端；
 
 
-    //Save APP ID
-    public static void saveAppID(String appID, Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(MyPreference.PREFERENCE_APP_ID, appID);
-        editor.commit();
-    }
-
-    //Get APP ID
-    public static String getAppID(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        return preferences.getString(MyPreference.PREFERENCE_APP_ID, "app_02");
-    }
-
     //Save UUID
     public static void saveUDID(Context context) {
         String udid = android.provider.Settings.System.getString(

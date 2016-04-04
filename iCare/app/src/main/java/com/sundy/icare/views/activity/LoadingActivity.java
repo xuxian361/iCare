@@ -38,9 +38,6 @@ public class LoadingActivity extends InstrumentedActivity {
         //Save UUID
         MyPreference.saveUDID(this);
 
-        //Save APP ID : Default is app_02(子女)
-        MyPreference.saveAppID(MyConstant.APP_ID_02, this);
-
     }
 
     @Override
@@ -93,12 +90,14 @@ public class LoadingActivity extends InstrumentedActivity {
         }
     }
 
+    //跳转主页面
     private void goMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
+    //跳转登陆页
     private void goLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
@@ -116,7 +115,6 @@ public class LoadingActivity extends InstrumentedActivity {
             e.printStackTrace();
         }
     }
-
 
     @Override
     protected void onDestroy() {

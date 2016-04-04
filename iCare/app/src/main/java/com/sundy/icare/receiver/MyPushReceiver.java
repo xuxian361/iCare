@@ -7,9 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.sundy.icare.views.activity.MainActivity;
+import com.sundy.icare.utils.NotificationHelper;
+import com.sundy.icare.views.activity.LoadingActivity;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Iterator;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -28,34 +32,65 @@ public class MyPushReceiver extends BroadcastReceiver {
         }
 
         Bundle bundle = intent.getExtras();
-        Log.d(TAG, "onReceive - " + intent.getAction() + ", extras: ");
+        System.out.print("----->bundle = " + printBundle(bundle));
 
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
-            Log.d(TAG, "JPush用户注册成功");
-
+            System.out.print("-------->JPush用户注册成功");
         } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
-            Log.d(TAG, "接受到推送下来的自定义消息");
-
+            System.out.print("-------->接受到推送下来的自定义消息");
+            processCustomMessage(context, bundle);
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
-            Log.d(TAG, "接受到推送下来的通知");
-
+            System.out.print("-------->接受到推送下来的通知");
             receivingNotification(context, bundle);
-
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
-            Log.d(TAG, "用户点击打开了通知");
+            System.out.print("-------->用户点击打开了通知");
             openNotification(context, bundle);
         } else {
-            Log.d(TAG, "Unhandled intent - " + intent.getAction());
+            System.out.print("-------->Unhandled intent - " + intent.getAction());
         }
+    }
+
+    // 打印所有的 intent extra 数据
+    private String printBundle(Bundle bundle) {
+        StringBuilder sb = new StringBuilder();
+        for (String key : bundle.keySet()) {
+            if (key.equals(JPushInterface.EXTRA_NOTIFICATION_ID)) {
+                sb.append("\nkey:" + key + ", value:" + bundle.getInt(key));
+            } else if (key.equals(JPushInterface.EXTRA_CONNECTION_CHANGE)) {
+                sb.append("\nkey:" + key + ", value:" + bundle.getBoolean(key));
+            } else if (key.equals(JPushInterface.EXTRA_EXTRA)) {
+                if (bundle.getString(JPushInterface.EXTRA_EXTRA).isEmpty()) {
+                    Log.i(TAG, "This message has no Extra data");
+                    continue;
+                }
+
+                try {
+                    JSONObject json = new JSONObject(bundle.getString(JPushInterface.EXTRA_EXTRA));
+                    Iterator<String> it = json.keys();
+
+                    while (it.hasNext()) {
+                        String myKey = it.next().toString();
+                        sb.append("\nkey:" + key + ", value: [" +
+                                myKey + " - " + json.optString(myKey) + "]");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+                sb.append("\nkey:" + key + ", value:" + bundle.getString(key));
+            }
+        }
+        return sb.toString();
     }
 
     private void receivingNotification(Context context, Bundle bundle) {
         String title = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
-        Log.d(TAG, " title : " + title);
+        System.out.println(" title : " + title);
         String message = bundle.getString(JPushInterface.EXTRA_ALERT);
-        Log.d(TAG, "message : " + message);
+        System.out.println("message : " + message);
         String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
-        Log.d(TAG, "extras : " + extras);
+        System.out.println("extras : " + extras);
     }
 
     private void openNotification(Context context, Bundle bundle) {
@@ -65,14 +100,30 @@ public class MyPushReceiver extends BroadcastReceiver {
             JSONObject extrasJson = new JSONObject(extras);
             myValue = extrasJson.optString("myKey");
         } catch (Exception e) {
-            Log.w(TAG, "Unexpected: extras is not a valid json", e);
+            e.printStackTrace();
             return;
         }
-        if ("".equals(myValue)) {
-            Intent mIntent = new Intent(context, MainActivity.class);
-            mIntent.putExtras(bundle);
-            mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(mIntent);
+        Intent mIntent = new Intent(context, LoadingActivity.class);
+        mIntent.putExtras(bundle);
+        mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(mIntent);
+    }
+
+    private void processCustomMessage(Context context, Bundle bundle) {
+        String title = bundle.getString(JPushInterface.EXTRA_TITLE);
+        String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
+        boolean needIncreaseUnread = true;
+        String channel = null;
+        String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
+        try {
+            System.out.println("title : " + title);
+            System.out.println("message : " + message);
+            System.out.println("extras : " + extras);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        NotificationHelper.showMessageNotification(context, nm, title, message, channel);
+
     }
 }
