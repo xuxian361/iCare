@@ -49,8 +49,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_centerInParent="true"
-                        android:src="@mipmap/profile_img"
-                        app:border_color="#00000000" />
+                        android:src="@mipmap/profile_img" />
 
                     <ImageView
                         android:layout_width="30dp"

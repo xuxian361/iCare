@@ -35,7 +35,7 @@ public class RegisterMobileActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_mobile);
+        setContentView(R.layout.activity_register_mobile);
 
         aq = new AQuery(this);
 

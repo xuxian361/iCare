@@ -79,7 +79,7 @@
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
 
         <activity
-            android:name=".views.activity.RegisterUserNameActivity"
+            android:name=".views.activity.RegisterUserInfoActivity"
             android:screenOrientation="portrait" />
 
         <activity

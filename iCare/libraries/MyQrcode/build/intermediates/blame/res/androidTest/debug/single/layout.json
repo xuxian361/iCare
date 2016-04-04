@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/res/merged/androidTest/debug/layout/app_picker_list_item.xml",
-        "source": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/layout/app_picker_list_item.xml"
-    },
-    {
         "merged": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/res/merged/androidTest/debug/layout/search_book_contents_list_item.xml",
         "source": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/layout/search_book_contents_list_item.xml"
+    },
+    {
+        "merged": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/res/merged/androidTest/debug/layout/app_picker_list_item.xml",
+        "source": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/layout/app_picker_list_item.xml"
     },
     {
         "merged": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/res/merged/androidTest/debug/layout/capture.xml",

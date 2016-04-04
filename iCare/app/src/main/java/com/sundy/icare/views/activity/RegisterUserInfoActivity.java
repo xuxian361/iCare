@@ -16,15 +16,15 @@ import com.sundy.icare.utils.MyToast;
 /**
  * Created by sundy on 15/12/6.
  */
-public class RegisterUserNameActivity extends BaseActivity {
+public class RegisterUserInfoActivity extends BaseActivity {
 
-    private final String TAG = "RegisterUserNameActivity";
+    private final String TAG = "RegisterUserInfoActivity";
     private EditText edtUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_username);
+        setContentView(R.layout.activity_register_username);
 
         aq = new AQuery(this);
 

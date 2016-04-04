@@ -10,15 +10,15 @@
         android:layout_height="wrap_content"
         android:padding="5dp">
 
-        <com.sundy.icare.ui.CircleImageView
+
+        <com.facebook.drawee.view.DraweeView
             android:id="@+id/img"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:layout_margin="10dp"
             android:background="@null"
-            android:src="@mipmap/profile_img"
-            app:border_color="#00000000" />
+            android:src="@mipmap/profile_img" />
 
         <LinearLayout
             android:layout_width="match_parent"

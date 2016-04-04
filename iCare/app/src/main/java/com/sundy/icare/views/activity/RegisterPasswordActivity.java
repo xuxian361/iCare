@@ -30,7 +30,7 @@ public class RegisterPasswordActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_set_password);
+        setContentView(R.layout.activity_register_set_password);
 
         aq = new AQuery(this);
 

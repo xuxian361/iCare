@@ -277,7 +277,7 @@ public class LoginActivity extends BaseActivity {
 
     //注册
     private void goRegister() {
-        Intent intent = new Intent(this, RegisterUserNameActivity.class);
+        Intent intent = new Intent(this, RegisterUserInfoActivity.class);
         startActivity(intent);
     }
 
