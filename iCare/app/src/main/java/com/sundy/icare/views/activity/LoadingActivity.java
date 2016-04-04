@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.TextView;
 
+import com.androidquery.AQuery;
+import com.sundy.icare.R;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyUtils;
@@ -15,19 +19,21 @@ import cn.jpush.android.api.InstrumentedActivity;
 public class LoadingActivity extends InstrumentedActivity {
 
     private final String TAG = "LoadingActivity";
-    private final long DELAY_MILLIS = 500;
-    private final int GO_MAIN = 100;
-    private final int GO_LOGIN = 101;
-    private Runnable mRunnable;
     private Handler mHandler;
+    private AQuery aq;
+    private TextView txt_time;
+    private int second = 5;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         MyUtils.rtLog(TAG, "---------->onCreate");
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.loading);
+        setContentView(R.layout.activity_loading);
 
+        aq = new AQuery(this);
+        aq.id(R.id.btn_skip).clicked(onClick);
+        txt_time = aq.id(R.id.txt_time).getTextView();
 
         //屏幕的信息
         DisplayMetrics metrics = getResources().getDisplayMetrics();
@@ -53,38 +59,37 @@ public class LoadingActivity extends InstrumentedActivity {
 
     private void init() {
         try {
+            second = 5;
             if (mHandler == null) {
                 mHandler = new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
                         super.handleMessage(msg);
-                        switch (msg.what) {
-                            case GO_MAIN:
+                        if (msg.what == 1) {
+                            second--;
+                            txt_time.setText(second + "秒");
+                            if (second == 1) {
+                                second = 5;
+                                if (MyPreference.isLogin(LoadingActivity.this)) {
+                                    goMain();
+                                } else {
+                                    goLogin();
+                                }
+                            } else {
+                                mHandler.sendEmptyMessageDelayed(1, 1000);
+                            }
+                        } else if (msg.what == 2) {
+                            if (MyPreference.isLogin(LoadingActivity.this)) {
                                 goMain();
-                                break;
-                            case GO_LOGIN:
+                            } else {
                                 goLogin();
-                                break;
+                            }
                         }
                     }
                 };
+
+                mHandler.sendEmptyMessageDelayed(1, 1000);
             }
-
-            if (mRunnable == null) {
-                mRunnable = new Runnable() {
-                    @Override
-                    public void run() {
-                        if (MyPreference.isLogin(LoadingActivity.this)) {
-                            mHandler.sendEmptyMessage(GO_MAIN);
-                        } else {
-                            mHandler.sendEmptyMessage(GO_LOGIN);
-                        }
-                    }
-                };
-            }
-
-            mHandler.postDelayed(mRunnable, DELAY_MILLIS);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,6 +100,7 @@ public class LoadingActivity extends InstrumentedActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     //跳转登陆页
@@ -102,6 +108,29 @@ public class LoadingActivity extends InstrumentedActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    private View.OnClickListener onClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.btn_skip:
+                    skipSplash();
+                    break;
+            }
+        }
+    };
+
+    //跳过广告
+    private void skipSplash() {
+        try {
+            if (mHandler != null) {
+                mHandler.sendEmptyMessage(2);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -109,8 +138,10 @@ public class LoadingActivity extends InstrumentedActivity {
         MyUtils.rtLog(TAG, "---------->onPause");
         super.onPause();
         try {
-            if (mRunnable != null && mHandler != null)
-                mHandler.removeCallbacks(mRunnable);
+            if (mHandler != null) {
+                mHandler.removeMessages(1);
+                mHandler.sendEmptyMessage(0);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -121,9 +152,6 @@ public class LoadingActivity extends InstrumentedActivity {
         MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
         try {
-            if (mRunnable != null) {
-                mRunnable = null;
-            }
             if (mHandler != null) {
                 mHandler = null;
             }
