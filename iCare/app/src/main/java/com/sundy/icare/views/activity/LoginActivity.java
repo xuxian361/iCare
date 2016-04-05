@@ -14,9 +14,6 @@ import android.widget.EditText;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.net.HttpCallback;
-import com.sundy.icare.net.MyJsonParser;
-import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
@@ -172,35 +169,35 @@ public class LoginActivity extends BaseActivity {
                 return;
             }
 
-            ResourceTaker.login(username, password, new HttpCallback<JSONObject>(this) {
-                @Override
-                public void callback(String url, JSONObject result, String status) {
-                    super.callback(url, result, status);
-                    try {
-                        if (result != null) {
-                            String code = MyJsonParser.getResp_Code(result);
-                            String msg = MyJsonParser.getResp_Msg(result);
-                            if (code.equals("0000")) {
-                                JSONObject detail = MyJsonParser.getResp_Detail(result);
-                                if (detail != null) {
-                                    if (isRememberPwd)
-                                        MyPreference.setRememberPWD(LoginActivity.this, username, password);
-                                    else
-                                        MyPreference.setRememberPWD(LoginActivity.this, username, "");
-                                    //Login to 环信
-                                    login2HuanXin(detail);
-                                } else {
-                                    MyToast.rtToast(LoginActivity.this, msg);
-                                }
-                            } else {
-                                MyToast.rtToast(LoginActivity.this, msg);
-                            }
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
+//            ResourceTaker.login(username, password, new HttpCallback<JSONObject>(this) {
+//                @Override
+//                public void callback(String url, JSONObject result, String status) {
+//                    super.callback(url, result, status);
+//                    try {
+//                        if (result != null) {
+//                            String code = MyJsonParser.getResp_Code(result);
+//                            String msg = MyJsonParser.getResp_Msg(result);
+//                            if (code.equals("0000")) {
+//                                JSONObject detail = MyJsonParser.getResp_Detail(result);
+//                                if (detail != null) {
+//                                    if (isRememberPwd)
+//                                        MyPreference.setRememberPWD(LoginActivity.this, username, password);
+//                                    else
+//                                        MyPreference.setRememberPWD(LoginActivity.this, username, "");
+//                                    //Login to 环信
+//                                    login2HuanXin(detail);
+//                                } else {
+//                                    MyToast.rtToast(LoginActivity.this, msg);
+//                                }
+//                            } else {
+//                                MyToast.rtToast(LoginActivity.this, msg);
+//                            }
+//                        }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
         } catch (Exception e) {
             e.printStackTrace();
         }

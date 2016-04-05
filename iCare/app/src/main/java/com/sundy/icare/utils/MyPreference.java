@@ -42,13 +42,6 @@ public class MyPreference {
         return uuid;
     }
 
-    //Get APP_User_ID
-    public static String getAPP_User_ID(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        String mobile = preferences.getString(MyPreference.PREFERENCE_MOBILE, "");
-        return mobile;
-    }
-
     //Save Token
     public static void saveToken(String token, Context context) {
         SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);

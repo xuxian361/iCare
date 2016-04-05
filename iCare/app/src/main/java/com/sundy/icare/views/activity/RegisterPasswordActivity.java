@@ -9,9 +9,6 @@ import android.widget.EditText;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.net.HttpCallback;
-import com.sundy.icare.net.MyJsonParser;
-import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
@@ -74,62 +71,62 @@ public class RegisterPasswordActivity extends BaseActivity {
         String username = preferences.getString(MyPreference.PREFERENCE_USERNAME, "");
         final String mobile = preferences.getString(MyPreference.PREFERENCE_MOBILE, "");
 
-        ResourceTaker.register(username, mobile, password, new HttpCallback<JSONObject>(this) {
-            @Override
-            public void callback(String url, JSONObject result, String status) {
-                super.callback(url, result, status);
-                try {
-                    if (result != null) {
-                        String code = MyJsonParser.getResp_Code(result);
-                        String msg = MyJsonParser.getResp_Msg(result);
-                        if (code.equals("0000")) {
-                            JSONObject item = MyJsonParser.getResp_Detail(result);
-                            if (item != null) {
-                                boolean is_success = item.getBoolean("is_success");
-                                if (is_success) {   //register success
-                                    login(mobile, password);
-                                } else {    //register fail
-                                    MyToast.rtToast(RegisterPasswordActivity.this, msg);
-                                }
-                            }
-                        } else {
-                            MyToast.rtToast(RegisterPasswordActivity.this, msg);
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+//        ResourceTaker.register(username, mobile, password, new HttpCallback<JSONObject>(this) {
+//            @Override
+//            public void callback(String url, JSONObject result, String status) {
+//                super.callback(url, result, status);
+//                try {
+//                    if (result != null) {
+//                        String code = MyJsonParser.getResp_Code(result);
+//                        String msg = MyJsonParser.getResp_Msg(result);
+//                        if (code.equals("0000")) {
+//                            JSONObject item = MyJsonParser.getResp_Detail(result);
+//                            if (item != null) {
+//                                boolean is_success = item.getBoolean("is_success");
+//                                if (is_success) {   //register success
+//                                    login(mobile, password);
+//                                } else {    //register fail
+//                                    MyToast.rtToast(RegisterPasswordActivity.this, msg);
+//                                }
+//                            }
+//                        } else {
+//                            MyToast.rtToast(RegisterPasswordActivity.this, msg);
+//                        }
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
     }
 
     //登陆服务器
     private void login(String mobile, String password) {
-        ResourceTaker.login(mobile, password, new HttpCallback<JSONObject>(this) {
-            @Override
-            public void callback(String url, JSONObject result, String status) {
-                super.callback(url, result, status);
-                try {
-                    if (result != null) {
-                        String code = MyJsonParser.getResp_Code(result);
-                        String msg = MyJsonParser.getResp_Msg(result);
-                        if (code.equals("0000")) {
-                            JSONObject detail = MyJsonParser.getResp_Detail(result);
-                            if (detail != null) {
-                                //Login to 环信
-                                login2HuanXin(detail);
-                            } else {
-                                MyToast.rtToast(RegisterPasswordActivity.this, msg);
-                            }
-                        } else {
-                            MyToast.rtToast(RegisterPasswordActivity.this, msg);
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+//        ResourceTaker.login(mobile, password, new HttpCallback<JSONObject>(this) {
+//            @Override
+//            public void callback(String url, JSONObject result, String status) {
+//                super.callback(url, result, status);
+//                try {
+//                    if (result != null) {
+//                        String code = MyJsonParser.getResp_Code(result);
+//                        String msg = MyJsonParser.getResp_Msg(result);
+//                        if (code.equals("0000")) {
+//                            JSONObject detail = MyJsonParser.getResp_Detail(result);
+//                            if (detail != null) {
+//                                //Login to 环信
+//                                login2HuanXin(detail);
+//                            } else {
+//                                MyToast.rtToast(RegisterPasswordActivity.this, msg);
+//                            }
+//                        } else {
+//                            MyToast.rtToast(RegisterPasswordActivity.this, msg);
+//                        }
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
     }
 
     //登陆环信

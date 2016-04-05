@@ -1,7 +1,5 @@
 package com.sundy.icare.views.activity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,9 +10,11 @@ import android.widget.EditText;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.MyConstant;
-import com.sundy.icare.utils.MyPreference;
+import com.sundy.icare.net.HttpCallback;
+import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.utils.MyToast;
+
+import org.json.JSONObject;
 
 /**
  * Created by sundy on 16/1/18.
@@ -25,12 +25,9 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
     private EditText edtMobile;
     private EditText edtCode;
     private final String AREA_CODE = "86";
-
-    private final int MSG_MOB = 1000;
     private final int MSG_Timer = 10001;
 
     private int times = 10;
-    private boolean isStart = false;
     private Button btnGetCode;
 
 
@@ -38,27 +35,19 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (msg != null) {
-                if (msg.what == MSG_MOB) {
-                    int event = msg.arg1;
-                    int result = msg.arg2;
-                    Object data = msg.obj;
-
-                } else if (msg.what == MSG_Timer) {
-                    if (isStart) {
-                        if (times == 0) {
-                            isStart = false;
-                            changeColor();
-                        } else {
-                            mHandler.sendEmptyMessageDelayed(MSG_Timer, 1000);
-                            times--;
-                            if (times < 10)
-                                btnGetCode.setText(getString(R.string.re_send) + " (0" + times + ")");
-                            else
-                                btnGetCode.setText(getString(R.string.re_send) + " (" + times + ")");
-                        }
+            switch (msg.what) {
+                case MSG_Timer:
+                    if (times == 0) {
+                        changeButtonState(true);
+                    } else {
+                        mHandler.sendEmptyMessageDelayed(MSG_Timer, 1000);
+                        times--;
+                        if (times < 10)
+                            btnGetCode.setText(getString(R.string.re_send) + " (0" + times + ")");
+                        else
+                            btnGetCode.setText(getString(R.string.re_send) + " (" + times + ")");
                     }
-                }
+                    break;
             }
         }
     };
@@ -71,7 +60,6 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
         aq = new AQuery(this);
 
         init();
-
     }
 
     private void init() {
@@ -103,14 +91,14 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
     };
 
     //重发按钮状态更变
-    private void changeColor() {
-        if (isStart) {
-            btnGetCode.setEnabled(false);
-            btnGetCode.setBackgroundResource(R.drawable.corner_btn_gray);
-        } else {
+    private void changeButtonState(boolean isEnable) {
+        if (isEnable) {
             btnGetCode.setEnabled(true);
             btnGetCode.setBackgroundResource(R.drawable.corner_btn_green);
             btnGetCode.setText(R.string.re_send);
+        } else {
+            btnGetCode.setEnabled(false);
+            btnGetCode.setBackgroundResource(R.drawable.corner_btn_gray);
         }
     }
 
@@ -121,10 +109,19 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
             MyToast.rtToast(this, getString(R.string.mobile_cannot_empty));
             return;
         }
-        times = 10;
-        isStart = true;
-        changeColor();
-        mHandler.sendEmptyMessageDelayed(MSG_Timer, 1000);
+
+        ResourceTaker.sendSMSCode(AREA_CODE, mobile, "forgetPassword", new HttpCallback<JSONObject>(this) {
+            @Override
+            public void callback(String url, JSONObject result, String status) {
+                super.callback(url, result, status);
+
+//                times = 10;
+//                changeButtonState(false);
+//                mHandler.sendEmptyMessageDelayed(MSG_Timer, 1000);
+
+            }
+        });
+
     }
 
     //验证手机号码
@@ -141,17 +138,6 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
             MyToast.rtToast(this, getString(R.string.verify_code_cannot_empty));
             return;
         }
-    }
-
-    private void goRegister() {
-        String mobile = edtMobile.getText().toString().trim();
-        SharedPreferences preferences = getSharedPreferences(MyConstant.APP_NAME, MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(MyPreference.PREFERENCE_MOBILE, mobile);
-        editor.commit();
-
-        Intent intent = new Intent(this, RegisterPasswordActivity.class);
-        startActivity(intent);
     }
 
     @Override

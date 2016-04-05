@@ -8,15 +8,66 @@ public class MyURL {
     /**
      * URL Utils
      */
-    public static final String HTTP_DEV = "http://120.27.146.122:8023/";
-//    public static final String HTTP_UAT = "http://120.27.146.122:8023/icare/user/register";
+    public static final String HTTP_DEV = "http://192.168.1.109/api/";
+    //    public static final String HTTP_UAT = "http://192.168.1.102/api/";
 
-    //URL
-    public static final String MYURL_login = "icare/user/login";
-    public static final String MYURL_register = "icare/user/register";
+    public static final String HTTP_BASE = MyURL.HTTP_DEV;
 
-    //Method
-    public static final String METHOD_REGISTER = "icare.user.register";
-    public static final String METHOD_LOGIN = "icare.user.login";
+    /*----------------------------------------------------------------------------------------*/
+    /**
+     * 登陆
+     */
+    public static final String URL_LOGIN = HTTP_BASE + "member/login";
+
+    /**
+     * 注册
+     */
+    public static final String URL_REGISTRATION = HTTP_BASE + "member/registration";
+
+    /**
+     * 发送手机验证码
+     */
+    public static final String URL_SEND_SMS_CODE = HTTP_BASE + "member/sendSmsCode";
+
+    /**
+     * 检查手机验证码
+     */
+    public static final String URL_CHECK_SMD_CODE = HTTP_BASE + "member/checkSmsCode";
+
+    /**
+     * 登出
+     */
+    public static final String URL_LOGOUT = HTTP_BASE + "member/logout";
+
+    /**
+     * 忘记密码
+     */
+    public static final String URL_FORGET_PASSWORD = HTTP_BASE + "member/forgetPassword";
+
+    /**
+     * 修改密码
+     */
+    public static final String URL_CHANGE_PASSWORD = HTTP_BASE + "member/changePassword";
+
+    /**
+     * 发送邮箱验证码
+     */
+    public static final String URL_SEND_EMAIL_CODE = HTTP_BASE + "member/sendEmailCode";
+
+    /**
+     * 绑定邮箱
+     */
+    public static final String URL_BIND_MAILBOX = HTTP_BASE + "member/bindMailbox";
+
+    /**
+     * 获取我的账号
+     */
+    public static final String URL_GET_MY_ACCOUNT = HTTP_BASE + "member/myAccount";
+
+    /**
+     * 获取用户资料
+     */
+    public static final String URL_GET_MEMBER_PROFILE = HTTP_BASE + "member/memberProfile";
+
 
 }
