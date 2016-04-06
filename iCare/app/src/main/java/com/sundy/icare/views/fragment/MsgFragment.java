@@ -1,5 +1,6 @@
-package com.sundy.icare.views.fragment.server;
+package com.sundy.icare.views.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -10,32 +11,56 @@ import android.widget.ProgressBar;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.MyUtils;
+import com.sundy.icare.views.activity.ContactsActivity;
 import com.sundy.icare.views.fragment.LazyLoadFragment;
 
 /**
- * Created by sundy on 15/12/26.
+ * Created by sundy on 15/12/6.
  */
-public class ServerMsgFragment extends LazyLoadFragment {
-    private final String TAG = "ServerMsgFragment";
+public class MsgFragment extends LazyLoadFragment {
+
+    private final String TAG = "MsgFragment";
     private View mView;
 
     Handler handler = new Handler();
     ProgressBar progressBar;
     private static final int DELAY_TIME = 2000;
 
-    public ServerMsgFragment() {
+    public MsgFragment() {
     }
 
     @Override
     protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         MyUtils.rtLog(TAG, "---------->initViews");
         mInflater = inflater;
-        mView = mInflater.inflate(R.layout.server_msg, container, false);
+        mView = mInflater.inflate(R.layout.fragment_msg, container, false);
         aq = new AQuery(mView);
 
         init();
-
         return mView;
+    }
+
+    private void init() {
+        progressBar = aq.id(R.id.progress_bar).getProgressBar();
+        progressBar.setVisibility(View.VISIBLE);
+
+        aq.id(R.id.btnAdd).clicked(onClick);
+    }
+
+    private View.OnClickListener onClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.btnAdd:
+                    goContacts();
+                    break;
+            }
+        }
+    };
+
+    private void goContacts() {
+        Intent intent = new Intent(getActivity(), ContactsActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -48,23 +73,6 @@ public class ServerMsgFragment extends LazyLoadFragment {
             }
         }, DELAY_TIME);
     }
-
-    private void init() {
-        aq.id(R.id.btnRight).image(R.mipmap.icon_add).clicked(onClick);
-        progressBar = aq.id(R.id.progress_bar).getProgressBar();
-        progressBar.setVisibility(View.VISIBLE);
-    }
-
-    private View.OnClickListener onClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.btnRight:
-
-                    break;
-            }
-        }
-    };
 
     @Override
     public void onStart() {

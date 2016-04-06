@@ -1,4 +1,4 @@
-package com.sundy.icare.views.fragment.server;
+package com.sundy.icare.views.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,32 +11,33 @@ import android.widget.ProgressBar;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.MyUtils;
-import com.sundy.icare.views.activity.MainActivity;
+import com.sundy.icare.views.activity.MyFamilyActivity;
+import com.sundy.icare.views.activity.QRScannerActivity;
 import com.sundy.icare.views.activity.SettingActivity;
 import com.sundy.icare.views.activity.UserDetailActivity;
+import com.sundy.icare.views.activity.VerifyPasswordActivity;
 import com.sundy.icare.views.fragment.LazyLoadFragment;
 
 /**
- * Created by sundy on 15/12/27.
+ * Created by sundy on 15/12/20.
  */
-public class ServerMeFragment extends LazyLoadFragment {
+public class MeFragment extends LazyLoadFragment {
 
-    private final String TAG = "ServerMeFragment";
+    private final String TAG = "MeFragment";
     private View mView;
 
     Handler handler = new Handler();
     ProgressBar progressBar;
     private static final int DELAY_TIME = 2000;
 
-
-    public ServerMeFragment() {
+    public MeFragment() {
     }
 
     @Override
     protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         MyUtils.rtLog(TAG, "---------->initViews");
         mInflater = inflater;
-        mView = mInflater.inflate(R.layout.server_me, container, false);
+        mView = mInflater.inflate(R.layout.layout_me, container, false);
         aq = new AQuery(mView);
 
         init();
@@ -60,6 +61,9 @@ public class ServerMeFragment extends LazyLoadFragment {
         aq.id(R.id.btnRight).image(R.mipmap.icon_settings).clicked(onClick);
         aq.id(R.id.imgMe).clicked(onClick);
         aq.id(R.id.btnSwitch).clicked(onClick);
+        aq.id(R.id.btnQR).clicked(onClick);
+        aq.id(R.id.rel_MyFamily).clicked(onClick);
+        aq.id(R.id.btn_Email).clicked(onClick);
 
         progressBar = aq.id(R.id.progress_bar).getProgressBar();
         progressBar.setVisibility(View.VISIBLE);
@@ -74,17 +78,36 @@ public class ServerMeFragment extends LazyLoadFragment {
                     startActivity(intent1);
                     break;
                 case R.id.imgMe:
-                    Intent intent = new Intent(getActivity(), UserDetailActivity.class);
-                    startActivity(intent);
+                    Intent intent2 = new Intent(getActivity(), UserDetailActivity.class);
+                    startActivity(intent2);
                     break;
-                case R.id.btnSwitch:
-                    //切花至子女端
-                    Intent intent3 = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent3);
+                case R.id.btnQR:
+                    scanQRCode();
+                    break;
+                case R.id.rel_MyFamily:
+                    goMyFamily();
+                    break;
+                case R.id.btn_Email:
+                    bindEmail();
                     break;
             }
         }
     };
+
+    private void bindEmail() {
+        Intent intent = new Intent(getActivity(), VerifyPasswordActivity.class);
+        startActivity(intent);
+    }
+
+    private void goMyFamily() {
+        Intent intent = new Intent(getActivity(), MyFamilyActivity.class);
+        startActivity(intent);
+    }
+
+    private void scanQRCode() {
+        Intent intent = new Intent(getActivity(), QRScannerActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onStart() {

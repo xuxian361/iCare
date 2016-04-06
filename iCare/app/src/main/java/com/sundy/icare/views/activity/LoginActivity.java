@@ -1,12 +1,10 @@
 package com.sundy.icare.views.activity;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -225,43 +223,9 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-    //登陆类型选择
-    private void showLoginChoiceDialog() {
-        LayoutInflater inflater = this.getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_login_choice, null);
-        final Dialog dialog = new Dialog(context, R.style.dialog);
-        dialog.setCancelable(false);
-        dialog.setContentView(view);
-        AQuery aq = new AQuery(view);
-        aq.id(R.id.btn_Family).clicked(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                dialog.cancel();
-                goMain();
-            }
-        });
-        aq.id(R.id.btn_Server).clicked(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                dialog.cancel();
-                goServer();
-            }
-        });
-        dialog.show();
-    }
-
     //跳转主页（子女）
     private void goMain() {
         Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    //跳转到服务者
-    private void goServer() {
-        Intent intent = new Intent(this, ServerActivity.class);
         startActivity(intent);
         finish();
     }

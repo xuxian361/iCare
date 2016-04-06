@@ -1,4 +1,4 @@
-package com.sundy.icare.views.fragment.server;
+package com.sundy.icare.views.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,22 +11,23 @@ import android.widget.Button;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.MyUtils;
-import com.sundy.icare.views.activity.ServerActivity;
+import com.sundy.icare.views.activity.MainActivity;
 
 /**
- * Created by sundy on 15/12/26.
+ * Created by sundy on 15/12/6.
  */
-public class ServerTabMenuFragment extends Fragment {
+public class TabMenuFragment extends Fragment {
 
-    private final String TAG = "ServerTabMenuFragment";
+    private final String TAG = "TabMenuFragment";
     private View mView;
     private AQuery aq;
 
     private Button btnMsg;
     private Button btnService;
+    private Button btnMarket;
     private Button btnMe;
 
-    public ServerTabMenuFragment() {
+    public TabMenuFragment() {
     }
 
     @Override
@@ -37,7 +38,7 @@ public class ServerTabMenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         MyUtils.rtLog(TAG, "---------->onCreateView");
-        mView = inflater.inflate(R.layout.tab_menu_server, container, false);
+        mView = inflater.inflate(R.layout.tab_menu, container, false);
         aq = new AQuery(mView);
 
         init();
@@ -48,14 +49,15 @@ public class ServerTabMenuFragment extends Fragment {
     private void init() {
         btnMsg = aq.id(R.id.btnMsg).getButton();
         btnService = aq.id(R.id.btnService).getButton();
+        btnMarket = aq.id(R.id.btnMarket).getButton();
         btnMe = aq.id(R.id.btnMe).getButton();
         aq.id(R.id.btnMsg).clicked(onClick);
         aq.id(R.id.btnService).clicked(onClick);
+        aq.id(R.id.btnMarket).clicked(onClick);
         aq.id(R.id.btnMe).clicked(onClick);
     }
 
     public void setPosition(int position) {
-        MyUtils.rtLog(TAG, "--------->position =" + position);
         switch (position) {
             case 0:
                 clickMsg();
@@ -64,6 +66,9 @@ public class ServerTabMenuFragment extends Fragment {
                 clickService();
                 break;
             case 2:
+                clickMarket();
+                break;
+            case 3:
                 clickMe();
                 break;
         }
@@ -79,11 +84,14 @@ public class ServerTabMenuFragment extends Fragment {
                 case R.id.btnService:
                     clickService();
                     break;
+                case R.id.btnMarket:
+                    clickMarket();
+                    break;
                 case R.id.btnMe:
                     clickMe();
                     break;
             }
-            ((ServerActivity) getActivity()).switchFragment(view.getId());
+            ((MainActivity) getActivity()).switchFragment(view.getId());
         }
     };
 
@@ -91,13 +99,23 @@ public class ServerTabMenuFragment extends Fragment {
     private void clickMsg() {
         btnMsg.setTextColor(Color.parseColor("#a90003"));
         btnService.setTextColor(Color.parseColor("#ff424242"));
+        btnMarket.setTextColor(Color.parseColor("#ff424242"));
         btnMe.setTextColor(Color.parseColor("#ff424242"));
     }
 
-    //点击: 最新服务
+    //点击: 服务
     private void clickService() {
         btnMsg.setTextColor(Color.parseColor("#ff424242"));
         btnService.setTextColor(Color.parseColor("#a90003"));
+        btnMarket.setTextColor(Color.parseColor("#ff424242"));
+        btnMe.setTextColor(Color.parseColor("#ff424242"));
+    }
+
+    //点击: 商城
+    private void clickMarket() {
+        btnMsg.setTextColor(Color.parseColor("#ff424242"));
+        btnService.setTextColor(Color.parseColor("#ff424242"));
+        btnMarket.setTextColor(Color.parseColor("#a90003"));
         btnMe.setTextColor(Color.parseColor("#ff424242"));
     }
 
@@ -105,6 +123,7 @@ public class ServerTabMenuFragment extends Fragment {
     private void clickMe() {
         btnMsg.setTextColor(Color.parseColor("#ff424242"));
         btnService.setTextColor(Color.parseColor("#ff424242"));
+        btnMarket.setTextColor(Color.parseColor("#ff424242"));
         btnMe.setTextColor(Color.parseColor("#a90003"));
     }
 
@@ -136,7 +155,6 @@ public class ServerTabMenuFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
     }
 }

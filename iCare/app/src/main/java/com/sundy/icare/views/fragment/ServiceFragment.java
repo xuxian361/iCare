@@ -1,4 +1,4 @@
-package com.sundy.icare.views.fragment.family;
+package com.sundy.icare.views.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,6 @@ import com.sundy.icare.adapters.ServiceListAdapter;
 import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.views.activity.AddOrderActivity;
 import com.sundy.icare.views.activity.MyOrderActivity;
-import com.sundy.icare.views.activity.ServerActivity;
 import com.sundy.icare.views.activity.ServantDetailActivity;
 import com.sundy.icare.views.fragment.LazyLoadFragment;
 
@@ -103,11 +102,6 @@ public class ServiceFragment extends LazyLoadFragment {
                     //跳转到添加订单页面
                     Intent intent2 = new Intent(getActivity(), AddOrderActivity.class);
                     startActivity(intent2);
-                    break;
-                case R.id.btnSwitch:
-                    //切换到服务者
-                    Intent intent3 = new Intent(getActivity(), ServerActivity.class);
-                    startActivity(intent3);
                     break;
                 case R.id.btnRight:
                     int visibility = aq.id(R.id.relative_More).getView().getVisibility();
