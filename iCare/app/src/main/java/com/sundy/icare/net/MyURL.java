@@ -32,7 +32,7 @@ public class MyURL {
     /**
      * 检查手机验证码
      */
-    public static final String URL_CHECK_SMD_CODE = HTTP_BASE + "member/checkSmsCode";
+    public static final String URL_CHECK_SMS_CODE = HTTP_BASE + "member/checkSmsCode";
 
     /**
      * 登出
