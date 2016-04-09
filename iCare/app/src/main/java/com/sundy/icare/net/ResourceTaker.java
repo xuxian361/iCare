@@ -6,15 +6,8 @@ import com.sundy.icare.utils.MyPreference;
 
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.File;
 import java.util.HashMap;
-
-import internal.org.apache.http.entity.mime.MultipartEntity;
-import internal.org.apache.http.entity.mime.content.ByteArrayBody;
-import internal.org.apache.http.entity.mime.content.StringBody;
 
 /**
  * Created by sundy on 15/12/6.
@@ -44,24 +37,20 @@ public class ResourceTaker {
     }
 
     //用户注册
-    public static void register(String areaCode, String phone, String smsType,
-                                String name, String gender, String smsCode,
-                                String password, byte[] icon, HttpCallback callback) {
-        MultipartEntity multipart = new MultipartEntity();
+    public static void register(String areaCode, String phone, String name, String gender,
+                                String password, File file, HttpCallback callback) {
         try {
-            multipart.addPart("areaCode", new StringBody(areaCode, Charset.forName("UTF-8")));
-            multipart.addPart("phone", new StringBody(phone, Charset.forName("UTF-8")));
-            multipart.addPart("smsType", new StringBody(smsType, Charset.forName("UTF-8")));
-            multipart.addPart("name", new StringBody(name, Charset.forName("UTF-8")));
-            multipart.addPart("gender", new StringBody(gender, Charset.forName("UTF-8")));
-            multipart.addPart("smsCode", new StringBody(smsCode, Charset.forName("UTF-8")));
-            multipart.addPart("password", new StringBody(password, Charset.forName("UTF-8")));
-            multipart.addPart("profileImage", new ByteArrayBody(icon, MyConstant.APP_NAME + "_profile" + "_" +
-                    new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + ".jpg"));
+            HashMap<String, String> stringHashMap = new HashMap<>();
+            stringHashMap.put("areaCode", areaCode);
+            stringHashMap.put("phone", phone);
+            stringHashMap.put("name", name);
+            stringHashMap.put("gender", gender);
+            stringHashMap.put("password", password);
+            stringHashMap = getCommonParameter(stringHashMap);
+            callback.doFilePost(MyURL.URL_REGISTRATION, stringHashMap, "profileImage", file, JSONObject.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        getHttpRequestPostWithFile(MyURL.URL_REGISTRATION, multipart, JSONObject.class, callback);
     }
 
     //用户登陆
@@ -156,37 +145,16 @@ public class ResourceTaker {
         callback.httpPost(url, hashMap, stype);
     }
 
-    //Post 带文件请求
-    public static void getHttpRequestPostWithFile(String url, MultipartEntity multipart, Class stype, HttpCallback callback) {
-        multipart = getCommonParameterWithFile(multipart);
-        callback.doFilePost(url, multipart, stype);
-    }
-
-    //公共参数带文件
-    private static MultipartEntity getCommonParameterWithFile(MultipartEntity multipart) {
-        if (multipart == null)
-            multipart = new MultipartEntity();
-        try {
-            multipart.addPart("userType", new StringBody(MyConstant.USER_TYPE, Charset.forName("UTF-8")));
-            multipart.addPart("version", new StringBody(MyConstant.APP_VERSION, Charset.forName("UTF-8")));
-            multipart.addPart("system", new StringBody(MyConstant.SYSTEM_TYPE, Charset.forName("UTF-8")));
-            multipart.addPart("deviceCode", new StringBody(MyPreference.getUUID(MyApp.getInstance()), Charset.forName("UTF-8")));
-            multipart.addPart("language", new StringBody(MyConstant.APP_LANGUAGE, Charset.forName("UTF-8")));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return multipart;
-    }
-
     //公共参数不带文件
-    public static HashMap getCommonParameter(HashMap hashMap) {
-        if (hashMap == null)
-            hashMap = new HashMap();
-        hashMap.put("userType", MyConstant.USER_TYPE);
-        hashMap.put("version", MyConstant.APP_VERSION);
-        hashMap.put("system", MyConstant.SYSTEM_TYPE);
-        hashMap.put("deviceCode", MyPreference.getUUID(MyApp.getInstance()));
-        hashMap.put("language", MyConstant.APP_LANGUAGE);
-        return hashMap;
+    public static HashMap getCommonParameter(HashMap<String, String> stringHashMap) {
+        if (stringHashMap == null)
+            stringHashMap = new HashMap();
+        stringHashMap.put("userType", MyConstant.USER_TYPE);
+        stringHashMap.put("version", MyConstant.APP_VERSION);
+        stringHashMap.put("system", MyConstant.SYSTEM_TYPE);
+        stringHashMap.put("deviceCode", MyPreference.getUUID(MyApp.getInstance()));
+        stringHashMap.put("language", MyConstant.APP_LANGUAGE);
+        return stringHashMap;
     }
+
 }

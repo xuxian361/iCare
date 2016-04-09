@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
@@ -22,13 +23,24 @@
             android:layout_marginTop="60dp"
             android:orientation="vertical">
 
-            <com.facebook.drawee.view.DraweeView
-                android:id="@+id/imgMe"
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imgHeader"
                 android:layout_width="78dp"
                 android:layout_height="78dp"
                 android:layout_centerInParent="true"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/profile_img" />
+                android:layout_gravity="center"
+                fresco:actualImageScaleType="focusCrop"
+                fresco:fadeDuration="2000"
+                fresco:failureImage="@mipmap/profile_img"
+                fresco:failureImageScaleType="centerInside"
+                fresco:placeholderImage="@mipmap/profile_img"
+                fresco:placeholderImageScaleType="fitCenter"
+                fresco:progressBarAutoRotateInterval="2000"
+                fresco:progressBarImage="@mipmap/icon_progress_bar"
+                fresco:progressBarImageScaleType="centerInside"
+                fresco:roundAsCircle="true"
+                fresco:roundingBorderColor="@color/white"
+                fresco:roundingBorderWidth="1dp" />
 
             <EditText
                 android:id="@+id/edtUserName"
@@ -40,61 +52,66 @@
                 android:background="@drawable/corner_edt"
                 android:gravity="center"
                 android:hint="@string/your_username"
+                android:singleLine="true"
                 android:textSize="14sp" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="40dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp">
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:orientation="vertical"
+                    android:id="@+id/btn_male"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="5dp"
-                    android:id="@+id/btn_male">
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
                     <ImageView
+                        android:id="@+id/img_male"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@color/btn_blue_normal" />
+                        android:background="@color/gray" />
 
                     <TextView
+                        android:id="@+id/txt_male"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="先生"
                         android:layout_marginTop="13dp"
-                        android:textSize="15sp"
-                        android:textColor="@color/btn_blue_normal" />
+                        android:text="@string/male"
+                        android:textColor="@color/gray"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
+                    android:id="@+id/btn_female"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="5dp"
-                    android:id="@+id/btn_female">
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
                     <ImageView
+                        android:id="@+id/img_female"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@color/colorAccent" />
+                        android:background="@color/gray" />
 
                     <TextView
+                        android:id="@+id/txt_female"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="女士"
                         android:layout_marginTop="13dp"
-                        android:textSize="15sp"
-                        android:textColor="@color/colorAccent" />
+                        android:text="@string/female"
+                        android:textColor="@color/gray"
+                        android:textSize="15sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

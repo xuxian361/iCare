@@ -456,6 +456,14 @@
     <string name="style_hint">style为数字</string>
     <string name="tag_hint">Tag为大小写字母，数字，下划线,中文， 多个用以逗号分隔</string>
     <string name="about_us">关于我们</string>
+    <string name="camera">相机</string>
+    <string name="photo_album">相簿</string>
+    <string name="get_photo">获取图片</string>
+    <string name="exit_app">再按一次退回孝为先</string>
+    <string name="choose_gender">请选择您的性别</string>
+    <string name="verify_code">验证码</string>
+    <string name="confirmpassword_cannot_empty">确认密码不能为空哦!</string>
+    <string name="confirmpwd_not_equal_password">确认密码跟登陆密码不一致哦！</string>
 
 
 </resources>

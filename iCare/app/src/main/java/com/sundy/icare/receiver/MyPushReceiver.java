@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.sundy.icare.utils.NotificationHelper;
-import com.sundy.icare.views.activity.LoadingActivity;
+import com.sundy.icare.activity.LoadingActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;

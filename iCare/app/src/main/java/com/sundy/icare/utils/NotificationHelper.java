@@ -7,8 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.sundy.icare.R;
-import com.sundy.icare.views.activity.LoadingActivity;
-import com.sundy.icare.views.activity.MainActivity;
+import com.sundy.icare.activity.LoadingActivity;
+import com.sundy.icare.activity.MainActivity;
 
 /**
  * Created by sundy on 16/4/4.

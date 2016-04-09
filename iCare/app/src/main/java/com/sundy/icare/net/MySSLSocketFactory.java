@@ -17,7 +17,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * Created by sundy on 16/4/6.
+ * Created by sundy on 16/4/9.
  */
 public class MySSLSocketFactory extends SSLSocketFactory {
 

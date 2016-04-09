@@ -7,6 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.androidquery.callback.BitmapAjaxCallback;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.sundy.icare.utils.LruBitmapCache;
 import com.sundy.icare.utils.MyUtils;
@@ -51,6 +52,7 @@ public class MyApp extends Application {
     @Override
     public void onLowMemory() {
         super.onLowMemory();
+        BitmapAjaxCallback.clearCache();
     }
 
     public static synchronized MyApp getInstance() {

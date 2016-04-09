@@ -54,7 +54,7 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.activity.LoadingActivity"
+            android:name=".activity.LoadingActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -65,104 +65,104 @@
         </activity>
 
         <activity
-            android:name=".views.activity.BaseActivity"
+            android:name=".activity.BaseActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.QRScannerActivity"
+            android:name=".activity.QRScannerActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.LoginActivity"
+            android:name=".activity.LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
 
         <activity
-            android:name=".views.activity.RegisterUserInfoActivity"
+            android:name=".activity.RegisterUserInfoActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.RegisterMobileActivity"
+            android:name=".activity.RegisterMobileActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.RegisterPasswordActivity"
+            android:name=".activity.RegisterPasswordActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.ForgetPwd_MobileActivity"
+            android:name=".activity.ForgetPwd_MobileActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.ForgetPwd_PasswordActivity"
+            android:name=".activity.ForgetPwd_PasswordActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.EmailValidationActivity"
+            android:name=".activity.EmailValidationActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.UserDetailActivity"
+            android:name=".activity.UserDetailActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.AddOrderActivity"
+            android:name=".activity.AddOrderActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.AddOrderLocationActivity"
+            android:name=".activity.AddOrderLocationActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.MyOrderActivity"
+            android:name=".activity.MyOrderActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.MyOrderDetailActivity"
+            android:name=".activity.MyOrderDetailActivity"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name=".views.activity.SettingActivity"
+            android:name=".activity.SettingActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.ContactsActivity"
+            android:name=".activity.ContactsActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.BindFamilyActivity"
+            android:name=".activity.BindFamilyActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.MyFamilyActivity"
+            android:name=".activity.MyFamilyActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.MyFamilyDetailActivity"
+            android:name=".activity.MyFamilyDetailActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.VerifyPasswordActivity"
+            android:name=".activity.VerifyPasswordActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.BindEmailActivity"
+            android:name=".activity.BindEmailActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".views.activity.ServantDetailActivity"
+            android:name=".activity.ServantDetailActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
 
         <activity
-            android:name=".views.activity.ChooseServantActivity"
+            android:name=".activity.ChooseServantActivity"
             android:screenOrientation="portrait" />
 
 

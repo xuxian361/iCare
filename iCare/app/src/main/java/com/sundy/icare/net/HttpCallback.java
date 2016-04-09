@@ -13,39 +13,20 @@ import com.android.volley.toolbox.StringRequest;
 import com.sundy.icare.MyApp;
 import com.sundy.icare.utils.MyUtils;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.params.ConnManagerParams;
-import org.apache.http.conn.params.ConnPerRouteBean;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.CoreProtocolPNames;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.IOException;
-import java.net.SocketTimeoutException;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-import internal.org.apache.http.entity.mime.MultipartEntity;
+import java.util.UUID;
 
 /**
  * Created by sundy on 15/12/6.
@@ -60,6 +41,11 @@ public class HttpCallback<T> {
     private Class<T> type;
     public Activity context;
     private static final int NET_TIMEOUT = 20000;
+    private static final String BOUNDARY = UUID.randomUUID().toString(); // 边界标识 随机生成
+    private static final String PREFIX = "--";
+    private static final String LINE_END = "\r\n";
+    private static final String CONTENT_TYPE = "multipart/form-data"; // 内容类型
+    private static final String CHARSET = "utf-8"; // 设置编码
 
     public HttpCallback() {
     }
@@ -74,7 +60,7 @@ public class HttpCallback<T> {
         }
     };
 
-    public void callback(String url, T result, String status) {
+    public void callback(String url, T data, String status) {
     }
 
     //Http Get Request
@@ -240,37 +226,91 @@ public class HttpCallback<T> {
         return sURL;
     }
 
-    public void doFilePost(final String uri, final MultipartEntity entity, Class<T> stype) {
+    //上传单张图片
+    public void doFilePost(final String surl, final HashMap<String, String> stringHashMap,
+                           final String fileKey, final File file, Class<T> stype) {
         this.type = stype;
+        this.url = surl;
+        final String reqUrl = url;
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpPost httpRequest = new HttpPost(uri);
-                String sresult = "";
-                HttpResponse httpResponse;
-                MyUtils.rtLog(TAG, "--------->reqUrl = " + url);
                 try {
-                    HttpParams params = httpRequest.getParams();
-                    params.setParameter(HttpConnectionParams.SO_TIMEOUT, NET_TIMEOUT);
-                    params.setParameter(HttpConnectionParams.CONNECTION_TIMEOUT, NET_TIMEOUT);
-                    params.setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
-                    httpRequest.setEntity(entity);
-                    httpResponse = getClient().execute(httpRequest);
+                    URL uUrl = new URL(reqUrl);
+                    HttpURLConnection conn = (HttpURLConnection) uUrl.openConnection();
+                    conn.setReadTimeout(NET_TIMEOUT);
+                    conn.setConnectTimeout(NET_TIMEOUT);
+                    conn.setDoInput(true); // 允许输入流
+                    conn.setDoOutput(true); // 允许输出流
+                    conn.setUseCaches(false); // 不允许使用缓存
+                    conn.setRequestMethod("POST"); // 请求方式
+                    conn.setRequestProperty("Charset", CHARSET); // 设置编码
+                    conn.setRequestProperty("connection", "keep-alive");
+                    conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
+                    conn.setRequestProperty("Content-Type", CONTENT_TYPE + ";boundary=" + BOUNDARY);
 
+                    DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
+                    StringBuffer sb = null;
+                    String params = "";
 
-                    switch (httpResponse.getStatusLine().getStatusCode()) {
-                        case 200:
-                            sresult = EntityUtils.toString(httpResponse.getEntity());
-                            MyUtils.rtLog(TAG, "sresult:" + sresult);
-                            if (sresult != null && !"".equals(sresult)) {
-                                if (sresult.split("\\{")[0] != null) {
-                                    sresult = sresult.replace(sresult.split("\\{")[0], "");
-                                }
-                            }
+                    if (stringHashMap != null && stringHashMap.size() > 0) {
+                        Iterator<String> it = stringHashMap.keySet().iterator();
+                        while (it.hasNext()) {
+                            sb = null;
+                            sb = new StringBuffer();
+                            String key = it.next();
+                            String value = stringHashMap.get(key);
+                            sb.append(PREFIX).append(BOUNDARY).append(LINE_END);
+                            sb.append("Content-Disposition: form-data; name=\"").append(key).append("\"").append(LINE_END).append(LINE_END);
+                            sb.append(value).append(LINE_END);
+                            params = sb.toString();
+                            dos.write(params.getBytes());
+                        }
+                    }
+
+                    sb = null;
+                    params = null;
+                    sb = new StringBuffer();
+                    /**
+                     * 这里重点注意： name里面的值为服务器端需要key 只有这个key 才可以得到对应的文件
+                     * filename是文件的名字，包含后缀名的 比如:abc.png
+                     */
+                    sb.append(PREFIX).append(BOUNDARY).append(LINE_END);
+                    sb.append("Content-Disposition:form-data; name=\"" + fileKey
+                            + "\"; filename=\"" + file.getName() + "\"" + LINE_END);
+                    sb.append("Content-Type:image/pjpeg" + LINE_END); // 这里配置的Content-type很重要的 ，用于服务器端辨别文件的类型的
+                    sb.append(LINE_END);
+                    params = sb.toString();
+                    sb = null;
+                    dos.write(params.getBytes());
+                    InputStream is = new FileInputStream(file);
+                    byte[] bytes = new byte[1024];
+                    int len = 0;
+                    int curLen = 0;
+                    while ((len = is.read(bytes)) != -1) {
+                        curLen += len;
+                        dos.write(bytes, 0, len);
+                    }
+                    is.close();
+                    dos.write(LINE_END.getBytes());
+                    byte[] end_data = (PREFIX + BOUNDARY + PREFIX + LINE_END).getBytes();
+                    dos.write(end_data);
+                    dos.flush();
+                    int res = conn.getResponseCode();
+                    if (res == 200) {
+                        InputStream input = conn.getInputStream();
+                        StringBuffer sb1 = new StringBuffer();
+                        int ss;
+                        while ((ss = input.read()) != -1) {
+                            sb1.append((char) ss);
+                        }
+                        String response = sb1.toString();
+                        MyUtils.rtLog(TAG, "----------->result =" + response);
+                        if (response != null) {
                             if (type.equals(JSONObject.class)) {
                                 try {
                                     JSONObject r = (JSONObject) new JSONTokener(
-                                            sresult.toString()).nextValue();
+                                            response).nextValue();
                                     result = (T) r;
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -278,69 +318,35 @@ public class HttpCallback<T> {
                             } else if (type.equals(JSONArray.class)) {
                                 try {
                                     JSONArray r = (JSONArray) new JSONTokener(
-                                            sresult.toString()).nextValue();
+                                            response).nextValue();
                                     result = (T) r;
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             } else if (type.equals(String.class)) {
                                 try {
-                                    result = (T) sresult.toString();
+                                    result = (T) response;
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
-                            break;
-                        case 401:
-                            sresult = "401";
-                            break;
+                        }
+                        handler.sendEmptyMessage(0);
+                        return;
+                    } else {
+                        MyUtils.rtLog(TAG, "----------->Error 404: 网络异常");
+                        url = reqUrl;
+                        result = null;
+                        status = "error";
+                        handler.sendEmptyMessage(0);
+                        return;
                     }
-                } catch (SocketTimeoutException e) {
-                    e.printStackTrace();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                handler.sendEmptyMessage(0);
             }
         }).start();
     }
-
-    private DefaultHttpClient getClient() {
-        SSLSocketFactory ssf = null;
-        try {
-            KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
-            trustStore.load(null, null);
-            ssf = new MySSLSocketFactory(trustStore);
-            ssf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (UnrecoverableKeyException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
-        }
-
-        HttpParams httpParams = new BasicHttpParams();
-        //httpParams.setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
-        HttpConnectionParams.setConnectionTimeout(httpParams, NET_TIMEOUT);
-        HttpConnectionParams.setSoTimeout(httpParams, NET_TIMEOUT);
-        //ConnManagerParams.setMaxConnectionsPerRoute(httpParams, new ConnPerRouteBean(NETWORK_POOL));
-        ConnManagerParams.setMaxConnectionsPerRoute(httpParams, new ConnPerRouteBean(25));
-        //Added this line to avoid issue at: http://stackoverflow.com/questions/5358014/android-httpclient-oom-on-4g-lte-htc-thunderbolt
-        HttpConnectionParams.setSocketBufferSize(httpParams, 8192);
-        SchemeRegistry registry = new SchemeRegistry();
-        registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-        registry.register(new Scheme("https", ssf == null ? SSLSocketFactory.getSocketFactory() : ssf, 443));
-        ThreadSafeClientConnManager cm = new ThreadSafeClientConnManager(httpParams, registry);
-        return new DefaultHttpClient(cm, httpParams);
-    }
-
 
 }
 
