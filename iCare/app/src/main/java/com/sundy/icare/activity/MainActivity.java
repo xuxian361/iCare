@@ -27,6 +27,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ViewPager pager;
     private FragmentPagerAdapter pagerAdapter;
     private int current_Position = 0;
+    private String from = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         aq = new AQuery(this);
 
+        from = getIntent().getStringExtra("from");
+        if (from.equals("Register")) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        }
 
         //初始化View
         initBottomMenu();

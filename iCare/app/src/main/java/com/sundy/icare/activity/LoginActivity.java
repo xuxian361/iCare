@@ -12,11 +12,12 @@ import android.widget.EditText;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
+import com.sundy.icare.net.HttpCallback;
+import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -25,8 +26,9 @@ import org.json.JSONObject;
 public class LoginActivity extends BaseActivity {
 
     private final String TAG = "LoginActivity";
-    private boolean isRememberPwd = false;
+    private boolean isAutoLogin = false;
     private CheckBox cb_remember_pwd;
+    private String AREA_CODE = "86";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +48,13 @@ public class LoginActivity extends BaseActivity {
 
         cb_remember_pwd = aq.id(R.id.cb_remember_pwd).getCheckBox();
         cb_remember_pwd.setOnCheckedChangeListener(checkedChangeListener);
-        String rememberPwdUserName = MyPreference.getRememberPwdUserName(context);
-        String rememberPwd = MyPreference.getRememberPwd(context);
-        if (!TextUtils.isEmpty(rememberPwdUserName)) {
-            if (!TextUtils.isEmpty(rememberPwd)) {
-                cb_remember_pwd.setChecked(true);
-            } else {
-                cb_remember_pwd.setChecked(false);
-            }
-            aq.id(R.id.edt_username).getEditText().setText(rememberPwdUserName);
-            aq.id(R.id.edt_password).getEditText().setText(rememberPwd);
+        String phone = MyPreference.getPhone(context);
+        boolean isAutoLogin = MyPreference.getAutoLogin(context);
+        if (!TextUtils.isEmpty(phone)) {
+            cb_remember_pwd.setChecked(isAutoLogin);
+            aq.id(R.id.edt_username).getEditText().setText(phone);
+            aq.id(R.id.edt_password).getEditText().setText("");
         }
-
     }
 
     private CompoundButton.OnCheckedChangeListener checkedChangeListener = new CompoundButton.OnCheckedChangeListener() {
@@ -66,9 +63,9 @@ public class LoginActivity extends BaseActivity {
             switch (compoundButton.getId()) {
                 case R.id.cb_remember_pwd:
                     if (b) {
-                        isRememberPwd = true;
+                        isAutoLogin = true;
                     } else {
-                        isRememberPwd = false;
+                        isAutoLogin = false;
                     }
                     break;
             }
@@ -104,43 +101,10 @@ public class LoginActivity extends BaseActivity {
                     goRegister();
                     break;
                 case R.id.btn_login:
-                    login();
-//                    showLoginChoiceDialog();
-
-//                    EMChatManager.getInstance().login("15088086691_icare", "124578", new EMCallBack() {
-//                        @Override
-//                        public void onSuccess() {
-//                            runOnUiThread(new Runnable() {
-//                                public void run() {
-//                                    EMGroupManager.getInstance().loadAllGroups();
-//                                    EMChatManager.getInstance().loadAllConversations();
-//                                    MyUtils.rtLog(TAG, "----------->登陆聊天服务器成功!");
-//                                    //保存登陆用户信息
-//                                    showLoginChoiceDialog();
-//                                }
-//                            });
-//                        }
-//
-//                        @Override
-//                        public void onError(int i, String s) {
-//                            MyUtils.rtLog(TAG, "----------->登陆聊天服务器失败!");
-//                            runOnUiThread(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    MyToast.rtToast(LoginActivity.this, getString(R.string.login_fail));
-//                                }
-//                            });
-//                        }
-//
-//                        @Override
-//                        public void onProgress(int i, String s) {
-//
-//                        }
-//                    });
-
+                    login2Server();
                     break;
                 case R.id.txt_first_visit:
-                    goMain();
+                    go2Main();
                     break;
                 case R.id.txt_forgetpwd:
                     goForgetPwd();
@@ -150,10 +114,10 @@ public class LoginActivity extends BaseActivity {
     };
 
     //登陆
-    private void login() {
+    private void login2Server() {
         try {
             EditText edt_username = aq.id(R.id.edt_username).getEditText();
-            EditText edt_password = aq.id(R.id.edt_password).getEditText();
+            final EditText edt_password = aq.id(R.id.edt_password).getEditText();
 
             final String username = edt_username.getText().toString();
             final String password = edt_password.getText().toString();
@@ -167,79 +131,78 @@ public class LoginActivity extends BaseActivity {
                 return;
             }
 
-//            ResourceTaker.login(username, password, new HttpCallback<JSONObject>(this) {
-//                @Override
-//                public void callback(String url, JSONObject result, String status) {
-//                    super.callback(url, result, status);
-//                    try {
-//                        if (result != null) {
-//                            String code = MyJsonParser.getResp_Code(result);
-//                            String msg = MyJsonParser.getResp_Msg(result);
-//                            if (code.equals("0000")) {
-//                                JSONObject detail = MyJsonParser.getResp_Detail(result);
-//                                if (detail != null) {
-//                                    if (isRememberPwd)
-//                                        MyPreference.setRememberPWD(LoginActivity.this, username, password);
-//                                    else
-//                                        MyPreference.setRememberPWD(LoginActivity.this, username, "");
-//                                    //Login to 环信
-//                                    login2HuanXin(detail);
-//                                } else {
-//                                    MyToast.rtToast(LoginActivity.this, msg);
-//                                }
-//                            } else {
-//                                MyToast.rtToast(LoginActivity.this, msg);
-//                            }
-//                        }
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
+            ResourceTaker.login(AREA_CODE, username, password, new HttpCallback<JSONObject>(this) {
+                @Override
+                public void callback(String url, JSONObject data, String status) {
+                    super.callback(url, data, status);
+                    try {
+                        if (data != null) {
+                            JSONObject result = data.getJSONObject("result");
+                            if (result != null) {
+                                String code = result.getString("code");
+                                String message = result.getString("message");
+                                if (code.equals("1000")) {
+                                    JSONObject info = data.getJSONObject("info");
+                                    if (info != null) {
+                                        MyPreference.saveAutoLogin(LoginActivity.this, isAutoLogin);
+                                        saveUserInfo(info);
+                                        go2Main();
+                                    }
+                                } else {
+                                    MyToast.rtToast(LoginActivity.this, message);
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    //登陆环信
-    private void login2HuanXin(final JSONObject detail) throws JSONException {
-        String im_user_name = detail.getString("im_user_name");
-        String im_encrypted_password = detail.getString("im_encrypted_password");
-
-
     }
 
     //保存登陆用户信息
     private void saveUserInfo(JSONObject detail) {
         try {
-            String im_user_name = detail.getString("im_user_name");
-            String im_encrypted_password = detail.getString("im_encrypted_password");
-            String token = detail.getString("token");
-            String user_id = detail.getString("user_id");
-//            MyPreference.saveUserInfo(this, im_user_name, im_encrypted_password, token, user_id);
+            String id = detail.getString("id");
+            String areaCode = detail.getString("areaCode");
+            String phone = detail.getString("phone");
+            String name = detail.getString("name");
+            String profileImage = detail.getString("profileImage");
+            String sessionKey = detail.getString("sessionKey");
+            String easemobAccount = detail.getString("easemobAccount");
+            String easemobPassword = detail.getString("easemobPassword");
+            boolean isServiceProvider = detail.getBoolean("isServiceProvider");
+            MyPreference.saveUserInfo(this, id, name, areaCode, phone, profileImage, sessionKey,
+                    easemobAccount, easemobPassword, isServiceProvider);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    //跳转主页（子女）
-    private void goMain() {
+    //跳转主页
+    private void go2Main() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     //忘记密码
     private void goForgetPwd() {
         Intent intent = new Intent(this, ForgetPwd_MobileActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     //注册
     private void goRegister() {
         Intent intent = new Intent(this, RegisterUserInfoActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override

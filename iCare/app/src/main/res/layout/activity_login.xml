@@ -9,9 +9,9 @@
         android:id="@+id/linear_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/linear_login"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_above="@+id/linear_login">
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="100dp"
@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="孝为先" />
+            android:text="@string/app_name_icare" />
 
     </LinearLayout>
 
@@ -29,16 +29,16 @@
         android:id="@+id/linear_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -63,11 +63,11 @@
                     android:layout_marginRight="8dp"
                     android:layout_toRightOf="@+id/img_password"
                     android:background="@null"
+                    android:gravity="center_vertical"
                     android:hint="@string/loginName"
                     android:inputType="text"
                     android:singleLine="true"
-                    android:textSize="14sp"
-                    android:gravity="center_vertical" />
+                    android:textSize="14sp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -94,12 +94,12 @@
                     android:layout_marginRight="8dp"
                     android:layout_toRightOf="@+id/img_user"
                     android:background="@null"
+                    android:gravity="center_vertical"
                     android:hint="@string/password"
                     android:password="true"
                     android:singleLine="true"
                     android:textIsSelectable="false"
-                    android:textSize="14sp"
-                    android:gravity="center_vertical" />
+                    android:textSize="14sp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -117,7 +117,7 @@
                     android:checked="false"
                     android:drawableLeft="@drawable/checkbox_selector"
                     android:drawablePadding="5dp"
-                    android:text="@string/remember_pwd"
+                    android:text="@string/auto_login"
                     android:textColor="@color/material_blue_grey_800"
                     android:textSize="14sp" />
 
@@ -150,13 +150,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="false"
+        android:layout_below="@+id/linear_login"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:gravity="bottom"
         android:text="@string/i_dont_have_account"
         android:textColor="@color/material_grey_850"
-        android:textSize="18sp"
-        android:layout_below="@+id/linear_login"
-        android:layout_marginTop="30dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/txt_first_visit"

@@ -26,7 +26,7 @@ public class MyPreference {
     public static final String Preference_User_easemobAccount = "easemobAccount";   //环信账号
     public static final String Preference_User_easemobPassword = "easemobPassword";   //环信密码
     public static final String Preference_User_isServiceProvider = "isServiceProvider";   //是否是服务提供者
-
+    public static final String Preference_User_AutoLogin = "AutoLogin";   //是否保持登陆状态
 
     //User Info
     public static final String PREFERENCE_MOBILE = "PREFERENCE_MOBILE";     //用户登陆手机号
@@ -97,25 +97,24 @@ public class MyPreference {
         return false;
     }
 
-    //设置》记住密码
-    public static void setRememberPWD(Context context, String username, String pwd) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
+    //设置自动登陆
+    public static void saveAutoLogin(Context context, boolean AutoLogin) {
+        SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(PREFERENCE_REMEMBER_USERNAME, username);
-        editor.putString(PREFERENCE_REMEMBER_PASSWORD, pwd);
+        editor.putBoolean(MyPreference.Preference_User_AutoLogin, AutoLogin);
         editor.commit();
     }
 
     //获取》记住密码
-    public static String getRememberPwd(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        return preferences.getString(PREFERENCE_REMEMBER_PASSWORD, "");
+    public static Boolean getAutoLogin(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        return preferences.getBoolean(Preference_User_AutoLogin, false);
     }
 
-    //获取》记住密码-用户名
-    public static String getRememberPwdUserName(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        return preferences.getString(PREFERENCE_REMEMBER_USERNAME, "");
+    //获取》用户名
+    public static String getPhone(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        return preferences.getString(Preference_User_phone, "");
     }
 
 }

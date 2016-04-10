@@ -175,6 +175,7 @@ public class RegisterPasswordActivity extends BaseActivity {
     //跳转主页
     private void go2Main() {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("from", "Register");
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }

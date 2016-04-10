@@ -73,7 +73,11 @@ public class LoadingActivity extends InstrumentedActivity {
                             if (second == 1) {
                                 second = 5;
                                 if (MyPreference.isLogin(LoadingActivity.this)) {
-                                    goMain();
+                                    boolean isAutoLogin = MyPreference.getAutoLogin(LoadingActivity.this);
+                                    if (isAutoLogin)
+                                        goMain();
+                                    else
+                                        goLogin();
                                 } else {
                                     goLogin();
                                 }
