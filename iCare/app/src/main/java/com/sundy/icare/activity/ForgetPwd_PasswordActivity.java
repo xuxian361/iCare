@@ -64,7 +64,6 @@ public class ForgetPwd_PasswordActivity extends BaseActivity {
         }
 
         SharedPreferences preferences = getSharedPreferences(MyConstant.APP_NAME, MODE_PRIVATE);
-        String mobile = preferences.getString(MyPreference.PREFERENCE_MOBILE, "");
 
 
 //        ResourceTaker.register(username, mobile, password, new HttpCallback<JsonObject>() {

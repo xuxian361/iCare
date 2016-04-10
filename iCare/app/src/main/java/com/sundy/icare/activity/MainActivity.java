@@ -37,10 +37,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         aq = new AQuery(this);
 
         from = getIntent().getStringExtra("from");
-        if (from.equals("Register")) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        if (from != null && from.length() != 0) {
+            if (from.equals("Register")) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
         }
 
         //初始化View
