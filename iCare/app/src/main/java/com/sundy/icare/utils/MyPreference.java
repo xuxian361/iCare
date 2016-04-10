@@ -27,15 +27,7 @@ public class MyPreference {
     public static final String Preference_User_easemobPassword = "easemobPassword";   //环信密码
     public static final String Preference_User_isServiceProvider = "isServiceProvider";   //是否是服务提供者
     public static final String Preference_User_AutoLogin = "AutoLogin";   //是否保持登陆状态
-
-    //User Info
-    public static final String PREFERENCE_MOBILE = "PREFERENCE_MOBILE";     //用户登陆手机号
-    public static final String PREFERENCE_TOKEN = "PREFERENCE_TOKEN";       //用户Token
-    public static final String PREFERENCE_IM_USER_NAME = "PREFERENCE_IM_USER_NAME"; //环信用户登陆名
-    public static final String PREFERENCE_IM_ENCRYPTED_PASSWORD = "PREFERENCE_IM_ENCRYPTED_PASSWORD"; //环信用户登陆密码
-    public static final String PREFERENCE_REMEMBER_PASSWORD = "PREFERENCE_REMEMBER_PASSWORD"; //记住密码
-    public static final String PREFERENCE_REMEMBER_USERNAME = "PREFERENCE_REMEMBER_USERNAME"; //记住密码-用户名
-
+    //-------------------------APP------------------------
     public static final String UUID_STR = "UUID";       //UUID
 
 
@@ -58,16 +50,16 @@ public class MyPreference {
 
     //Save Token
     public static void saveToken(String token, Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(Preference_User, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(PREFERENCE_TOKEN, token);
+        editor.putString(Preference_User_sessionKey, token);
         editor.commit();
     }
 
     //Get Token
     public static String getToken(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        return preferences.getString(PREFERENCE_TOKEN, "");
+        SharedPreferences preferences = context.getSharedPreferences(Preference_User, Context.MODE_PRIVATE);
+        return preferences.getString(Preference_User_sessionKey, "");
     }
 
     //Save User Login Info
@@ -90,8 +82,8 @@ public class MyPreference {
 
     //判断是否登陆
     public static boolean isLogin(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(MyConstant.APP_NAME, Context.MODE_PRIVATE);
-        String sessionid = preferences.getString(PREFERENCE_TOKEN, "");
+        SharedPreferences preferences = context.getSharedPreferences(Preference_User, Context.MODE_PRIVATE);
+        String sessionid = preferences.getString(Preference_User_sessionKey, "");
         if (!"".equals(sessionid))
             return true;
         return false;
