@@ -57,4 +57,7 @@
 -dontwarn com.google.**
 -keep class com.google.protobuf.** {*;}
 
+-keep class com.hyphenate.** {*;}
+-dontwarn  com.hyphenate.**
+
 

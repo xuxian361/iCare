@@ -9,6 +9,8 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.androidquery.callback.BitmapAjaxCallback;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMOptions;
 import com.sundy.icare.utils.LruBitmapCache;
 import com.sundy.icare.utils.MyUtils;
 
@@ -46,6 +48,14 @@ public class MyApp extends Application {
             MyUtils.rtLog(TAG, "enter the service process!");
             return;
         }
+        EMOptions options = new EMOptions();
+        // 默认添加好友时，是不需要验证的，改成需要验证
+        options.setAcceptInvitationAlways(false);
+        //初始化
+        EMClient.getInstance().init(this, options);
+        //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
+        EMClient.getInstance().setDebugMode(true);
+
 
     }
 

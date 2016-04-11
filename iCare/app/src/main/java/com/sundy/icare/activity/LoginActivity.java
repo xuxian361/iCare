@@ -11,6 +11,8 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.androidquery.AQuery;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
 import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
@@ -142,11 +144,39 @@ public class LoginActivity extends BaseActivity {
                                 String code = result.getString("code");
                                 String message = result.getString("message");
                                 if (code.equals("1000")) {
-                                    JSONObject info = data.getJSONObject("info");
+                                    final JSONObject info = data.getJSONObject("info");
                                     if (info != null) {
-                                        MyPreference.saveAutoLogin(LoginActivity.this, isAutoLogin);
-                                        saveUserInfo(info);
-                                        go2Main();
+                                        String easemobAccount = info.getString("easemobAccount");
+                                        String easemobPassword = info.getString("easemobPassword");
+                                        EMClient.getInstance().login(easemobAccount, easemobPassword, new EMCallBack() {
+                                            @Override
+                                            public void onSuccess() {
+                                                MyUtils.rtLog(TAG, "-------->onSuccess");
+                                                // ** 第一次登录或者之前logout后再登录，加载所有本地群和回话
+                                                EMClient.getInstance().groupManager().loadAllGroups();
+                                                EMClient.getInstance().chatManager().loadAllConversations();
+
+                                                MyPreference.saveAutoLogin(LoginActivity.this, isAutoLogin);
+                                                saveUserInfo(info);
+                                                go2Main();
+                                            }
+
+                                            @Override
+                                            public void onError(int i, String s) {
+                                                MyUtils.rtLog(TAG, "-------->onError");
+                                                runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        MyToast.rtToast(LoginActivity.this, getString(R.string.login_fail));
+                                                    }
+                                                });
+                                            }
+
+                                            @Override
+                                            public void onProgress(int i, String s) {
+                                                MyUtils.rtLog(TAG, "-------->onProgress");
+                                            }
+                                        });
                                     }
                                 } else {
                                     MyToast.rtToast(LoginActivity.this, message);

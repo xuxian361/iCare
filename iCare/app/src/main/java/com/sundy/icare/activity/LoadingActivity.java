@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
+import com.hyphenate.chat.EMClient;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.FileUtil;
 import com.sundy.icare.utils.MyConstant;
@@ -74,10 +75,13 @@ public class LoadingActivity extends InstrumentedActivity {
                                 second = 5;
                                 if (MyPreference.isLogin(LoadingActivity.this)) {
                                     boolean isAutoLogin = MyPreference.getAutoLogin(LoadingActivity.this);
-                                    if (isAutoLogin)
+                                    if (isAutoLogin) {
+                                        EMClient.getInstance().groupManager().loadAllGroups();
+                                        EMClient.getInstance().chatManager().loadAllConversations();
                                         goMain();
-                                    else
+                                    } else {
                                         goLogin();
+                                    }
                                 } else {
                                     goLogin();
                                 }

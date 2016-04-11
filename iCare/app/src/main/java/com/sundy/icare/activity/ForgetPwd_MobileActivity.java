@@ -1,9 +1,14 @@
 package com.sundy.icare.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,27 +30,26 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
     private EditText edtMobile;
     private EditText edtCode;
     private final String AREA_CODE = "86";
-    private final int MSG_Timer = 10001;
-
-    private int times = 10;
+    private final int TIME = 60;
+    private int times = TIME;
     private Button btnGetCode;
-
-
+    private final int SMS_CODE = 1;
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
-                case MSG_Timer:
+                case SMS_CODE:
+                    times--;
+                    btnGetCode.setText(times + "秒");
                     if (times == 0) {
-                        changeButtonState(true);
+                        times = TIME;
+                        setCodeEnable();
                     } else {
-                        mHandler.sendEmptyMessageDelayed(MSG_Timer, 1000);
-                        times--;
-                        if (times < 10)
-                            btnGetCode.setText(getString(R.string.re_send) + " (0" + times + ")");
-                        else
-                            btnGetCode.setText(getString(R.string.re_send) + " (" + times + ")");
+                        Message message = new Message();
+                        message.what = SMS_CODE;
+                        if (mHandler != null)
+                            mHandler.sendMessageDelayed(message, 1000);
                     }
                     break;
             }
@@ -58,7 +62,6 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
         setContentView(R.layout.activity_forget_password_mobile);
 
         aq = new AQuery(this);
-
         init();
     }
 
@@ -90,16 +93,17 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
         }
     };
 
-    //重发按钮状态更变
-    private void changeButtonState(boolean isEnable) {
-        if (isEnable) {
-            btnGetCode.setEnabled(true);
-            btnGetCode.setBackgroundResource(R.drawable.corner_btn_green);
-            btnGetCode.setText(R.string.re_send);
-        } else {
-            btnGetCode.setEnabled(false);
-            btnGetCode.setBackgroundResource(R.drawable.corner_btn_gray);
-        }
+    //设置获取验证码可用
+    private void setCodeEnable() {
+        btnGetCode.setEnabled(true);
+        btnGetCode.setBackgroundResource(R.drawable.corner_btn_green);
+        btnGetCode.setText(R.string.re_send_verify_code);
+    }
+
+    //设置获取验证码不可用
+    private void setCodeDisable() {
+        btnGetCode.setEnabled(false);
+        btnGetCode.setBackgroundResource(R.drawable.corner_btn_gray);
     }
 
     //获取手机验证码
@@ -112,32 +116,92 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
 
         ResourceTaker.sendSMSCode(AREA_CODE, mobile, "forgetPassword", new HttpCallback<JSONObject>(this) {
             @Override
-            public void callback(String url, JSONObject result, String status) {
-                super.callback(url, result, status);
-
-//                times = 10;
-//                changeButtonState(false);
-//                mHandler.sendEmptyMessageDelayed(MSG_Timer, 1000);
-
+            public void callback(String url, JSONObject data, String status) {
+                super.callback(url, data, status);
+                try {
+                    if (data != null) {
+                        JSONObject result = data.getJSONObject("result");
+                        if (result != null) {
+                            String code = result.getString("code");
+                            String message = result.getString("message");
+                            if (code.equals("1000")) {
+                                times = TIME;
+                                setCodeDisable();
+                                mHandler.sendEmptyMessage(SMS_CODE);
+                            } else if (code.equals("3000")) {
+                                times = TIME;
+                                setCodeEnable();
+                                MyToast.rtToast(ForgetPwd_MobileActivity.this, message);
+                            } else {
+                                times = TIME;
+                                setCodeEnable();
+                                MyToast.rtToast(ForgetPwd_MobileActivity.this, message);
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
-
     }
 
     //验证手机号码
     private void verifyMobile() {
-        String mobile = edtMobile.getText().toString().trim();
+        final String mobile = edtMobile.getText().toString().trim();
         String code = edtCode.getText().toString().trim();
 
         if (TextUtils.isEmpty(mobile)) {
             MyToast.rtToast(this, getString(R.string.mobile_cannot_empty));
             return;
         }
-
         if (TextUtils.isEmpty(code)) {
             MyToast.rtToast(this, getString(R.string.verify_code_cannot_empty));
             return;
         }
+
+        ResourceTaker.checkSmsCode(AREA_CODE, mobile, "forgetPassword", code, new HttpCallback<JSONObject>(this) {
+            @Override
+            public void callback(String url, JSONObject data, String status) {
+                super.callback(url, data, status);
+                try {
+                    if (data != null) {
+                        JSONObject result = data.getJSONObject("result");
+                        if (result != null) {
+                            String code = result.getString("code");
+                            String message = result.getString("message");
+                            if (code.equals("1000")) {
+                                if (data.has("info")) {
+                                    JSONObject info = data.getJSONObject("info");
+                                    if (info != null) {
+                                        if (info.has("is_effective")) {
+                                            boolean isEffective = info.getBoolean("is_effective");
+                                            if (isEffective) {
+                                                go2ForgetPwdResetPassword(AREA_CODE, mobile);
+                                            } else {
+                                                MyToast.rtToast(ForgetPwd_MobileActivity.this, getString(R.string.verify_code_is_wrong));
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                MyToast.rtToast(ForgetPwd_MobileActivity.this, message);
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private void go2ForgetPwdResetPassword(String area_code, String phone) {
+        Intent intent = new Intent(this, ForgetPwd_PasswordActivity.class);
+        intent.putExtra("area_code", area_code);
+        intent.putExtra("phone", phone);
+        startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override

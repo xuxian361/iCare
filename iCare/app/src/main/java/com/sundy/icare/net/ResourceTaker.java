@@ -71,13 +71,11 @@ public class ResourceTaker {
     }
 
     //忘记密码
-    public static void forgetPassword(String areaCode, String phone, String smsType, String smsCode,
-                                      String password, String verifyPassword, HttpCallback callback) {
+    public static void forgetPassword(String areaCode, String phone, String password,
+                                      String verifyPassword, HttpCallback callback) {
         HashMap hashMap = new HashMap();
         hashMap.put("areaCode", areaCode);
         hashMap.put("phone", phone);
-        hashMap.put("smsType", smsType);
-        hashMap.put("smsCode", smsCode);
         hashMap.put("password", password);
         hashMap.put("verifyPassword", verifyPassword);
         getHttpRequestPost(MyURL.URL_FORGET_PASSWORD, hashMap, JSONObject.class, callback);
