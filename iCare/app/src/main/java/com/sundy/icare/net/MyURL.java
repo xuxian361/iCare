@@ -11,7 +11,7 @@ public class MyURL {
     public static final String HTTP_DEV = "http://192.168.1.109/api/"; //本地
     public static final String HTTP_UAT = "http://112.74.124.251/api/"; //网络
 
-    public static final String HTTP_BASE = MyURL.HTTP_DEV;
+    public static final String HTTP_BASE = MyURL.HTTP_UAT;
 
     /*----------------------------------------------------------------------------------------*/
     /**

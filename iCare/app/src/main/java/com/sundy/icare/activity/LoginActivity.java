@@ -151,6 +151,7 @@ public class LoginActivity extends BaseActivity {
                 @Override
                 public void callback(String url, JSONObject data, String status) {
                     super.callback(url, data, status);
+                    MyUtils.rtLog(TAG, "-------->login data = " + data.toString());
                     try {
                         if (data != null) {
                             JSONObject result = data.getJSONObject("result");
@@ -165,7 +166,7 @@ public class LoginActivity extends BaseActivity {
                                         EMClient.getInstance().login(easemobAccount, easemobPassword, new EMCallBack() {
                                             @Override
                                             public void onSuccess() {
-                                                MyUtils.rtLog(TAG, "-------->onSuccess");
+                                                MyUtils.rtLog(TAG, "-------->环信登陆成功");
                                                 // ** 第一次登录或者之前logout后再登录，加载所有本地群和回话
                                                 EMClient.getInstance().groupManager().loadAllGroups();
                                                 EMClient.getInstance().chatManager().loadAllConversations();
@@ -177,7 +178,7 @@ public class LoginActivity extends BaseActivity {
 
                                             @Override
                                             public void onError(int i, String s) {
-                                                MyUtils.rtLog(TAG, "-------->onError");
+                                                MyUtils.rtLog(TAG, "-------->环信登陆失败");
                                                 runOnUiThread(new Runnable() {
                                                     @Override
                                                     public void run() {
@@ -188,7 +189,7 @@ public class LoginActivity extends BaseActivity {
 
                                             @Override
                                             public void onProgress(int i, String s) {
-                                                MyUtils.rtLog(TAG, "-------->onProgress");
+                                                MyUtils.rtLog(TAG, "-------->环信正在登陆");
                                             }
                                         });
                                     }
