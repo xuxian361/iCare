@@ -68,7 +68,6 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        MyUtils.rtLog(TAG, "---------->onClick");
         if (mCallback == null)
             return;
         switch (view.getId()) {

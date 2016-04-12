@@ -1,6 +1,5 @@
 package com.sundy.icare.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -9,12 +8,12 @@ import android.view.View;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.MyUtils;
 import com.sundy.icare.fragment.MarketFragment;
 import com.sundy.icare.fragment.MeFragment;
 import com.sundy.icare.fragment.MsgFragment;
 import com.sundy.icare.fragment.ServiceFragment;
 import com.sundy.icare.fragment.TabMenuFragment;
+import com.sundy.icare.utils.MyUtils;
 
 /**
  * Created by sundy on 15/12/6.
@@ -27,7 +26,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ViewPager pager;
     private FragmentPagerAdapter pagerAdapter;
     private int current_Position = 0;
-    private String from = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,26 +34,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         aq = new AQuery(this);
 
-        from = getIntent().getStringExtra("from");
-        if (from != null && from.length() != 0) {
-            if (from.equals("Register")) {
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            }
-        }
-
         //初始化View
         initBottomMenu();
         initViewPager();
-    }
-
-
-    //跳转登陆
-    private void goLogin() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     private void initBottomMenu() {

@@ -1,14 +1,18 @@
-package com.sundy.icare.activity;
+package com.sundy.icare.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
+import com.sundy.icare.activity.MainActivity;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.utils.MyPreference;
@@ -19,21 +23,24 @@ import org.json.JSONObject;
 import java.io.File;
 
 /**
- * Created by sundy on 16/1/17.
+ * Created by sundy on 16/4/12.
  */
-public class RegisterPasswordActivity extends BaseActivity {
+public class RegisterPasswordFragment extends BaseFragment {
 
-    private final String TAG = "RegisterPasswordActivity";
+    private LayoutInflater inflater;
+    private View root;
+
+    private final String TAG = "RegisterPasswordFragment";
     private EditText edtPassword, edtConfirmPassword;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_set_password);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        this.inflater = inflater;
+        root = inflater.inflate(R.layout.fragment_register_set_password, container, false);
 
-        aq = new AQuery(this);
+        aq = new AQuery(root);
         init();
-
+        return root;
     }
 
     private void init() {
@@ -41,7 +48,7 @@ public class RegisterPasswordActivity extends BaseActivity {
         aq.id(R.id.txtRight).text(R.string.finish).clicked(onClick);
         edtPassword = aq.id(R.id.edtPassword).getEditText();
         edtConfirmPassword = aq.id(R.id.edtConfirmPassword).getEditText();
-        aq.id(R.id.btnBack).clicked(onClick);
+        aq.id(R.id.btn_back).clicked(onClick);
 
     }
 
@@ -49,8 +56,8 @@ public class RegisterPasswordActivity extends BaseActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btnBack:
-                    finish();
+                case R.id.btn_back:
+                    mCallback.onBack();
                     break;
                 case R.id.txtRight:
                     register();
@@ -64,19 +71,19 @@ public class RegisterPasswordActivity extends BaseActivity {
         final String password = edtPassword.getText().toString().trim();
         String confirmPassword = edtConfirmPassword.getText().toString().trim();
         if (TextUtils.isEmpty(password)) {
-            MyToast.rtToast(this, getString(R.string.login_password_cannot_empty));
+            MyToast.rtToast(context, getString(R.string.login_password_cannot_empty));
             return;
         }
         if (TextUtils.isEmpty(confirmPassword)) {
-            MyToast.rtToast(this, getString(R.string.confirmpassword_cannot_empty));
+            MyToast.rtToast(context, getString(R.string.confirmpassword_cannot_empty));
             return;
         }
         if (!password.equals(confirmPassword)) {
-            MyToast.rtToast(this, getString(R.string.confirmpwd_not_equal_password));
+            MyToast.rtToast(context, getString(R.string.confirmpwd_not_equal_password));
             return;
         }
 
-        SharedPreferences preferences = getSharedPreferences(MyPreference.Preference_Registration, MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_Registration, Context.MODE_PRIVATE);
         String username = preferences.getString(MyPreference.Preference_Registration_username, "");
         final String areaCode = preferences.getString(MyPreference.Preference_Registration_areaCode, "");
         final String phone = preferences.getString(MyPreference.Preference_Registration_phone, "");
@@ -87,7 +94,7 @@ public class RegisterPasswordActivity extends BaseActivity {
             file = new File(profileImage);
         }
         ResourceTaker.register(areaCode, phone, username, gender, password, file,
-                new HttpCallback<JSONObject>(this) {
+                new HttpCallback<JSONObject>(context) {
                     @Override
                     public void callback(String url, JSONObject data, String status) {
                         super.callback(url, data, status);
@@ -100,9 +107,9 @@ public class RegisterPasswordActivity extends BaseActivity {
                                     if (code.equals("1000")) {
                                         login(areaCode, phone, password);
                                     } else if (code.equals("5000")) {
-                                        MyToast.rtToast(RegisterPasswordActivity.this, message);
+                                        MyToast.rtToast(context, message);
                                     } else {
-                                        MyToast.rtToast(RegisterPasswordActivity.this, message);
+                                        MyToast.rtToast(context, message);
                                     }
                                 }
                             }
@@ -115,7 +122,7 @@ public class RegisterPasswordActivity extends BaseActivity {
 
     //登陆服务器
     private void login(String areaCode, String phone, String password) {
-        ResourceTaker.login(areaCode, phone, password, new HttpCallback<JSONObject>(this) {
+        ResourceTaker.login(areaCode, phone, password, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
@@ -130,10 +137,11 @@ public class RegisterPasswordActivity extends BaseActivity {
                                 if (info != null) {
                                     saveUserInfo(info);
                                     clearRegisterInfo();
+                                    finishLoginPage();
                                     go2Main();
                                 }
                             } else {
-                                MyToast.rtToast(RegisterPasswordActivity.this, message);
+                                MyToast.rtToast(context, message);
                             }
                         }
                     }
@@ -142,6 +150,13 @@ public class RegisterPasswordActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    //关闭登陆页
+    private void finishLoginPage() {
+        Intent intent = new Intent("com.sundy.icare.activity.LoginActivity");
+        intent.putExtra("msg", "Register_Success");
+        context.sendBroadcast(intent);
     }
 
     //保存登陆用户信息
@@ -156,7 +171,7 @@ public class RegisterPasswordActivity extends BaseActivity {
             String easemobAccount = detail.getString("easemobAccount");
             String easemobPassword = detail.getString("easemobPassword");
             boolean isServiceProvider = detail.getBoolean("isServiceProvider");
-            MyPreference.saveUserInfo(this, id, name, areaCode, phone, profileImage, sessionKey,
+            MyPreference.saveUserInfo(context, id, name, areaCode, phone, profileImage, sessionKey,
                     easemobAccount, easemobPassword, isServiceProvider);
 
         } catch (Exception e) {
@@ -166,7 +181,7 @@ public class RegisterPasswordActivity extends BaseActivity {
 
     //清除注册信息
     private void clearRegisterInfo() {
-        SharedPreferences preferences = getSharedPreferences(MyPreference.Preference_Registration, MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_Registration, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.commit();
@@ -174,14 +189,15 @@ public class RegisterPasswordActivity extends BaseActivity {
 
     //跳转主页
     private void go2Main() {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("from", "Register");
+        Intent intent = new Intent(context, MainActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        context.finish();
+        context.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
     }
+
 }

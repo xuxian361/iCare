@@ -1,6 +1,7 @@
-package com.sundy.icare.activity;
+package com.sundy.icare.fragment;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -11,6 +12,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -27,11 +29,14 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by sundy on 15/12/6.
+ * Created by sundy on 16/4/12.
  */
-public class RegisterUserInfoActivity extends BaseActivity {
+public class RegisterUserInfoFragment extends BaseFragment {
 
-    private final String TAG = "RegisterUserInfoActivity";
+    private LayoutInflater inflater;
+    private View root;
+
+    private final String TAG = "RegisterUserInfoFragment";
     private EditText edtUserName;
     private final int IMAGE_PHOTO_ALBUM = 1;
     private final int IMAGE_CAMERA = 2;
@@ -44,33 +49,32 @@ public class RegisterUserInfoActivity extends BaseActivity {
     private String gender;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_username);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        this.inflater = inflater;
+        root = inflater.inflate(R.layout.fragment_register_userinfo, container, false);
 
-        aq = new AQuery(this);
-        clearRegisterInfo();
+        aq = new AQuery(root);
         init();
+        return root;
     }
 
     private void init() {
         aq.id(R.id.txtTitle).text(R.string.register);
         aq.id(R.id.txtRight).text(R.string.next_step).clicked(onClick);
-        aq.id(R.id.btnBack).clicked(onClick);
+        aq.id(R.id.btn_back).clicked(onClick);
         imgHeader = (SimpleDraweeView) aq.id(R.id.imgHeader).getView();
         aq.id(R.id.imgHeader).clicked(onClick);
         edtUserName = aq.id(R.id.edtUserName).getEditText();
         aq.id(R.id.btn_male).clicked(onClick);
         aq.id(R.id.btn_female).clicked(onClick);
-
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btnBack:
-                    finish();
+                case R.id.btn_back:
+                    mCallback.onBack();
                     break;
                 case R.id.txtRight:
                     saveRegisterInfo();
@@ -109,17 +113,17 @@ public class RegisterUserInfoActivity extends BaseActivity {
     private void saveRegisterInfo() {
         String username = edtUserName.getText().toString().trim();
         if (TextUtils.isEmpty(username)) {
-            MyToast.rtToast(this, getString(R.string.username_cannot_empty));
+            MyToast.rtToast(context, getString(R.string.username_cannot_empty));
             return;
         }
         if (TextUtils.isEmpty(gender)) {
-            MyToast.rtToast(this, getString(R.string.choose_gender));
+            MyToast.rtToast(context, getString(R.string.choose_gender));
             return;
         }
         if (TextUtils.isEmpty(finalImagePath)) {
             finalImagePath = "";
         }
-        SharedPreferences preferences = getSharedPreferences(MyPreference.Preference_Registration, MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_Registration, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(MyPreference.Preference_Registration_username, username);
         editor.putString(MyPreference.Preference_Registration_gender, gender);
@@ -129,26 +133,15 @@ public class RegisterUserInfoActivity extends BaseActivity {
         go2RegisterMobile();
     }
 
-    //清除注册信息
-    private void clearRegisterInfo() {
-        SharedPreferences preferences = getSharedPreferences(MyPreference.Preference_Registration, MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.clear();
-        editor.commit();
-    }
-
     //跳转注册手机页
     private void go2RegisterMobile() {
-        Intent intent = new Intent(this, RegisterMobileActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        mCallback.addContent(new RegisterMobileFragment());
     }
 
     //图片选择Dialog
     private void chooseDialog() {
-        LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_choose_photo, null);
-        final Dialog dialog = new Dialog(this, R.style.dialog);
+        final Dialog dialog = new Dialog(context, R.style.dialog);
         dialog.setContentView(view);
         TextView btn_album = (TextView) view.findViewById(R.id.btn_album);
         TextView btn_camera = (TextView) view.findViewById(R.id.btn_camera);
@@ -195,34 +188,32 @@ public class RegisterUserInfoActivity extends BaseActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            Uri uri = null;
-            switch (requestCode) {
-                // 相册
-                case IMAGE_PHOTO_ALBUM:
-                    if (data != null) {
-                        uri = data.getData();
-                        cropImage(uri, 300, 300);
-                    }
-                    break;
-                //拍照
-                case IMAGE_CAMERA:
-                    if (resultCode == -1) {
-                        if (filePath != null) {
-                            File file = new File(filePath);
-                            if (file.exists()) {
-                                if (file.length() > 0) {
-                                    uri = Uri.fromFile(file);
-                                    cropImage(uri, 400, 400);
-                                }
+        Uri uri = null;
+        switch (requestCode) {
+            // 相册
+            case IMAGE_PHOTO_ALBUM:
+                if (data != null) {
+                    uri = data.getData();
+                    cropImage(uri, 300, 300);
+                }
+                break;
+            //拍照
+            case IMAGE_CAMERA:
+                if (resultCode == -1) {
+                    if (filePath != null) {
+                        File file = new File(filePath);
+                        if (file.exists()) {
+                            if (file.length() > 0) {
+                                uri = Uri.fromFile(file);
+                                cropImage(uri, 400, 400);
                             }
                         }
                     }
-                    break;
-                case RESULT_REQUEST_CODE:
-                    imgHeader.setImageURI(Uri.parse("file://" + finalImagePath));
-                    break;
-            }
+                }
+                break;
+            case RESULT_REQUEST_CODE:
+                imgHeader.setImageURI(Uri.parse("file://" + finalImagePath));
+                break;
         }
     }
 
@@ -246,7 +237,7 @@ public class RegisterUserInfoActivity extends BaseActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
     }
 }

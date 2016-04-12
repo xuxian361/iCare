@@ -1,6 +1,9 @@
 package com.sundy.icare.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -31,14 +34,25 @@ public class LoginActivity extends BaseActivity {
     private boolean isAutoLogin = false;
     private CheckBox cb_remember_pwd;
     private String AREA_CODE = "86";
+    private LoginBroadcastReceiver loginBroadcastReceiver;
+    private final String Receiver_Action = "com.sundy.icare.activity.LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         MyUtils.rtLog(TAG, "---------->onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        registerLoginReceiver();
         aq = new AQuery(this);
         init();
+    }
+
+    private void registerLoginReceiver() {
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Receiver_Action);
+        loginBroadcastReceiver = new LoginBroadcastReceiver();
+        registerReceiver(loginBroadcastReceiver, intentFilter);
     }
 
     private void init() {
@@ -230,7 +244,7 @@ public class LoginActivity extends BaseActivity {
 
     //注册
     private void goRegister() {
-        Intent intent = new Intent(this, RegisterUserInfoActivity.class);
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
@@ -239,6 +253,25 @@ public class LoginActivity extends BaseActivity {
     protected void onDestroy() {
         MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
+        if (loginBroadcastReceiver != null) {
+            unregisterReceiver(loginBroadcastReceiver);
+        }
+    }
+
+    private class LoginBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent != null) {
+                String msg = intent.getStringExtra("msg");
+                if (msg.equals("Register_Success")) {
+                    boolean isLogin = MyPreference.isLogin(LoginActivity.this);
+                    if (isLogin) {
+                        finish();
+                    }
+                }
+            }
+        }
     }
 
 }
