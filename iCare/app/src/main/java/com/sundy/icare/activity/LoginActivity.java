@@ -237,7 +237,7 @@ public class LoginActivity extends BaseActivity {
 
     //忘记密码
     private void goForgetPwd() {
-        Intent intent = new Intent(this, ForgetPwd_MobileActivity.class);
+        Intent intent = new Intent(this, ForgetPasswordActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }

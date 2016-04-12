@@ -88,9 +88,7 @@ public class RegisterMobileFragment extends BaseFragment {
                     mCallback.onBack();
                     break;
                 case R.id.txtRight:
-//                    verifyMobile();
-
-                    go2RegisterPassword();
+                    verifyMobile();
                     break;
                 case R.id.btnGetCode:
                     getVerifyCode();

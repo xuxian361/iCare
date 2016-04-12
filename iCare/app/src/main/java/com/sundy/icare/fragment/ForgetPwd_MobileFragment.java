@@ -1,11 +1,12 @@
-package com.sundy.icare.activity;
+package com.sundy.icare.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -18,11 +19,14 @@ import com.sundy.icare.utils.MyToast;
 import org.json.JSONObject;
 
 /**
- * Created by sundy on 16/1/18.
+ * Created by sundy on 16/4/12.
  */
-public class ForgetPwd_MobileActivity extends BaseActivity {
+public class ForgetPwd_MobileFragment extends BaseFragment {
 
-    private final String TAG = "ForgetPwd_MobileActivity";
+    private LayoutInflater inflater;
+    private View root;
+
+    private final String TAG = "ForgetPwd_MobileFragment";
     private EditText edtMobile;
     private EditText edtCode;
     private final String AREA_CODE = "86";
@@ -53,18 +57,19 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forget_password_mobile);
-
-        aq = new AQuery(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        this.inflater = inflater;
+        root = inflater.inflate(R.layout.fragment_forget_password_mobile, container, false);
+        aq = new AQuery(root);
         init();
+
+        return root;
     }
 
     private void init() {
         aq.id(R.id.txtTitle).text(R.string.register);
         aq.id(R.id.txtRight).text(R.string.next_step).clicked(onClick);
-        aq.id(R.id.btnBack).clicked(onClick);
+        aq.id(R.id.btn_back).clicked(onClick);
         btnGetCode = aq.id(R.id.btnGetCode).getButton();
         aq.id(R.id.btnGetCode).clicked(onClick);
         edtMobile = aq.id(R.id.edtMobile).getEditText();
@@ -76,8 +81,8 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btnBack:
-                    finish();
+                case R.id.btn_back:
+                    mCallback.onBack();
                     break;
                 case R.id.txtRight:
                     verifyMobile();
@@ -106,11 +111,11 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
     private void getVerifyCode() {
         String mobile = edtMobile.getText().toString().trim();
         if (TextUtils.isEmpty(mobile)) {
-            MyToast.rtToast(this, getString(R.string.mobile_cannot_empty));
+            MyToast.rtToast(context, getString(R.string.mobile_cannot_empty));
             return;
         }
 
-        ResourceTaker.sendSMSCode(AREA_CODE, mobile, "forgetPassword", new HttpCallback<JSONObject>(this) {
+        ResourceTaker.sendSMSCode(AREA_CODE, mobile, "forgetPassword", new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
@@ -127,11 +132,11 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
                             } else if (code.equals("3000")) {
                                 times = TIME;
                                 setCodeEnable();
-                                MyToast.rtToast(ForgetPwd_MobileActivity.this, message);
+                                MyToast.rtToast(context, message);
                             } else {
                                 times = TIME;
                                 setCodeEnable();
-                                MyToast.rtToast(ForgetPwd_MobileActivity.this, message);
+                                MyToast.rtToast(context, message);
                             }
                         }
                     }
@@ -148,15 +153,15 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
         String code = edtCode.getText().toString().trim();
 
         if (TextUtils.isEmpty(mobile)) {
-            MyToast.rtToast(this, getString(R.string.mobile_cannot_empty));
+            MyToast.rtToast(context, getString(R.string.mobile_cannot_empty));
             return;
         }
         if (TextUtils.isEmpty(code)) {
-            MyToast.rtToast(this, getString(R.string.verify_code_cannot_empty));
+            MyToast.rtToast(context, getString(R.string.verify_code_cannot_empty));
             return;
         }
 
-        ResourceTaker.checkSmsCode(AREA_CODE, mobile, "forgetPassword", code, new HttpCallback<JSONObject>(this) {
+        ResourceTaker.checkSmsCode(AREA_CODE, mobile, "forgetPassword", code, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
@@ -175,13 +180,13 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
                                             if (isEffective) {
                                                 go2ForgetPwdResetPassword(AREA_CODE, mobile);
                                             } else {
-                                                MyToast.rtToast(ForgetPwd_MobileActivity.this, getString(R.string.verify_code_is_wrong));
+                                                MyToast.rtToast(context, getString(R.string.verify_code_is_wrong));
                                             }
                                         }
                                     }
                                 }
                             } else {
-                                MyToast.rtToast(ForgetPwd_MobileActivity.this, message);
+                                MyToast.rtToast(context, message);
                             }
                         }
                     }
@@ -193,15 +198,16 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
     }
 
     private void go2ForgetPwdResetPassword(String area_code, String phone) {
-        Intent intent = new Intent(this, ForgetPwd_PasswordActivity.class);
-        intent.putExtra("area_code", area_code);
-        intent.putExtra("phone", phone);
-        startActivity(intent);
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        Bundle bundle = new Bundle();
+        bundle.putString("area_code", area_code);
+        bundle.putString("phone", phone);
+        ForgetPwd_PasswordFragment fragment = new ForgetPwd_PasswordFragment();
+        fragment.setArguments(bundle);
+        mCallback.addContent(fragment);
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         try {
             if (mHandler != null) {
@@ -212,4 +218,3 @@ public class ForgetPwd_MobileActivity extends BaseActivity {
         }
     }
 }
-

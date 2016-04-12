@@ -81,11 +81,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.ForgetPwd_MobileActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".activity.ForgetPwd_PasswordActivity"
+            android:name=".activity.ForgetPasswordActivity"
             android:screenOrientation="portrait" />
 
         <activity
