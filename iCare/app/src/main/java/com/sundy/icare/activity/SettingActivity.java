@@ -81,7 +81,12 @@ public class SettingActivity extends BaseActivity {
                             String message = result.getString("message");
                             if (code.equals("1000")) {
                                 MyPreference.clearUserInfo(SettingActivity.this);
-                                finish();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        finish();
+                                    }
+                                });
                             }
                         }
                     }
@@ -90,6 +95,11 @@ public class SettingActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
     @Override

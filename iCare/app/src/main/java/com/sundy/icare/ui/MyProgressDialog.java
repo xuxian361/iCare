@@ -14,7 +14,6 @@ import android.widget.RelativeLayout;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.MyConstant;
-import com.sundy.icare.utils.MyUtils;
 
 /**
  * Created by sundy on 16/4/13.
@@ -40,7 +39,6 @@ public class MyProgressDialog {
         view = inflater.inflate(R.layout.dialog_loading, null);
         aq = new AQuery(view);
         layout = (RelativeLayout) aq.id(R.id.relative_loading).getView();
-
         layout.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int keycode, KeyEvent keyEvent) {
@@ -51,34 +49,26 @@ public class MyProgressDialog {
             }
         });
 
+        int width = MyConstant.SCREEN_WIDTH;
+        int height = MyConstant.SCREEN_HEIGHT;
+        mPopupWindow = new PopupWindow(view, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true);
+        mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+        mPopupWindow.setOutsideTouchable(true);
+        mPopupWindow.setWidth(width);
+        mPopupWindow.setHeight(height);
     }
 
     //显示Dailog
     public void show() {
-        layout.setVisibility(View.VISIBLE);
-
-        int width = MyConstant.SCREEN_WIDTH;
-        int height = MyConstant.SCREEN_HEIGHT;
-
-        if (mPopupWindow == null) {
-            mPopupWindow = new PopupWindow(view, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true);
-            mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
-            mPopupWindow.setOutsideTouchable(true);
-            mPopupWindow.setWidth(width);
-            mPopupWindow.setHeight(height);
-        }
-
-        mPopupWindow.showAtLocation(mParent, Gravity.CENTER, 0, 0);
+        if (mPopupWindow != null && !mPopupWindow.isShowing())
+            mPopupWindow.showAtLocation(mParent, Gravity.CENTER, 0, 0);
     }
 
     //取消Dailog的显示
     public void dismiss() {
-        layout.setVisibility(View.GONE);
-        if (mPopupWindow == null)
-            return;
-        mPopupWindow.dismiss();
-        mPopupWindow = null;
-
+        if (mPopupWindow != null && mPopupWindow.isShowing()) {
+            mPopupWindow.dismiss();
+        }
     }
 
 }

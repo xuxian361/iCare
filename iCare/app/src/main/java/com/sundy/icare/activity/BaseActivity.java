@@ -166,18 +166,8 @@ public class BaseActivity extends FragmentActivity implements BaseFragment.OnBas
     public void closeLoading() {
         MyUtils.rtLog(TAG, "-------->closeLoading");
         try {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (progressDialog != null)
-                                progressDialog.dismiss();
-                        }
-                    });
-                }
-            }, 500);
+            if (progressDialog != null)
+                progressDialog.dismiss();
         } catch (Exception e) {
             e.printStackTrace();
         }

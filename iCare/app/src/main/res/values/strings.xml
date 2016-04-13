@@ -465,6 +465,7 @@
     <string name="confirmpassword_cannot_empty">确认密码不能为空哦!</string>
     <string name="confirmpwd_not_equal_password">确认密码跟登陆密码不一致哦！</string>
     <string name="verify_code_is_sending">验证码正在发送中, 请稍后</string>
+    <string name="please_login">请登录</string>
 
 
 </resources>
