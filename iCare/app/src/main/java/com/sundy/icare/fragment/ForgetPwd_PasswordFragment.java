@@ -79,10 +79,12 @@ public class ForgetPwd_PasswordFragment extends BaseFragment {
             return;
         }
 
+        mCallback.showLoading(context);
         ResourceTaker.forgetPassword(area_code, phone, password, confirmPwd, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
+                mCallback.closeLoading();
                 try {
                     if (data != null) {
                         JSONObject result = data.getJSONObject("result");

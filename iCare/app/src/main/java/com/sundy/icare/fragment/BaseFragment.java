@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
-import com.sundy.icare.utils.MyUtils;
 
 /**
  * Created by sundy on 15/12/6.
@@ -64,6 +63,10 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
 
         public void switchContent(int rid);
 
+        public void showLoading(Activity context);
+
+        public void closeLoading();
+
     }
 
     @Override
@@ -74,5 +77,6 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
 
         }
     }
+
 
 }

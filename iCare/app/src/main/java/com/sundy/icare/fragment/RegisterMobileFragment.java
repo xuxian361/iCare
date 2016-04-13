@@ -118,10 +118,12 @@ public class RegisterMobileFragment extends BaseFragment {
             return;
         }
 
+        mCallback.showLoading(context);
         ResourceTaker.sendSMSCode(AREA_CODE, mobile, "registration", new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
+                mCallback.closeLoading();
                 try {
                     if (data != null) {
                         JSONObject result = data.getJSONObject("result");
@@ -165,10 +167,12 @@ public class RegisterMobileFragment extends BaseFragment {
             return;
         }
 
+        mCallback.showLoading(context);
         ResourceTaker.checkSmsCode(AREA_CODE, mobile, "registration", code, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
+                mCallback.closeLoading();
                 try {
                     if (data != null) {
                         JSONObject result = data.getJSONObject("result");

@@ -93,11 +93,14 @@ public class RegisterPasswordFragment extends BaseFragment {
         if (profileImage != null && profileImage.length() != 0) {
             file = new File(profileImage);
         }
+
+        mCallback.showLoading(context);
         ResourceTaker.register(areaCode, phone, username, gender, password, file,
                 new HttpCallback<JSONObject>(context) {
                     @Override
                     public void callback(String url, JSONObject data, String status) {
                         super.callback(url, data, status);
+                        mCallback.closeLoading();
                         try {
                             if (data != null) {
                                 JSONObject result = data.getJSONObject("result");
@@ -122,10 +125,12 @@ public class RegisterPasswordFragment extends BaseFragment {
 
     //登陆服务器
     private void login(String areaCode, String phone, String password) {
+        mCallback.showLoading(context);
         ResourceTaker.login(areaCode, phone, password, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
+                mCallback.closeLoading();
                 try {
                     if (data != null) {
                         JSONObject result = data.getJSONObject("result");

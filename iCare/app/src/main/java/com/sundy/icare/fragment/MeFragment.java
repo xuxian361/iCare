@@ -52,7 +52,7 @@ public class MeFragment extends LazyLoadFragment {
         aq.id(R.id.rel_setting).clicked(onClick);
 
         progressBar = aq.id(R.id.progress_bar).getProgressBar();
-//        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {

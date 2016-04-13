@@ -80,6 +80,15 @@ public class MyPreference {
         editor.commit();
     }
 
+    //清除保存的用户信息
+    public static void clearUserInfo(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(Preference_User, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.commit();
+    }
+
+
     //判断是否登陆
     public static boolean isLogin(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(Preference_User, Context.MODE_PRIVATE);

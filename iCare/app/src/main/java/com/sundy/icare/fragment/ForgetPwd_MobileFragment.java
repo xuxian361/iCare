@@ -115,10 +115,12 @@ public class ForgetPwd_MobileFragment extends BaseFragment {
             return;
         }
 
+        mCallback.showLoading(context);
         ResourceTaker.sendSMSCode(AREA_CODE, mobile, "forgetPassword", new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
+                mCallback.closeLoading();
                 try {
                     if (data != null) {
                         JSONObject result = data.getJSONObject("result");
@@ -161,10 +163,12 @@ public class ForgetPwd_MobileFragment extends BaseFragment {
             return;
         }
 
+        mCallback.showLoading(context);
         ResourceTaker.checkSmsCode(AREA_CODE, mobile, "forgetPassword", code, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
+                mCallback.closeLoading();
                 try {
                     if (data != null) {
                         JSONObject result = data.getJSONObject("result");
