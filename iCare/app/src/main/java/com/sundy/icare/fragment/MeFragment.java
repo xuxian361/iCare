@@ -23,7 +23,7 @@ public class MeFragment extends LazyLoadFragment {
     private final String TAG = "MeFragment";
     private View mView;
 
-    ProgressBar progressBar;
+    private ProgressBar progressBar;
 
     @Override
     protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class MeFragment extends LazyLoadFragment {
         aq.id(R.id.rel_setting).clicked(onClick);
 
         progressBar = aq.id(R.id.progress_bar).getProgressBar();
-        progressBar.setVisibility(View.VISIBLE);
+//        progressBar.setVisibility(View.VISIBLE);
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
