@@ -9,7 +9,9 @@ import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
+import com.sundy.icare.ui.MyProgressDialog;
 import com.sundy.icare.utils.MyPreference;
+import com.sundy.icare.utils.MyUtils;
 
 import org.json.JSONObject;
 
@@ -19,6 +21,22 @@ import org.json.JSONObject;
 public class SettingActivity extends BaseActivity {
 
     private final String TAG = "SettingActivity";
+    private MyProgressDialog progressDialog;
+
+    public void showLoading() {
+        MyUtils.rtLog(TAG, "-------->showLoading");
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+        progressDialog = new MyProgressDialog(this, this.getWindow().getDecorView());
+        progressDialog.show();
+    }
+
+    public void closeLoading() {
+        MyUtils.rtLog(TAG, "-------->closeLoading");
+        if (progressDialog != null)
+            progressDialog.dismiss();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +85,7 @@ public class SettingActivity extends BaseActivity {
         SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
         String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
         String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
-        showLoading(this);
+        showLoading();
         ResourceTaker.logout(memberId, sessionKey, new HttpCallback<JSONObject>(this) {
             @Override
             public void callback(String url, JSONObject data, String status) {
@@ -105,5 +123,9 @@ public class SettingActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 }

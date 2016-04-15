@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -36,32 +35,27 @@
                     android:scaleType="fitCenter"
                     android:src="@mipmap/icon_qrcode" />
 
-                <RelativeLayout
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/imgHeader"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_centerInParent="true"
-                    android:layout_marginTop="40dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="50dp"
+                    fresco:actualImageScaleType="focusCrop"
+                    fresco:fadeDuration="2000"
+                    fresco:failureImage="@mipmap/profile_img"
+                    fresco:failureImageScaleType="centerInside"
+                    fresco:placeholderImage="@mipmap/profile_img"
+                    fresco:placeholderImageScaleType="fitCenter"
+                    fresco:progressBarAutoRotateInterval="2000"
+                    fresco:progressBarImage="@mipmap/icon_progress_bar"
+                    fresco:progressBarImageScaleType="centerInside"
+                    fresco:roundAsCircle="true"
+                    fresco:roundingBorderColor="@color/white"
+                    fresco:roundingBorderWidth="1dp" />
 
-                    <com.facebook.drawee.view.DraweeView
-                        android:id="@+id/imgMe"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_centerInParent="true"
-                        android:src="@mipmap/profile_img" />
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="26dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:scaleType="center"
-                        android:src="@mipmap/icon_camera"
-                        android:text="Sundy Xu"
-                        android:textColor="@color/material_grey_850"
-                        android:textSize="14sp" />
-                </RelativeLayout>
             </RelativeLayout>
 
             <ImageView
@@ -86,11 +80,12 @@
                 <TextView
                     android:id="@+id/txtUsername"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_alignParentRight="false"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/txtKey_UserName"
-                    android:text="Sundy Xu"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
                     android:textColor="@color/material_grey_850"
                     android:textSize="15sp" />
             </RelativeLayout>
@@ -117,11 +112,12 @@
                 <TextView
                     android:id="@+id/txtGender"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_alignParentRight="false"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/txtKey_Gender"
-                    android:text="男"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
                     android:textColor="@color/material_grey_850"
                     android:textSize="15sp" />
             </RelativeLayout>
@@ -148,11 +144,12 @@
                 <TextView
                     android:id="@+id/txtMobile"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_alignParentRight="false"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/txtKey_Mobile"
-                    android:text="15088086697"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
                     android:textColor="@color/material_grey_850"
                     android:textSize="15sp" />
             </RelativeLayout>
@@ -179,13 +176,15 @@
                 <TextView
                     android:id="@+id/txtEmail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_alignParentRight="false"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/txtKey_Email"
-                    android:text="308379285@qq.com"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
                     android:textColor="@color/material_grey_850"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:hint="@string/not_yet_bind_email"/>
             </RelativeLayout>
 
             <ImageView
@@ -195,7 +194,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/settings_item_height"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
@@ -212,13 +211,12 @@
                 <TextView
                     android:id="@+id/txtAddress"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_alignParentRight="false"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/txtKey_Address"
-                    android:maxLines="2"
+                    android:gravity="center_vertical"
                     android:paddingRight="20dp"
-                    android:text="广东省广州市天河区民族学院荷光路152号"
                     android:textColor="@color/material_grey_850"
                     android:textSize="15sp" />
             </RelativeLayout>
@@ -250,10 +248,10 @@
                     android:layout_marginTop="5dp"
                     android:background="@null"
                     android:gravity="left|top"
+                    android:hint="可写上您值得骄傲的内容哦"
                     android:lines="2"
                     android:maxLines="2"
                     android:padding="6dp"
-                    android:text="司机、家政、护工等"
                     android:textColor="@color/material_grey_850"
                     android:textSize="14sp" />
 

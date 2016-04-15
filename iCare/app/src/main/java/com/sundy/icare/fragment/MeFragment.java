@@ -13,10 +13,10 @@ import android.widget.ProgressBar;
 import com.androidquery.AQuery;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sundy.icare.R;
+import com.sundy.icare.activity.LoginActivity;
 import com.sundy.icare.activity.MyFamilyActivity;
 import com.sundy.icare.activity.QRScannerActivity;
 import com.sundy.icare.activity.SettingActivity;
-import com.sundy.icare.activity.UserDetailActivity;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyUtils;
 
@@ -93,7 +93,11 @@ public class MeFragment extends LazyLoadFragment {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.imgHeader:
-                    goUserDetail();
+                    if (MyPreference.isLogin(getActivity())) {
+                        goUserDetail();
+                    } else {
+                        goLogin();
+                    }
                     break;
                 case R.id.btnQR:
                     scanQRCode();
@@ -108,10 +112,15 @@ public class MeFragment extends LazyLoadFragment {
         }
     };
 
+    private void goLogin() {
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
     //跳转用户详情页面
     private void goUserDetail() {
-        Intent intent2 = new Intent(getActivity(), UserDetailActivity.class);
-        startActivity(intent2);
+        mCallback.addContent(new UserDetailFragment());
     }
 
     //跳转设置页面

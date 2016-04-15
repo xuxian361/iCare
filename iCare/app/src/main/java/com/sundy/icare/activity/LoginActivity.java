@@ -19,6 +19,7 @@ import com.hyphenate.chat.EMClient;
 import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
+import com.sundy.icare.ui.MyProgressDialog;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
@@ -36,6 +37,22 @@ public class LoginActivity extends BaseActivity {
     private String AREA_CODE = "86";
     private LoginBroadcastReceiver loginBroadcastReceiver;
     private final String Receiver_Action = "com.sundy.icare.activity.LoginActivity";
+    private MyProgressDialog progressDialog;
+
+    public void showLoading() {
+        MyUtils.rtLog(TAG, "-------->showLoading");
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+        progressDialog = new MyProgressDialog(this, this.getWindow().getDecorView());
+        progressDialog.show();
+    }
+
+    public void closeLoading() {
+        MyUtils.rtLog(TAG, "-------->closeLoading");
+        if (progressDialog != null)
+            progressDialog.dismiss();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,7 +164,7 @@ public class LoginActivity extends BaseActivity {
                 return;
             }
 
-            showLoading(this);
+            showLoading();
             ResourceTaker.login(AREA_CODE, username, password, new HttpCallback<JSONObject>(this) {
                 @Override
                 public void callback(String url, JSONObject data, String status) {
@@ -212,22 +229,7 @@ public class LoginActivity extends BaseActivity {
 
     //保存登陆用户信息
     private void saveUserInfo(JSONObject detail) {
-        try {
-            String id = detail.getString("id");
-            String areaCode = detail.getString("areaCode");
-            String phone = detail.getString("phone");
-            String name = detail.getString("name");
-            String profileImage = detail.getString("profileImage");
-            String sessionKey = detail.getString("sessionKey");
-            String easemobAccount = detail.getString("easemobAccount");
-            String easemobPassword = detail.getString("easemobPassword");
-            boolean isServiceProvider = detail.getBoolean("isServiceProvider");
-            MyPreference.saveUserInfo(this, id, name, areaCode, phone, profileImage, sessionKey,
-                    easemobAccount, easemobPassword, isServiceProvider);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        MyPreference.saveUserInfo(this, detail);
     }
 
     //跳转主页
@@ -258,6 +260,10 @@ public class LoginActivity extends BaseActivity {
         super.onDestroy();
         if (loginBroadcastReceiver != null) {
             unregisterReceiver(loginBroadcastReceiver);
+        }
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
         }
     }
 

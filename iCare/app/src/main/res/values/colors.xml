@@ -8,11 +8,14 @@
     <color name="black">#313132</color>
     <color name="gray">#999999</color>
     <color name="bar_color">#f6f6f6</color>
-    <color name="green">#03ab3b</color>
     <color name="bg_deep_blue">#051532</color>
     <color name="txt_black_deep">#282727</color>
     <color name="txt_black_normal">#454444</color>
     <color name="line_gray">#d2d2d2</color>
+    <color name="red">#FFC93437</color>
+    <color name="blue">#FF375BF1</color>
+    <color name="yellow">#FFF7D23E</color>
+    <color name="green">#FF34A350</color>
 
     <!--环信-->
     <color name="common_top_bar_blue">#4ebcd3</color>

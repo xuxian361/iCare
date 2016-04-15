@@ -459,13 +459,22 @@
     <string name="camera">相机</string>
     <string name="photo_album">相簿</string>
     <string name="get_photo">获取图片</string>
-    <string name="exit_app">再按一次退回孝为先</string>
+    <string name="exit_app">再按一次退出孝为先</string>
     <string name="choose_gender">请选择您的性别</string>
     <string name="verify_code">验证码</string>
     <string name="confirmpassword_cannot_empty">确认密码不能为空哦!</string>
     <string name="confirmpwd_not_equal_password">确认密码跟登陆密码不一致哦！</string>
     <string name="verify_code_is_sending">验证码正在发送中, 请稍后</string>
     <string name="please_login">请登录</string>
+    <string name="user_detail">个人详情</string>
 
+
+    <integer-array name="google_colors">
+        <item>@color/red</item>
+        <item>@color/blue</item>
+        <item>@color/yellow</item>
+        <item>@color/green</item>
+    </integer-array>
+    <integer name="default_type">0</integer>
 
 </resources>

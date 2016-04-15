@@ -22,7 +22,7 @@ public class QRScannerActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MyUtils.rtLog(TAG, "----------->onCreate");
-        setContentView(R.layout.qr_scanner);
+        setContentView(R.layout.activity_qr_scanner);
 
         aq = new AQuery(this);
         init();

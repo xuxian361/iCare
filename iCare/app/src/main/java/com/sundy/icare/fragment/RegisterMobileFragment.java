@@ -16,15 +16,17 @@ import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
+import com.sundy.icare.ui.MyProgressDialog;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
+import com.sundy.icare.utils.MyUtils;
 
 import org.json.JSONObject;
 
 /**
  * Created by sundy on 16/4/12.
  */
-public class RegisterMobileFragment extends BaseFragment {
+public class RegisterMobileFragment extends LazyLoadFragment {
 
     private LayoutInflater inflater;
     private View root;
@@ -58,15 +60,36 @@ public class RegisterMobileFragment extends BaseFragment {
             }
         }
     };
+    private MyProgressDialog progressDialog;
+
+    public void showLoading() {
+        MyUtils.rtLog(TAG, "-------->showLoading");
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+        progressDialog = new MyProgressDialog(context, context.getWindow().getDecorView());
+        progressDialog.show();
+    }
+
+    public void closeLoading() {
+        MyUtils.rtLog(TAG, "-------->closeLoading");
+        if (progressDialog != null)
+            progressDialog.dismiss();
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.inflater = inflater;
         root = inflater.inflate(R.layout.fragment_register_mobile, container, false);
 
         aq = new AQuery(root);
         init();
         return root;
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     private void init() {
@@ -118,12 +141,12 @@ public class RegisterMobileFragment extends BaseFragment {
             return;
         }
 
-        mCallback.showLoading(context);
+        showLoading();
         ResourceTaker.sendSMSCode(AREA_CODE, mobile, "registration", new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
-                mCallback.closeLoading();
+                closeLoading();
                 try {
                     if (data != null) {
                         JSONObject result = data.getJSONObject("result");
@@ -167,12 +190,12 @@ public class RegisterMobileFragment extends BaseFragment {
             return;
         }
 
-        mCallback.showLoading(context);
+        showLoading();
         ResourceTaker.checkSmsCode(AREA_CODE, mobile, "registration", code, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
-                mCallback.closeLoading();
+                closeLoading();
                 try {
                     if (data != null) {
                         JSONObject result = data.getJSONObject("result");
@@ -226,6 +249,10 @@ public class RegisterMobileFragment extends BaseFragment {
         try {
             if (mHandler != null) {
                 mHandler = null;
+            }
+            if (progressDialog != null) {
+                progressDialog.dismiss();
+                progressDialog = null;
             }
         } catch (Exception e) {
             e.printStackTrace();

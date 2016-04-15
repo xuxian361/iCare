@@ -11,14 +11,16 @@ import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
+import com.sundy.icare.ui.MyProgressDialog;
 import com.sundy.icare.utils.MyToast;
+import com.sundy.icare.utils.MyUtils;
 
 import org.json.JSONObject;
 
 /**
  * Created by sundy on 16/4/12.
  */
-public class ForgetPwd_PasswordFragment extends BaseFragment {
+public class ForgetPwd_PasswordFragment extends LazyLoadFragment {
 
     private LayoutInflater inflater;
     private View root;
@@ -26,16 +28,36 @@ public class ForgetPwd_PasswordFragment extends BaseFragment {
     private final String TAG = "ForgetPwd_PasswordFragment";
     private EditText edtPassword, edtConfirmPassword;
     private String area_code, phone;
+    private MyProgressDialog progressDialog;
 
+    public void showLoading() {
+        MyUtils.rtLog(TAG, "-------->showLoading");
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+        progressDialog = new MyProgressDialog(context, context.getWindow().getDecorView());
+        progressDialog.show();
+    }
+
+    public void closeLoading() {
+        MyUtils.rtLog(TAG, "-------->closeLoading");
+        if (progressDialog != null)
+            progressDialog.dismiss();
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.inflater = inflater;
         this.root = inflater.inflate(R.layout.fragment_forget_password_reset_password, container, false);
 
         aq = new AQuery(root);
         init();
         return root;
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     private void init() {
@@ -79,12 +101,12 @@ public class ForgetPwd_PasswordFragment extends BaseFragment {
             return;
         }
 
-        mCallback.showLoading(context);
+        showLoading();
         ResourceTaker.forgetPassword(area_code, phone, password, confirmPwd, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
-                mCallback.closeLoading();
+                closeLoading();
                 try {
                     if (data != null) {
                         JSONObject result = data.getJSONObject("result");
@@ -112,6 +134,10 @@ public class ForgetPwd_PasswordFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 
 }

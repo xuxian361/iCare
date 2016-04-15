@@ -1,7 +1,9 @@
 package com.sundy.icare.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,12 +29,13 @@ import com.androidquery.AQuery;
  * <p/>
  * Created by sundy on 16/1/5.
  */
-public abstract class LazyLoadFragment extends Fragment {
+public abstract class LazyLoadFragment extends Fragment implements View.OnClickListener {
 
     private final String TAG = "LazyLoadFragment";
-    protected LayoutInflater mInflater;
     protected AQuery aq;
-
+    protected OnBaseListener mCallback;
+    protected FragmentActivity context;
+    protected LayoutInflater mInflater;
 
     /**
      * 是否可见状态
@@ -46,6 +49,28 @@ public abstract class LazyLoadFragment extends Fragment {
      * 是否第一次加载
      */
     private boolean isFirstLoad = true;
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (OnBaseListener) (context = (FragmentActivity) activity);
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement OnHeadlineSelectedListener");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        aq = new AQuery(getActivity());
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -116,5 +141,26 @@ public abstract class LazyLoadFragment extends Fragment {
     //采用Lazy方式加载的Fragment
     protected abstract void initData();
 
+    // Container Activity must implement this interface
+    public interface OnBaseListener {
+
+        public void switchContent(Fragment fragment);
+
+        public void addContent(Fragment fragment);
+
+        public void onBack();
+
+        public void reloadActivity();
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (mCallback == null)
+            return;
+        switch (view.getId()) {
+
+        }
+    }
 
 }

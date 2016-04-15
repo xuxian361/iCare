@@ -15,8 +15,10 @@ import com.sundy.icare.R;
 import com.sundy.icare.activity.MainActivity;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
+import com.sundy.icare.ui.MyProgressDialog;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
+import com.sundy.icare.utils.MyUtils;
 
 import org.json.JSONObject;
 
@@ -25,22 +27,43 @@ import java.io.File;
 /**
  * Created by sundy on 16/4/12.
  */
-public class RegisterPasswordFragment extends BaseFragment {
+public class RegisterPasswordFragment extends LazyLoadFragment {
 
     private LayoutInflater inflater;
     private View root;
 
     private final String TAG = "RegisterPasswordFragment";
     private EditText edtPassword, edtConfirmPassword;
+    private MyProgressDialog progressDialog;
+
+    public void showLoading() {
+        MyUtils.rtLog(TAG, "-------->showLoading");
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+        progressDialog = new MyProgressDialog(context, context.getWindow().getDecorView());
+        progressDialog.show();
+    }
+
+    public void closeLoading() {
+        MyUtils.rtLog(TAG, "-------->closeLoading");
+        if (progressDialog != null)
+            progressDialog.dismiss();
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.inflater = inflater;
         root = inflater.inflate(R.layout.fragment_register_set_password, container, false);
 
         aq = new AQuery(root);
         init();
         return root;
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     private void init() {
@@ -94,13 +117,13 @@ public class RegisterPasswordFragment extends BaseFragment {
             file = new File(profileImage);
         }
 
-        mCallback.showLoading(context);
+        showLoading();
         ResourceTaker.register(areaCode, phone, username, gender, password, file,
                 new HttpCallback<JSONObject>(context) {
                     @Override
                     public void callback(String url, JSONObject data, String status) {
                         super.callback(url, data, status);
-                        mCallback.closeLoading();
+                        closeLoading();
                         try {
                             if (data != null) {
                                 JSONObject result = data.getJSONObject("result");
@@ -125,12 +148,12 @@ public class RegisterPasswordFragment extends BaseFragment {
 
     //登陆服务器
     private void login(String areaCode, String phone, String password) {
-        mCallback.showLoading(context);
+        showLoading();
         ResourceTaker.login(areaCode, phone, password, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
-                mCallback.closeLoading();
+                closeLoading();
                 try {
                     if (data != null) {
                         JSONObject result = data.getJSONObject("result");
@@ -167,18 +190,7 @@ public class RegisterPasswordFragment extends BaseFragment {
     //保存登陆用户信息
     private void saveUserInfo(JSONObject detail) {
         try {
-            String id = detail.getString("id");
-            String areaCode = detail.getString("areaCode");
-            String phone = detail.getString("phone");
-            String name = detail.getString("name");
-            String profileImage = detail.getString("profileImage");
-            String sessionKey = detail.getString("sessionKey");
-            String easemobAccount = detail.getString("easemobAccount");
-            String easemobPassword = detail.getString("easemobPassword");
-            boolean isServiceProvider = detail.getBoolean("isServiceProvider");
-            MyPreference.saveUserInfo(context, id, name, areaCode, phone, profileImage, sessionKey,
-                    easemobAccount, easemobPassword, isServiceProvider);
-
+            MyPreference.saveUserInfo(context, detail);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -203,6 +215,10 @@ public class RegisterPasswordFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 
 }

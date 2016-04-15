@@ -31,7 +31,7 @@ import java.io.IOException;
 /**
  * Created by sundy on 16/4/12.
  */
-public class RegisterUserInfoFragment extends BaseFragment {
+public class RegisterUserInfoFragment extends LazyLoadFragment {
 
     private LayoutInflater inflater;
     private View root;
@@ -49,13 +49,18 @@ public class RegisterUserInfoFragment extends BaseFragment {
     private String gender;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.inflater = inflater;
         root = inflater.inflate(R.layout.fragment_register_userinfo, container, false);
 
         aq = new AQuery(root);
         init();
         return root;
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     private void init() {
