@@ -1,9 +1,11 @@
-package com.sundy.icare.activity;
+package com.sundy.icare.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
@@ -11,16 +13,20 @@ import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.ui.MyProgressDialog;
 import com.sundy.icare.utils.MyPreference;
+import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
 
 import org.json.JSONObject;
 
 /**
- * Created by sundy on 16/1/5.
+ * Created by sundy on 16/4/16.
  */
-public class SettingActivity extends BaseActivity {
+public class SettingsFragment extends LazyLoadFragment {
 
-    private final String TAG = "SettingActivity";
+    private final String TAG = "SettingsFragment";
+    private LayoutInflater inflater;
+    private View root;
+
     private MyProgressDialog progressDialog;
 
     public void showLoading() {
@@ -28,7 +34,7 @@ public class SettingActivity extends BaseActivity {
         if (progressDialog != null) {
             progressDialog.dismiss();
         }
-        progressDialog = new MyProgressDialog(this, this.getWindow().getDecorView());
+        progressDialog = new MyProgressDialog(context, context.getWindow().getDecorView());
         progressDialog.show();
     }
 
@@ -39,13 +45,17 @@ public class SettingActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        this.inflater = inflater;
+        root = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        aq = new AQuery(this);
-
+        aq = new AQuery(root);
         init();
+        return root;
+    }
+
+    @Override
+    protected void initData() {
 
     }
 
@@ -53,13 +63,9 @@ public class SettingActivity extends BaseActivity {
         aq.id(R.id.btnBack).clicked(onClick);
         aq.id(R.id.txtTitle).text(R.string.settings);
         aq.id(R.id.btnLogout).clicked(onClick);
+        aq.id(R.id.rel_AccountSecurity).clicked(onClick);
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (MyPreference.isLogin(this)) {
+        if (MyPreference.isLogin(context)) {
             aq.id(R.id.btnLogout).visible();
         } else {
             aq.id(R.id.btnLogout).gone();
@@ -71,14 +77,21 @@ public class SettingActivity extends BaseActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.btnBack:
-                    finish();
+                    mCallback.onBack();
                     break;
                 case R.id.btnLogout:
                     logout();
                     break;
+                case R.id.rel_AccountSecurity:
+                    goAccountSecurity();
+                    break;
             }
         }
     };
+
+    private void goAccountSecurity() {
+        mCallback.addContent(new AccountSecurityFragment());
+    }
 
     //登出
     private void logout() {
@@ -86,7 +99,7 @@ public class SettingActivity extends BaseActivity {
         String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
         String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
         showLoading();
-        ResourceTaker.logout(memberId, sessionKey, new HttpCallback<JSONObject>(this) {
+        ResourceTaker.logout(memberId, sessionKey, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
@@ -98,13 +111,10 @@ public class SettingActivity extends BaseActivity {
                             String code = result.getString("code");
                             String message = result.getString("message");
                             if (code.equals("1000")) {
-                                MyPreference.clearUserInfo(SettingActivity.this);
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        finish();
-                                    }
-                                });
+                                MyPreference.clearUserInfo(context);
+                                aq.id(R.id.btnLogout).gone();
+                            } else {
+                                MyToast.rtToast(context, message);
                             }
                         }
                     }
@@ -113,19 +123,5 @@ public class SettingActivity extends BaseActivity {
                 }
             }
         });
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (progressDialog != null) {
-            progressDialog.dismiss();
-            progressDialog = null;
-        }
     }
 }

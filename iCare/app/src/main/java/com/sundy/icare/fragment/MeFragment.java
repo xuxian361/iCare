@@ -16,7 +16,6 @@ import com.sundy.icare.R;
 import com.sundy.icare.activity.LoginActivity;
 import com.sundy.icare.activity.MyFamilyActivity;
 import com.sundy.icare.activity.QRScannerActivity;
-import com.sundy.icare.activity.SettingActivity;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyUtils;
 
@@ -125,9 +124,7 @@ public class MeFragment extends LazyLoadFragment {
 
     //跳转设置页面
     private void goSettings() {
-        Intent intent = new Intent(getActivity(), SettingActivity.class);
-        startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        mCallback.addContent(new SettingsFragment());
     }
 
     //跳转我的家人页面

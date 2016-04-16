@@ -469,6 +469,18 @@
     <string name="user_detail">个人详情</string>
     <string name="input_your_binding_email">输入您要绑定的邮箱</string>
     <string name="email_cannot_be_empty">邮箱不能输入空哦！</string>
+    <string name="account">账号</string>
+    <string name="security">安全</string>
+    <string name="change_password">修改密码</string>
+    <string name="account_protection">账号保护</string>
+    <string name="security_center">安全中心</string>
+    <string name="old_password">原密码</string>
+    <string name="new_password">新密码</string>
+    <string name="old_password_cannot_empty">原密码不能为空哦!</string>
+    <string name="new_password_cannot_empty">新密码不能为空哦!</string>
+    <string name="new_password_cannot_be_equal_old_password">新密码不能与原密码相同</string>
+    <string name="confirm_password_not_equal_new_password">确认密码与新密码不一致</string>
+    <string name="change_password_success">修改密码成功，下次登录请使用新密码!</string>
 
 
     <integer-array name="google_colors">

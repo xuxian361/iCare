@@ -107,10 +107,6 @@
 
 
         <activity
-            android:name=".activity.SettingActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".activity.ContactsActivity"
             android:screenOrientation="portrait" />
 
