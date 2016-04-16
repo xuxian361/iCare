@@ -85,10 +85,6 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.EmailValidationActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".activity.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />

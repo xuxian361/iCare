@@ -26,4 +26,10 @@ public class MyConstant {
     public static final boolean IsDebug = true;
 
 
+    //Request Code
+    public static final int IMAGE_PHOTO_ALBUM = 1;
+    public static final int IMAGE_CAMERA = 2;
+    public static final int RESULT_REQUEST_CODE = 3;
+    public static final int REQUEST_CODE_BIND_EMAIL = 4;
+
 }

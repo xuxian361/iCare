@@ -12,10 +12,12 @@ import android.view.ViewGroup;
 import com.androidquery.AQuery;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sundy.icare.R;
+import com.sundy.icare.activity.BindEmailActivity;
 import com.sundy.icare.activity.QRScannerActivity;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.ui.MyProgressDialog;
+import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyUtils;
 
@@ -67,6 +69,7 @@ public class UserDetailFragment extends LazyLoadFragment {
         aq.id(R.id.txtTitle).text(R.string.user_detail);
         aq.id(R.id.btnBack).clicked(onClick);
         aq.id(R.id.btnQR).clicked(onClick);
+        aq.id(R.id.relative_email).clicked(onClick);
         imgHeader = (SimpleDraweeView) aq.id(R.id.imgHeader).getView();
 
         getMemberProfile();
@@ -154,16 +157,40 @@ public class UserDetailFragment extends LazyLoadFragment {
                 case R.id.btnQR:
                     scanQRCode();
                     break;
+                case R.id.relative_email:
+                    goBindEmail();
+                    break;
             }
         }
     };
 
+    //跳转绑定邮箱页面
+    private void goBindEmail() {
+        Intent intent = new Intent(context, BindEmailActivity.class);
+        startActivityForResult(intent, MyConstant.REQUEST_CODE_BIND_EMAIL);
+        context.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    //跳转二维码扫描
     private void scanQRCode() {
         Intent intent = new Intent(context, QRScannerActivity.class);
         startActivity(intent);
         context.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            switch (requestCode) {
+                case MyConstant.REQUEST_CODE_BIND_EMAIL:
+                    getMemberProfile();
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void onDestroy() {

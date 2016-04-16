@@ -1,11 +1,9 @@
 package com.sundy.icare.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
-import com.androidquery.AQuery;
 import com.sundy.icare.R;
+import com.sundy.icare.fragment.BindEmailFragment;
 
 /**
  * Created by sundy on 15/12/20.
@@ -17,44 +15,13 @@ public class BindEmailActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bind_email);
+        setContentView(R.layout.activity_bind_email);
 
-        aq = new AQuery(this);
-
-        init();
-
+        initBindEmailFragment();
     }
 
-    private void init() {
-        aq.id(R.id.txtTitle).text(R.string.bind_email);
-        aq.id(R.id.txtRight).text(R.string.next_step).clicked(onClick);
-
-        aq.id(R.id.btnBack).clicked(onClick);
-
+    private void initBindEmailFragment() {
+        switchContent(new BindEmailFragment());
     }
 
-    private View.OnClickListener onClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.btnBack:
-                    finish();
-                    break;
-                case R.id.txtRight:
-                    go2ValidateEmail();
-                    break;
-            }
-        }
-    };
-
-    private void go2ValidateEmail() {
-        Intent intent = new Intent(this, EmailValidationActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
 }

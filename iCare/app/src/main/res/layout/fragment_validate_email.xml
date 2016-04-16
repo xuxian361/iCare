@@ -25,21 +25,36 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="@string/your_email"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/email_code_have_been_sent"
+                android:textColor="@color/gray" />
+
+            <TextView
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="22dp"
+                android:gravity="center"
                 android:textColor="@color/material_grey_850"
-                android:textSize="16sp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/edtEmail"
-                android:layout_width="match_parent"
+                android:id="@+id/edtCode"
+                android:layout_width="180dp"
                 android:layout_height="@dimen/edt_height"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/corner_edt"
                 android:gravity="center"
+                android:hint="@string/email_validation_code"
                 android:textSize="14sp" />
+
         </LinearLayout>
+
     </RelativeLayout>
 </LinearLayout>

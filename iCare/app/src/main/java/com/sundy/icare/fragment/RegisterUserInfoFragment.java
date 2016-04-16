@@ -21,6 +21,7 @@ import com.androidquery.AQuery;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sundy.icare.R;
 import com.sundy.icare.utils.FileUtil;
+import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
@@ -38,9 +39,7 @@ public class RegisterUserInfoFragment extends LazyLoadFragment {
 
     private final String TAG = "RegisterUserInfoFragment";
     private EditText edtUserName;
-    private final int IMAGE_PHOTO_ALBUM = 1;
-    private final int IMAGE_CAMERA = 2;
-    private final int RESULT_REQUEST_CODE = 3;
+
     private String filePath;
     private SimpleDraweeView imgHeader;
     private String finalImagePath; //最终图片保存路径
@@ -157,7 +156,7 @@ public class RegisterUserInfoFragment extends LazyLoadFragment {
                 dialog.dismiss();
                 dialog.cancel();
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, IMAGE_PHOTO_ALBUM);
+                startActivityForResult(intent, MyConstant.IMAGE_PHOTO_ALBUM);
             }
         });
         btn_camera.setOnClickListener(new View.OnClickListener() {
@@ -177,7 +176,7 @@ public class RegisterUserInfoFragment extends LazyLoadFragment {
                     }
                 }
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-                startActivityForResult(intent, IMAGE_CAMERA);
+                startActivityForResult(intent, MyConstant.IMAGE_CAMERA);
             }
         });
         btn_close.setOnClickListener(new View.OnClickListener() {
@@ -196,14 +195,14 @@ public class RegisterUserInfoFragment extends LazyLoadFragment {
         Uri uri = null;
         switch (requestCode) {
             // 相册
-            case IMAGE_PHOTO_ALBUM:
+            case MyConstant.IMAGE_PHOTO_ALBUM:
                 if (data != null) {
                     uri = data.getData();
                     cropImage(uri, 300, 300);
                 }
                 break;
             //拍照
-            case IMAGE_CAMERA:
+            case MyConstant.IMAGE_CAMERA:
                 if (resultCode == -1) {
                     if (filePath != null) {
                         File file = new File(filePath);
@@ -216,7 +215,7 @@ public class RegisterUserInfoFragment extends LazyLoadFragment {
                     }
                 }
                 break;
-            case RESULT_REQUEST_CODE:
+            case MyConstant.RESULT_REQUEST_CODE:
                 imgHeader.setImageURI(Uri.parse("file://" + finalImagePath));
                 break;
         }
@@ -238,7 +237,7 @@ public class RegisterUserInfoFragment extends LazyLoadFragment {
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
         intent.putExtra("noFaceDetection", true);
         intent.putExtra("output", Uri.fromFile(outFile));
-        startActivityForResult(intent, RESULT_REQUEST_CODE);
+        startActivityForResult(intent, MyConstant.RESULT_REQUEST_CODE);
     }
 
     @Override

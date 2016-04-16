@@ -467,6 +467,8 @@
     <string name="verify_code_is_sending">验证码正在发送中, 请稍后</string>
     <string name="please_login">请登录</string>
     <string name="user_detail">个人详情</string>
+    <string name="input_your_binding_email">输入您要绑定的邮箱</string>
+    <string name="email_cannot_be_empty">邮箱不能输入空哦！</string>
 
 
     <integer-array name="google_colors">
