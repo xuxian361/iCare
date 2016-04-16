@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
+import com.sundy.icare.entity.MsgEvent;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.ui.MyProgressDialog;
@@ -17,6 +18,8 @@ import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
 
 import org.json.JSONObject;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by sundy on 16/4/16.
@@ -123,5 +126,14 @@ public class SettingsFragment extends LazyLoadFragment {
                 }
             }
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        //刷新上个页面
+        MsgEvent event = new MsgEvent();
+        event.setMsg("Need_Refresh");
+        EventBus.getDefault().post(event);
     }
 }

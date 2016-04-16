@@ -16,8 +16,12 @@ import com.sundy.icare.R;
 import com.sundy.icare.activity.LoginActivity;
 import com.sundy.icare.activity.MyFamilyActivity;
 import com.sundy.icare.activity.QRScannerActivity;
+import com.sundy.icare.entity.MsgEvent;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyUtils;
+
+import de.greenrobot.event.EventBus;
+
 
 /**
  * Created by sundy on 15/12/20.
@@ -30,6 +34,12 @@ public class MeFragment extends LazyLoadFragment {
     private ProgressBar progressBar;
     private SimpleDraweeView imgHeader;
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
 
     @Override
     public void onResume() {
@@ -141,9 +151,25 @@ public class MeFragment extends LazyLoadFragment {
         getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
+    /**
+     * @param event
+     */
+    public void onEventMainThread(MsgEvent event) {
+        MyUtils.rtLog(TAG, "------>onEventMainThread =" + event.getMsg());
+        if (event != null) {
+            String msg = event.getMsg();
+            switch (msg) {
+                case "Need_Refresh":
+                    refreshView();
+                    break;
+            }
+        }
+    }
+
     @Override
     public void onDestroy() {
         MyUtils.rtLog(TAG, "---------->onDestroy");
         super.onDestroy();
+        EventBus.getDefault().unregister(getActivity());
     }
 }
