@@ -1,6 +1,5 @@
 package com.sundy.icare.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -49,8 +48,8 @@ public class ContactsActivity extends BaseActivity {
     };
 
     private void bindFamily() {
-        Intent intent = new Intent(this, BindFamilyActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, BindFamilyActivity.class);
+//        startActivity(intent);
     }
 
     @Override

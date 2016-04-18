@@ -111,14 +111,6 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.BindFamilyActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".activity.MyFamilyActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".activity.MyFamilyDetailActivity"
             android:screenOrientation="portrait" />
 

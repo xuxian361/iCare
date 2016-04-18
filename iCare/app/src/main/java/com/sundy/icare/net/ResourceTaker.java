@@ -17,6 +17,12 @@ public class ResourceTaker {
     private static final String TAG = "ResourceTaker";
 
     //发送手机验证码
+    public static void getBanner(HttpCallback callback) {
+        HashMap hashMap = new HashMap();
+        getHttpRequestGet(MyURL.URL_GET_MEMBER_BANNER, hashMap, JSONObject.class, callback);
+    }
+
+    //发送手机验证码
     public static void sendSMSCode(String areaCode, String phone, String smsType, HttpCallback callback) {
         HashMap hashMap = new HashMap();
         hashMap.put("areaCode", areaCode);

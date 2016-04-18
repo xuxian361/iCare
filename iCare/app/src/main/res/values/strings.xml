@@ -90,9 +90,9 @@
     <string name="bind_family">绑定家人</string>
     <string name="ta_is_relation">TA是你的</string>
     <string name="bing_family">绑定家人</string>
-    <string name="input_family_username">请输入您家人的用户名</string>
+    <string name="input_family_username">请输入您家人的名字</string>
     <string name="input_family_mobile">请输入您家人的手机号码</string>
-    <string name="input_family_service_address">请输入您家人常在的地址</string>
+    <string name="input_family_service_address">请输入您家人的地址</string>
     <string name="father">爸爸</string>
     <string name="male_or_female">先生/女士</string>
     <string name="relation_call">爸爸/妈妈/其他</string>
@@ -481,6 +481,17 @@
     <string name="new_password_cannot_be_equal_old_password">新密码不能与原密码相同</string>
     <string name="confirm_password_not_equal_new_password">确认密码与新密码不一致</string>
     <string name="change_password_success">修改密码成功，下次登录请使用新密码!</string>
+    <string name="name">姓名</string>
+    <string name="input_address">街道/门牌号</string>
+    <string name="remark">备注</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="birthday">生日</string>
+    <string name="name_cannot_empty">姓名不能为空哦!</string>
+    <string name="street_cannot_empty">街道/门牌号不能为空哦！</string>
+    <string name="address_cannot_empty">服务地址不能为空哦！</string>
+    <string name="choose_province">选择省</string>
 
 
     <integer-array name="google_colors">

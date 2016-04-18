@@ -1,6 +1,7 @@
 package com.sundy.icare.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,12 +10,18 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.hyphenate.chat.EMClient;
 import com.sundy.icare.R;
+import com.sundy.icare.net.HttpCallback;
+import com.sundy.icare.net.ResourceTaker;
+import com.sundy.icare.ui.MCVideoView;
 import com.sundy.icare.utils.FileUtil;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyUtils;
+
+import org.json.JSONObject;
 
 import cn.jpush.android.api.InstrumentedActivity;
 
@@ -25,6 +32,8 @@ public class LoadingActivity extends InstrumentedActivity {
     private AQuery aq;
     private TextView txt_time;
     private int second = 5;
+    private SimpleDraweeView img_splash;
+    private MCVideoView videoView;
 
 
     @Override
@@ -37,6 +46,8 @@ public class LoadingActivity extends InstrumentedActivity {
         aq = new AQuery(this);
         aq.id(R.id.btn_skip).clicked(onClick);
         txt_time = aq.id(R.id.txt_time).getTextView();
+        img_splash = (SimpleDraweeView) aq.id(R.id.img_splash).getView();
+        videoView = (MCVideoView) aq.id(R.id.videoView).getView();
 
         //屏幕的信息
         DisplayMetrics metrics = getResources().getDisplayMetrics();
@@ -97,9 +108,46 @@ public class LoadingActivity extends InstrumentedActivity {
                         }
                     }
                 };
-
-                mHandler.sendEmptyMessageDelayed(1, 1000);
             }
+
+            ResourceTaker.getBanner(new HttpCallback<JSONObject>(this) {
+                @Override
+                public void callback(String url, JSONObject data, String status) {
+                    super.callback(url, data, status);
+                    try {
+                        if (data != null) {
+                            JSONObject result = data.getJSONObject("result");
+                            if (result != null) {
+                                String code = result.getString("code");
+                                String message = result.getString("message");
+                                if (code.equals("1000")) {
+                                    JSONObject info = data.getJSONObject("info");
+                                    if (info != null) {
+                                        String type = info.getString("type");
+                                        String sUrl = info.getString("url");
+                                        if (type.equals("image")) {
+                                            aq.id(R.id.img_splash).visible();
+                                            aq.id(R.id.videoView).gone();
+                                            img_splash.setImageURI(Uri.parse(sUrl));
+                                        } else if (type.equals("video")) {
+                                            aq.id(R.id.img_splash).gone();
+                                            aq.id(R.id.videoView).visible();
+                                            videoView.playVideo(LoadingActivity.this, Uri.parse(sUrl));
+                                        } else {
+                                            aq.id(R.id.img_splash).visible();
+                                            aq.id(R.id.videoView).gone();
+                                            img_splash.setImageURI(null);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        mHandler.sendEmptyMessageDelayed(1, 1000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }

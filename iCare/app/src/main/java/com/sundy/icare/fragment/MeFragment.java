@@ -14,7 +14,6 @@ import com.androidquery.AQuery;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sundy.icare.R;
 import com.sundy.icare.activity.LoginActivity;
-import com.sundy.icare.activity.MyFamilyActivity;
 import com.sundy.icare.activity.QRScannerActivity;
 import com.sundy.icare.entity.MsgEvent;
 import com.sundy.icare.utils.MyPreference;
@@ -139,9 +138,7 @@ public class MeFragment extends LazyLoadFragment {
 
     //跳转我的家人页面
     private void goMyFamily() {
-        Intent intent = new Intent(getActivity(), MyFamilyActivity.class);
-        startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        mCallback.addContent(new MyFamilyFragment());
     }
 
     //跳转扫描二维码页面
