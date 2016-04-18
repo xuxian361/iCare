@@ -105,7 +105,6 @@
             android:name=".activity.MyOrderDetailActivity"
             android:screenOrientation="portrait" />
 
-
         <activity
             android:name=".activity.ContactsActivity"
             android:screenOrientation="portrait" />

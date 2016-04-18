@@ -45,7 +45,7 @@ public class MyFamilyFragment extends LazyLoadFragment {
     private void init() {
         aq.id(R.id.txtTitle).text(R.string.my_family);
         aq.id(R.id.btnBack).clicked(onClick);
-        aq.id(R.id.rel_BindFamily).clicked(onClick);
+        aq.id(R.id.rel_AddFamily).clicked(onClick);
 
         lv_MyFamily = aq.id(R.id.lv_MyFamily).getListView();
         adapter = new MyFamilyAdapter(context);
@@ -68,7 +68,7 @@ public class MyFamilyFragment extends LazyLoadFragment {
                 case R.id.btnBack:
                     mCallback.onBack();
                     break;
-                case R.id.rel_BindFamily:
+                case R.id.rel_AddFamily:
                     addFamily();
                     break;
             }
@@ -77,9 +77,10 @@ public class MyFamilyFragment extends LazyLoadFragment {
 
     //跳转绑定家人页面
     private void addFamily() {
-        mCallback.addContent(new BindFamilyFragment());
+        mCallback.addContent(new AddFamilyFragment());
     }
 
+    //跳转家人详情页
     private void goMyFamilyDetail() {
         Intent intent = new Intent(context, MyFamilyDetailActivity.class);
         startActivity(intent);

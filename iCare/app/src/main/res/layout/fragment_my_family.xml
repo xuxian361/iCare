@@ -34,13 +34,13 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/rel_AddFamily"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:paddingTop="10dp"
-            android:id="@+id/rel_BindFamily">
+            android:paddingTop="10dp">
 
             <ImageView
                 android:id="@+id/img_add"
@@ -52,12 +52,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bing_family"
-                android:layout_toRightOf="@+id/img_add"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="6dp"
-                android:textSize="16sp"
+                android:layout_toRightOf="@+id/img_add"
+                android:text="@string/add_family"
                 android:textColor="@color/material_blue_grey_950"
-                android:layout_centerVertical="true" />
+                android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="13dp"
