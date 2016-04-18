@@ -64,7 +64,7 @@ public class ChooseAddressFragment extends LazyLoadFragment {
     }
 
     private void init() {
-        aq.id(R.id.txtTitle).text(R.string.my_family);
+        aq.id(R.id.txtTitle).text(R.string.address);
         aq.id(R.id.btnBack).clicked(onClick);
         aq.id(R.id.txtRight).clicked(onClick);
         aq.id(R.id.rel_Province).clicked(onClick);

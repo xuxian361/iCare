@@ -492,6 +492,12 @@
     <string name="street_cannot_empty">街道/门牌号不能为空哦！</string>
     <string name="address_cannot_empty">服务地址不能为空哦！</string>
     <string name="choose_province">选择省</string>
+    <string name="skip">跳过</string>
+    <string name="for_save_tips">为了账户安全，请输入您的\n登入密码</string>
+    <string name="change_username">修改用户名</string>
+    <string name="change_username_tips">好名字可以让别人更容易记住你</string>
+    <string name="change_gender_tips">请选择您的性别</string>
+    <string name="tag_tips">给自己加个标签，为自己代言!</string>
 
 
     <integer-array name="google_colors">

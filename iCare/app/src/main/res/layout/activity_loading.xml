@@ -38,7 +38,7 @@
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@+id/btn_skip"
             android:text="5秒"
-            android:textColor="@color/black_deep"
+            android:textColor="@color/gray"
             android:textSize="15sp" />
 
         <Button
@@ -50,7 +50,7 @@
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="跳过广告"
-            android:textColor="@color/button_material_dark" />
+            android:text="@string/skip"
+            android:textColor="@color/white" />
     </LinearLayout>
 </RelativeLayout>

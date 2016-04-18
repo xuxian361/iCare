@@ -64,6 +64,7 @@
                 android:background="@color/material_grey_100" />
 
             <RelativeLayout
+                android:id="@+id/relative_username"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/settings_item_height"
                 android:layout_marginLeft="15dp"
@@ -96,6 +97,7 @@
                 android:background="@color/material_grey_100" />
 
             <RelativeLayout
+                android:id="@+id/relative_gender"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/settings_item_height"
                 android:layout_marginLeft="15dp"
@@ -194,6 +196,7 @@
                 android:background="@color/material_grey_100" />
 
             <RelativeLayout
+                android:id="@+id/relative_address"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/settings_item_height"
                 android:layout_marginBottom="5dp"
@@ -228,6 +231,7 @@
                 android:background="@color/material_grey_100" />
 
             <RelativeLayout
+                android:id="@+id/relative_tag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -241,18 +245,18 @@
                     android:text="@string/tag"
                     android:textColor="@color/material_grey_800" />
 
-                <EditText
-                    android:id="@+id/edtTag"
+                <TextView
+                    android:id="@+id/txtTag"
                     android:layout_width="match_parent"
-                    android:layout_height="54dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/txtKey_Tag"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:background="@null"
-                    android:gravity="left|top"
-                    android:hint="可写上您值得骄傲的内容哦"
-                    android:lines="2"
-                    android:maxLines="2"
-                    android:padding="6dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/tag_tips"
+                    android:maxLines="3"
+                    android:padding="5dp"
                     android:textColor="@color/material_grey_850"
                     android:textSize="14sp" />
 

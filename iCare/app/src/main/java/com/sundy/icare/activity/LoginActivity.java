@@ -170,7 +170,6 @@ public class LoginActivity extends BaseActivity {
                 public void callback(String url, JSONObject data, String status) {
                     super.callback(url, data, status);
                     closeLoading();
-                    MyUtils.rtLog(TAG, "-------->login data = " + data.toString());
                     try {
                         if (data != null) {
                             JSONObject result = data.getJSONObject("result");
