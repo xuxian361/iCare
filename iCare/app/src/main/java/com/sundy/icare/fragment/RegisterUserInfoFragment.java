@@ -78,7 +78,7 @@ public class RegisterUserInfoFragment extends LazyLoadFragment {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.btn_back:
-                    mCallback.onBack();
+                    context.finish();
                     break;
                 case R.id.txtRight:
                     saveRegisterInfo();

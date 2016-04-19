@@ -79,5 +79,9 @@ public class MyURL {
      */
     public static final String URL_GET_MEMBER_BANNER = HTTP_BASE + "common/getBanner";
 
+    /**
+     * 搜索
+     */
+    public static final String URL_SEARCH_BY_PHONE_EMAIL = HTTP_BASE + "member/searchByPhoneOrEmail";
 
 }

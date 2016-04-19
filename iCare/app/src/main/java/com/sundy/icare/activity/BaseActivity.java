@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
 import com.androidquery.AQuery;
 import com.androidquery.util.AQUtility;
@@ -123,6 +124,13 @@ public class BaseActivity extends FragmentActivity implements LazyLoadFragment.O
     @Override
     public void reloadActivity() {
 
+    }
+
+    public void onClick(View v) {
+        MyUtils.rtLog(TAG, "------------------------onClick");
+        if (mContent instanceof LazyLoadFragment) {
+            ((LazyLoadFragment) mContent).onClick(v);
+        }
     }
 
     @Override

@@ -36,6 +36,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/relative_search"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginTop="20dp"
@@ -53,14 +54,14 @@
                 android:layout_marginLeft="5dp"
                 android:src="@drawable/ease_search_bar_icon_normal" />
 
-            <EditText
-                android:id="@+id/edtSearch"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/img_search"
                 android:background="@null"
-                android:hint="手机号/邮箱"
+                android:gravity="center_vertical"
+                android:hint="@string/search_hint"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:textSize="14sp" />

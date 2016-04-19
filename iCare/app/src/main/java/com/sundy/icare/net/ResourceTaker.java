@@ -164,6 +164,18 @@ public class ResourceTaker {
         }
     }
 
+    //搜索
+    public static void searchByPhoneOrEmail(String memberId, String sessionKey, String keyword,
+                                            int returnRecord, HttpCallback callback) {
+        HashMap hashMap = new HashMap();
+        hashMap.put("memberId", memberId);
+        hashMap.put("sessionKey", sessionKey);
+        hashMap.put("keyword", keyword);
+        hashMap.put("returnRecord", returnRecord + "");
+        getHttpRequestGet(MyURL.URL_SEARCH_BY_PHONE_EMAIL, hashMap, JSONObject.class, callback);
+    }
+
+
     //Get 请求
     public static void getHttpRequestGet(String url, HashMap hashMap, Class stype, HttpCallback callback) {
         hashMap = getCommonParameter(hashMap);

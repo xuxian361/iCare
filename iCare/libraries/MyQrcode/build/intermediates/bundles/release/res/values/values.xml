@@ -44,7 +44,7 @@
     <item>AUTO</item>
     <item>OFF</item>
   </string-array>
-    <color name="contents_text">#ff000000</color>
+    <color name="contents_text">#000000</color>
     <color name="encode_view">#ffffffff</color>
     <color name="gorden">#f2af2d</color>
     <color name="orange">#FFA602</color>

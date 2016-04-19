@@ -55,6 +55,7 @@ public class AddFamilyFragment extends LazyLoadFragment {
         aq.id(R.id.rel_Register).clicked(onClick);
         aq.id(R.id.rel_Scanner).clicked(onClick);
         aq.id(R.id.linear_qrCode).clicked(onClick);
+        aq.id(R.id.relative_search).clicked(onClick);
 
     }
 
@@ -74,9 +75,17 @@ public class AddFamilyFragment extends LazyLoadFragment {
                 case R.id.linear_qrCode:
                     showQRCodeDialog();
                     break;
+                case R.id.relative_search:
+                    goSearchPage();
+                    break;
             }
         }
     };
+
+    //跳转搜索页面
+    private void goSearchPage() {
+        mCallback.addContent(new SearchFragment());
+    }
 
     //跳转注册家人页面
     private void registerFamily() {

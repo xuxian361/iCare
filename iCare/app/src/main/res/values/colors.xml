@@ -15,7 +15,7 @@
     <color name="red">#FFC93437</color>
     <color name="blue">#FF375BF1</color>
     <color name="yellow">#FFF7D23E</color>
-    <color name="green">#FF34A350</color>
+    <color name="green">#34a350</color>
 
     <!--环信-->
     <color name="common_top_bar_blue">#4ebcd3</color>

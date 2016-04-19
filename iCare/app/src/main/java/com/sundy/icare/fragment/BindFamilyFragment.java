@@ -79,7 +79,7 @@ public class BindFamilyFragment extends LazyLoadFragment {
     }
 
     private void init() {
-        aq.id(R.id.txtTitle).text(R.string.my_family);
+        aq.id(R.id.txtTitle).text(R.string.bind_family);
         aq.id(R.id.btnBack).clicked(onClick);
         aq.id(R.id.txtRight).clicked(onClick);
         aq.id(R.id.imgHeader).clicked(onClick);
