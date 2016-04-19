@@ -70,6 +70,11 @@ public class MyURL {
     public static final String URL_GET_MEMBER_PROFILE = HTTP_BASE + "member/memberProfile";
 
     /**
+     * 修改用户资料
+     */
+    public static final String URL_UPDATE_PROFILE = HTTP_BASE + "member/updateProfile";
+
+    /**
      * 启动界面广告
      */
     public static final String URL_GET_MEMBER_BANNER = HTTP_BASE + "common/getBanner";

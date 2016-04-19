@@ -32,6 +32,7 @@ public class MyPreference {
     public static final String Preference_User_email = "email";   //email
     public static final String Preference_User_address = "address";   //地址
     public static final String Preference_User_label = "label";   //标签
+    public static final String Preference_User_Login_password = "loginPassword";   //标签
 
 
     //-------------------------APP------------------------
@@ -123,7 +124,6 @@ public class MyPreference {
         }
     }
 
-
     //清除保存的用户信息
     public static void clearUserInfo(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(Preference_User, Context.MODE_PRIVATE);
@@ -131,7 +131,6 @@ public class MyPreference {
         editor.clear();
         editor.commit();
     }
-
 
     //判断是否登陆
     public static boolean isLogin(Context context) {
@@ -161,5 +160,22 @@ public class MyPreference {
         SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
         return preferences.getString(Preference_User_phone, "");
     }
+
+    //保存用户登录密码
+    public static void saveLoginPassword(Context context, String password) {
+        SharedPreferences preferences = context.getSharedPreferences(Preference_User, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        password = EncryptionUtil.getMD5(context, password);
+        editor.putString(Preference_User_Login_password, password);
+
+        editor.commit();
+    }
+
+    //获取保存的用户登陆密码
+    public static String getLoginPassword(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(Preference_User, Context.MODE_PRIVATE);
+        return preferences.getString(Preference_User_Login_password, "");
+    }
+
 
 }

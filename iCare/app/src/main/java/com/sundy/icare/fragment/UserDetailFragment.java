@@ -29,6 +29,7 @@ import com.sundy.icare.activity.BindEmailActivity;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.ui.MyProgressDialog;
+import com.sundy.icare.utils.EncryptionUtil;
 import com.sundy.icare.utils.FileUtil;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
@@ -146,8 +147,7 @@ public class UserDetailFragment extends LazyLoadFragment {
             email = userInfo.has("email") ? userInfo.getString("email") : "";
             String address = userInfo.has("address") ? userInfo.getString("address") : "";
             label = userInfo.has("label") ? userInfo.getString("label") : "";
-
-            gender = "male";
+            gender = userInfo.has("gender") ? userInfo.getString("gender") : "male";
 
             imgHeader.setImageURI(Uri.parse(profileImage));
             aq.id(R.id.txtUsername).text(userName);
@@ -162,8 +162,7 @@ public class UserDetailFragment extends LazyLoadFragment {
                 aq.id(R.id.txtEmail).text(email);
             }
             aq.id(R.id.txtAddress).text(address);
-            if (label.length() != 0)
-                aq.id(R.id.edtTag).text(label);
+            aq.id(R.id.txtTag).text(label);
 
 
         } catch (Exception e) {
@@ -229,9 +228,35 @@ public class UserDetailFragment extends LazyLoadFragment {
             @Override
             public void onClick(View view) {
                 String tag = edtTag.getText().toString().trim();
-                dialog.dismiss();
-                dialog.cancel();
-                // TODO: 16/4/18 添加更新标签API
+                showLoading();
+                SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+                String memberID = preferences.getString(MyPreference.Preference_User_ID, "");
+                String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+                ResourceTaker.updateMemberProfile(memberID, sessionKey, "label", tag, new HttpCallback<JSONObject>(context) {
+                    @Override
+                    public void callback(String url, JSONObject data, String status) {
+                        super.callback(url, data, status);
+                        closeLoading();
+                        try {
+                            if (data != null) {
+                                JSONObject result = data.getJSONObject("result");
+                                if (result != null) {
+                                    String code = result.getString("code");
+                                    String message = result.getString("message");
+                                    if (code.equals("1000")) {
+                                        dialog.dismiss();
+                                        dialog.cancel();
+                                        getMemberProfile();
+                                    } else {
+                                        MyToast.rtToast(context, message);
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
 
             }
         });
@@ -284,10 +309,35 @@ public class UserDetailFragment extends LazyLoadFragment {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.dismiss();
-                dialog.cancel();
-                // TODO: 16/4/18 添加更新性别API
-
+                showLoading();
+                SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+                String memberID = preferences.getString(MyPreference.Preference_User_ID, "");
+                String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+                ResourceTaker.updateMemberProfile(memberID, sessionKey, "gender", gender, new HttpCallback<JSONObject>(context) {
+                    @Override
+                    public void callback(String url, JSONObject data, String status) {
+                        super.callback(url, data, status);
+                        closeLoading();
+                        try {
+                            if (data != null) {
+                                JSONObject result = data.getJSONObject("result");
+                                if (result != null) {
+                                    String code = result.getString("code");
+                                    String message = result.getString("message");
+                                    if (code.equals("1000")) {
+                                        dialog.dismiss();
+                                        dialog.cancel();
+                                        getMemberProfile();
+                                    } else {
+                                        MyToast.rtToast(context, message);
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         });
 
@@ -313,15 +363,40 @@ public class UserDetailFragment extends LazyLoadFragment {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String password = edtUserName.getText().toString().trim();
-                if (TextUtils.isEmpty(password)) {
+                String username = edtUserName.getText().toString().trim();
+                if (TextUtils.isEmpty(username)) {
                     MyToast.rtToast(context, getString(R.string.username_cannot_empty));
                     return;
                 }
-                dialog.dismiss();
-                dialog.cancel();
-                // TODO: 16/4/18 添加更新用户名API
-
+                showLoading();
+                SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+                String memberID = preferences.getString(MyPreference.Preference_User_ID, "");
+                String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+                ResourceTaker.updateMemberProfile(memberID, sessionKey, "name", username, new HttpCallback<JSONObject>(context) {
+                    @Override
+                    public void callback(String url, JSONObject data, String status) {
+                        super.callback(url, data, status);
+                        closeLoading();
+                        try {
+                            if (data != null) {
+                                JSONObject result = data.getJSONObject("result");
+                                if (result != null) {
+                                    String code = result.getString("code");
+                                    String message = result.getString("message");
+                                    if (code.equals("1000")) {
+                                        dialog.dismiss();
+                                        dialog.cancel();
+                                        getMemberProfile();
+                                    } else {
+                                        MyToast.rtToast(context, message);
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         });
 
@@ -383,9 +458,16 @@ public class UserDetailFragment extends LazyLoadFragment {
                     MyToast.rtToast(context, getString(R.string.login_password_cannot_empty));
                     return;
                 }
-                goBindEmail();
-                dialog.dismiss();
-                dialog.cancel();
+                password = EncryptionUtil.getMD5(context, password);
+                SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+                String savedPwd = preferences.getString(MyPreference.Preference_User_Login_password, "");
+                if (password.equals(savedPwd)) {
+                    dialog.dismiss();
+                    dialog.cancel();
+                    goBindEmail();
+                } else {
+                    MyToast.rtToast(context, getString(R.string.password_is_wrong));
+                }
             }
         });
 
@@ -507,7 +589,37 @@ public class UserDetailFragment extends LazyLoadFragment {
 
     //修改用户头像
     private void updateUserHeader() {
-        // TODO: 16/4/18 添加修改头像API
+        if (finalImagePath == null || finalImagePath.length() == 0) {
+            return;
+        }
+        File file = new File(finalImagePath);
+        showLoading();
+        SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberID = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+        ResourceTaker.updateMemberProfileHeader(memberID, sessionKey, "profileImage", file, new HttpCallback<JSONObject>(context) {
+            @Override
+            public void callback(String url, JSONObject data, String status) {
+                super.callback(url, data, status);
+                closeLoading();
+                try {
+                    if (data != null) {
+                        JSONObject result = data.getJSONObject("result");
+                        if (result != null) {
+                            String code = result.getString("code");
+                            String message = result.getString("message");
+                            if (code.equals("1000")) {
+                                getMemberProfile();
+                            } else {
+                                MyToast.rtToast(context, message);
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override

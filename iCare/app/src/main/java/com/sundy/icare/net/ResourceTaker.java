@@ -137,6 +137,33 @@ public class ResourceTaker {
         getHttpRequestGet(MyURL.URL_GET_MEMBER_PROFILE, hashMap, JSONObject.class, callback);
     }
 
+    //修改用户资料
+    public static void updateMemberProfile(String memberId, String sessionKey, String profileKey,
+                                           String profileValue, HttpCallback callback) {
+        HashMap hashMap = new HashMap();
+        hashMap.put("memberId", memberId);
+        hashMap.put("sessionKey", sessionKey);
+        hashMap.put("profileKey", profileKey);
+        hashMap.put("profileValue", profileValue);
+        getHttpRequestPost(MyURL.URL_UPDATE_PROFILE, hashMap, JSONObject.class, callback);
+    }
+
+    //修改用户资料-头像
+    public static void updateMemberProfileHeader(String memberId, String sessionKey, String profileKey,
+                                                 File profileValue, HttpCallback callback) {
+
+        try {
+            HashMap<String, String> stringHashMap = new HashMap<>();
+            stringHashMap.put("memberId", memberId);
+            stringHashMap.put("sessionKey", sessionKey);
+            stringHashMap.put("profileKey", profileKey);
+            stringHashMap = getCommonParameter(stringHashMap);
+            callback.doFilePost(MyURL.URL_UPDATE_PROFILE, stringHashMap, "profileValue", profileValue, JSONObject.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //Get 请求
     public static void getHttpRequestGet(String url, HashMap hashMap, Class stype, HttpCallback callback) {
         hashMap = getCommonParameter(hashMap);

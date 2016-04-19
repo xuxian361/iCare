@@ -142,7 +142,7 @@ public class LoadingActivity extends InstrumentedActivity {
                                 }
                             }
                         }
-                        mHandler.sendEmptyMessageDelayed(1, 1000);
+                        mHandler.sendEmptyMessageDelayed(1, 2000);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

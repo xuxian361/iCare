@@ -191,6 +191,7 @@ public class LoginActivity extends BaseActivity {
 
                                                 MyPreference.saveAutoLogin(LoginActivity.this, isAutoLogin);
                                                 saveUserInfo(info);
+                                                MyPreference.saveLoginPassword(LoginActivity.this, password);
                                                 go2Main();
                                             }
 
