@@ -1,0 +1,111 @@
+package com.sundy.icare.fragment;
+
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.androidquery.AQuery;
+import com.sundy.icare.R;
+import com.sundy.icare.adapters.NotificationAdapter;
+import com.sundy.icare.utils.MyUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by sundy on 16/4/20.
+ */
+public class NotificationFragment extends LazyLoadFragment {
+
+    private final String TAG = "NotificationFragment";
+    private View root;
+
+    private List list = new ArrayList();
+    private SwipeRefreshLayout layout_refresh;
+    private RecyclerView rv_Notification;
+    private NotificationAdapter adapter;
+
+    @Override
+    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mInflater = inflater;
+        root = mInflater.inflate(R.layout.fragment_notification, container, false);
+        aq = new AQuery(root);
+
+        init();
+
+        return root;
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    private void init() {
+        aq.id(R.id.btnBack).clicked(onClick);
+        aq.id(R.id.txtTitle).text(getString(R.string.notification));
+        initRefreshView();
+
+        rv_Notification = (RecyclerView) aq.id(R.id.rv_Notification).getView();
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        rv_Notification.setLayoutManager(layoutManager);
+        rv_Notification.setItemAnimator(new DefaultItemAnimator());
+        adapter = new NotificationAdapter(context);
+        rv_Notification.setAdapter(adapter);
+        adapter.setOnItemClickListener(new NotificationAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                MyUtils.rtLog(TAG, "------->onItemClick =" + position);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                MyUtils.rtLog(TAG, "------->onItemLongClick =" + position);
+            }
+        });
+    }
+
+    //初始化刷新控件
+    private void initRefreshView() {
+        layout_refresh = (SwipeRefreshLayout) aq.id(R.id.layout_refresh).getView();
+        layout_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                layout_refresh.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (layout_refresh.isRefreshing()) {
+                            layout_refresh.setRefreshing(false);
+                        }
+                    }
+                }, 500);
+                getNotifications();
+            }
+        });
+        layout_refresh.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+                android.R.color.holo_orange_light, android.R.color.holo_red_light);
+    }
+
+    //获取通知数据
+    private void getNotifications() {
+
+    }
+
+    private View.OnClickListener onClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.btnBack:
+                    mCallback.onBack();
+                    break;
+            }
+        }
+    };
+
+
+}

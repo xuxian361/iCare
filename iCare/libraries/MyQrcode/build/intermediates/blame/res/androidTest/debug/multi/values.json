@@ -12,7 +12,15 @@
                     "endOffset": 751
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 35,
+                        "endColumn": 17,
+                        "endOffset": 751
+                    }
                 }
             },
             {
@@ -25,7 +33,15 @@
                     "endOffset": 986
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 756,
+                        "endLine": 40,
+                        "endColumn": 17,
+                        "endOffset": 986
+                    }
                 }
             },
             {
@@ -38,7 +54,15 @@
                     "endOffset": 1124
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 41,
+                        "startColumn": 4,
+                        "startOffset": 991,
+                        "endLine": 45,
+                        "endColumn": 17,
+                        "endOffset": 1124
+                    }
                 }
             },
             {
@@ -69,7 +93,14 @@
                     "endOffset": 1220
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 47,
+                        "startColumn": 4,
+                        "startOffset": 1177,
+                        "endColumn": 47,
+                        "endOffset": 1220
+                    }
                 }
             },
             {
@@ -81,7 +112,14 @@
                     "endOffset": 1261
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 1225,
+                        "endColumn": 40,
+                        "endOffset": 1261
+                    }
                 }
             },
             {
@@ -93,7 +131,14 @@
                     "endOffset": 1302
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 1266,
+                        "endColumn": 40,
+                        "endOffset": 1302
+                    }
                 }
             },
             {
@@ -105,7 +150,14 @@
                     "endOffset": 1344
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 1307,
+                        "endColumn": 41,
+                        "endOffset": 1344
+                    }
                 }
             },
             {
@@ -117,7 +169,14 @@
                     "endOffset": 1403
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 51,
+                        "startColumn": 4,
+                        "startOffset": 1349,
+                        "endColumn": 58,
+                        "endOffset": 1403
+                    }
                 }
             },
             {
@@ -129,7 +188,14 @@
                     "endOffset": 1457
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 52,
+                        "startColumn": 4,
+                        "startOffset": 1408,
+                        "endColumn": 53,
+                        "endOffset": 1457
+                    }
                 }
             },
             {
@@ -141,7 +207,14 @@
                     "endOffset": 1507
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 53,
+                        "startColumn": 4,
+                        "startOffset": 1462,
+                        "endColumn": 49,
+                        "endOffset": 1507
+                    }
                 }
             },
             {
@@ -153,7 +226,14 @@
                     "endOffset": 1555
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 4,
+                        "startOffset": 1512,
+                        "endColumn": 47,
+                        "endOffset": 1555
+                    }
                 }
             },
             {
@@ -165,7 +245,14 @@
                     "endOffset": 1603
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 55,
+                        "startColumn": 4,
+                        "startOffset": 1560,
+                        "endColumn": 47,
+                        "endOffset": 1603
+                    }
                 }
             },
             {
@@ -177,7 +264,14 @@
                     "endOffset": 1651
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 56,
+                        "startColumn": 4,
+                        "startOffset": 1608,
+                        "endColumn": 47,
+                        "endOffset": 1651
+                    }
                 }
             },
             {
@@ -189,7 +283,14 @@
                     "endOffset": 1699
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 57,
+                        "startColumn": 4,
+                        "startOffset": 1656,
+                        "endColumn": 47,
+                        "endOffset": 1699
+                    }
                 }
             },
             {
@@ -201,7 +302,14 @@
                     "endOffset": 1752
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 58,
+                        "startColumn": 4,
+                        "startOffset": 1704,
+                        "endColumn": 52,
+                        "endOffset": 1752
+                    }
                 }
             },
             {
@@ -213,7 +321,14 @@
                     "endOffset": 1804
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 59,
+                        "startColumn": 4,
+                        "startOffset": 1757,
+                        "endColumn": 51,
+                        "endOffset": 1804
+                    }
                 }
             },
             {
@@ -225,7 +340,14 @@
                     "endOffset": 1841
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 1809,
+                        "endColumn": 36,
+                        "endOffset": 1841
+                    }
                 }
             },
             {
@@ -237,7 +359,14 @@
                     "endOffset": 1885
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 4,
+                        "startOffset": 1846,
+                        "endColumn": 43,
+                        "endOffset": 1885
+                    }
                 }
             },
             {
@@ -249,7 +378,14 @@
                     "endOffset": 1933
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 1890,
+                        "endColumn": 47,
+                        "endOffset": 1933
+                    }
                 }
             },
             {
@@ -261,7 +397,14 @@
                     "endOffset": 1969
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 1938,
+                        "endColumn": 35,
+                        "endOffset": 1969
+                    }
                 }
             },
             {
@@ -273,7 +416,14 @@
                     "endOffset": 2012
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 64,
+                        "startColumn": 4,
+                        "startOffset": 1974,
+                        "endColumn": 42,
+                        "endOffset": 2012
+                    }
                 }
             },
             {
@@ -285,7 +435,14 @@
                     "endOffset": 2058
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 65,
+                        "startColumn": 4,
+                        "startOffset": 2017,
+                        "endColumn": 45,
+                        "endOffset": 2058
+                    }
                 }
             },
             {
@@ -297,7 +454,14 @@
                     "endOffset": 2108
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 66,
+                        "startColumn": 4,
+                        "startOffset": 2063,
+                        "endColumn": 49,
+                        "endOffset": 2108
+                    }
                 }
             },
             {
@@ -309,7 +473,14 @@
                     "endOffset": 2142
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 67,
+                        "startColumn": 4,
+                        "startOffset": 2113,
+                        "endColumn": 33,
+                        "endOffset": 2142
+                    }
                 }
             },
             {
@@ -321,7 +492,14 @@
                     "endOffset": 2187
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 68,
+                        "startColumn": 4,
+                        "startOffset": 2147,
+                        "endColumn": 44,
+                        "endOffset": 2187
+                    }
                 }
             },
             {
@@ -333,7 +511,14 @@
                     "endOffset": 2235
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 69,
+                        "startColumn": 4,
+                        "startOffset": 2192,
+                        "endColumn": 47,
+                        "endOffset": 2235
+                    }
                 }
             },
             {
@@ -345,7 +530,14 @@
                     "endOffset": 2287
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 70,
+                        "startColumn": 4,
+                        "startOffset": 2240,
+                        "endColumn": 51,
+                        "endOffset": 2287
+                    }
                 }
             },
             {
@@ -357,7 +549,14 @@
                     "endOffset": 2344
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 71,
+                        "startColumn": 4,
+                        "startOffset": 2292,
+                        "endColumn": 56,
+                        "endOffset": 2344
+                    }
                 }
             },
             {
@@ -369,7 +568,14 @@
                     "endOffset": 2403
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 72,
+                        "startColumn": 4,
+                        "startOffset": 2349,
+                        "endColumn": 58,
+                        "endOffset": 2403
+                    }
                 }
             },
             {
@@ -381,7 +587,14 @@
                     "endOffset": 2467
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 73,
+                        "startColumn": 4,
+                        "startOffset": 2408,
+                        "endColumn": 63,
+                        "endOffset": 2467
+                    }
                 }
             },
             {
@@ -393,7 +606,14 @@
                     "endOffset": 2526
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 74,
+                        "startColumn": 4,
+                        "startOffset": 2472,
+                        "endColumn": 58,
+                        "endOffset": 2526
+                    }
                 }
             },
             {
@@ -405,7 +625,14 @@
                     "endOffset": 2585
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 75,
+                        "startColumn": 4,
+                        "startOffset": 2531,
+                        "endColumn": 58,
+                        "endOffset": 2585
+                    }
                 }
             },
             {
@@ -417,7 +644,14 @@
                     "endOffset": 2634
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 76,
+                        "startColumn": 4,
+                        "startOffset": 2590,
+                        "endColumn": 48,
+                        "endOffset": 2634
+                    }
                 }
             },
             {
@@ -429,7 +663,14 @@
                     "endOffset": 2705
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 77,
+                        "startColumn": 4,
+                        "startOffset": 2639,
+                        "endColumn": 70,
+                        "endOffset": 2705
+                    }
                 }
             },
             {
@@ -441,7 +682,14 @@
                     "endOffset": 2757
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 78,
+                        "startColumn": 4,
+                        "startOffset": 2710,
+                        "endColumn": 51,
+                        "endOffset": 2757
+                    }
                 }
             },
             {
@@ -453,7 +701,14 @@
                     "endOffset": 2809
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 79,
+                        "startColumn": 4,
+                        "startOffset": 2762,
+                        "endColumn": 51,
+                        "endOffset": 2809
+                    }
                 }
             },
             {
@@ -465,7 +720,14 @@
                     "endOffset": 2874
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 80,
+                        "startColumn": 4,
+                        "startOffset": 2814,
+                        "endColumn": 64,
+                        "endOffset": 2874
+                    }
                 }
             },
             {
@@ -477,7 +739,14 @@
                     "endOffset": 2922
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 81,
+                        "startColumn": 4,
+                        "startOffset": 2879,
+                        "endColumn": 47,
+                        "endOffset": 2922
+                    }
                 }
             },
             {
@@ -489,7 +758,14 @@
                     "endOffset": 2963
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 82,
+                        "startColumn": 4,
+                        "startOffset": 2927,
+                        "endColumn": 40,
+                        "endOffset": 2963
+                    }
                 }
             },
             {
@@ -501,7 +777,14 @@
                     "endOffset": 3024
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 83,
+                        "startColumn": 4,
+                        "startOffset": 2968,
+                        "endColumn": 60,
+                        "endOffset": 3024
+                    }
                 }
             },
             {
@@ -513,7 +796,14 @@
                     "endOffset": 3089
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 84,
+                        "startColumn": 4,
+                        "startOffset": 3029,
+                        "endColumn": 64,
+                        "endOffset": 3089
+                    }
                 }
             },
             {
@@ -525,7 +815,14 @@
                     "endOffset": 3161
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 85,
+                        "startColumn": 4,
+                        "startOffset": 3094,
+                        "endColumn": 71,
+                        "endOffset": 3161
+                    }
                 }
             },
             {
@@ -537,7 +834,14 @@
                     "endOffset": 3218
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 86,
+                        "startColumn": 4,
+                        "startOffset": 3166,
+                        "endColumn": 56,
+                        "endOffset": 3218
+                    }
                 }
             },
             {
@@ -549,7 +853,14 @@
                     "endOffset": 3277
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 87,
+                        "startColumn": 4,
+                        "startOffset": 3223,
+                        "endColumn": 58,
+                        "endOffset": 3277
+                    }
                 }
             },
             {
@@ -561,7 +872,14 @@
                     "endOffset": 3343
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 88,
+                        "startColumn": 4,
+                        "startOffset": 3282,
+                        "endColumn": 65,
+                        "endOffset": 3343
+                    }
                 }
             },
             {
@@ -573,7 +891,14 @@
                     "endOffset": 3405
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 89,
+                        "startColumn": 4,
+                        "startOffset": 3348,
+                        "endColumn": 61,
+                        "endOffset": 3405
+                    }
                 }
             },
             {
@@ -585,7 +910,14 @@
                     "endOffset": 3466
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 90,
+                        "startColumn": 4,
+                        "startOffset": 3410,
+                        "endColumn": 60,
+                        "endOffset": 3466
+                    }
                 }
             },
             {
@@ -597,7 +929,14 @@
                     "endOffset": 3523
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 91,
+                        "startColumn": 4,
+                        "startOffset": 3471,
+                        "endColumn": 56,
+                        "endOffset": 3523
+                    }
                 }
             },
             {
@@ -609,7 +948,14 @@
                     "endOffset": 3576
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 92,
+                        "startColumn": 4,
+                        "startOffset": 3528,
+                        "endColumn": 52,
+                        "endOffset": 3576
+                    }
                 }
             },
             {
@@ -621,7 +967,14 @@
                     "endOffset": 3624
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 93,
+                        "startColumn": 4,
+                        "startOffset": 3581,
+                        "endColumn": 47,
+                        "endOffset": 3624
+                    }
                 }
             },
             {
@@ -633,7 +986,14 @@
                     "endOffset": 3681
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 94,
+                        "startColumn": 4,
+                        "startOffset": 3629,
+                        "endColumn": 56,
+                        "endOffset": 3681
+                    }
                 }
             },
             {
@@ -645,7 +1005,14 @@
                     "endOffset": 3740
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 95,
+                        "startColumn": 4,
+                        "startOffset": 3686,
+                        "endColumn": 58,
+                        "endOffset": 3740
+                    }
                 }
             },
             {
@@ -657,7 +1024,14 @@
                     "endOffset": 3798
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 96,
+                        "startColumn": 4,
+                        "startOffset": 3745,
+                        "endColumn": 57,
+                        "endOffset": 3798
+                    }
                 }
             },
             {
@@ -669,7 +1043,14 @@
                     "endOffset": 3855
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 97,
+                        "startColumn": 4,
+                        "startOffset": 3803,
+                        "endColumn": 56,
+                        "endOffset": 3855
+                    }
                 }
             },
             {
@@ -681,7 +1062,14 @@
                     "endOffset": 3924
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 98,
+                        "startColumn": 4,
+                        "startOffset": 3860,
+                        "endColumn": 68,
+                        "endOffset": 3924
+                    }
                 }
             },
             {
@@ -693,7 +1081,14 @@
                     "endOffset": 3980
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 99,
+                        "startColumn": 4,
+                        "startOffset": 3929,
+                        "endColumn": 55,
+                        "endOffset": 3980
+                    }
                 }
             },
             {
@@ -705,7 +1100,14 @@
                     "endOffset": 4033
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 100,
+                        "startColumn": 4,
+                        "startOffset": 3985,
+                        "endColumn": 52,
+                        "endOffset": 4033
+                    }
                 }
             },
             {
@@ -717,7 +1119,14 @@
                     "endOffset": 4086
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 101,
+                        "startColumn": 4,
+                        "startOffset": 4038,
+                        "endColumn": 52,
+                        "endOffset": 4086
+                    }
                 }
             },
             {
@@ -729,7 +1138,14 @@
                     "endOffset": 4151
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 102,
+                        "startColumn": 4,
+                        "startOffset": 4091,
+                        "endColumn": 64,
+                        "endOffset": 4151
+                    }
                 }
             },
             {
@@ -741,7 +1157,14 @@
                     "endOffset": 4212
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 103,
+                        "startColumn": 4,
+                        "startOffset": 4156,
+                        "endColumn": 60,
+                        "endOffset": 4212
+                    }
                 }
             },
             {
@@ -753,7 +1176,14 @@
                     "endOffset": 4284
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 104,
+                        "startColumn": 4,
+                        "startOffset": 4217,
+                        "endColumn": 71,
+                        "endOffset": 4284
+                    }
                 }
             },
             {
@@ -765,7 +1195,14 @@
                     "endOffset": 4332
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 105,
+                        "startColumn": 4,
+                        "startOffset": 4289,
+                        "endColumn": 47,
+                        "endOffset": 4332
+                    }
                 }
             },
             {
@@ -777,7 +1214,14 @@
                     "endOffset": 4417
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 106,
+                        "startColumn": 4,
+                        "startOffset": 4337,
+                        "endColumn": 84,
+                        "endOffset": 4417
+                    }
                 }
             },
             {
@@ -789,7 +1233,14 @@
                     "endOffset": 4471
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 107,
+                        "startColumn": 4,
+                        "startOffset": 4422,
+                        "endColumn": 53,
+                        "endOffset": 4471
+                    }
                 }
             },
             {
@@ -801,7 +1252,14 @@
                     "endOffset": 4521
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 108,
+                        "startColumn": 4,
+                        "startOffset": 4476,
+                        "endColumn": 49,
+                        "endOffset": 4521
+                    }
                 }
             },
             {
@@ -813,7 +1271,14 @@
                     "endOffset": 4579
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 109,
+                        "startColumn": 4,
+                        "startOffset": 4526,
+                        "endColumn": 57,
+                        "endOffset": 4579
+                    }
                 }
             },
             {
@@ -825,7 +1290,14 @@
                     "endOffset": 4635
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 110,
+                        "startColumn": 4,
+                        "startOffset": 4584,
+                        "endColumn": 55,
+                        "endOffset": 4635
+                    }
                 }
             },
             {
@@ -837,7 +1309,14 @@
                     "endOffset": 4678
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 111,
+                        "startColumn": 4,
+                        "startOffset": 4640,
+                        "endColumn": 42,
+                        "endOffset": 4678
+                    }
                 }
             },
             {
@@ -849,7 +1328,14 @@
                     "endOffset": 4727
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 112,
+                        "startColumn": 4,
+                        "startOffset": 4683,
+                        "endColumn": 48,
+                        "endOffset": 4727
+                    }
                 }
             },
             {
@@ -861,7 +1347,14 @@
                     "endOffset": 4778
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 113,
+                        "startColumn": 4,
+                        "startOffset": 4732,
+                        "endColumn": 50,
+                        "endOffset": 4778
+                    }
                 }
             },
             {
@@ -873,7 +1366,14 @@
                     "endOffset": 4823
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 114,
+                        "startColumn": 4,
+                        "startOffset": 4783,
+                        "endColumn": 44,
+                        "endOffset": 4823
+                    }
                 }
             },
             {
@@ -885,7 +1385,14 @@
                     "endOffset": 4910
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 115,
+                        "startColumn": 4,
+                        "startOffset": 4828,
+                        "endColumn": 86,
+                        "endOffset": 4910
+                    }
                 }
             },
             {
@@ -898,7 +1405,15 @@
                     "endOffset": 5061
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 116,
+                        "startColumn": 4,
+                        "startOffset": 4915,
+                        "endLine": 118,
+                        "endColumn": 13,
+                        "endOffset": 5061
+                    }
                 }
             },
             {
@@ -910,7 +1425,14 @@
                     "endOffset": 5115
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 119,
+                        "startColumn": 4,
+                        "startOffset": 5066,
+                        "endColumn": 53,
+                        "endOffset": 5115
+                    }
                 }
             },
             {
@@ -922,7 +1444,14 @@
                     "endOffset": 5169
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 120,
+                        "startColumn": 4,
+                        "startOffset": 5120,
+                        "endColumn": 53,
+                        "endOffset": 5169
+                    }
                 }
             },
             {
@@ -934,7 +1463,14 @@
                     "endOffset": 5224
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 121,
+                        "startColumn": 4,
+                        "startOffset": 5174,
+                        "endColumn": 54,
+                        "endOffset": 5224
+                    }
                 }
             },
             {
@@ -946,7 +1482,14 @@
                     "endOffset": 5331
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 122,
+                        "startColumn": 4,
+                        "startOffset": 5229,
+                        "endColumn": 106,
+                        "endOffset": 5331
+                    }
                 }
             },
             {
@@ -958,7 +1501,14 @@
                     "endOffset": 5381
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 123,
+                        "startColumn": 4,
+                        "startOffset": 5336,
+                        "endColumn": 49,
+                        "endOffset": 5381
+                    }
                 }
             },
             {
@@ -970,7 +1520,14 @@
                     "endOffset": 5431
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 124,
+                        "startColumn": 4,
+                        "startOffset": 5386,
+                        "endColumn": 49,
+                        "endOffset": 5431
+                    }
                 }
             },
             {
@@ -982,7 +1539,14 @@
                     "endOffset": 5537
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 125,
+                        "startColumn": 4,
+                        "startOffset": 5436,
+                        "endColumn": 105,
+                        "endOffset": 5537
+                    }
                 }
             },
             {
@@ -994,7 +1558,14 @@
                     "endOffset": 5589
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 126,
+                        "startColumn": 4,
+                        "startOffset": 5542,
+                        "endColumn": 51,
+                        "endOffset": 5589
+                    }
                 }
             },
             {
@@ -1006,7 +1577,14 @@
                     "endOffset": 5643
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 127,
+                        "startColumn": 4,
+                        "startOffset": 5594,
+                        "endColumn": 53,
+                        "endOffset": 5643
+                    }
                 }
             },
             {
@@ -1019,7 +1597,15 @@
                     "endOffset": 5795
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 128,
+                        "startColumn": 4,
+                        "startOffset": 5648,
+                        "endLine": 130,
+                        "endColumn": 13,
+                        "endOffset": 5795
+                    }
                 }
             },
             {
@@ -1031,7 +1617,14 @@
                     "endOffset": 5845
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 131,
+                        "startColumn": 4,
+                        "startOffset": 5800,
+                        "endColumn": 49,
+                        "endOffset": 5845
+                    }
                 }
             },
             {
@@ -1043,7 +1636,14 @@
                     "endOffset": 5937
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 132,
+                        "startColumn": 4,
+                        "startOffset": 5850,
+                        "endColumn": 91,
+                        "endOffset": 5937
+                    }
                 }
             },
             {
@@ -1055,7 +1655,14 @@
                     "endOffset": 6021
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 133,
+                        "startColumn": 4,
+                        "startOffset": 5942,
+                        "endColumn": 83,
+                        "endOffset": 6021
+                    }
                 }
             },
             {
@@ -1067,7 +1674,14 @@
                     "endOffset": 6091
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 134,
+                        "startColumn": 4,
+                        "startOffset": 6026,
+                        "endColumn": 69,
+                        "endOffset": 6091
+                    }
                 }
             },
             {
@@ -1079,7 +1693,14 @@
                     "endOffset": 6137
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 135,
+                        "startColumn": 4,
+                        "startOffset": 6096,
+                        "endColumn": 45,
+                        "endOffset": 6137
+                    }
                 }
             },
             {
@@ -1091,7 +1712,14 @@
                     "endOffset": 6189
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 136,
+                        "startColumn": 4,
+                        "startOffset": 6142,
+                        "endColumn": 51,
+                        "endOffset": 6189
+                    }
                 }
             },
             {
@@ -1103,7 +1731,14 @@
                     "endOffset": 6261
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 137,
+                        "startColumn": 4,
+                        "startOffset": 6194,
+                        "endColumn": 71,
+                        "endOffset": 6261
+                    }
                 }
             },
             {
@@ -1115,7 +1750,14 @@
                     "endOffset": 6339
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 138,
+                        "startColumn": 4,
+                        "startOffset": 6266,
+                        "endColumn": 77,
+                        "endOffset": 6339
+                    }
                 }
             },
             {
@@ -1128,7 +1770,15 @@
                     "endOffset": 6496
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 139,
+                        "startColumn": 4,
+                        "startOffset": 6344,
+                        "endLine": 141,
+                        "endColumn": 13,
+                        "endOffset": 6496
+                    }
                 }
             },
             {
@@ -1140,7 +1790,14 @@
                     "endOffset": 6573
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 142,
+                        "startColumn": 4,
+                        "startOffset": 6501,
+                        "endColumn": 76,
+                        "endOffset": 6573
+                    }
                 }
             },
             {
@@ -1152,7 +1809,14 @@
                     "endOffset": 6624
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 143,
+                        "startColumn": 4,
+                        "startOffset": 6578,
+                        "endColumn": 50,
+                        "endOffset": 6624
+                    }
                 }
             },
             {
@@ -1164,7 +1828,14 @@
                     "endOffset": 6706
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 144,
+                        "startColumn": 4,
+                        "startOffset": 6629,
+                        "endColumn": 81,
+                        "endOffset": 6706
+                    }
                 }
             },
             {
@@ -1176,7 +1847,14 @@
                     "endOffset": 6790
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 145,
+                        "startColumn": 4,
+                        "startOffset": 6711,
+                        "endColumn": 83,
+                        "endOffset": 6790
+                    }
                 }
             },
             {
@@ -1188,7 +1866,14 @@
                     "endOffset": 6862
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 146,
+                        "startColumn": 4,
+                        "startOffset": 6795,
+                        "endColumn": 71,
+                        "endOffset": 6862
+                    }
                 }
             },
             {
@@ -1200,7 +1885,14 @@
                     "endOffset": 6961
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 147,
+                        "startColumn": 4,
+                        "startOffset": 6867,
+                        "endColumn": 98,
+                        "endOffset": 6961
+                    }
                 }
             },
             {
@@ -1212,7 +1904,14 @@
                     "endOffset": 7032
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 148,
+                        "startColumn": 4,
+                        "startOffset": 6966,
+                        "endColumn": 70,
+                        "endOffset": 7032
+                    }
                 }
             },
             {
@@ -1224,7 +1923,14 @@
                     "endOffset": 7114
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 149,
+                        "startColumn": 4,
+                        "startOffset": 7037,
+                        "endColumn": 81,
+                        "endOffset": 7114
+                    }
                 }
             },
             {
@@ -1237,7 +1943,15 @@
                     "endOffset": 7268
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 150,
+                        "startColumn": 4,
+                        "startOffset": 7119,
+                        "endLine": 152,
+                        "endColumn": 13,
+                        "endOffset": 7268
+                    }
                 }
             },
             {
@@ -1249,7 +1963,14 @@
                     "endOffset": 7354
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 153,
+                        "startColumn": 4,
+                        "startOffset": 7273,
+                        "endColumn": 85,
+                        "endOffset": 7354
+                    }
                 }
             },
             {
@@ -1261,7 +1982,14 @@
                     "endOffset": 7422
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 154,
+                        "startColumn": 4,
+                        "startOffset": 7359,
+                        "endColumn": 67,
+                        "endOffset": 7422
+                    }
                 }
             },
             {
@@ -1273,7 +2001,14 @@
                     "endOffset": 7499
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 155,
+                        "startColumn": 4,
+                        "startOffset": 7427,
+                        "endColumn": 76,
+                        "endOffset": 7499
+                    }
                 }
             },
             {
@@ -1285,7 +2020,14 @@
                     "endOffset": 7564
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 156,
+                        "startColumn": 4,
+                        "startOffset": 7504,
+                        "endColumn": 64,
+                        "endOffset": 7564
+                    }
                 }
             },
             {
@@ -1297,7 +2039,14 @@
                     "endOffset": 7656
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 157,
+                        "startColumn": 4,
+                        "startOffset": 7569,
+                        "endColumn": 91,
+                        "endOffset": 7656
+                    }
                 }
             },
             {
@@ -1309,7 +2058,14 @@
                     "endOffset": 7758
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 158,
+                        "startColumn": 4,
+                        "startOffset": 7661,
+                        "endColumn": 101,
+                        "endOffset": 7758
+                    }
                 }
             },
             {
@@ -1321,7 +2077,14 @@
                     "endOffset": 7849
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 159,
+                        "startColumn": 4,
+                        "startOffset": 7763,
+                        "endColumn": 90,
+                        "endOffset": 7849
+                    }
                 }
             },
             {
@@ -1333,7 +2096,14 @@
                     "endOffset": 7924
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 160,
+                        "startColumn": 4,
+                        "startOffset": 7854,
+                        "endColumn": 74,
+                        "endOffset": 7924
+                    }
                 }
             },
             {
@@ -1345,7 +2115,14 @@
                     "endOffset": 7991
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 161,
+                        "startColumn": 4,
+                        "startOffset": 7929,
+                        "endColumn": 66,
+                        "endOffset": 7991
+                    }
                 }
             },
             {
@@ -1357,7 +2134,14 @@
                     "endOffset": 8051
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 162,
+                        "startColumn": 4,
+                        "startOffset": 7996,
+                        "endColumn": 59,
+                        "endOffset": 8051
+                    }
                 }
             },
             {
@@ -1369,7 +2153,14 @@
                     "endOffset": 8109
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 163,
+                        "startColumn": 4,
+                        "startOffset": 8056,
+                        "endColumn": 57,
+                        "endOffset": 8109
+                    }
                 }
             },
             {
@@ -1382,7 +2173,15 @@
                     "endOffset": 8279
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 164,
+                        "startColumn": 4,
+                        "startOffset": 8114,
+                        "endLine": 166,
+                        "endColumn": 13,
+                        "endOffset": 8279
+                    }
                 }
             },
             {
@@ -1394,7 +2193,14 @@
                     "endOffset": 8353
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 167,
+                        "startColumn": 4,
+                        "startOffset": 8284,
+                        "endColumn": 73,
+                        "endOffset": 8353
+                    }
                 }
             },
             {
@@ -1406,7 +2212,14 @@
                     "endOffset": 8424
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 168,
+                        "startColumn": 4,
+                        "startOffset": 8358,
+                        "endColumn": 70,
+                        "endOffset": 8424
+                    }
                 }
             },
             {
@@ -1419,7 +2232,15 @@
                     "endOffset": 8573
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 169,
+                        "startColumn": 4,
+                        "startOffset": 8429,
+                        "endLine": 171,
+                        "endColumn": 13,
+                        "endOffset": 8573
+                    }
                 }
             },
             {
@@ -1431,7 +2252,14 @@
                     "endOffset": 8643
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 172,
+                        "startColumn": 4,
+                        "startOffset": 8578,
+                        "endColumn": 69,
+                        "endOffset": 8643
+                    }
                 }
             },
             {
@@ -1443,7 +2271,14 @@
                     "endOffset": 8697
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 173,
+                        "startColumn": 4,
+                        "startOffset": 8648,
+                        "endColumn": 53,
+                        "endOffset": 8697
+                    }
                 }
             },
             {
@@ -1455,7 +2290,14 @@
                     "endOffset": 8758
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 174,
+                        "startColumn": 4,
+                        "startOffset": 8702,
+                        "endColumn": 60,
+                        "endOffset": 8758
+                    }
                 }
             },
             {
@@ -1467,7 +2309,14 @@
                     "endOffset": 8878
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 175,
+                        "startColumn": 4,
+                        "startOffset": 8763,
+                        "endColumn": 119,
+                        "endOffset": 8878
+                    }
                 }
             },
             {
@@ -1479,7 +2328,14 @@
                     "endOffset": 8964
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 176,
+                        "startColumn": 4,
+                        "startOffset": 8883,
+                        "endColumn": 85,
+                        "endOffset": 8964
+                    }
                 }
             },
             {
@@ -1491,7 +2347,14 @@
                     "endOffset": 9033
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 177,
+                        "startColumn": 4,
+                        "startOffset": 8969,
+                        "endColumn": 68,
+                        "endOffset": 9033
+                    }
                 }
             },
             {
@@ -1503,7 +2366,14 @@
                     "endOffset": 9129
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 178,
+                        "startColumn": 4,
+                        "startOffset": 9038,
+                        "endColumn": 95,
+                        "endOffset": 9129
+                    }
                 }
             },
             {
@@ -1515,7 +2385,14 @@
                     "endOffset": 9199
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 179,
+                        "startColumn": 4,
+                        "startOffset": 9134,
+                        "endColumn": 69,
+                        "endOffset": 9199
+                    }
                 }
             },
             {
@@ -1527,7 +2404,14 @@
                     "endOffset": 9320
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 180,
+                        "startColumn": 4,
+                        "startOffset": 9204,
+                        "endColumn": 120,
+                        "endOffset": 9320
+                    }
                 }
             },
             {
@@ -1539,7 +2423,14 @@
                     "endOffset": 9398
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 181,
+                        "startColumn": 4,
+                        "startOffset": 9325,
+                        "endColumn": 77,
+                        "endOffset": 9398
+                    }
                 }
             },
             {
@@ -1551,7 +2442,14 @@
                     "endOffset": 9470
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 182,
+                        "startColumn": 4,
+                        "startOffset": 9403,
+                        "endColumn": 71,
+                        "endOffset": 9470
+                    }
                 }
             },
             {
@@ -1563,7 +2461,14 @@
                     "endOffset": 9570
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 183,
+                        "startColumn": 4,
+                        "startOffset": 9475,
+                        "endColumn": 99,
+                        "endOffset": 9570
+                    }
                 }
             },
             {
@@ -1575,7 +2480,14 @@
                     "endOffset": 9632
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 184,
+                        "startColumn": 4,
+                        "startOffset": 9575,
+                        "endColumn": 61,
+                        "endOffset": 9632
+                    }
                 }
             },
             {
@@ -1587,7 +2499,14 @@
                     "endOffset": 9734
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 185,
+                        "startColumn": 4,
+                        "startOffset": 9637,
+                        "endColumn": 101,
+                        "endOffset": 9734
+                    }
                 }
             },
             {
@@ -1599,7 +2518,14 @@
                     "endOffset": 9801
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 186,
+                        "startColumn": 4,
+                        "startOffset": 9739,
+                        "endColumn": 66,
+                        "endOffset": 9801
+                    }
                 }
             },
             {
@@ -1611,7 +2537,14 @@
                     "endOffset": 9866
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 187,
+                        "startColumn": 4,
+                        "startOffset": 9806,
+                        "endColumn": 64,
+                        "endOffset": 9866
+                    }
                 }
             },
             {
@@ -1623,7 +2556,14 @@
                     "endOffset": 9935
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 188,
+                        "startColumn": 4,
+                        "startOffset": 9871,
+                        "endColumn": 68,
+                        "endOffset": 9935
+                    }
                 }
             },
             {
@@ -1635,7 +2575,14 @@
                     "endOffset": 10003
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 189,
+                        "startColumn": 4,
+                        "startOffset": 9940,
+                        "endColumn": 67,
+                        "endOffset": 10003
+                    }
                 }
             },
             {
@@ -1647,7 +2594,14 @@
                     "endOffset": 10054
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 190,
+                        "startColumn": 4,
+                        "startOffset": 10008,
+                        "endColumn": 50,
+                        "endOffset": 10054
+                    }
                 }
             },
             {
@@ -1659,7 +2613,14 @@
                     "endOffset": 10111
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 191,
+                        "startColumn": 4,
+                        "startOffset": 10059,
+                        "endColumn": 56,
+                        "endOffset": 10111
+                    }
                 }
             },
             {
@@ -1671,7 +2632,14 @@
                     "endOffset": 10168
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 192,
+                        "startColumn": 4,
+                        "startOffset": 10116,
+                        "endColumn": 56,
+                        "endOffset": 10168
+                    }
                 }
             },
             {
@@ -1683,7 +2651,14 @@
                     "endOffset": 10226
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 193,
+                        "startColumn": 4,
+                        "startOffset": 10173,
+                        "endColumn": 57,
+                        "endOffset": 10226
+                    }
                 }
             },
             {
@@ -1695,7 +2670,14 @@
                     "endOffset": 10283
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 194,
+                        "startColumn": 4,
+                        "startOffset": 10231,
+                        "endColumn": 56,
+                        "endOffset": 10283
+                    }
                 }
             },
             {
@@ -1707,7 +2689,14 @@
                     "endOffset": 10332
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 195,
+                        "startColumn": 4,
+                        "startOffset": 10288,
+                        "endColumn": 48,
+                        "endOffset": 10332
+                    }
                 }
             },
             {
@@ -1719,7 +2708,14 @@
                     "endOffset": 10397
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 196,
+                        "startColumn": 4,
+                        "startOffset": 10337,
+                        "endColumn": 64,
+                        "endOffset": 10397
+                    }
                 }
             },
             {
@@ -1731,7 +2727,14 @@
                     "endOffset": 10453
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 197,
+                        "startColumn": 4,
+                        "startOffset": 10402,
+                        "endColumn": 55,
+                        "endOffset": 10453
+                    }
                 }
             },
             {
@@ -1743,7 +2746,14 @@
                     "endOffset": 10542
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 198,
+                        "startColumn": 4,
+                        "startOffset": 10458,
+                        "endColumn": 88,
+                        "endOffset": 10542
+                    }
                 }
             },
             {
@@ -1755,7 +2765,14 @@
                     "endOffset": 10599
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 199,
+                        "startColumn": 4,
+                        "startOffset": 10547,
+                        "endColumn": 56,
+                        "endOffset": 10599
+                    }
                 }
             },
             {
@@ -1767,7 +2784,14 @@
                     "endOffset": 10648
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 200,
+                        "startColumn": 4,
+                        "startOffset": 10604,
+                        "endColumn": 48,
+                        "endOffset": 10648
+                    }
                 }
             },
             {
@@ -1780,7 +2804,15 @@
                     "endOffset": 10953
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 201,
+                        "startColumn": 4,
+                        "startOffset": 10653,
+                        "endLine": 206,
+                        "endColumn": 10,
+                        "endOffset": 10953
+                    }
                 }
             },
             {
@@ -1793,7 +2825,15 @@
                     "endOffset": 11213
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 207,
+                        "startColumn": 4,
+                        "startOffset": 10958,
+                        "endLine": 211,
+                        "endColumn": 10,
+                        "endOffset": 11213
+                    }
                 }
             },
             {
@@ -1806,7 +2846,15 @@
                     "endOffset": 11432
                 },
                 "from": {
-                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml"
+                    "file": "/Users/sundy/Documents/Projects/Android_iCare_GitHub/Android_iCare/iCare/iCare/libraries/MyQrcode/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 212,
+                        "startColumn": 4,
+                        "startOffset": 11218,
+                        "endLine": 215,
+                        "endColumn": 10,
+                        "endOffset": 11432
+                    }
                 }
             }
         ]

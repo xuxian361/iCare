@@ -1,17 +1,22 @@
 package com.sundy.icare.adapters;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sundy.icare.R;
-import com.sundy.icare.utils.MyUtils;
+import com.sundy.icare.utils.MyPreference;
+import com.sundy.icare.utils.MyToast;
 
 import org.json.JSONObject;
 
@@ -52,8 +57,46 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
                 String profileImage = item.getString("profileImage");
                 mHolder.imgHeader.setImageURI(Uri.parse(profileImage));
                 mHolder.txtName.setText(name);
-
             }
+
+            mHolder.btnAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    View viewDialog = LayoutInflater.from(context).inflate(R.layout.dialog_input_verify_info, null);
+                    final Dialog dialog = new Dialog(context, R.style.dialog);
+                    dialog.setContentView(viewDialog);
+                    TextView btnCancel = (TextView) viewDialog.findViewById(R.id.btnCancel);
+                    TextView btnConfirm = (TextView) viewDialog.findViewById(R.id.btnConfirm);
+                    final EditText edtInfo = (EditText) viewDialog.findViewById(R.id.edtInfo);
+                    btnCancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                            dialog.cancel();
+                        }
+                    });
+                    btnConfirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String info = edtInfo.getText().toString().trim();
+                            if (TextUtils.isEmpty(info)) {
+                                MyToast.rtToast(context, context.getString(R.string.verify_info_cannot_empty));
+                                return;
+                            }
+                            SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+                            String memberID = preferences.getString(MyPreference.Preference_User_ID, "");
+                            String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
+                            MyToast.rtToast(context, context.getString(R.string.please_wait_result));
+                            dialog.dismiss();
+                            dialog.cancel();
+                        }
+                    });
+
+                    dialog.show();
+
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,7 +104,6 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        MyUtils.rtLog(TAG, "------count = " + list.size());
         return list.size();
     }
 

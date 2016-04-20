@@ -2,6 +2,7 @@ package com.sundy.icare.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,11 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.model.LatLng;
 import com.sundy.icare.R;
 import com.sundy.icare.ui.MyProgressDialog;
 import com.sundy.icare.utils.MyToast;
@@ -29,6 +35,8 @@ public class ChooseAddressFragment extends LazyLoadFragment {
 
     private final String TAG = "ChooseAddressFragment";
     private View root;
+    private LocationClient mLocClient;
+    private MyLocationListenner myListener = new MyLocationListenner();
 
     private MyProgressDialog progressDialog;
 
@@ -45,6 +53,19 @@ public class ChooseAddressFragment extends LazyLoadFragment {
         MyUtils.rtLog(TAG, "-------->closeLoading");
         if (progressDialog != null)
             progressDialog.dismiss();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mLocClient = new LocationClient(getActivity());
+        mLocClient.registerLocationListener(myListener);
+        LocationClientOption option = new LocationClientOption();
+        option.setOpenGps(true); // 打开gps
+        option.setCoorType("bd09ll"); // 设置坐标类型
+        option.setScanSpan(1000);
+        mLocClient.setLocOption(option);
+        mLocClient.start();
     }
 
     @Override
@@ -138,4 +159,34 @@ public class ChooseAddressFragment extends LazyLoadFragment {
 
     }
 
+    /**
+     * 定位SDK监听函数
+     */
+    public class MyLocationListenner implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            if (location == null) {
+                return;
+            }
+            LatLng ll = new LatLng(location.getLatitude(),
+                    location.getLongitude());
+            MyUtils.rtLog(TAG, "------->Lat = " + ll.latitudeE6);
+            MyUtils.rtLog(TAG, "------->Lng = " + ll.longitudeE6);
+            MyUtils.rtLog(TAG, "---------------------");
+            MyUtils.rtLog(TAG, "------->Lat = " + ll.latitudeE6);
+            MyUtils.rtLog(TAG, "------->Lng = " + ll.longitudeE6);
+        }
+
+        public void onReceivePoi(BDLocation poiLocation) {
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // 退出时销毁定位
+        mLocClient.stop();
+
+    }
 }

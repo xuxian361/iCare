@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:onClick="onClick"
     android:orientation="vertical">
 
     <ScrollView
@@ -79,7 +78,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="66dp"
+                    android:layout_height="70dp"
                     android:orientation="horizontal">
 
                     <RelativeLayout
@@ -92,7 +91,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_above="@+id/txt_ing_num"
+                            android:layout_above="@+id/img_ing"
                             android:layout_centerHorizontal="true"
                             android:orientation="horizontal">
 
@@ -109,17 +108,15 @@
                                 android:src="@drawable/ease_unread_dot" />
                         </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/txt_ing_num"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <ImageView
+                            android:id="@+id/img_ing"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_alignParentBottom="true"
-                            android:layout_alignWithParentIfMissing="false"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="6dp"
-                            android:text="1"
-                            android:textColor="@color/bg_deep_blue"
-                            android:textSize="14dp" />
+                            android:layout_marginTop="4dp"
+                            android:src="@mipmap/icon_camera" />
                     </RelativeLayout>
 
                     <ImageView
@@ -139,7 +136,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_above="@+id/txt_ed_num"
+                            android:layout_above="@+id/img_ed"
                             android:layout_centerHorizontal="true"
                             android:orientation="horizontal">
 
@@ -156,17 +153,15 @@
                                 android:src="@drawable/ease_unread_dot" />
                         </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/txt_ed_num"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <ImageView
+                            android:id="@+id/img_ed"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_alignParentBottom="true"
-                            android:layout_alignWithParentIfMissing="false"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="6dp"
-                            android:text="1"
-                            android:textColor="@color/bg_deep_blue"
-                            android:textSize="14dp" />
+                            android:layout_marginTop="4dp"
+                            android:src="@mipmap/icon_camera" />
                     </RelativeLayout>
 
                     <ImageView
@@ -186,7 +181,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_above="@+id/txt_all_num"
+                            android:layout_above="@+id/img_all"
                             android:layout_centerHorizontal="true"
                             android:orientation="horizontal">
 
@@ -203,17 +198,15 @@
                                 android:src="@drawable/ease_unread_dot" />
                         </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/txt_all_num"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <ImageView
+                            android:id="@+id/img_all"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_alignParentBottom="true"
-                            android:layout_alignWithParentIfMissing="false"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="6dp"
-                            android:text="2"
-                            android:textColor="@color/bg_deep_blue"
-                            android:textSize="14dp" />
+                            android:layout_marginTop="4dp"
+                            android:src="@mipmap/icon_camera" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -476,7 +469,7 @@
             android:background="@null"
             android:padding="10dp"
             android:scaleType="fitCenter"
-            android:src="@mipmap/icon_info_img" />
+            android:src="@android:drawable/ic_popup_reminder" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -10,7 +10,6 @@ import android.view.View;
 
 import com.androidquery.AQuery;
 import com.androidquery.util.AQUtility;
-import com.baidu.mapapi.SDKInitializer;
 import com.sundy.icare.R;
 import com.sundy.icare.fragment.LazyLoadFragment;
 import com.sundy.icare.fragment.MainFragment;
@@ -38,9 +37,6 @@ public class BaseActivity extends FragmentActivity implements LazyLoadFragment.O
 
         context = this;
         aq = new AQuery(this);
-
-        //百度地图SDK
-        SDKInitializer.initialize(getApplicationContext());
 
     }
 

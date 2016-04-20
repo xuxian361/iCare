@@ -114,10 +114,6 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.VerifyPasswordActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".activity.BindEmailActivity"
             android:screenOrientation="portrait" />
 
@@ -135,6 +131,11 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="jGRDnB35yxlaaLGoGY2PB3Eg" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"></service>
 
         <!--   ///////////////////////////////    极光推送    //////////////////////////      -->
         <!-- Required SDK核心功能-->

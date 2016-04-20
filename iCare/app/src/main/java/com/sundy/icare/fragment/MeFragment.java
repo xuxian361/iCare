@@ -30,7 +30,6 @@ public class MeFragment extends LazyLoadFragment {
     private final String TAG = "MeFragment";
     private View mView;
 
-    private ProgressBar progressBar;
     private SimpleDraweeView imgHeader;
 
 
@@ -91,9 +90,8 @@ public class MeFragment extends LazyLoadFragment {
         aq.id(R.id.btnQR).clicked(onClick);
         aq.id(R.id.rel_MyFamily).clicked(onClick);
         aq.id(R.id.rel_setting).clicked(onClick);
+        aq.id(R.id.btnNotify).clicked(onClick);
 
-        progressBar = aq.id(R.id.progress_bar).getProgressBar();
-        progressBar.setVisibility(View.GONE);
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {
@@ -116,9 +114,21 @@ public class MeFragment extends LazyLoadFragment {
                 case R.id.rel_setting:
                     goSettings();
                     break;
+                case R.id.btnNotify:
+                    if (MyPreference.isLogin(getContext())) {
+                        goNotification();
+                    } else {
+                        goLogin();
+                    }
+                    break;
             }
         }
     };
+
+    //跳转通知页面
+    private void goNotification() {
+        mCallback.addContent(new NotificationFragment());
+    }
 
     private void goLogin() {
         Intent intent = new Intent(getActivity(), LoginActivity.class);

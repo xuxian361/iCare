@@ -503,6 +503,13 @@
     <string name="search_result">搜索结果</string>
     <string name="no_result">没有结果</string>
     <string name="add">添加</string>
+    <string name="input_your_verify_info">请输入您的验证信息</string>
+    <string name="verify_info">验证信息</string>
+    <string name="verify_info_cannot_empty">验证信息不能空哦！</string>
+    <string name="please_wait_result">请等待对方验证</string>
+    <string name="notification">通知</string>
+    <string name="refuse">拒绝</string>
+    <string name="apply">申请</string>
 
 
     <integer-array name="google_colors">
