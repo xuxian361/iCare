@@ -1,5 +1,8 @@
 package com.sundy.icare.net;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.sundy.icare.MyApp;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyPreference;
@@ -69,7 +72,11 @@ public class ResourceTaker {
     }
 
     //用户登出
-    public static void logout(String memberId, String sessionKey, HttpCallback callback) {
+    public static void logout(HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
         HashMap hashMap = new HashMap();
         hashMap.put("memberId", memberId);
         hashMap.put("sessionKey", sessionKey);
@@ -88,8 +95,11 @@ public class ResourceTaker {
     }
 
     //修改密码
-    public static void changePassword(String memberId, String sessionKey, String oldPassword, String password,
+    public static void changePassword(String oldPassword, String password,
                                       String verifyPassword, HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
         HashMap hashMap = new HashMap();
         hashMap.put("memberId", memberId);
         hashMap.put("sessionKey", sessionKey);
@@ -100,7 +110,11 @@ public class ResourceTaker {
     }
 
     //发送邮箱验证码
-    public static void sendEmailCode(String memberId, String sessionKey, String email, HttpCallback callback) {
+    public static void sendEmailCode(String email, HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
         HashMap hashMap = new HashMap();
         hashMap.put("memberId", memberId);
         hashMap.put("sessionKey", sessionKey);
@@ -109,8 +123,12 @@ public class ResourceTaker {
     }
 
     //绑定邮箱
-    public static void bingMailBox(String memberId, String sessionKey, String email, String emailCode,
+    public static void bingMailBox(String email, String emailCode,
                                    HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
         HashMap hashMap = new HashMap();
         hashMap.put("memberId", memberId);
         hashMap.put("sessionKey", sessionKey);
@@ -120,7 +138,11 @@ public class ResourceTaker {
     }
 
     //我的账号
-    public static void getMyAccount(String memberId, String sessionKey, HttpCallback callback) {
+    public static void getMyAccount(HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
         HashMap hashMap = new HashMap();
         hashMap.put("memberId", memberId);
         hashMap.put("sessionKey", sessionKey);
@@ -128,8 +150,11 @@ public class ResourceTaker {
     }
 
     //用户资料
-    public static void getMemberProfile(String memberId, String sessionKey, String profileId,
-                                        HttpCallback callback) {
+    public static void getMemberProfile(String profileId, HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
         HashMap hashMap = new HashMap();
         hashMap.put("memberId", memberId);
         hashMap.put("sessionKey", sessionKey);
@@ -138,8 +163,12 @@ public class ResourceTaker {
     }
 
     //修改用户资料
-    public static void updateMemberProfile(String memberId, String sessionKey, String profileKey,
+    public static void updateMemberProfile(String profileKey,
                                            String profileValue, HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
         HashMap hashMap = new HashMap();
         hashMap.put("memberId", memberId);
         hashMap.put("sessionKey", sessionKey);
@@ -149,8 +178,11 @@ public class ResourceTaker {
     }
 
     //修改用户资料-头像
-    public static void updateMemberProfileHeader(String memberId, String sessionKey, String profileKey,
+    public static void updateMemberProfileHeader(String profileKey,
                                                  File profileValue, HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
 
         try {
             HashMap<String, String> stringHashMap = new HashMap<>();
@@ -165,8 +197,12 @@ public class ResourceTaker {
     }
 
     //搜索
-    public static void searchByPhoneOrEmail(String memberId, String sessionKey, String keyword,
+    public static void searchByPhoneOrEmail(String keyword,
                                             int returnRecord, HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
         HashMap hashMap = new HashMap();
         hashMap.put("memberId", memberId);
         hashMap.put("sessionKey", sessionKey);

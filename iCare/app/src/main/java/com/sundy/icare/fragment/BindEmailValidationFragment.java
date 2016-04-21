@@ -1,8 +1,6 @@
 package com.sundy.icare.fragment;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -13,7 +11,6 @@ import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
-import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
 
 import org.json.JSONObject;
@@ -74,11 +71,8 @@ public class BindEmailValidationFragment extends LazyLoadFragment {
             MyToast.rtToast(context, getString(R.string.verify_code_cannot_empty));
             return;
         }
-        SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
-        String userId = preferences.getString(MyPreference.Preference_User_ID, "");
-        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
 
-        ResourceTaker.bingMailBox(userId, sessionKey, email, code, new HttpCallback<JSONObject>(context) {
+        ResourceTaker.bingMailBox(email, code, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);

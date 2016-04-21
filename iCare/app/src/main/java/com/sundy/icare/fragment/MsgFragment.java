@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
@@ -22,7 +21,6 @@ public class MsgFragment extends LazyLoadFragment {
     private View mView;
 
     Handler handler = new Handler();
-    ProgressBar progressBar;
     private static final int DELAY_TIME = 2000;
 
     public MsgFragment() {
@@ -40,9 +38,6 @@ public class MsgFragment extends LazyLoadFragment {
     }
 
     private void init() {
-        progressBar = aq.id(R.id.progress_bar).getProgressBar();
-        progressBar.setVisibility(View.VISIBLE);
-
         aq.id(R.id.btnAdd).clicked(onClick);
     }
 
@@ -65,12 +60,6 @@ public class MsgFragment extends LazyLoadFragment {
     @Override
     protected void initData() {
         MyUtils.rtLog(TAG, "---------->initData");
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                progressBar.setVisibility(View.GONE);
-            }
-        }, DELAY_TIME);
     }
 
     @Override

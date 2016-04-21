@@ -106,10 +106,9 @@ public class UserDetailFragment extends LazyLoadFragment {
     private void getMemberProfile() {
         SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
         String userId = preferences.getString(MyPreference.Preference_User_ID, "");
-        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
 
         showLoading();
-        ResourceTaker.getMemberProfile(userId, sessionKey, userId, new HttpCallback<JSONObject>(context) {
+        ResourceTaker.getMemberProfile(userId, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
@@ -229,10 +228,7 @@ public class UserDetailFragment extends LazyLoadFragment {
             public void onClick(View view) {
                 String tag = edtTag.getText().toString().trim();
                 showLoading();
-                SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
-                String memberID = preferences.getString(MyPreference.Preference_User_ID, "");
-                String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
-                ResourceTaker.updateMemberProfile(memberID, sessionKey, "label", tag, new HttpCallback<JSONObject>(context) {
+                ResourceTaker.updateMemberProfile("label", tag, new HttpCallback<JSONObject>(context) {
                     @Override
                     public void callback(String url, JSONObject data, String status) {
                         super.callback(url, data, status);
@@ -310,10 +306,7 @@ public class UserDetailFragment extends LazyLoadFragment {
             @Override
             public void onClick(View view) {
                 showLoading();
-                SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
-                String memberID = preferences.getString(MyPreference.Preference_User_ID, "");
-                String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
-                ResourceTaker.updateMemberProfile(memberID, sessionKey, "gender", gender, new HttpCallback<JSONObject>(context) {
+                ResourceTaker.updateMemberProfile("gender", gender, new HttpCallback<JSONObject>(context) {
                     @Override
                     public void callback(String url, JSONObject data, String status) {
                         super.callback(url, data, status);
@@ -369,10 +362,7 @@ public class UserDetailFragment extends LazyLoadFragment {
                     return;
                 }
                 showLoading();
-                SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
-                String memberID = preferences.getString(MyPreference.Preference_User_ID, "");
-                String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
-                ResourceTaker.updateMemberProfile(memberID, sessionKey, "name", username, new HttpCallback<JSONObject>(context) {
+                ResourceTaker.updateMemberProfile("name", username, new HttpCallback<JSONObject>(context) {
                     @Override
                     public void callback(String url, JSONObject data, String status) {
                         super.callback(url, data, status);
@@ -594,10 +584,7 @@ public class UserDetailFragment extends LazyLoadFragment {
         }
         File file = new File(finalImagePath);
         showLoading();
-        SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
-        String memberID = preferences.getString(MyPreference.Preference_User_ID, "");
-        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
-        ResourceTaker.updateMemberProfileHeader(memberID, sessionKey, "profileImage", file, new HttpCallback<JSONObject>(context) {
+        ResourceTaker.updateMemberProfileHeader("profileImage", file, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);

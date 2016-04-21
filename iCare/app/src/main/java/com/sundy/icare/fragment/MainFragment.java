@@ -11,8 +11,6 @@ import android.widget.Button;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.ui.MyProgressDialog;
-import com.sundy.icare.utils.MyUtils;
 
 /**
  * Created by sundy on 16/4/15.
@@ -31,22 +29,6 @@ public class MainFragment extends LazyLoadFragment {
     private FragmentPagerAdapter pagerAdapter;
     private int current_Position = 0;
 
-    private MyProgressDialog progressDialog;
-
-    public void showLoading() {
-        MyUtils.rtLog(TAG, "-------->showLoading");
-        if (progressDialog != null) {
-            progressDialog.dismiss();
-        }
-        progressDialog = new MyProgressDialog(context, context.getWindow().getDecorView());
-        progressDialog.show();
-    }
-
-    public void closeLoading() {
-        MyUtils.rtLog(TAG, "-------->closeLoading");
-        if (progressDialog != null)
-            progressDialog.dismiss();
-    }
 
     @Override
     protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

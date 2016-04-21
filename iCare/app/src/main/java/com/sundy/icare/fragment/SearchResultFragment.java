@@ -1,7 +1,5 @@
 package com.sundy.icare.fragment;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -16,7 +14,6 @@ import com.sundy.icare.R;
 import com.sundy.icare.adapters.SearchResultAdapter;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
-import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyToast;
 
 import org.json.JSONArray;
@@ -92,11 +89,7 @@ public class SearchResultFragment extends LazyLoadFragment {
 
     //搜索内容
     private void search() {
-        SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
-        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
-        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
-
-        ResourceTaker.searchByPhoneOrEmail(memberId, sessionKey, tag, 20, new HttpCallback<JSONObject>(context) {
+        ResourceTaker.searchByPhoneOrEmail(tag, 20, new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);

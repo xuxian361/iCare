@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
@@ -27,7 +26,6 @@ public class ServiceFragment extends LazyLoadFragment {
     private View mView;
 
     Handler handler = new Handler();
-    ProgressBar progressBar;
     private static final int DELAY_TIME = 2000;
 
     private ListView lv_Data;
@@ -50,12 +48,6 @@ public class ServiceFragment extends LazyLoadFragment {
     @Override
     protected void initData() {
         MyUtils.rtLog(TAG, "---------->initData");
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                progressBar.setVisibility(View.GONE);
-            }
-        }, DELAY_TIME);
     }
 
     private void init() {
@@ -64,8 +56,6 @@ public class ServiceFragment extends LazyLoadFragment {
         aq.id(R.id.btnSwitch).clicked(onClick);
         aq.id(R.id.btnAddOrder).clicked(onClick);
         aq.id(R.id.relative_More).clicked(onClick);
-        progressBar = aq.id(R.id.progress_bar).getProgressBar();
-        progressBar.setVisibility(View.VISIBLE);
 
         lv_Data = aq.id(R.id.lv_Data).getListView();
         adapter = new ServiceListAdapter(getActivity());

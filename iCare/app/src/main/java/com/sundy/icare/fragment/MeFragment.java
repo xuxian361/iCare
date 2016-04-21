@@ -15,8 +15,12 @@ import com.sundy.icare.R;
 import com.sundy.icare.activity.LoginActivity;
 import com.sundy.icare.activity.QRScannerActivity;
 import com.sundy.icare.entity.MsgEvent;
+import com.sundy.icare.net.HttpCallback;
+import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.utils.MyPreference;
 import com.sundy.icare.utils.MyUtils;
+
+import org.json.JSONObject;
 
 import de.greenrobot.event.EventBus;
 
@@ -73,6 +77,9 @@ public class MeFragment extends LazyLoadFragment {
                 imgHeader.setImageURI(Uri.parse(img));
             String userName = preferences.getString(MyPreference.Preference_User_name, "");
             aq.id(R.id.txtName).text(userName);
+
+            getMyAccount();
+
         } else {//未登陆
             MyUtils.rtLog(TAG, "---------->未登陆");
             imgHeader.setImageURI(null);
@@ -91,6 +98,31 @@ public class MeFragment extends LazyLoadFragment {
         aq.id(R.id.rel_setting).clicked(onClick);
         aq.id(R.id.btnNotify).clicked(onClick);
 
+    }
+
+    //我的账号
+    private void getMyAccount() {
+        ResourceTaker.getMyAccount(new HttpCallback<JSONObject>(context) {
+            @Override
+            public void callback(String url, JSONObject data, String status) {
+                super.callback(url, data, status);
+                try {
+                    if (data != null) {
+                        JSONObject result = data.getJSONObject("result");
+                        if (result != null) {
+                            String code = result.getString("code");
+                            String message = result.getString("message");
+                            if (code.equals("1000")) {
+
+                            } else {
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {

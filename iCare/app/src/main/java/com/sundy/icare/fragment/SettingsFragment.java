@@ -1,7 +1,5 @@
 package com.sundy.icare.fragment;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,11 +96,8 @@ public class SettingsFragment extends LazyLoadFragment {
 
     //登出
     private void logout() {
-        SharedPreferences preferences = context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
-        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
-        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
         showLoading();
-        ResourceTaker.logout(memberId, sessionKey, new HttpCallback<JSONObject>(context) {
+        ResourceTaker.logout(new HttpCallback<JSONObject>(context) {
             @Override
             public void callback(String url, JSONObject data, String status) {
                 super.callback(url, data, status);
