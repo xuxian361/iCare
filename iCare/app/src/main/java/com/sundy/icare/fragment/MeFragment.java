@@ -140,7 +140,11 @@ public class MeFragment extends LazyLoadFragment {
                     scanQRCode();
                     break;
                 case R.id.rel_MyFamily:
-                    goMyFamily();
+                    if (MyPreference.isLogin(getActivity())) {
+                        goMyFamily();
+                    } else {
+                        goLogin();
+                    }
                     break;
                 case R.id.rel_setting:
                     goSettings();

@@ -510,6 +510,12 @@
     <string name="notification">通知</string>
     <string name="refuse">拒绝</string>
     <string name="apply">申请</string>
+    <string name="invite_agree_tips">对方已通过您的邀请</string>
+    <string name="invite_reject_tips">对方拒绝了您的邀请</string>
+    <string name="invite">邀请</string>
+    <string name="invite_pending_tips">邀请信息已发送，请等待对方验证</string>
+    <string name="agreed">已同意</string>
+    <string name="rejected">已拒绝</string>
 
 
     <integer-array name="google_colors">

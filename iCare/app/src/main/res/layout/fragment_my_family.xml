@@ -34,6 +34,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <RelativeLayout
             android:id="@+id/rel_AddFamily"
             android:layout_width="match_parent"
@@ -73,13 +74,17 @@
             android:layout_height="15dp"
             android:background="@color/bar_color" />
 
-        <ListView
-            android:id="@+id/lv_MyFamily"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/layout_refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFFFFF"
-            android:divider="@null"
-            android:scrollingCache="false" />
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_Notification"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null" />
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 

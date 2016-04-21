@@ -25,15 +25,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by sundy on 16/4/19.
+ * Created by sundy on 16/1/19.
  */
-public class SearchResultAdapter extends RecyclerView.Adapter {
+public class MemberAdapter extends RecyclerView.Adapter {
 
-    private final String TAG = "SearchResultAdapter";
+    private final String TAG = "MemberAdapter";
     private Context context;
     private List list = new ArrayList();
 
-    public SearchResultAdapter(Context context) {
+    public MemberAdapter(Context context) {
         this.context = context;
     }
 
@@ -43,24 +43,30 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_search_result, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_member, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         try {
-            MyViewHolder mHolder = (MyViewHolder) holder;
-            JSONObject item = (JSONObject) list.get(position);
+            final MyViewHolder mHolder = (MyViewHolder) holder;
+            final JSONObject item = (JSONObject) list.get(position);
             if (item != null) {
                 final String id = item.getString("id");
                 String name = item.getString("name");
                 String profileImage = item.getString("profileImage");
-                mHolder.imgHeader.setImageURI(Uri.parse(profileImage));
-                mHolder.txtName.setText(name);
+                String remark = item.getString("remark");
 
-                mHolder.btnAdd.setOnClickListener(new View.OnClickListener() {
+                mHolder.imgHeader.setImageURI(Uri.parse(profileImage));
+                if (remark.length() == 0) {
+                    mHolder.txtName.setText(name);
+                } else {
+                    mHolder.txtName.setText(remark);
+                }
+
+                mHolder.btnRight.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         View viewDialog = LayoutInflater.from(context).inflate(R.layout.dialog_input_verify_info, null);
@@ -112,7 +118,24 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
                         });
 
                         dialog.show();
+                    }
+                });
 
+            }
+            if (onItemClickListener != null) {
+                mHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int position = mHolder.getLayoutPosition();
+                        onItemClickListener.onItemClick(holder.itemView, position);
+                    }
+                });
+                mHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        int position = mHolder.getLayoutPosition();
+                        onItemClickListener.onItemLongClick(mHolder.itemView, position);
+                        return false;
                     }
                 });
             }
@@ -128,14 +151,28 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         public SimpleDraweeView imgHeader;
-        public TextView txtName;
-        public Button btnAdd;
+        public TextView txtName, txtRight;
+        public Button btnRight;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);
             imgHeader = (SimpleDraweeView) itemView.findViewById(R.id.imgHeader);
             txtName = (TextView) itemView.findViewById(R.id.txtName);
-            btnAdd = (Button) itemView.findViewById(R.id.btnAdd);
+            txtRight = (TextView) itemView.findViewById(R.id.txtRight);
+            btnRight = (Button) itemView.findViewById(R.id.btnRight);
         }
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+
+        void onItemLongClick(View view, int position);
     }
 }

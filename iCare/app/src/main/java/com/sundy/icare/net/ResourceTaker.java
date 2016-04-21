@@ -211,7 +211,66 @@ public class ResourceTaker {
         getHttpRequestGet(MyURL.URL_SEARCH_BY_PHONE_EMAIL, hashMap, JSONObject.class, callback);
     }
 
+    //申请绑定
+    public static void applyBindById(String profileId, String validationInfo,
+                                     HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
 
+        HashMap hashMap = new HashMap();
+        hashMap.put("memberId", memberId);
+        hashMap.put("sessionKey", sessionKey);
+        hashMap.put("profileId", profileId);
+        hashMap.put("validationInfo", validationInfo);
+        getHttpRequestGet(MyURL.URL_APPLY_BIND_BY_ID, hashMap, JSONObject.class, callback);
+    }
+
+    //申请记录
+    public static void applyHistory(int pageNumber, int pageRecord, HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
+        HashMap hashMap = new HashMap();
+        hashMap.put("memberId", memberId);
+        hashMap.put("sessionKey", sessionKey);
+        hashMap.put("pageNumber", pageNumber + "");
+        hashMap.put("pageRecord", pageRecord + "");
+        getHttpRequestGet(MyURL.URL_APPLY_HISTORY, hashMap, JSONObject.class, callback);
+    }
+
+    //处理申请绑定
+    public static void handleBind(String profileId, String action, HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
+        HashMap hashMap = new HashMap();
+        hashMap.put("memberId", memberId);
+        hashMap.put("sessionKey", sessionKey);
+        hashMap.put("profileId", profileId);
+        hashMap.put("action", action);
+        getHttpRequestGet(MyURL.URL_HANDLE_BIND, hashMap, JSONObject.class, callback);
+    }
+
+    //获取成员列表
+    public static void getMemberList(String listType, int pageNumber, int pageRecord, HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
+        HashMap hashMap = new HashMap();
+        hashMap.put("memberId", memberId);
+        hashMap.put("sessionKey", sessionKey);
+        hashMap.put("listType", listType);
+        hashMap.put("pageNumber", pageNumber + "");
+        hashMap.put("pageRecord", pageRecord + "");
+        getHttpRequestGet(MyURL.URL_GET_MEMBER_LIST, hashMap, JSONObject.class, callback);
+    }
+
+
+    //--------------------------------------------------------------------------------------------------------//
     //Get 请求
     public static void getHttpRequestGet(String url, HashMap hashMap, Class stype, HttpCallback callback) {
         hashMap = getCommonParameter(hashMap);

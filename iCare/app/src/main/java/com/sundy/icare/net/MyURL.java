@@ -84,4 +84,24 @@ public class MyURL {
      */
     public static final String URL_SEARCH_BY_PHONE_EMAIL = HTTP_BASE + "member/searchByPhoneOrEmail";
 
+    /**
+     * 申请绑定
+     */
+    public static final String URL_APPLY_BIND_BY_ID = HTTP_BASE + "member/applyBindById";
+
+    /**
+     * 申请记录
+     */
+    public static final String URL_APPLY_HISTORY = HTTP_BASE + "member/applyHistory";
+
+    /**
+     * 处理绑定（同意/拒绝）
+     */
+    public static final String URL_HANDLE_BIND = HTTP_BASE + "member/handleBind";
+
+    /**
+     * 获取成员列表
+     */
+    public static final String URL_GET_MEMBER_LIST = HTTP_BASE + "member/getMemberList";
+
 }
