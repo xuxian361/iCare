@@ -57,8 +57,16 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
                 final String id = item.getString("id");
                 String name = item.getString("name");
                 String profileImage = item.getString("profileImage");
+                boolean isBind = item.getBoolean("isBind");
+
                 mHolder.imgHeader.setImageURI(Uri.parse(profileImage));
                 mHolder.txtName.setText(name);
+
+                if (isBind) {
+                    mHolder.btnAdd.setVisibility(View.GONE);
+                } else {
+                    mHolder.btnAdd.setVisibility(View.VISIBLE);
+                }
 
                 mHolder.btnAdd.setOnClickListener(new View.OnClickListener() {
                     @Override

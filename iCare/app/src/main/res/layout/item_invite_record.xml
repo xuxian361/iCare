@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imgHeader"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:fadeDuration="2000"
+            fresco:failureImage="@mipmap/profile_img"
+            fresco:failureImageScaleType="centerInside"
+            fresco:placeholderImage="@mipmap/profile_img"
+            fresco:placeholderImageScaleType="fitCenter"
+            fresco:progressBarAutoRotateInterval="2000"
+            fresco:progressBarImage="@mipmap/icon_progress_bar"
+            fresco:progressBarImageScaleType="centerInside"
+            fresco:roundAsCircle="true"
+            fresco:roundingBorderColor="@color/white"
+            fresco:roundingBorderWidth="1dp" />
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:singleLine="true"
+            android:text="2016-04-18 12:23:07"
+            android:textColor="@color/gray"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtDate"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/relativeRight"
+            android:layout_toRightOf="@+id/imgHeader"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:singleLine="true"
+                android:textColor="@color/black_deep"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/txtSubName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtName"
+                android:maxLines="2"
+                android:singleLine="false"
+                android:textColor="@color/gray"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/txtDate"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearChoose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnRefuse"
+                    android:layout_width="50dp"
+                    android:layout_height="26dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/corner_btn_red"
+                    android:text="@string/refuse"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btnAgree"
+                    android:layout_width="50dp"
+                    android:layout_height="26dp"
+                    android:background="@drawable/corner_btn_green"
+                    android:text="@string/agree"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtTips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/gray"
+                android:textSize="15dp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnApply"
+                android:layout_width="50dp"
+                android:layout_height="26dp"
+                android:background="@drawable/corner_btn_green"
+                android:text="@string/invite"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/line_gray" />
+</LinearLayout>

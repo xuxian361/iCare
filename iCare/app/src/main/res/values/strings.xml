@@ -516,6 +516,11 @@
     <string name="invite_pending_tips">邀请信息已发送，请等待对方验证</string>
     <string name="agreed">已同意</string>
     <string name="rejected">已拒绝</string>
+    <string name="choose">选择</string>
+    <string name="choose_year">选择年份</string>
+    <string name="input_birthday">请输入您的出生日期</string>
+    <string name="choose_birthday">选择出生日期</string>
+    <string name="register_family_success">注册家人成功，请等待家人验证!</string>
 
 
     <integer-array name="google_colors">

@@ -138,15 +138,6 @@
             android:gravity="center"
             android:hint="@string/input_address" />
 
-        <ImageView
-            android:id="@+id/img_location"
-            android:layout_width="50dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:padding="5dp"
-            android:src="@mipmap/icon_local_black" />
-
     </LinearLayout>
 
 

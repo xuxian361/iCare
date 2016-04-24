@@ -1,23 +1,15 @@
 package com.sundy.icare.adapters;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sundy.icare.R;
-import com.sundy.icare.net.HttpCallback;
-import com.sundy.icare.net.ResourceTaker;
-import com.sundy.icare.utils.MyToast;
 
 import org.json.JSONObject;
 
@@ -65,62 +57,6 @@ public class MemberAdapter extends RecyclerView.Adapter {
                 } else {
                     mHolder.txtName.setText(remark);
                 }
-
-                mHolder.btnRight.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        View viewDialog = LayoutInflater.from(context).inflate(R.layout.dialog_input_verify_info, null);
-                        final Dialog dialog = new Dialog(context, R.style.dialog);
-                        dialog.setContentView(viewDialog);
-                        TextView btnCancel = (TextView) viewDialog.findViewById(R.id.btnCancel);
-                        TextView btnConfirm = (TextView) viewDialog.findViewById(R.id.btnConfirm);
-                        final EditText edtInfo = (EditText) viewDialog.findViewById(R.id.edtInfo);
-                        btnCancel.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                dialog.dismiss();
-                                dialog.cancel();
-                            }
-                        });
-                        btnConfirm.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                String info = edtInfo.getText().toString().trim();
-                                if (TextUtils.isEmpty(info)) {
-                                    MyToast.rtToast(context, context.getString(R.string.verify_info_cannot_empty));
-                                    return;
-                                }
-                                dialog.dismiss();
-                                dialog.cancel();
-                                ResourceTaker.applyBindById(id, info, new HttpCallback<JSONObject>((Activity) context) {
-                                    @Override
-                                    public void callback(String url, JSONObject data, String status) {
-                                        super.callback(url, data, status);
-                                        try {
-                                            if (data != null) {
-                                                JSONObject result = data.getJSONObject("result");
-                                                if (result != null) {
-                                                    String code = result.getString("code");
-                                                    String message = result.getString("message");
-                                                    if (code.equals("1000")) {
-                                                        MyToast.rtToast(context, context.getString(R.string.please_wait_result));
-                                                    } else {
-                                                        MyToast.rtToast(context, message);
-                                                    }
-                                                }
-                                            }
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                });
-                            }
-                        });
-
-                        dialog.show();
-                    }
-                });
-
             }
             if (onItemClickListener != null) {
                 mHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -151,16 +87,13 @@ public class MemberAdapter extends RecyclerView.Adapter {
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         public SimpleDraweeView imgHeader;
-        public TextView txtName, txtRight;
-        public Button btnRight;
+        public TextView txtName;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
             imgHeader = (SimpleDraweeView) itemView.findViewById(R.id.imgHeader);
             txtName = (TextView) itemView.findViewById(R.id.txtName);
-            txtRight = (TextView) itemView.findViewById(R.id.txtRight);
-            btnRight = (Button) itemView.findViewById(R.id.btnRight);
         }
     }
 

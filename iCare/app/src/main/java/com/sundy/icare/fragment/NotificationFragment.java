@@ -12,13 +12,7 @@ import android.view.ViewGroup;
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
 import com.sundy.icare.adapters.NotificationAdapter;
-import com.sundy.icare.net.HttpCallback;
-import com.sundy.icare.net.ResourceTaker;
-import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,41 +96,7 @@ public class NotificationFragment extends LazyLoadFragment {
 
     //获取通知数据
     private void getNotifications() {
-        ResourceTaker.applyHistory(1, 10, new HttpCallback<JSONObject>(context) {
-            @Override
-            public void callback(String url, JSONObject data, String status) {
-                super.callback(url, data, status);
-                try {
-                    if (data != null) {
-                        JSONObject result = data.getJSONObject("result");
-                        if (result != null) {
-                            String code = result.getString("code");
-                            String message = result.getString("message");
-                            if (code.equals("1000")) {
-                                JSONObject info = data.getJSONObject("info");
-                                if (info != null) {
-                                    JSONArray list = info.getJSONArray("list");
-                                    if (list != null && list.length() != 0) {
-                                        for (int i = 0; i < list.length(); i++) {
-                                            JSONObject item = (JSONObject) list.get(i);
-                                            if (item != null) {
-                                                listData.add(item);
-                                            }
-                                        }
-                                    }
-                                    adapter.setData(listData);
-                                    adapter.notifyDataSetChanged();
-                                }
-                            } else {
-                                MyToast.rtToast(context, message);
-                            }
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+
     }
 
     private View.OnClickListener onClick = new View.OnClickListener() {

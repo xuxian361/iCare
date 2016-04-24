@@ -44,83 +44,20 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtDate"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/relativeRight"
             android:layout_toRightOf="@+id/imgHeader"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="4dp">
 
             <TextView
                 android:id="@+id/txtName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:singleLine="true"
-                android:textColor="@color/black_deep"
-                android:textSize="16dp" />
-
-            <TextView
-                android:id="@+id/txtSubName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtName"
                 android:maxLines="2"
                 android:singleLine="false"
                 android:textColor="@color/gray"
-                android:textSize="14dp" />
+                android:textSize="15sp" />
         </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/relativeRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/txtDate"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/linearChoose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnRefuse"
-                    android:layout_width="50dp"
-                    android:layout_height="26dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@drawable/corner_btn_red"
-                    android:text="@string/refuse"
-                    android:textColor="@color/white" />
-
-                <Button
-                    android:id="@+id/btnAgree"
-                    android:layout_width="50dp"
-                    android:layout_height="26dp"
-                    android:background="@drawable/corner_btn_green"
-                    android:text="@string/agree"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/txtTips"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:textColor="@color/gray"
-                android:textSize="15dp"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/btnApply"
-                android:layout_width="50dp"
-                android:layout_height="26dp"
-                android:background="@drawable/corner_btn_green"
-                android:text="@string/invite"
-                android:textColor="@color/white"
-                android:visibility="gone" />
-
-        </RelativeLayout>
 
 
     </RelativeLayout>

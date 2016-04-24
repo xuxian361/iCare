@@ -56,6 +56,7 @@ public class AddFamilyFragment extends LazyLoadFragment {
         aq.id(R.id.rel_Scanner).clicked(onClick);
         aq.id(R.id.linear_qrCode).clicked(onClick);
         aq.id(R.id.relative_search).clicked(onClick);
+        aq.id(R.id.rel_Invite_Record).clicked(onClick);
 
     }
 
@@ -78,9 +79,17 @@ public class AddFamilyFragment extends LazyLoadFragment {
                 case R.id.relative_search:
                     goSearchPage();
                     break;
+                case R.id.rel_Invite_Record:
+                    goInviteRecord();
+                    break;
             }
         }
     };
+
+    //跳转邀请记录
+    private void goInviteRecord() {
+        mCallback.addContent(new InviteRecordFragment());
+    }
 
     //跳转搜索页面
     private void goSearchPage() {

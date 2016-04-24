@@ -231,13 +231,14 @@
                 android:background="@color/material_grey_100" />
 
             <RelativeLayout
+                android:id="@+id/rel_Birthday"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/settings_item_height"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp">
 
                 <TextView
-                    android:id="@+id/txtBirthday"
+                    android:id="@+id/txtKey_Birthday"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -247,66 +248,20 @@
                     android:textColor="@color/material_grey_800"
                     android:textSize="14sp" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/txtBirthday"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/txtBirthday"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <Spinner
-                            android:id="@+id/spinner_year"
-                            android:layout_width="match_parent"
-                            android:layout_height="46dp"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center_vertical"
-                            android:text="@string/year"
-                            android:textColor="@color/material_grey_800"
-                            android:textSize="14sp" />
-
-                        <Spinner
-                            android:id="@+id/spinner_month"
-                            android:layout_width="match_parent"
-                            android:layout_height="46dp"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center_vertical"
-                            android:text="@string/month"
-                            android:textColor="@color/material_grey_800"
-                            android:textSize="14sp" />
-
-                        <Spinner
-                            android:id="@+id/spinner_day"
-                            android:layout_width="match_parent"
-                            android:layout_height="46dp"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center_vertical"
-                            android:text="@string/day"
-                            android:textColor="@color/material_grey_800"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/txtKey_Birthday"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:text="1970-01-01"
+                    android:textColor="@color/material_grey_850"
+                    android:textSize="14sp" />
 
             </RelativeLayout>
+
 
         </LinearLayout>
     </ScrollView>

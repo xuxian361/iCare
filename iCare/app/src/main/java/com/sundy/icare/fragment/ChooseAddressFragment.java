@@ -119,7 +119,7 @@ public class ChooseAddressFragment extends LazyLoadFragment {
 
     //选择省份Dialog
     private void chooseProvinceDialog() {
-        View view = mInflater.inflate(R.layout.dialog_choose_province, null);
+        View view = mInflater.inflate(R.layout.dialog_choose_listview, null);
         final Dialog dialog = new Dialog(context, R.style.dialog);
         dialog.setContentView(view);
         ImageButton btn_close = (ImageButton) view.findViewById(R.id.btn_close);

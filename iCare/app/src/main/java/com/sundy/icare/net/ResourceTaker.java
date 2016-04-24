@@ -269,6 +269,29 @@ public class ResourceTaker {
         getHttpRequestGet(MyURL.URL_GET_MEMBER_LIST, hashMap, JSONObject.class, callback);
     }
 
+    //家人注册
+    public static void familyRegistration(String areaCode, String phone, String name, String gender,
+                                          String remark, String birthday, File file, HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+        try {
+            HashMap<String, String> stringHashMap = new HashMap<>();
+            stringHashMap.put("memberId", memberId);
+            stringHashMap.put("sessionKey", sessionKey);
+            stringHashMap.put("areaCode", areaCode);
+            stringHashMap.put("phone", phone);
+            stringHashMap.put("name", name);
+            stringHashMap.put("gender", gender);
+            stringHashMap.put("remark", remark);
+            stringHashMap.put("birthday", birthday); //格式: YYYY-MM-DD
+
+            stringHashMap = getCommonParameter(stringHashMap);
+            callback.doFilePost(MyURL.URL_FAMILY_REGISTRATION, stringHashMap, "profileImage", file, JSONObject.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     //--------------------------------------------------------------------------------------------------------//
     //Get 请求

@@ -1,5 +1,6 @@
 package com.sundy.icare.fragment;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,19 +11,23 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sundy.icare.R;
+import com.sundy.icare.net.HttpCallback;
+import com.sundy.icare.net.ResourceTaker;
 import com.sundy.icare.ui.MyProgressDialog;
 import com.sundy.icare.utils.FileUtil;
 import com.sundy.icare.utils.MyConstant;
 import com.sundy.icare.utils.MyToast;
 import com.sundy.icare.utils.MyUtils;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,15 +40,13 @@ public class BindFamilyFragment extends LazyLoadFragment {
     private final String TAG = "BindFamilyFragment";
     private View root;
     private RadioGroup rg_gender;
+    private String areaCode = "86";
     private String gender = "male";
     private String filePath;
     private SimpleDraweeView imgHeader;
     private String finalImagePath; //最终图片保存路径
-
-    //-----生日-------
-    private Spinner spinner_province; //省
-    private Spinner spinner_city; //市
-    private Spinner spinner_town; //区
+    private TextView txtBirthday;
+    private String birthday; //生日
 
     private MyProgressDialog progressDialog;
 
@@ -81,9 +84,14 @@ public class BindFamilyFragment extends LazyLoadFragment {
     private void init() {
         aq.id(R.id.txtTitle).text(R.string.bind_family);
         aq.id(R.id.btnBack).clicked(onClick);
-        aq.id(R.id.txtRight).clicked(onClick);
+        aq.id(R.id.txtRight).text(getString(R.string.submit)).clicked(onClick);
+        imgHeader = (SimpleDraweeView) aq.id(R.id.imgHeader).getView();
         aq.id(R.id.imgHeader).clicked(onClick);
         aq.id(R.id.rel_Address).clicked(onClick);
+        aq.id(R.id.rel_Birthday).clicked(onClick);
+
+        txtBirthday = aq.id(R.id.txtBirthday).getTextView();
+        birthday = txtBirthday.getText().toString().trim();
 
         rg_gender = (RadioGroup) aq.id(R.id.rg_gender).getView();
         rg_gender.setOnCheckedChangeListener(onCheckChange);
@@ -112,7 +120,7 @@ public class BindFamilyFragment extends LazyLoadFragment {
                     mCallback.onBack();
                     break;
                 case R.id.txtRight:
-                    bingFamily();
+                    registerFamily();
                     break;
                 case R.id.imgHeader:
                     chooseDialog();
@@ -120,10 +128,29 @@ public class BindFamilyFragment extends LazyLoadFragment {
                 case R.id.rel_Address:
                     chooseAddress();
                     break;
+                case R.id.rel_Birthday:
+                    showBirthdayDatePicker();
+                    break;
             }
         }
     };
 
+    //出生日期选择器
+    private void showBirthdayDatePicker() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                context, onDateSetListener, 1970, 1, 1);
+        datePickerDialog.show();
+    }
+
+    private DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+            birthday = year + "-" + (month + 1) + "-" + day;
+            txtBirthday.setText(birthday);
+        }
+    };
+
+    //跳转选择地址
     private void chooseAddress() {
         mCallback.addContent(new ChooseAddressFragment());
     }
@@ -227,7 +254,7 @@ public class BindFamilyFragment extends LazyLoadFragment {
     }
 
     //绑定家人
-    private void bingFamily() {
+    private void registerFamily() {
         String name = aq.id(R.id.edtUserName).getText().toString().trim();
         String phone = aq.id(R.id.edtMobile).getText().toString().trim();
         String remark = aq.id(R.id.edtRemark).getText().toString().trim();
@@ -241,11 +268,59 @@ public class BindFamilyFragment extends LazyLoadFragment {
             MyToast.rtToast(context, getString(R.string.mobile_cannot_empty));
             return;
         }
-        if (TextUtils.isEmpty(address)) {
-            MyToast.rtToast(context, getString(R.string.address_cannot_empty));
-            return;
+//        if (TextUtils.isEmpty(address)) {
+//            MyToast.rtToast(context, getString(R.string.address_cannot_empty));
+//            return;
+//        }
+
+        File file = null;
+        if (finalImagePath != null && finalImagePath.length() != 0) {
+            file = new File(finalImagePath);
         }
-//        ResourceTaker.
+        showLoading();
+        ResourceTaker.familyRegistration(areaCode, phone, name, gender, remark, birthday, file, new HttpCallback<JSONObject>(context) {
+            @Override
+            public void callback(String url, JSONObject data, String status) {
+                super.callback(url, data, status);
+                closeLoading();
+                try {
+                    if (data != null) {
+                        JSONObject result = data.getJSONObject("result");
+                        if (result != null) {
+                            String code = result.getString("code");
+                            String message = result.getString("message");
+                            if (code.equals("1000")) {
+                                showSuccessDialog();
+                            } else {
+                                MyToast.rtToast(context, message);
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    //显示注册家人成功Dialog
+    private void showSuccessDialog() {
+        View view = mInflater.inflate(R.layout.dialog_success, null);
+        final Dialog dialog = new Dialog(context, R.style.dialog);
+        dialog.setContentView(view);
+
+        TextView btnOK = (TextView) view.findViewById(R.id.btnOK);
+        TextView txtMsg = (TextView) view.findViewById(R.id.txtMsg);
+        txtMsg.setText(getString(R.string.register_family_success));
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                dialog.cancel();
+                mCallback.onBack();
+            }
+        });
+        dialog.show();
     }
 
 }
