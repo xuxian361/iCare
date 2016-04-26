@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
@@ -58,17 +58,30 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/rel_User"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="6dp">
 
-                        <com.facebook.drawee.view.DraweeView
+                        <com.facebook.drawee.view.SimpleDraweeView
                             android:id="@+id/img"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:layout_margin="10dp"
-                            android:background="@null"
-                            android:src="@mipmap/profile_img" />
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            fresco:actualImageScaleType="focusCrop"
+                            fresco:fadeDuration="2000"
+                            fresco:failureImage="@mipmap/profile_img"
+                            fresco:failureImageScaleType="centerInside"
+                            fresco:placeholderImage="@mipmap/profile_img"
+                            fresco:placeholderImageScaleType="fitCenter"
+                            fresco:progressBarAutoRotateInterval="2000"
+                            fresco:progressBarImage="@mipmap/icon_progress_bar"
+                            fresco:progressBarImageScaleType="centerInside"
+                            fresco:roundAsCircle="true"
+                            fresco:roundingBorderColor="@color/white"
+                            fresco:roundingBorderWidth="1dp" />
 
                         <TextView
                             android:id="@+id/txtName"
@@ -78,7 +91,6 @@
                             android:layout_toLeftOf="@+id/imgQR"
                             android:layout_toRightOf="@+id/img"
                             android:singleLine="true"
-                            android:text="爸爸（陈大文）"
                             android:textColor="@color/material_grey_850"
                             android:textSize="14sp" />
 
@@ -90,8 +102,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_toLeftOf="@+id/imgQR"
                             android:layout_toRightOf="@+id/img"
-                            android:singleLine="true"
-                            android:text="手机号码：13400002222" />
+                            android:singleLine="true" />
 
                         <ImageView
                             android:id="@+id/imgQR"
@@ -137,7 +148,7 @@
                             android:gravity="center_vertical"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@string/add_event"
+                            android:text="@string/event_record"
                             android:textColor="@color/material_grey_850"
                             android:textSize="14sp" />
 
@@ -153,7 +164,7 @@
                             android:gravity="center_vertical"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@string/add_remind"
+                            android:text="@string/remind_history"
                             android:textColor="@color/material_grey_850"
                             android:textSize="14sp" />
 

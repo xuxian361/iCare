@@ -1,6 +1,5 @@
 package com.sundy.icare.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,7 +11,6 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.sundy.icare.R;
-import com.sundy.icare.activity.MyFamilyDetailActivity;
 import com.sundy.icare.adapters.MemberAdapter;
 import com.sundy.icare.net.HttpCallback;
 import com.sundy.icare.net.ResourceTaker;
@@ -70,6 +68,15 @@ public class MyFamilyFragment extends LazyLoadFragment {
             @Override
             public void onItemClick(View view, int position) {
                 MyUtils.rtLog(TAG, "------->onItemClick =" + position);
+                try {
+                    JSONObject item = (JSONObject) listData.get(position);
+                    if (item != null) {
+                        String id = item.getString("id");
+                        goMyFamilyDetail(id);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -162,9 +169,12 @@ public class MyFamilyFragment extends LazyLoadFragment {
     }
 
     //跳转家人详情页
-    private void goMyFamilyDetail() {
-        Intent intent = new Intent(context, MyFamilyDetailActivity.class);
-        startActivity(intent);
+    private void goMyFamilyDetail(String id) {
+        MyFamilyInfoFragment fragment = new MyFamilyInfoFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        fragment.setArguments(bundle);
+        mCallback.addContent(fragment);
     }
 
 }

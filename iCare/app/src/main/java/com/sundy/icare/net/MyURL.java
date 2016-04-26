@@ -109,4 +109,11 @@ public class MyURL {
      */
     public static final String URL_FAMILY_REGISTRATION = HTTP_BASE + "member/familyRegistration";
 
+    /**
+     * 家人注册
+     */
+    public static final String URL_CHANGE_FAMILY_REMARK = HTTP_BASE + "member/changeFamilyRemark";
+
+
+
 }

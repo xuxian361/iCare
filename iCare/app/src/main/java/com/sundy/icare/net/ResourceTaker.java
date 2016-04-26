@@ -293,6 +293,20 @@ public class ResourceTaker {
         }
     }
 
+    //修改家人备注
+    public static void changeFamilyRemark(String profileId, String remark, HttpCallback callback) {
+        SharedPreferences preferences = callback.context.getSharedPreferences(MyPreference.Preference_User, Context.MODE_PRIVATE);
+        String memberId = preferences.getString(MyPreference.Preference_User_ID, "");
+        String sessionKey = preferences.getString(MyPreference.Preference_User_sessionKey, "");
+
+        HashMap hashMap = new HashMap();
+        hashMap.put("memberId", memberId);
+        hashMap.put("sessionKey", sessionKey);
+        hashMap.put("profileId", profileId);
+        hashMap.put("remark", remark);
+        getHttpRequestGet(MyURL.URL_CHANGE_FAMILY_REMARK, hashMap, JSONObject.class, callback);
+    }
+
     //--------------------------------------------------------------------------------------------------------//
     //Get 请求
     public static void getHttpRequestGet(String url, HashMap hashMap, Class stype, HttpCallback callback) {
